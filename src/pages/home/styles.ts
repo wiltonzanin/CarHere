@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
 
     buttonsSection: {
         width: '80%',
-        paddingTop: '20%'
+        paddingTop: '55%'
     },
 
     button: {
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     },
 
     registerText: {
-        paddingTop: 10,
+        paddingTop: 12,
         color: '#F0EFF4',
         fontSize: 18,
     },

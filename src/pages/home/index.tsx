@@ -29,11 +29,11 @@ function Home() {
                         <Text style={styles.registerTextBold}> Cadastre-se</Text>
                     </Text>
                 </RectButton>
-                <View style={{ flexDirection: 'row', paddingTop: 40 }}>
+                {/* <View style={{ flexDirection: 'row', paddingTop: 30 }}>
                     <View style={{ backgroundColor: '#FFF', height: 1.5, flex: 1, alignSelf: 'center' }} />
                     <Text style={{ alignSelf: 'center', paddingHorizontal: 5, fontSize: 15, color: '#FFF' }}>Ou conecte-se usando</Text>
                     <View style={{ backgroundColor: '#FFF', height: 1.5, flex: 1, alignSelf: 'center' }} />
-                </View>
+                </View> */}
             </View>
         </View>
     );
