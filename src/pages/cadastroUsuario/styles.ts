@@ -5,11 +5,9 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#252525',
         alignItems: 'center',
-        paddingBottom: 20
     },
 
     header: {
-        backgroundColor: '#F0EFF4',
         width: '100%',
         height: 240,
         flexDirection: 'column',
@@ -27,7 +25,7 @@ const styles = StyleSheet.create({
     },
 
     title: {
-        color: '#252525',
+        color: '#F0EFF4',
         fontSize: 35,
         fontWeight: 'bold',
     },
@@ -51,7 +49,7 @@ const styles = StyleSheet.create({
 
     buttonsSection: {
         width: '80%',
-        paddingTop: '50%'
+        paddingTop: '55%'
     },
 
     button: {

@@ -1,25 +1,16 @@
 import React from 'react';
 import { RectButton } from 'react-native-gesture-handler';
-import { useNavigation } from '@react-navigation/native';
 import { Text, View, Image } from 'react-native';
 import styles from './styles';
 
-function Home() {
-
-    const { navigate } = useNavigation();
-
-    function handleNavigateToCadastroUsarioPage() {
-        navigate('CadastroUsuario');
-    }
+function CadastroUsuario() {
 
     return (
         <View style={styles.container}>
             <View style={styles.header}>
                 <View style={styles.textFooterAlign}>
-                    <Text style={styles.title}>Bem vindo!</Text>
-                    <Text style={styles.subtitle}>Estamos muito felizes {'\n'}com a sua chegada :)</Text>
+                    <Text style={styles.title}>Vamos começar:</Text>
                 </View>
-                <Image source={require('../../assets/images/flag.png')} style={styles.imgFlag}></Image>
             </View>
 
             <View style={styles.content}>
@@ -30,7 +21,7 @@ function Home() {
                 <RectButton style={styles.button}>
                     <Text style={styles.buttonText}>Entrar</Text>
                 </RectButton>
-                <RectButton onPress={handleNavigateToCadastroUsarioPage} style={styles.texteButton}>
+                <RectButton style={styles.texteButton}>
                     <Text style={styles.registerText}>
                         Não tem uma conta!
                         <Text style={styles.registerTextBold}> Cadastre-se</Text>
@@ -46,4 +37,4 @@ function Home() {
     );
 }
 
-export default Home;
+export default CadastroUsuario;
