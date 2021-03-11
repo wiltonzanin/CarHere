@@ -5,23 +5,24 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#252525',
         alignItems: 'center',
+        justifyContent: 'space-between',
         paddingBottom: 20
     },
 
     header: {
         backgroundColor: '#F0EFF4',
-        width: '100%',
-        height: 232,
+        alignSelf: 'stretch',
+        height: '30%',
         flexDirection: 'column',
         justifyContent: 'flex-start',
     },
 
     imgFlag: {
-        marginTop: '8%',
-        marginLeft: '-6%'
+        marginTop: 20,
+        marginLeft: '-11%'
     },
 
-    textFooterAlign: {
+    textHeaderAlign: {
         paddingTop: 50,
         marginLeft: '8%'
     },
@@ -38,10 +39,6 @@ const styles = StyleSheet.create({
         paddingTop: 5
     },
 
-    content: {
-        paddingTop: '40%'
-    },
-
     contentText: {
         color: '#F0EFF4',
         fontSize: 17,
@@ -51,7 +48,7 @@ const styles = StyleSheet.create({
 
     buttonsSection: {
         width: '80%',
-        paddingTop: '50%'
+        paddingBottom: 15        
     },
 
     button: {
