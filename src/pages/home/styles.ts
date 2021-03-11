@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     header: {
         backgroundColor: '#F0EFF4',
         width: '100%',
-        height: 240,
+        height: 232,
         flexDirection: 'column',
         justifyContent: 'flex-start',
     },
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     },
 
     textFooterAlign: {
-        marginTop: '15%',
+        paddingTop: 50,
         marginLeft: '8%'
     },
 
