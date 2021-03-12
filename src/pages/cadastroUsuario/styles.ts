@@ -5,25 +5,66 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#252525',
         alignItems: 'center',
-        padding: 40
+        padding: 30,
+        justifyContent: 'space-between'
     },
 
     header: {
         width: '100%',
-        height: 240,
+        height: 70,
         flexDirection: 'column',
         justifyContent: 'flex-start',
+        paddingTop: 20
     },
 
-    textHeaderAlign: {
-        paddingTop: 10
-    },
 
     title: {
         color: '#F0EFF4',
         fontSize: 25,
         fontWeight: 'bold',
-    }
+    },
+
+    content: {
+        width: '100%',
+        height: '70%'
+    },
+
+    formLabel: {
+        color: '#F0EFF4',
+        fontSize: 18,
+        marginBottom: 10
+    },
+
+    input: {
+        borderBottomColor: '#5863f8',
+        borderStyle: 'solid',
+        borderBottomWidth: 1,
+        color: '#F0EFF4',
+        fontSize: 16,
+        marginBottom: 25
+        
+    },
+
+    buttonsSection: {
+        width: '80%',
+        paddingBottom: 15,
+              
+    },
+
+    button: {
+        backgroundColor: '#5863f8',
+        height: 60,
+        borderRadius: 8,
+        padding: 24,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+
+    buttonText: {
+        color: '#F0EFF4',
+        fontSize: 20,
+        fontWeight: 'bold',
+    },
 });
 
 export default styles;
