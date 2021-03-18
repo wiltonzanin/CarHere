@@ -2,11 +2,12 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        //flex: 1,
         backgroundColor: '#252525',
         alignItems: 'center',
         padding: 30,
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        height: '100%'
     },
 
     header: {
@@ -26,13 +27,20 @@ const styles = StyleSheet.create({
 
     content: {
         width: '100%',
-        height: '70%'
+       // height: '91%',
+        justifyContent: 'space-between',
+     
+    },
+
+    buttonStyle: {
+        height: '25%',
+        justifyContent: 'center'
     },
 
     formLabel: {
         color: '#F0EFF4',
         fontSize: 18,
-        marginBottom: 10
+        //marginBottom: 10
     },
 
     input: {
@@ -45,19 +53,13 @@ const styles = StyleSheet.create({
         
     },
 
-    buttonsSection: {
-        width: '80%',
-        paddingBottom: 15,
-              
-    },
-
     button: {
         backgroundColor: '#5863f8',
         height: 60,
         borderRadius: 8,
         padding: 24,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
 
     buttonText: {

@@ -18,14 +18,15 @@ function CadastroUsuario() {
                 <Text style={styles.formLabel}>Senha</Text>
                 <TextInput style={styles.input} onChangeText={text => { }} />
                 <Text style={styles.formLabel}>Confirme sua senha</Text>
-                <TextInput style={styles.input} onChangeText={text => { }} />   
-            </View>
-            <View style={styles.buttonsSection}>
+                <TextInput style={styles.input} onChangeText={text => { }} />
+
+                <View style={styles.buttonStyle}></View>
                 <RectButton style={styles.button}>
                     <Text style={styles.buttonText}>Próximo</Text>
                 </RectButton>
             </View>
-        </View >
+        </View>
+
     );
 }
 
