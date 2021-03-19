@@ -7,24 +7,24 @@ import TextField from '../../components/textField';
 function CadastroUsuario() {
 
     return (
-        <View style={styles.container}>
-            <ScrollView >                
-                    <View style={styles.header}>
-                        <Text style={styles.title}>Vamos começar:</Text>
-                    </View>
-                    <View style={styles.content}>
-                        <TextField labelName="Nome" />
-                        <TextField labelName="Email" />
-                        <TextField labelName="Senha" />
-                        <TextField labelName="Confirme sua senha" />
-                    </View>
-                    <View style={styles.buttonStyle}>
-                        <RectButton style={styles.button}>
-                            <Text style={styles.buttonText}>Próximo</Text>
-                        </RectButton>
-                    </View>            
-            </ScrollView>
-        </View>
+        <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+            <View style={styles.container}>
+                <View style={styles.header}>
+                    <Text style={styles.title}>Vamos começar:</Text>
+                </View>
+                <View style={styles.content}>
+                    <TextField labelName="Nome" />
+                    <TextField labelName="Email" />
+                    <TextField labelName="Senha" />
+                    <TextField labelName="Confirme sua senha" />
+                </View>
+                <View style={styles.buttonStyle}>
+                    <RectButton style={styles.button}>
+                        <Text style={styles.buttonText}>Próximo</Text>
+                    </RectButton>
+                </View>
+            </View>
+        </ScrollView>
     );
 }
 

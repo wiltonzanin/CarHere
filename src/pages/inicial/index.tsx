@@ -4,17 +4,15 @@ import { useNavigation } from '@react-navigation/native';
 import { Text, View, Image } from 'react-native';
 import { Svg, Path } from 'react-native-svg';
 import styles from './styles';
+import TextField from '../../components/textField'
 
-function Home() {
+
+function Inicial() {
 
     const { navigate } = useNavigation();
 
     function handleNavigateToCadastroUsarioPage() {
         navigate('CadastroUsuario');
-    }
-
-    function handleNavigateToLoginPage() {
-        navigate('Login');
     }
 
     return (
@@ -33,12 +31,18 @@ function Home() {
                     <Path d="M49.1934 0h47.71L80.5101 27.0047h-47.71L49.1934 0zM335.293 0h47.71L366.61 27.0047H318.9L335.293 0zM240.293 0h47.71L271.61 27.0047H223.9L240.293 0zM431.087 0h47.71l-16.394 27.0047h-47.71L431.087 0zM111.7 54h47.71l-16.393 27.0047H95.3067L111.7 54zM16.3933 54h47.71L47.71 81.0047H.00003L16.3933 54zM302.493 54h47.71L333.81 81.0047H286.1L302.493 54zM207.493 54h47.71L238.81 81.0047H191.1L207.493 54zM398.287 54h47.71l-16.394 27.0047h-47.71L398.287 54z" fill="#F0EFF4" />
                 </Svg>
             </View>
-            <Text style={styles.contentText}>Cuide dos seus veiculos para {'\n'}evitar problemas e gastos {'\n'}indesejados</Text>
+            <View style={styles.content}>
+                <TextField labelName="Email" />
+                <TextField labelName="Senha" />
+                <RectButton style={styles.textButton} rippleColor='#1C00ff00'>
+                    <Text style={styles.forgotPassword}>Esqueceu a senha?</Text>
+                </RectButton>
+            </View>
             <View style={styles.buttonsSection}>
-                <RectButton onPress={handleNavigateToLoginPage} style={styles.button}>
+                <RectButton style={styles.button}>
                     <Text style={styles.buttonText}>Entrar</Text>
                 </RectButton>
-                <RectButton onPress={handleNavigateToCadastroUsarioPage} style={styles.texteButton}>
+                <RectButton onPress={handleNavigateToCadastroUsarioPage} style={styles.textButton}>
                     <Text style={styles.registerText}>
                         Não tem uma conta!
                         <Text style={styles.registerTextBold}> Cadastre-se</Text>
@@ -49,4 +53,4 @@ function Home() {
     );
 }
 
-export default Home;
+export default Inicial;

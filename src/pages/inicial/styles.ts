@@ -12,14 +12,9 @@ const styles = StyleSheet.create({
     header: {
         backgroundColor: '#F0EFF4',
         alignSelf: 'stretch',
-        height: '30%',
+        height: '25%',
         flexDirection: 'column',
         justifyContent: 'flex-start',
-    },
-
-    imgFlag: {
-        marginTop: 20,
-        marginLeft: '-11%'
     },
 
     textHeaderAlign: {
@@ -28,22 +23,32 @@ const styles = StyleSheet.create({
     },
 
     title: {
-        color: '#252525',
+        color: "#252525",
         fontSize: 35,
         fontWeight: 'bold',
     },
 
     subtitle: {
-        color: '#252525',
+        color: "#252525",
         fontSize: 18,
         paddingTop: 5
     },
 
-    contentText: {
+    imgFlag: {
+        marginTop: 20,
+        marginLeft: '-11%'
+    },
+
+    content: {
+        width: '80%',
+    },
+
+    forgotPassword: {
         color: '#F0EFF4',
-        fontSize: 17,
+        fontSize: 14,
+        marginTop: -15,
         fontWeight: 'bold',
-        textAlign: 'center'
+        alignSelf: 'flex-end'
     },
 
     buttonsSection: {
@@ -66,7 +71,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
 
-    texteButton:{
+    textButton:{
         alignItems: 'center',
         justifyContent: 'center'
     },

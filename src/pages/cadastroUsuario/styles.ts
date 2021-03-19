@@ -5,13 +5,13 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#252525',
         padding: 30,
+        justifyContent: 'space-between'
     },
 
     header: {
         width: '100%',
         paddingTop: 20
     },
-
 
     title: {
         color: '#F0EFF4',
