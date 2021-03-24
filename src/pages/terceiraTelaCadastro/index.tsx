@@ -5,12 +5,12 @@ import { Text, View, ScrollView, SafeAreaView } from 'react-native';
 import styles from './styles';
 import TextField from '../../components/textField';
 
-function CadastroUsuario() {
+function TerceiraTelaCadastro() {
 
     const { navigate } = useNavigation();
 
-    function handleNavigateToCadastroVeiculo() {
-        navigate('CadastroVeiculo');
+    function handleNavigateToSegundaTelaCadastro() {
+        navigate('SegundaTelaCadastro');
     }
     return (
         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
@@ -19,14 +19,12 @@ function CadastroUsuario() {
                     <Text style={styles.title}>Vamos começar:</Text>
                 </View>
                 <View style={styles.content}>
-                    <TextField labelName="Nome" />
-                    <TextField labelName="Email" />
-                    <TextField labelName="Senha" />
-                    <TextField labelName="Confirme sua senha" />
+                    <TextField labelName="Valor Do IPVA (opcional)" />
+                    <TextField labelName="Ultima troca de óleo (opcional)" />
                 </View>
                 <View style={styles.buttonStyle}>
-                    <RectButton onPress={handleNavigateToCadastroVeiculo} style={styles.button}>
-                        <Text style={styles.buttonText}>Próximo</Text>
+                    <RectButton style={styles.button}>
+                        <Text style={styles.buttonText}>Concluir</Text>
                     </RectButton>
                 </View>
             </View>
@@ -34,4 +32,4 @@ function CadastroUsuario() {
     );
 }
 
-export default CadastroUsuario;
+export default TerceiraTelaCadastro;

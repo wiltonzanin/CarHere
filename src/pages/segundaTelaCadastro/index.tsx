@@ -1,31 +1,29 @@
 import React from 'react';
 import { RectButton } from 'react-native-gesture-handler';
-import { useNavigation } from '@react-navigation/native';
 import { Text, View, ScrollView, SafeAreaView } from 'react-native';
 import styles from './styles';
-import TextField from '../../components/textField';
+import { useNavigation } from '@react-navigation/native';
 
-function CadastroUsuario() {
+function SegundaTelaCadastro() {
 
     const { navigate } = useNavigation();
 
-    function handleNavigateToCadastroVeiculo() {
-        navigate('CadastroVeiculo');
+    function handleNavigateToTerceiraTelaCadastro() {
+        navigate('TerceiraTelaCadastro');
     }
     return (
         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
             <View style={styles.container}>
                 <View style={styles.header}>
-                    <Text style={styles.title}>Vamos começar:</Text>
+                    <Text style={styles.title}>Adicione fotos do seu veículo:</Text>
+                    <Text style={styles.subtitle}>(opcional):</Text>
                 </View>
                 <View style={styles.content}>
-                    <TextField labelName="Nome" />
-                    <TextField labelName="Email" />
-                    <TextField labelName="Senha" />
-                    <TextField labelName="Confirme sua senha" />
+                   
+                    
                 </View>
                 <View style={styles.buttonStyle}>
-                    <RectButton onPress={handleNavigateToCadastroVeiculo} style={styles.button}>
+                    <RectButton onPress={handleNavigateToTerceiraTelaCadastro} style={styles.button}>
                         <Text style={styles.buttonText}>Próximo</Text>
                     </RectButton>
                 </View>
@@ -34,4 +32,4 @@ function CadastroUsuario() {
     );
 }
 
-export default CadastroUsuario;
+export default SegundaTelaCadastro;
