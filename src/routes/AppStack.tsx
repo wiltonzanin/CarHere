@@ -2,10 +2,10 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Inicial from '../pages/inicial';
-import CadastroUsuario from '../pages/cadastroUsuario';
+import CadastroUsuario from '../pages/cadastroUsuario/primeiraTelaCadastro';
 import CadastroVeiculo from '../pages/cadastroVeiculo';
-import SegundaTelaCadastro from '../pages/segundaTelaCadastro';
-import TerceiraTelaCadastro from '../pages/terceiraTelaCadastro';
+import SegundaTelaCadastro from '../pages/cadastroUsuario/segundaTelaCadastro';
+import TerceiraTelaCadastro from '../pages/cadastroUsuario/terceiraTelaCadastro';
 
 const { Navigator, Screen } = createStackNavigator();
 

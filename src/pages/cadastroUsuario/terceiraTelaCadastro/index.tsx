@@ -1,9 +1,9 @@
 import React from 'react';
 import { RectButton } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
-import { Text, View, ScrollView, SafeAreaView } from 'react-native';
+import { Text, View, ScrollView } from 'react-native';
 import styles from './styles';
-import TextField from '../../components/textField';
+import TextField from '../../../components/textField';
 
 function TerceiraTelaCadastro() {
 
@@ -12,6 +12,7 @@ function TerceiraTelaCadastro() {
     function handleNavigateToSegundaTelaCadastro() {
         navigate('SegundaTelaCadastro');
     }
+
     return (
         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
             <View style={styles.container}>
@@ -19,7 +20,7 @@ function TerceiraTelaCadastro() {
                     <Text style={styles.title}>Vamos começar:</Text>
                 </View>
                 <View style={styles.content}>
-                    <TextField labelName="Valor Do IPVA (opcional)" />
+                    <TextField labelName="Valor do IPVA (opcional)" />
                     <TextField labelName="Ultima troca de óleo (opcional)" />
                 </View>
                 <View style={styles.buttonStyle}>

@@ -3,18 +3,12 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#252525',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        paddingBottom: 20
+        backgroundColor: '#252525'
     },
 
     header: {
         backgroundColor: '#F0EFF4',
-        alignSelf: 'stretch',
-        height: '25%',
-        flexDirection: 'column',
-        justifyContent: 'flex-start',
+        height: '30%',
     },
 
     textHeaderAlign: {
@@ -34,13 +28,15 @@ const styles = StyleSheet.create({
         paddingTop: 5
     },
 
-    imgFlag: {
+    svgFlag: {
         marginTop: 20,
         marginLeft: '-11%'
     },
 
     content: {
+        marginTop: 100,
         width: '80%',
+        alignSelf: 'center'
     },
 
     forgotPassword: {
@@ -52,8 +48,10 @@ const styles = StyleSheet.create({
     },
 
     buttonsSection: {
-        width: '80%',
-        paddingBottom: 15        
+        alignSelf: 'center',
+        marginTop: 100,
+        width: '100%',
+        paddingBottom: 15,
     },
 
     button: {
@@ -71,7 +69,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
 
-    textButton:{
+    textButton: {
         alignItems: 'center',
         justifyContent: 'center'
     },
