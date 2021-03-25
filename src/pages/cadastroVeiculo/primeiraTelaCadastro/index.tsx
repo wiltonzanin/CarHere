@@ -1,5 +1,5 @@
 import React from 'react';
-import { RectButton } from 'react-native-gesture-handler';
+import { RectButton, TextInput } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import { Text, View, ScrollView, SafeAreaView } from 'react-native';
 import styles from './styles';
@@ -11,7 +11,6 @@ import Icon from 'react-native-vector-icons/Feather';
 function CadastroVeiculo() {
 
     const { navigate } = useNavigation();
-    Icon.loadFont()
 
     // function handleNavigateToSegundaTelaCadastro() {
     //     navigate('SegundaTelaCadastro');
@@ -30,25 +29,22 @@ function CadastroVeiculo() {
                     <TextField labelName="Configuração" />
                     <Text style={styles.text}>Combustível</Text>
                     <DropDownPicker
+                        placeholder="Selecione um item"
                         dropDownStyle={{
                             backgroundColor: '#333333',
                             borderColor: '#525252',
-                            
                         }}
                         labelStyle={{
                             fontSize: 16,
                             color: '#fff'
                         }}
-
                         items={[
                             { label: 'Gasolina', value: 'gasolina' },
                             { label: 'Alcool', value: 'alcool' },
                             { label: 'Diesel', value: 'Diesel' },
                         ]}
-
                         style={styles.dropdown}
                     ></DropDownPicker>
-                    
                 </View>
                 <View style={styles.buttonStyle}>
                     <RectButton style={styles.button}>
