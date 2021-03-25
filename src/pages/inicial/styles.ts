@@ -9,10 +9,11 @@ const styles = StyleSheet.create({
     header: {
         backgroundColor: '#F0EFF4',
         height: '30%',
+        justifyContent: 'space-between'
     },
 
     textHeaderAlign: {
-        paddingTop: 50,
+        paddingTop: 45,
         marginLeft: '8%'
     },
 
@@ -29,13 +30,15 @@ const styles = StyleSheet.create({
     },
 
     svgFlag: {
-        marginTop: 20,
+        marginBottom: -5,
         marginLeft: '-11%'
     },
 
     content: {
-        marginTop: 100,
+        paddingTop: '35%',
         width: '80%',
+        height: '68%',
+        justifyContent: 'space-between',
         alignSelf: 'center'
     },
 
@@ -49,9 +52,7 @@ const styles = StyleSheet.create({
 
     buttonsSection: {
         alignSelf: 'center',
-        marginTop: 100,
         width: '100%',
-        paddingBottom: 15,
     },
 
     button: {
@@ -60,7 +61,8 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         padding: 24,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        marginBottom: 5,    
     },
 
     buttonText: {
@@ -75,7 +77,6 @@ const styles = StyleSheet.create({
     },
 
     registerText: {
-        paddingTop: 12,
         color: '#F0EFF4',
         fontSize: 18,
     },

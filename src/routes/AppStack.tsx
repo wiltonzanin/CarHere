@@ -2,10 +2,10 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Inicial from '../pages/inicial';
-import CadastroUsuario from '../pages/cadastroUsuario/primeiraTelaCadastro';
-import CadastroVeiculo from '../pages/cadastroVeiculo';
-import SegundaTelaCadastro from '../pages/cadastroUsuario/segundaTelaCadastro';
-import TerceiraTelaCadastro from '../pages/cadastroUsuario/terceiraTelaCadastro';
+import CadastroUsuario from '../pages/cadastroUsuario';
+import CadastroVeiculo from '../pages/cadastroVeiculo/primeiraTelaCadastro';
+import SegundaTelaCadastro from '../pages/cadastroVeiculo/segundaTelaCadastro';
+import TerceiraTelaCadastro from '../pages/cadastroVeiculo/terceiraTelaCadastro';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -16,8 +16,8 @@ function AppStack() {
                 <Screen name="Inicial" component={Inicial} />
                 <Screen name="CadastroUsuario" component={CadastroUsuario} />
                 <Screen name="CadastroVeiculo" component={CadastroVeiculo} />
-                <Screen name="SegundaTelaCadastro" component={SegundaTelaCadastro} />
-                <Screen name="TerceiraTelaCadastro" component={TerceiraTelaCadastro} />
+                {/* <Screen name="SegundaTelaCadastro" component={SegundaTelaCadastro} />
+                <Screen name="TerceiraTelaCadastro" component={TerceiraTelaCadastro} /> */}
             </Navigator>
         </NavigationContainer>
     );

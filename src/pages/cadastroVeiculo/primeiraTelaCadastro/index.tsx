@@ -3,7 +3,7 @@ import { RectButton } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import { Text, View, ScrollView, SafeAreaView } from 'react-native';
 import styles from './styles';
-import TextField from '../../components/textField';
+import TextField from '../../../components/textField';
 import DropDownPicker from 'react-native-dropdown-picker';
 import Icon from 'react-native-vector-icons/Feather';
 
@@ -13,21 +13,22 @@ function CadastroVeiculo() {
     const { navigate } = useNavigation();
     Icon.loadFont()
 
-    function handleNavigateToSegundaTelaCadastro() {
-        navigate('SegundaTelaCadastro');
-    }
+    // function handleNavigateToSegundaTelaCadastro() {
+    //     navigate('SegundaTelaCadastro');
+    // }
+
     return (
         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
             <View style={styles.container}>
                 <View style={styles.header}>
-                    <Text style={styles.title}>Vamos começar:</Text>
+                    <Text style={styles.title}>Cadastre seu veículo:</Text>
                 </View>
                 <View style={styles.content}>
                     <TextField labelName="Nome" />
                     <TextField labelName="Marca" />
                     <TextField labelName="Ano" />
                     <TextField labelName="Configuração" />
-                    <Text style={styles.text}>Combustivel</Text>
+                    <Text style={styles.text}>Combustível</Text>
                     <DropDownPicker
                         dropDownStyle={{
                             backgroundColor: '#333333',
@@ -50,8 +51,8 @@ function CadastroVeiculo() {
                     
                 </View>
                 <View style={styles.buttonStyle}>
-                    <RectButton onPress={handleNavigateToSegundaTelaCadastro} style={styles.button}>
-                        <Text style={styles.buttonText}>Próximo</Text>
+                    <RectButton style={styles.button}>
+                        <Text style={styles.buttonText}>Concluir</Text>
                     </RectButton>
                 </View>
             </View>
