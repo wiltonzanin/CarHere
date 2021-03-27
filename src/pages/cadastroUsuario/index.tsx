@@ -1,7 +1,7 @@
 import React from 'react';
 import { RectButton } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
-import { Text, View, ScrollView, SafeAreaView } from 'react-native';
+import { Text, View, ScrollView } from 'react-native';
 import styles from './styles';
 import TextField from '../../components/textField';
 
@@ -20,7 +20,7 @@ function CadastroUsuario() {
                 </View>
                 <View style={styles.content}>
                     <TextField labelName="Nome" />
-                    <TextField labelName="Email" />
+                    <TextField labelName="Email" tipoTeclado={"email-address"} />
                     <TextField labelName="Senha" />
                     <TextField labelName="Confirme sua senha" />
                 </View>

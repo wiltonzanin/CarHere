@@ -34,7 +34,7 @@ function Inicial() {
                 </View>
                 <View style={styles.content}>
                     <View>
-                        <TextField labelName="Email" />
+                        <TextField labelName="Email" tipoTeclado={"email-address"} />
                         <TextField labelName="Senha" />
                         <RectButton style={styles.textButton} rippleColor='#1C00ff00'>
                             <Text style={styles.forgotPassword}>Esqueceu a senha?</Text>
