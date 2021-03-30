@@ -5,8 +5,7 @@ import { Text, View, ScrollView, SafeAreaView } from 'react-native';
 import styles from './styles';
 import TextField from '../../../components/textField';
 import DropDownPicker from 'react-native-dropdown-picker';
-import Icon from 'react-native-vector-icons/Feather';
-
+import BackScreen from '../../../components/backScreen';
 
 function CadastroVeiculo() {
 
@@ -20,6 +19,7 @@ function CadastroVeiculo() {
         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
             <View style={styles.container}>
                 <View style={styles.header}>
+                    <BackScreen/>
                     <Text style={styles.title}>Cadastre seu veículo:</Text>
                 </View>
                 <View style={styles.content}>

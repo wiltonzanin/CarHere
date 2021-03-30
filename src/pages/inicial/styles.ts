@@ -42,10 +42,19 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     },
 
+    forgotPasswordTextButton: {
+        width: '50%',
+        height: '10%',
+        marginTop: -26,
+        alignSelf: 'flex-end',
+        justifyContent: 'center',
+        paddingTop: 15,
+        paddingLeft: 15
+    },
+
     forgotPassword: {
         color: '#F0EFF4',
         fontSize: 14,
-        marginTop: -15,
         fontWeight: 'bold',
         alignSelf: 'flex-end'
     },

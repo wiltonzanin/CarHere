@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Text, View, ScrollView } from 'react-native';
 import styles from './styles';
 import TextField from '../../components/textField';
+import BackScreen from '../../components/backScreen';
 
 function CadastroUsuario() {
 
@@ -16,6 +17,7 @@ function CadastroUsuario() {
         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
             <View style={styles.container}>
                 <View style={styles.header}>
+                    <BackScreen/>
                     <Text style={styles.title}>Vamos começar:</Text>
                 </View>
                 <View style={styles.content}>

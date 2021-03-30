@@ -15,6 +15,10 @@ function Inicial() {
         navigate('CadastroUsuario');
     }
 
+    function handleNavigateToRecuperarSenhaPage() {
+        navigate('RecuperarSenha');
+    }
+
     return (
         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
             <View style={styles.container}>
@@ -36,7 +40,7 @@ function Inicial() {
                     <View>
                         <TextField labelName="Email" tipoTeclado={"email-address"} />
                         <TextField labelName="Senha" />
-                        <RectButton style={styles.textButton} rippleColor='#1C00ff00'>
+                        <RectButton onPress={handleNavigateToRecuperarSenhaPage} style={styles.forgotPasswordTextButton} rippleColor='#1C00ff00'>
                             <Text style={styles.forgotPassword}>Esqueceu a senha?</Text>
                         </RectButton>
                     </View>
@@ -47,7 +51,7 @@ function Inicial() {
                         <RectButton onPress={handleNavigateToCadastroUsarioPage} style={styles.textButton}>
                             <Text style={styles.registerText}>
                                 Não tem uma conta!
-                        <Text style={styles.registerTextBold}> Cadastre-se</Text>
+                                <Text style={styles.registerTextBold}> Cadastre-se</Text>
                             </Text>
                         </RectButton>
                     </View>
