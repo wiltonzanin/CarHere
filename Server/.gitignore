@@ -6,8 +6,8 @@ npm-debug.*
 *.p12
 *.key
 *.mobileprovision
-*.sqlite
 *.orig.*
+*.sqlite
 web-build/
 
 # macOS
