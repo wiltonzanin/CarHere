@@ -11,9 +11,9 @@ function CadastroVeiculo() {
 
     const { navigate } = useNavigation();
 
-    // function handleNavigateToSegundaTelaCadastro() {
-    //     navigate('SegundaTelaCadastro');
-    // }
+     function handleNavigateToApp() {
+         navigate('App');
+     }
 
     return (
         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
@@ -25,14 +25,42 @@ function CadastroVeiculo() {
                 <View style={styles.content}>
                     <TextField labelName="Nome" />
                     <TextField labelName="Marca" />
-                    <TextField labelName="Ano" />
                     <TextField labelName="Configuração" />
+
+                    <View style={styles.inputGroup}>
+                    <View> 
+                    <Text style={styles.text}>Ano</Text>
+                    <DropDownPicker
+                        placeholder="" 
+                        dropDownStyle={{
+                            backgroundColor: '#333333',
+                            borderColor: '#525252',
+                            width: 60
+                        }}
+                        placeholderStyle={{
+                            width:60
+                        }}
+                        labelStyle={{
+                            fontSize: 16,
+                            color: '#fff',
+
+                        }}
+                        items={[
+                            { label: '2020', value: '2020' },
+                            { label: '2019', value: '2019' },
+                            { label: '2018', value: '2018' },
+                        ]}
+                        style={styles.dropdown}
+                    ></DropDownPicker>
+                    </View> 
+                    <View >
                     <Text style={styles.text}>Combustível</Text>
                     <DropDownPicker
                         placeholder="Selecione um item"
                         dropDownStyle={{
                             backgroundColor: '#333333',
                             borderColor: '#525252',
+                            width: 200
                         }}
                         labelStyle={{
                             fontSize: 16,
@@ -43,11 +71,13 @@ function CadastroVeiculo() {
                             { label: 'Alcool', value: 'alcool' },
                             { label: 'Diesel', value: 'Diesel' },
                         ]}
-                        style={styles.dropdown}
-                    ></DropDownPicker>
+                        style={styles.dropdownSegundo}
+                        ></DropDownPicker>
+                        </View>
+                    </View>
                 </View>
                 <View style={styles.buttonStyle}>
-                    <RectButton style={styles.button}>
+                    <RectButton onPress={handleNavigateToApp} style={styles.button}>
                         <Text style={styles.buttonText}>Concluir</Text>
                     </RectButton>
                 </View>

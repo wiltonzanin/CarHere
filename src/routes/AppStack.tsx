@@ -7,6 +7,7 @@ import CadastroUsuario from '../pages/cadastroUsuario';
 import CadastroVeiculo from '../pages/cadastroVeiculo/primeiraTelaCadastro';
 import SegundaTelaCadastro from '../pages/cadastroVeiculo/segundaTelaCadastro';
 import TerceiraTelaCadastro from '../pages/cadastroVeiculo/terceiraTelaCadastro';
+import App from '../pages/home';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -18,8 +19,8 @@ function AppStack() {
                 <Screen name="RecuperarSenha" component={RecuperarSenha} />
                 <Screen name="CadastroUsuario" component={CadastroUsuario} />
                 <Screen name="CadastroVeiculo" component={CadastroVeiculo} />
-                {/* <Screen name="SegundaTelaCadastro" component={SegundaTelaCadastro} />
-                <Screen name="TerceiraTelaCadastro" component={TerceiraTelaCadastro} /> */}
+                <Screen name="App" component={App} />
+                
             </Navigator>
         </NavigationContainer>
     );

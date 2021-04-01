@@ -35,6 +35,11 @@ const styles = StyleSheet.create({
         paddingTop: 20
     },
 
+    inputGroup:{
+         flexDirection: 'row',
+         justifyContent: 'space-between'
+    },
+
     button: {
         backgroundColor: '#5863f8',
         height: 60,
@@ -53,7 +58,13 @@ const styles = StyleSheet.create({
     dropdown: {
         backgroundColor: '#333333',
         borderColor: '#525252',
-        
+        width: 60
+    },
+
+    dropdownSegundo: {
+        backgroundColor: '#333333',
+        borderColor: '#525252',
+        width: 200
     }
 });
 
