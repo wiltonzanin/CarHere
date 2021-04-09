@@ -14,13 +14,13 @@ const { Navigator, Screen } = createStackNavigator();
 function AppStack() {
     return (
         <NavigationContainer>
-            <Navigator initialRouteName="Inicial" screenOptions={{ headerShown: false }}>
+            <Navigator initialRouteName="Inicial" screenOptions={{ headerShown: false, cardStyle: { backgroundColor: '#252525' } }}>
                 <Screen name="Inicial" component={Inicial} />
                 <Screen name="RecuperarSenha" component={RecuperarSenha} />
                 <Screen name="CadastroUsuario" component={CadastroUsuario} />
                 <Screen name="CadastroVeiculo" component={CadastroVeiculo} />
                 <Screen name="App" component={App} />
-                
+
             </Navigator>
         </NavigationContainer>
     );
