@@ -3,7 +3,8 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 30,
+        backgroundColor: '#252525',
+        padding: 20,
         justifyContent: 'space-between'
     },
 
@@ -12,31 +13,29 @@ const styles = StyleSheet.create({
         paddingTop: 20
     },
 
+    backButtonStyle:{
+        paddingBottom: 20
+    },
+
     title: {
         color: '#F0EFF4',
         fontSize: 25,
         fontWeight: 'bold',
+        paddingBottom: 20
     },
 
-    content: {
-        width: '100%',
-        alignContent: 'space-between'
-    },
-
-    text: {
+    instructions:{
         color: '#F0EFF4',
-        fontSize: 18,
-        marginBottom: 10
+        fontSize: 16,
+        textAlign: 'auto'
     },
 
-    buttonStyle: {
-        width: '100%',
+    buttonContent:{
         paddingTop: 20
     },
 
-    inputGroup:{
-         flexDirection: 'row',
-         justifyContent: 'space-between'
+    buttonStyle: {
+        width: '100%'
     },
 
     button: {
@@ -53,18 +52,6 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
     },
-
-    dropdown: {
-        backgroundColor: '#333333',
-        borderColor: '#525252',
-        width: 80
-    },
-
-    dropdownSegundo: {
-        backgroundColor: '#333333',
-        borderColor: '#525252',
-        width: 200
-    }
 });
 
 export default styles;

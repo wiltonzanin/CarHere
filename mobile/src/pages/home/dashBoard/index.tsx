@@ -7,7 +7,7 @@ import TextField from '../../../components/textField';
 import DropDownPicker from 'react-native-dropdown-picker';
 import BackScreen from '../../../components/backScreen';
 
-function CadastroVeiculo() {
+function Dashboard() {
 
     const { navigate } = useNavigation();
 
@@ -23,7 +23,7 @@ function CadastroVeiculo() {
                     <Text style={styles.title}>Cadastre seu veículo:</Text>
                 </View>
                 <View style={styles.content}>
-                    <TextField labelName="Modelo" />
+                    <TextField labelName="Nome" />
                     <TextField labelName="Marca" />
                     <TextField labelName="Configuração" />
 
@@ -86,5 +86,5 @@ function CadastroVeiculo() {
     );
 }
 
-export default CadastroVeiculo;
+export default Dashboard;
 
