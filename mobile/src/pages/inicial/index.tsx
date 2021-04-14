@@ -19,6 +19,10 @@ function Inicial() {
         navigate('RecuperarSenha');
     }
 
+    function handleNavigateToFeed() {
+        navigate('Feed');
+    }
+
     return (
         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
             <View style={styles.container}>
@@ -45,7 +49,7 @@ function Inicial() {
                         </RectButton>
                     </View>
                     <View style={styles.buttonsSection}>
-                        <RectButton style={styles.button}>
+                        <RectButton onPress={handleNavigateToFeed} style={styles.button}>
                             <Text style={styles.buttonText}>Entrar</Text>
                         </RectButton>
                         <RectButton onPress={handleNavigateToCadastroUsarioPage} style={styles.textButton}>
