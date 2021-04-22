@@ -28,37 +28,37 @@ export default {
     async create(request: Request, response: Response) {
         const {
             nome,
-            cpf,
+            //cpf,
             email,
             senha,
-            celular,
-            cep,
-            data_nascimento,
-            genero
+            // celular,
+            // cep,
+            // data_nascimento,
+            // genero
         } = request.body;
     
         const usuariosRepositorio = getRepository(Usuarios);
 
         const data = {
             nome,
-            cpf,
+            //cpf,
             email,
             senha,
-            celular,
-            cep,
-            data_nascimento,
-            genero
+            // celular,
+            // cep,
+            // data_nascimento,
+            // genero
         };
 
         const schema = Yup.object().shape({
             nome: Yup.string().required(),
-            cpf: Yup.number().max(11).required(),
+            //cpf: Yup.number().max(11).required(),
             email: Yup.string().required().email(),
             senha: Yup.string().required(),
-            celular: Yup.number().max(11).required(),
-            cep: Yup.number().max(20),
-            data_nascimento: Yup.date(),
-            genero: Yup.string()
+            // celular: Yup.number().max(11).required(),
+            // cep: Yup.number().max(20),
+            // data_nascimento: Yup.date(),
+            // genero: Yup.string()
         });
 
         await schema.validate(data, {

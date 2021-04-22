@@ -1,16 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { RectButton } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import { Text, View, ScrollView } from 'react-native';
 import styles from './styles';
 import TextField from '../../components/textField';
 import BackScreen from '../../components/backScreen';
+import api from '../../services/api'
 
 function CadastroUsuario() {
 
+    const [nome, setNome] = useState('');
+    const [email, setEmail] = useState('');
+    const [senha, setSenha] = useState('');
+    //const [confirmeSenha, setConfirmeSenha] = useState('');
+
     const { navigate } = useNavigation();
 
-    function handleNavigateToCadastroVeiculo() {
+    async function handleCreateUsuario() {
+
+        const data = new FormData();
+
+        data.append('nome', nome);
+        data.append('email', email);
+        data.append('senha', senha);
+        //data.append('confirmeSenha', confirmeSenha);
+
+        await api.post('/usuarios', data);
+
         navigate('CadastroVeiculo');
     }
     return (
@@ -21,13 +37,13 @@ function CadastroUsuario() {
                     <Text style={styles.title}>Vamos começar:</Text>
                 </View>
                 <View style={styles.content}>
-                    <TextField labelName="Nome" />
-                    <TextField labelName="Email" tipoTeclado={"email-address"} />
-                    <TextField labelName="Senha" />
-                    <TextField labelName="Confirme sua senha" />
+                    <TextField labelName="Nome" value={nome} funcaoOnChangeText={setNome}/>
+                    <TextField labelName="Email" value={email} funcaoOnChangeText={setEmail} tipoTeclado={"email-address"} />
+                    <TextField labelName="Senha" value={senha} funcaoOnChangeText={setSenha}/>
+                    {/* <TextField labelName="Confirme sua senha" value={confirmeSenha} funcaoOnChangeText={setConfirmeSenha} /> */}
                 </View>
                 <View style={styles.buttonStyle}>
-                    <RectButton onPress={handleNavigateToCadastroVeiculo} style={styles.button}>
+                    <RectButton onPress={handleCreateUsuario} style={styles.button}>
                         <Text style={styles.buttonText}>Próximo</Text>
                     </RectButton>
                 </View>

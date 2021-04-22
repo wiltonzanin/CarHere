@@ -8,8 +8,8 @@ export default class Usuarios {
     @Column()
     nome: string;
 
-    @Column()
-    cpf: number;
+    // @Column()
+    // cpf: number;
 
     @Column()
     email: string;
@@ -17,15 +17,15 @@ export default class Usuarios {
     @Column()
     senha: string;
 
-    @Column()
-    celular: number;
+    // @Column()
+    // celular: number;
 
-    @Column()
-    cep: number;
+    // @Column()
+    // cep: number;
 
-    @Column()
-    data_nascimento: number;
+    // @Column()
+    // data_nascimento: number;
 
-    @Column()
-    genero: string;
+    // @Column()
+    // genero: string;
 }

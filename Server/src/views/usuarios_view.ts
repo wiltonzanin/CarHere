@@ -5,13 +5,13 @@ export default {
         return{
             id: usuarios.id,
             nome: usuarios.nome,
-            cpf: usuarios.cpf,
+            //cpf: usuarios.cpf,
             email: usuarios.email,
             senha: usuarios.senha,
-            celular: usuarios.celular,
-            cep: usuarios.cep,
-            data_nascimento: usuarios.data_nascimento,
-            genero: usuarios.genero
+            // celular: usuarios.celular,
+            // cep: usuarios.cep,
+            // data_nascimento: usuarios.data_nascimento,
+            // genero: usuarios.genero
         };
     }
 };

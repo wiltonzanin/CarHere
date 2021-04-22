@@ -5,6 +5,8 @@ import styles from './styles';
 
 interface TextFieldProps {
     labelName: string;
+    value?: any;
+    funcaoOnChangeText?: any;
     tipoTeclado?: any;
     exibeOpcional?: boolean;
 }
@@ -13,11 +15,12 @@ interface TextFieldProps {
  * Componente de TextIput com estilo padrão do app.
  * 
  * @param labelName: (string) Informe a label a ser exibida acima do campo;
+ * @param value: (string) Informe o value do campo;
  * @param tipoTeclado: (any) Tipos de teclado mais usados: email-address, numeric, number-pad, decimal-pad, phone-pad;
  * @param exibeOpcional: (boolean) Exibe ou não o texto (opcional) acima do TextInput;
  * 
  */
-const textField: React.FC<TextFieldProps> = ({ labelName, tipoTeclado, exibeOpcional }) => {
+const textField: React.FC<TextFieldProps> = ({ labelName, value, funcaoOnChangeText, tipoTeclado, exibeOpcional }) => {
 
     //#region variaveis    
     let exibirLabelOpcional = exibeOpcional ? true : false;
@@ -36,7 +39,7 @@ const textField: React.FC<TextFieldProps> = ({ labelName, tipoTeclado, exibeOpci
                 {exibirLabelOpcional && <Text style={styles.labelOpcional}>(Opcional)</Text>}
             </View>
             <View style={styles.inputGroup}>
-                <TextInput style={styles.input} onChangeText={text => setValue(text)} keyboardType={tipoTeclado} />
+                <TextInput style={styles.input} value={value} onChangeText={funcaoOnChangeText} keyboardType={tipoTeclado} />
                 {exibirMensagemErro && <Text style={styles.labelErro}><Feather name="alert-triangle" /> {mensagemErro}</Text>}
             </View>
         </View>
