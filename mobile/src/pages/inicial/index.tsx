@@ -19,8 +19,8 @@ function Inicial() {
         navigate('RecuperarSenha');
     }
 
-    function handleNavigateToFeed() {
-        navigate('Feed');
+    function handleNavigateToApp() {
+        navigate('App');
     }
 
     return (
@@ -49,7 +49,7 @@ function Inicial() {
                         </RectButton>
                     </View>
                     <View style={styles.buttonsSection}>
-                        <RectButton onPress={handleNavigateToFeed} style={styles.button}>
+                        <RectButton onPress={handleNavigateToApp} style={styles.button}>
                             <Text style={styles.buttonText}>Entrar</Text>
                         </RectButton>
                         <RectButton onPress={handleNavigateToCadastroUsarioPage} style={styles.textButton}>

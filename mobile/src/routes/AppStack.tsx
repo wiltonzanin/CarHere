@@ -5,11 +5,10 @@ import Inicial from '../pages/inicial';
 import RecuperarSenha from '../pages/recuperarSenha';
 import CadastroUsuario from '../pages/cadastroUsuario';
 import CadastroVeiculo from '../pages/cadastroVeiculo/primeiraTelaCadastro';
-import App from '../pages/home/feed';
+import App from '../pages/home/inicio';
 import CodigoConfirmacao from '../pages/configuracoes/alterarSenha/confirmarCodigo';
-import Sobre from '../pages/configuracoes/sobre';
+import Notificacao from '../pages/configuracoes/notificacao';
 import AlterarSenha from '../pages/configuracoes/alterarSenha/confirmarEmail';
-import Feed from '../pages/home/feed';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -23,9 +22,8 @@ function AppStack() {
                 <Screen name="CadastroVeiculo" component={CadastroVeiculo} />
                 <Screen name="App" component={App} />
                 <Screen name="CodigoConfirmacao" component={CodigoConfirmacao} />
-                <Screen name="Sobre" component={Sobre} />
+                <Screen name="Notificacao" component={Notificacao} />
                 <Screen name="AlterarSenha" component={AlterarSenha} />
-                <Screen name="Feed" component={Feed} />
             </Navigator>
         </NavigationContainer>
     );

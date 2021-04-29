@@ -2,8 +2,8 @@ import React from 'react';
 import { RectButton } from 'react-native-gesture-handler';
 import { Text, View, ScrollView } from 'react-native';
 import styles from './styles';
-import TextField from '../../../../components/textField';
-import BackScreen from '../../../../components/backScreen';
+import TextField from '../../../components/textField';
+import BackScreen from '../../../components/backScreen';
 import { useNavigation } from '@react-navigation/native';
 
 function AlterarSenha() {

@@ -34,9 +34,9 @@ const styles = StyleSheet.create({
         paddingTop: 20
     },
 
-    inputGroup:{
-         flexDirection: 'row',
-         justifyContent: 'space-between'
+    inputGroup: {
+        flexDirection: 'row',
+        justifyContent: 'space-between'
     },
 
     button: {
