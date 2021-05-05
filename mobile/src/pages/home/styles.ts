@@ -18,10 +18,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
 
-  textInput: {
-    width: 50,
-  },
-
   title: {
     color: "#F0EFF4",
     fontSize: 25,
@@ -50,49 +46,6 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
 
-  inputGroup: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
-  text: {
-    color: "white",
-    width: "100%",
-  },
-
-  drawerText: {
-    color: "white",
-    width: "60%",
-    paddingHorizontal: 5,
-  },
-
-  buttonDrawer: {
-    flexDirection: "row",
-    width: "100%",
-    justifyContent: "center",
-  },
-
-  drawer: {
-    backgroundColor: "#252525",
-    textShadowColor: "#fff",
-  },
-
-  dropdown: {
-    backgroundColor: "#333333",
-    borderColor: "#525252",
-    width: 80,
-  },
-
-  dropdownSegundo: {
-    backgroundColor: "#333333",
-    borderColor: "#525252",
-    width: 200,
-  },
-
-  buttonStyle: {
-    width: "100%",
-    paddingTop: 20,
-  },
-
   button: {
     height: 30,
     width: 30,
@@ -108,9 +61,12 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
 
-  itens: {
-    flexDirection: "row",
-    justifyContent: "flex-end",
+  drawer: {
+    backgroundColor: "#252525",
+  },
+
+  drawerText: {
+    color: "#F0EFF4",
   },
 });
 

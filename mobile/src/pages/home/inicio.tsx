@@ -41,17 +41,75 @@ function Inicio({ navigation }: any) {
 
 const Drawer = createDrawerNavigator();
 
+//Documentação https://reactnavigation.org/docs/drawer-navigator/#props
 function MyDrawer() {
   return (
     <Drawer.Navigator
+      drawerContentOptions={{ activeBackgroundColor: '#5863F8' }}
       drawerContent={(props) => (
         <CustomDrawerContent {...props} style={styles.drawer} />
       )}
     >
-      <Drawer.Screen name="Inicio" component={Inicio} />
-      <Drawer.Screen name="Cadastrar Veículo" component={CadastroVeiculo} />
-      <Drawer.Screen name="Veiculos Cadastrados " component={Veiculos} />
-      <Drawer.Screen name="Configurações" component={Configuracoes} />
+      <Drawer.Screen name="Inicio" component={Inicio}
+        options={{
+          title: 'Inicio',
+          drawerIcon: ({ focused, size }) => (
+            <Feather
+              name="home"
+              size={size}
+              color={focused ? '#F0EFF4' : '#F0EFF4'}
+            />
+          ),
+        }}
+      />
+      <Drawer.Screen name="Cadastrar Veículo" component={CadastroVeiculo}
+        options={{
+          title: 'Cadastrar Veículo',
+          drawerIcon: ({ focused, size }) => (
+            <Feather
+              name="plus"
+              size={size}
+              color={focused ? '#F0EFF4' : '#F0EFF4'}
+            />
+          ),
+        }}
+      />
+      <Drawer.Screen name="Veiculos Cadastrados" component={Veiculos}
+        options={{
+          title: 'Veiculos Cadastrados',
+          drawerIcon: ({ focused, size }) => (
+            <Feather
+              name="list"
+              size={size}
+              color={focused ? '#F0EFF4' : '#F0EFF4'}
+            />
+          ),
+        }}
+      />
+      <Drawer.Screen name="Configuracoes" component={Configuracoes}
+        options={{
+          title: 'Configurações',
+          drawerIcon: ({ focused, size }) => (
+            <Feather
+              name="settings"
+              size={size}
+              color={focused ? '#5863F8' : '#F0EFF4'}
+            />
+          ),
+        }}
+      />
+      <Drawer.Screen name="AjudaEFeedback" component={Configuracoes}
+        options={{
+          title: 'Ajuda e Feedback',
+          drawerIcon: ({ focused, size }) => (
+            <Feather
+              name="help-circle"
+              size={size}
+              color={focused ? '#5863F8' : '#F0EFF4'}
+            />
+          ),
+        }}
+      />
     </Drawer.Navigator>
   );
 }
