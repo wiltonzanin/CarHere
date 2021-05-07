@@ -8,8 +8,8 @@ import { Feather } from "@expo/vector-icons";
 function Veiculos({ navigation }: any) {
   const { navigate } = useNavigation();
 
-  function handleNavigateToCadastroVeiculo() {
-    navigate("CadastroVeiculo");
+  function handleNavigateToVisualizarVeiculo() {
+    navigate("VisualizarVeiculo");
   }
   return (
     <View style={styles.container}>
@@ -33,12 +33,19 @@ function Veiculos({ navigation }: any) {
         </View>
       </View>
       <View style={styles.content}>
-      <RectButton
-          style={styles.buttonContent}
-          onPress={handleNavigateToCadastroVeiculo}
-        >
-          <Text style={styles.buttonText}>+ Adicionar veículo </Text>
-        </RectButton>
+          <Text style={styles.text}>Area de vizualização dos veiculos</Text>
+        <View style={styles.veiculos}>
+          <RectButton style={styles.buttonVeiculo}
+          onPress={handleNavigateToVisualizarVeiculo}> 
+          <Text style={styles.text}>Veiculo 1</Text>
+          </RectButton>
+        </View>
+        <View style={styles.veiculos}>
+          <RectButton style={styles.buttonVeiculo}> 
+          <Text style={styles.text}>Veiculo 2</Text>
+          </RectButton>
+        </View>
+        <View style={styles.content}></View>
       </View>
     </View>
   );

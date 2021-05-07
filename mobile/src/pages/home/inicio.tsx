@@ -12,7 +12,7 @@ import { RectButton } from "react-native-gesture-handler";
 import { Feather } from "@expo/vector-icons";
 import Configuracoes from "../home/configuracoes/telaPrincipal";
 import CadastroVeiculo from "../cadastroVeiculo/primeiraTelaCadastro";
-import Veiculos from "../home/veiculos";
+import Veiculos from "../home//veiculos/veiculos";
 import Principal from "../home/ajudaEfeedback/principal";
 
 function Inicio({ navigation }: any) {

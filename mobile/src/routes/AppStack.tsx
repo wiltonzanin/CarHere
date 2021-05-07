@@ -9,6 +9,7 @@ import App from '../pages/home/inicio';
 import CodigoConfirmacao from '../pages/home/configuracoes/alterarSenha/confirmarCodigo';
 import Notificacao from '../pages/home/configuracoes/notificacao';
 import AlterarSenha from '../pages/home/configuracoes/alterarSenha/confirmarEmail';
+import VisualizarVeiculo from '../pages/home/veiculos/visualizarVeiculo';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -24,6 +25,7 @@ function AppStack() {
                 <Screen name="CodigoConfirmacao" component={CodigoConfirmacao} />
                 <Screen name="Notificacao" component={Notificacao} />
                 <Screen name="AlterarSenha" component={AlterarSenha} />
+                <Screen name="VisualizarVeiculo" component={VisualizarVeiculo} />
             </Navigator>
         </NavigationContainer>
     );
