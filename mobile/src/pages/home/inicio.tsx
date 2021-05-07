@@ -1,14 +1,19 @@
 import * as React from "react";
 import { View, Text } from "react-native";
 import { DrawerActions, useNavigation } from "@react-navigation/native";
-import { createDrawerNavigator } from "@react-navigation/drawer";
+import {
+  createDrawerNavigator,
+  DrawerContentScrollView,
+  DrawerItemList,
+  DrawerContentComponentProps
+} from "@react-navigation/drawer";
 import styles from "./styles";
 import { RectButton } from "react-native-gesture-handler";
 import { Feather } from "@expo/vector-icons";
-import Configuracoes from "../configuracoes/telaPrincipal";
-import CustomDrawerContent from "../home/customDrawerContent";
+import Configuracoes from "../home/configuracoes/telaPrincipal";
 import CadastroVeiculo from "../cadastroVeiculo/primeiraTelaCadastro";
 import Veiculos from "../home/veiculos";
+import Principal from "../home/ajudaEfeedback/principal";
 
 function Inicio({ navigation }: any) {
   const { navigate } = useNavigation();
@@ -52,7 +57,6 @@ function MyDrawer() {
     >
       <Drawer.Screen name="Inicio" component={Inicio}
         options={{
-          title: 'Inicio',
           drawerIcon: ({ focused, size }) => (
             <Feather
               name="home"
@@ -62,9 +66,10 @@ function MyDrawer() {
           ),
         }}
       />
-      <Drawer.Screen name="Cadastrar Veículo" component={CadastroVeiculo}
+      <Drawer.Screen
+        name="Cadastrar Veículo"
+        component={CadastroVeiculo}
         options={{
-          title: 'Cadastrar Veículo',
           drawerIcon: ({ focused, size }) => (
             <Feather
               name="plus"
@@ -74,9 +79,10 @@ function MyDrawer() {
           ),
         }}
       />
-      <Drawer.Screen name="Veiculos Cadastrados" component={Veiculos}
+      <Drawer.Screen
+        name="Veículos Cadastrados"
+        component={Veiculos}
         options={{
-          title: 'Veiculos Cadastrados',
           drawerIcon: ({ focused, size }) => (
             <Feather
               name="list"
@@ -86,9 +92,10 @@ function MyDrawer() {
           ),
         }}
       />
-      <Drawer.Screen name="Configuracoes" component={Configuracoes}
+      <Drawer.Screen
+        name="Configurações"
+        component={Configuracoes}
         options={{
-          title: 'Configurações',
           drawerIcon: ({ focused, size }) => (
             <Feather
               name="settings"
@@ -98,9 +105,10 @@ function MyDrawer() {
           ),
         }}
       />
-      <Drawer.Screen name="AjudaEFeedback" component={Configuracoes}
+      <Drawer.Screen
+        name="Ajuda e Feedback"
+        component={Principal}
         options={{
-          title: 'Ajuda e Feedback',
           drawerIcon: ({ focused, size }) => (
             <Feather
               name="help-circle"
@@ -111,6 +119,14 @@ function MyDrawer() {
         }}
       />
     </Drawer.Navigator>
+  );
+}
+
+function CustomDrawerContent(props: DrawerContentComponentProps) {
+  return (
+    <DrawerContentScrollView {...props}>
+      <DrawerItemList {...props} labelStyle={styles.drawerText} />
+    </DrawerContentScrollView>
   );
 }
 

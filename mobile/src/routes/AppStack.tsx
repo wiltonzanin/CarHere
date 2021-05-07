@@ -6,9 +6,9 @@ import RecuperarSenha from '../pages/recuperarSenha';
 import CadastroUsuario from '../pages/cadastroUsuario';
 import CadastroVeiculo from '../pages/cadastroVeiculo/primeiraTelaCadastro';
 import App from '../pages/home/inicio';
-import CodigoConfirmacao from '../pages/configuracoes/alterarSenha/confirmarCodigo';
-import Notificacao from '../pages/configuracoes/notificacao';
-import AlterarSenha from '../pages/configuracoes/alterarSenha/confirmarEmail';
+import CodigoConfirmacao from '../pages/home/configuracoes/alterarSenha/confirmarCodigo';
+import Notificacao from '../pages/home/configuracoes/notificacao';
+import AlterarSenha from '../pages/home/configuracoes/alterarSenha/confirmarEmail';
 
 const { Navigator, Screen } = createStackNavigator();
 

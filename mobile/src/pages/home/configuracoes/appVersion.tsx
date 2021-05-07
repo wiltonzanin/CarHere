@@ -1,9 +1,9 @@
 import React from "react";
 import { View, Text } from "react-native";
 import styles from "../configuracoes/telaPrincipal/styles";
-import BackScreen from "../../components/backScreen";
+import BackScreen from "../../../components/backScreen";
 
-function VersionApp({ navigation }: any) {
+function VersionApp() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
