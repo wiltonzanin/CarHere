@@ -100,7 +100,7 @@ function MyDrawer() {
             <Feather
               name="settings"
               size={size}
-              color={focused ? '#5863F8' : '#F0EFF4'}
+              color={focused ? '#F0EFF4' : '#F0EFF4'}
             />
           ),
         }}
@@ -113,7 +113,7 @@ function MyDrawer() {
             <Feather
               name="help-circle"
               size={size}
-              color={focused ? '#5863F8' : '#F0EFF4'}
+              color={focused ? '#F0EFF4' : '#F0EFF4'}
             />
           ),
         }}

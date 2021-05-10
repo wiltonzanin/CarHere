@@ -14,38 +14,42 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
 
+  headerTitle: {
+    color: "#fff",
+    fontSize: 20,
+    paddingTop: 10
+  },
+
   search: {
     justifyContent: "flex-start",
     width: "30%",
   },
 
   button: {
-    paddingTop:10,
+    paddingTop: 10,
     height: 30,
     width: 30,
   },
 
   buttonContent: {
-    //backgroundColor: "#333333",
     height: 60,
     padding: 5,
     alignItems: "center",
     justifyContent: "space-between",
-    flexDirection:'row',
+    flexDirection: 'row',
   },
 
-  top:{
+  top: {
     backgroundColor: "#333333",
-    borderRadius:10,
-    borderColor:'#525252',
-    borderWidth:1,
+    borderRadius: 10,
+    borderColor: '#525252',
+    borderWidth: 1,
     borderBottomWidth: 1
   },
 
-  meio:{
+  meio: {
     borderBottomWidth: 1,
-    borderColor:'#525252',
-
+    borderColor: '#525252',
   },
 
   buttonsSection: {
@@ -61,16 +65,14 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "#fff",
     justifyContent: "center",
-  },
-
-  drawer: {
-    backgroundColor: "#252525",
+    paddingLeft: 5
   },
 
   text: {
     color: "#fff",
     fontSize: 20,
-    paddingTop:10
+    paddingTop: 10,
+    paddingBottom: 10
   },
 
   content: {

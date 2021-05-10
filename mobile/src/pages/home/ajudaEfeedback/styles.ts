@@ -14,6 +14,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
 
+  headerTitle: {
+    color: "#fff",
+    fontSize: 20,
+    paddingTop:10
+  },
+
   search: {
     justifyContent: "flex-start",
     width: "30%",
@@ -26,7 +32,6 @@ const styles = StyleSheet.create({
   },
 
   buttonContent: {
-    //backgroundColor: "#333333",
     height: 60,
     padding: 5,
     alignItems: "center",
@@ -35,16 +40,11 @@ const styles = StyleSheet.create({
   },
 
   buttonAvaliar:{
-    height: 58,
-    width:329,
-    padding:5,
+    height: 60,
     backgroundColor:'#5863f8',
+    alignItems: "center",
+    paddingTop: 10,   
     borderRadius:5
-  },
-
-  feather:{
-    alignContent:'center', 
-    alignSelf:'center', 
   },
 
   top:{
@@ -58,7 +58,6 @@ const styles = StyleSheet.create({
   meio:{
     borderBottomWidth: 1,
     borderColor:'#525252',
-
   },
 
   bottomSection: {
@@ -73,7 +72,7 @@ const styles = StyleSheet.create({
 
   buttonText: {
     color: "#fff",
-    textAlign: "center",
+    paddingLeft: 5
   },
 
   drawer: {
@@ -83,13 +82,14 @@ const styles = StyleSheet.create({
   text: {
     color: "#fff",
     fontSize: 20,
-    paddingTop:10
+    paddingTop: 10,
+    paddingBottom: 10
   },
 
   bottomtext:{
     color: "#fff",
     fontSize: 20,
-    alignSelf:'center'
+    alignSelf:'center',
   },
 
   content: {
