@@ -13,13 +13,7 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     flexDirection: "row",
   },
-
-  headerTitle: {
-    color: "#fff",
-    fontSize: 20,
-    paddingTop:10
-  },
-
+  
   search: {
     justifyContent: "flex-start",
     width: "30%",
@@ -31,20 +25,25 @@ const styles = StyleSheet.create({
     width: 30,
   },
 
-  buttonContent: {
-    height: 60,
-    padding: 5,
-    alignItems: "center",
-    justifyContent: "space-between",
-    flexDirection:'row',
+  headerTitle: {
+    color: "#fff",
+    fontSize: 20,
+    paddingTop:10
   },
 
-  buttonAvaliar:{
-    height: 60,
-    backgroundColor:'#5863f8',
-    alignItems: "center",
-    paddingTop: 10,   
-    borderRadius:5
+  content: {
+    color: "#fff",
+    justifyContent: "flex-start",
+    paddingTop: 20,
+    width: "100%",
+    height: "85%",
+  },
+  
+  text: {
+    color: "#fff",
+    fontSize: 20,
+    paddingTop: 10,
+    paddingBottom: 10
   },
 
   top:{
@@ -60,45 +59,38 @@ const styles = StyleSheet.create({
     borderColor:'#525252',
   },
 
-  bottomSection: {
-    width: "100%",
-    height: "100%",
-  },
-
-  inputGroup: {
-    flexDirection: "row",
+  buttonContent: {
+    height: 60,
+    padding: 5,
+    alignItems: "center",
     justifyContent: "space-between",
+    flexDirection:'row',
   },
-
+  
   buttonText: {
     color: "#fff",
     paddingLeft: 5
   },
 
-  drawer: {
-    backgroundColor: "#252525",
+  bottomSection: {
+    width: "100%",
+    height: "100%",
   },
 
-  text: {
-    color: "#fff",
-    fontSize: 20,
-    paddingTop: 10,
-    paddingBottom: 10
+  buttonAvaliar:{
+    height: 60,
+    backgroundColor:'#8F1622',
+    alignItems: "center",
+    paddingTop: 10,   
+    borderRadius:5
   },
 
   bottomtext:{
     color: "#fff",
-    fontSize: 20,
+    fontSize: 18,
     alignSelf:'center',
-  },
-
-  content: {
-    color: "#fff",
-    justifyContent: "flex-start",
-    paddingTop: 20,
-    width: "100%",
-    height: "85%",
-  },
+  }
+ 
 });
 
 export default styles;

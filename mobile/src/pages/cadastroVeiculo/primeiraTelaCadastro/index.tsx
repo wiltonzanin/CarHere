@@ -45,6 +45,7 @@ function CadastroVeiculo() {
                             color: '#fff',
 
                         }}
+                        arrowColor={'white'}
                         items={[
                             { label: '2020', value: '2020' },
                             { label: '2019', value: '2019' },
@@ -66,6 +67,7 @@ function CadastroVeiculo() {
                             fontSize: 16,
                             color: '#fff'
                         }}
+                        arrowColor={'white'}
                         items={[
                             { label: 'Gasolina', value: 'gasolina' },
                             { label: 'Alcool', value: 'alcool' },

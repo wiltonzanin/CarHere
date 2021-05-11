@@ -40,18 +40,22 @@ function Veiculos({ navigation }: any) {
           </RectButton>
         </View>
         <View style={styles.veiculos}>
-          <RectButton style={styles.buttonVeiculo}
-            onPress={handleNavigateToVisualizarVeiculo}>
+          <RectButton
+            style={styles.buttonVeiculo}
+            onPress={handleNavigateToVisualizarVeiculo}
+          >
             <Text style={styles.text}>Impreza GC8</Text>
           </RectButton>
         </View>
         <View style={styles.veiculos}>
-          <RectButton style={styles.buttonVeiculo}
-            onPress={handleNavigateToVisualizarVeiculo}>
+          <RectButton
+            style={styles.buttonVeiculo}
+            onPress={handleNavigateToVisualizarVeiculo}
+          >
             <Text style={styles.text}>Veiculo 2</Text>
           </RectButton>
+          <View style={styles.content}></View>
         </View>
-        <View style={styles.content}></View>
       </View>
     </View>
   );

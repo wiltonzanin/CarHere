@@ -18,37 +18,33 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
 
-  title: {
-    color: "#F0EFF4",
-    fontSize: 25,
-    fontWeight: "bold",
+  buttonsHeader: {
+    height: 30,
+    width: 30,
   },
 
-  subtitle: {
-    color: "#F0EFF4",
+  text: {
+    color: "white",
     fontSize: 20,
-    fontWeight: "normal",
+  },
+
+  button: {
+    height: 30,
+    width: 30,
   },
 
   content: {
-    width: "100%",
     alignContent: "space-between",
   },
 
   buttonAdicionar: {
     height: 120,
-    padding: 24,
     alignItems: "center",
     justifyContent: "center",
     marginBottom: 5,
     borderColor: "red",
     borderWidth: 1,
     borderRadius: 20,
-  },
-
-  button: {
-    height: 30,
-    width: 30,
   },
 
   buttonText: {

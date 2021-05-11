@@ -37,14 +37,13 @@ function Principal({ navigation }: any) {
       <View style={styles.content}>
         <Text style={styles.text}>Ajuda</Text>
         <View style={styles.top}>
-          <View style={styles.meio} >
-            <RectButton
-              style={styles.buttonContent}>
+          <View style={styles.meio}>
+            <RectButton style={styles.buttonContent}>
               <Text style={styles.buttonText}>Entre em contato</Text>
               <Feather name="chevron-right" size={25} color="white" />
             </RectButton>
           </View>
-          <View style={styles.meio} >
+          <View style={styles.meio}>
             <RectButton style={styles.buttonContent}>
               <Text style={styles.buttonText}>Relatar um problema</Text>
               <Feather name="chevron-right" size={25} color="white" />
@@ -64,7 +63,8 @@ function Principal({ navigation }: any) {
         </View>
       </View>
       <View style={styles.bottomSection}>
-        <Text style={styles.bottomtext}>Versão 1.0</Text>
+        <Text style={styles.bottomtext}>Versão do App</Text>
+        <Text style={styles.bottomtext}>1.0</Text>
       </View>
     </View>
   );

@@ -14,12 +14,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
 
-  headerTitle: {
-    color: "#fff",
-    fontSize: 20,
-    paddingTop: 10
-  },
-
   search: {
     justifyContent: "flex-start",
     width: "30%",
@@ -31,48 +25,10 @@ const styles = StyleSheet.create({
     width: 30,
   },
 
-  buttonContent: {
-    height: 60,
-    padding: 5,
-    alignItems: "center",
-    justifyContent: "space-between",
-    flexDirection: 'row',
-  },
-
-  top: {
-    backgroundColor: "#333333",
-    borderRadius: 10,
-    borderColor: '#525252',
-    borderWidth: 1,
-    borderBottomWidth: 1
-  },
-
-  meio: {
-    borderBottomWidth: 1,
-    borderColor: '#525252',
-  },
-
-  buttonsSection: {
-    width: "100%",
-    height: "100%",
-  },
-
-  inputGroup: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
-
-  buttonText: {
-    color: "#fff",
-    justifyContent: "center",
-    paddingLeft: 5
-  },
-
-  text: {
+  headerTitle: {
     color: "#fff",
     fontSize: 20,
     paddingTop: 10,
-    paddingBottom: 10
   },
 
   content: {
@@ -81,6 +37,45 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     width: "100%",
     height: "85%",
+  },
+
+  text: {
+    color: "#fff",
+    fontSize: 20,
+    paddingTop: 10,
+    paddingBottom: 10,
+  },
+
+  top: {
+    backgroundColor: "#333333",
+    borderRadius: 10,
+    borderColor: "#525252",
+    borderWidth: 1,
+    borderBottomWidth: 1,
+  },
+
+  meio: {
+    borderBottomWidth: 1,
+    borderColor: "#525252",
+  },
+
+  buttonContent: {
+    height: 60,
+    padding: 5,
+    alignItems: "center",
+    justifyContent: "space-between",
+    flexDirection: "row",
+  },
+
+  buttonText: {
+    color: "#fff",
+    justifyContent: "center",
+    paddingLeft: 5,
+  },
+
+  buttonsSection: {
+    width: "100%",
+    height: "100%",
   },
 });
 

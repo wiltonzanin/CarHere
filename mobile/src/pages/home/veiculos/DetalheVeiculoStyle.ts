@@ -16,18 +16,32 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
 
-  veiculos: {
-    marginTop: 20,
-    borderRadius: 5,
-    borderWidth: 1,
-    borderColor: "#525252",
+  buttonsHeader: {
+    height: 30,
+    width: 30,
+  },
+
+  text: {
+    color: "white",
+    fontSize: 20,
+  },
+
+  content: {
+    width: "100%",
+    height: "100%",
+    alignContent: "space-between",
   },
 
   imagemVeiculo: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: "#FFFFFF",
     height: 189,
     width: "100%",
     justifyContent: "center",
+  },
+
+  infosServicos: {
+    flexDirection: "row",
+    justifyContent: "flex-start",
   },
 
   autonomia: {
@@ -36,7 +50,21 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "white",
     backgroundColor: "white",
-    borderRadius: 10
+    borderRadius: 10,
+  },
+
+  textInfo1: {
+    color: "black",
+    fontSize: 18,
+  },
+
+  textInfo2: {
+    color: "black",
+    fontSize: 14,
+  },
+
+  espacamentoAutonomia: {
+    paddingHorizontal: "7%",
   },
 
   servicos: {
@@ -45,47 +73,33 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "white",
     backgroundColor: "white",
-    borderRadius: 10
+    borderRadius: 10,
+    padding: 5,
   },
 
-  buttonsHeader: {
-    height: 30,
-    width: 30,
+  espacamentoServicos: {
+    paddingEnd: 5,
   },
 
-  buttonVeiculo: {
-    height: 100,
-  },
-
-  content: {
-    width: "100%",
-    height: "100%",
-    alignContent: "space-between",
+  infos: {
+    flexDirection: "row",
+    justifyContent: "flex-start",
     paddingTop: 20,
   },
 
-  text: {
+  textInfo: {
     color: "white",
-    fontSize: 20,
-  },
-
-  buttonStyle: {
-    width: '100%'
-  },
-
-  button: {
-    backgroundColor: '#5863f8',
-    height: 40,
-    borderRadius: 8,
-    padding: 24,
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'row'
-  },
-
-  buttonText: {
-    color: '#F0EFF4',
     fontSize: 18,
+  },
+
+  textInfoCampo: {
+    color: "white",
+    fontSize: 18,
+    paddingBottom: 20,
+  },
+
+  espacamentoInfos: {
+    paddingHorizontal: "30%",
   },
 });
 

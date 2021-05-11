@@ -5,7 +5,7 @@ import {
   createDrawerNavigator,
   DrawerContentScrollView,
   DrawerItemList,
-  DrawerContentComponentProps
+  DrawerContentComponentProps,
 } from "@react-navigation/drawer";
 import styles from "./styles";
 import { RectButton } from "react-native-gesture-handler";
@@ -25,12 +25,17 @@ function Inicio({ navigation }: any) {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <RectButton
-          onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-          style={styles.button}
-        >
-          <Feather name="align-justify" size={25} color="#F0EFF4" />
-        </RectButton>
+      <View style={styles.search}>
+          <RectButton
+            onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+            style={styles.buttonsHeader}
+          >
+            <Feather name="align-justify" size={25} color="#F0EFF4" />
+          </RectButton>
+        <View style={{paddingRight:'43%'}}>
+          <Text style={styles.text}>Inicio</Text>
+        </View>
+        </View>
       </View>
       <View style={styles.content}>
         <RectButton
@@ -50,18 +55,20 @@ const Drawer = createDrawerNavigator();
 function MyDrawer() {
   return (
     <Drawer.Navigator
-      drawerContentOptions={{ activeBackgroundColor: '#5863F8' }}
+      drawerContentOptions={{ activeBackgroundColor: "#8F1622" }}
       drawerContent={(props) => (
         <CustomDrawerContent {...props} style={styles.drawer} />
       )}
     >
-      <Drawer.Screen name="Inicio" component={Inicio}
+      <Drawer.Screen
+        name="Inicio"
+        component={Inicio}
         options={{
           drawerIcon: ({ focused, size }) => (
             <Feather
               name="home"
               size={size}
-              color={focused ? '#F0EFF4' : '#F0EFF4'}
+              color={focused ? "#F0EFF4" : "#F0EFF4"}
             />
           ),
         }}
@@ -74,7 +81,7 @@ function MyDrawer() {
             <Feather
               name="plus"
               size={size}
-              color={focused ? '#F0EFF4' : '#F0EFF4'}
+              color={focused ? "#F0EFF4" : "#F0EFF4"}
             />
           ),
         }}
@@ -87,7 +94,7 @@ function MyDrawer() {
             <Feather
               name="list"
               size={size}
-              color={focused ? '#F0EFF4' : '#F0EFF4'}
+              color={focused ? "#F0EFF4" : "#F0EFF4"}
             />
           ),
         }}
@@ -100,7 +107,7 @@ function MyDrawer() {
             <Feather
               name="settings"
               size={size}
-              color={focused ? '#F0EFF4' : '#F0EFF4'}
+              color={focused ? "#F0EFF4" : "#F0EFF4"}
             />
           ),
         }}
@@ -113,7 +120,7 @@ function MyDrawer() {
             <Feather
               name="help-circle"
               size={size}
-              color={focused ? '#F0EFF4' : '#F0EFF4'}
+              color={focused ? "#F0EFF4" : "#F0EFF4"}
             />
           ),
         }}

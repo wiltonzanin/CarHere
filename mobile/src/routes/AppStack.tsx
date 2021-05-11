@@ -10,6 +10,8 @@ import CodigoConfirmacao from '../pages/home/configuracoes/alterarSenha/confirma
 import Notificacao from '../pages/home/configuracoes/notificacao';
 import AlterarSenha from '../pages/home/configuracoes/alterarSenha/confirmarEmail';
 import VisualizarVeiculo from '../pages/home/veiculos/visualizarVeiculo';
+import Metrica from '../pages/home/configuracoes/metrica/metrica';
+import AppVersion from '../pages/home/configuracoes/appVersion';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -26,6 +28,8 @@ function AppStack() {
                 <Screen name="Notificacao" component={Notificacao} />
                 <Screen name="AlterarSenha" component={AlterarSenha} />
                 <Screen name="VisualizarVeiculo" component={VisualizarVeiculo} />
+                <Screen name="Metrica" component={Metrica} />
+                <Screen name="AppVersion" component={AppVersion} />
             </Navigator>
         </NavigationContainer>
     );

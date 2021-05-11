@@ -11,12 +11,15 @@ function Configuracoes({ navigation }: any) {
   function handleNavigateToAlterarSenhaPage() {
     navigate("AlterarSenha");
   }
+  function handleNavigateToMetrica() {
+    navigate("Metrica");
+  }
 
   function handleNavigateToSobre() {
     navigate("Sobre");
   }
-  function handleNavigateToVersionApp() {
-    navigate("VersionApp");
+  function handleNavigateToAppVersion() {
+    navigate("AppVersion");
   }
 
   return (
@@ -37,23 +40,25 @@ function Configuracoes({ navigation }: any) {
       <View style={styles.content}>
         <Text style={styles.text}>Preferências</Text>
         <View style={styles.top}>
-          <View style={styles.meio} >
-            <RectButton onPress={handleNavigateToAlterarSenhaPage}
-              style={styles.buttonContent}>
+          <View style={styles.meio}>
+            <RectButton
+              onPress={handleNavigateToAlterarSenhaPage}
+              style={styles.buttonContent}
+            >
               <Text style={styles.buttonText}>Alterar Senha</Text>
               <Feather name="chevron-right" size={25} color="white" />
             </RectButton>
           </View>
-          <View style={styles.meio} >
+          <View style={styles.meio}>
             <RectButton
-              onPress={handleNavigateToAlterarSenhaPage}
+              onPress={handleNavigateToMetrica}
               style={styles.buttonContent}
             >
               <Text style={styles.buttonText}>Tipo de métrica</Text>
               <Feather name="chevron-right" size={25} color="white" />
             </RectButton>
           </View>
-          <View style={styles.meio} >
+          <View style={styles.meio}>
             <RectButton style={styles.buttonContent}>
               <Text style={styles.buttonText}>Ajuda</Text>
               <Feather name="chevron-right" size={25} color="white" />
@@ -69,7 +74,7 @@ function Configuracoes({ navigation }: any) {
         </View>
         <Text style={styles.text}>Sobre</Text>
         <View style={styles.top}>
-          <View style={styles.meio} >
+          <View style={styles.meio}>
             <RectButton
               onPress={handleNavigateToSobre}
               style={styles.buttonContent}
@@ -79,7 +84,7 @@ function Configuracoes({ navigation }: any) {
             </RectButton>
           </View>
           <RectButton
-            onPress={handleNavigateToVersionApp}
+            onPress={handleNavigateToAppVersion}
             style={styles.buttonContent}
           >
             <Text style={styles.buttonText}>Versão do App</Text>
