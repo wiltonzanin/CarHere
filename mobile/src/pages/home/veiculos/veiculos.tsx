@@ -1,5 +1,5 @@
 import * as React from "react";
-import { View, Text } from "react-native";
+import { View, Text, Image } from "react-native";
 import { DrawerActions, useNavigation } from "@react-navigation/native";
 import styles from "./styles";
 import { RectButton } from "react-native-gesture-handler";
@@ -21,7 +21,7 @@ function Veiculos({ navigation }: any) {
           >
             <Feather name="align-justify" size={25} color="#F0EFF4" />
           </RectButton>
-          <Text style={styles.text}>Veículos</Text>
+          <Text style={styles.headerText}>Veículos</Text>
           <View style={styles.search}>
             <RectButton
               onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
@@ -33,28 +33,27 @@ function Veiculos({ navigation }: any) {
         </View>
       </View>
       <View style={styles.content}>
-        <View style={styles.buttonStyle}>
-          <RectButton style={styles.button}>
-            <Feather name="plus" size={25} color="#F0EFF4" />
-            <Text style={styles.buttonText}> Adicionar veículo</Text>
+        <RectButton style={styles.button}>
+          <Feather name="plus" size={25} color="#F0EFF4" />
+          <Text style={styles.buttonText}> Adicionar veículo</Text>
+        </RectButton>
+        <View style={styles.veiculos}>
+          <RectButton style={styles.buttonVeiculo} onPress={handleNavigateToVisualizarVeiculo}>
+            <View style={styles.buttonGroupText}>
+              <Text style={styles.buttonVeiculoText}>Impreza GC8</Text>
+              <Text style={styles.buttonVeiculoTextManutencaoGreen}><Feather name="check-circle" size={16} color="#5CB85C" /> Manutenção em dia</Text>
+            </View>
+            <Image source={require('../../../assets/images/impreza.jpg')} style={styles.imgVeiculo} />
           </RectButton>
         </View>
         <View style={styles.veiculos}>
-          <RectButton
-            style={styles.buttonVeiculo}
-            onPress={handleNavigateToVisualizarVeiculo}
-          >
-            <Text style={styles.text}>Impreza GC8</Text>
+          <RectButton style={styles.buttonVeiculo} onPress={handleNavigateToVisualizarVeiculo}>
+            <View style={styles.buttonGroupText}>
+              <Text style={styles.buttonVeiculoText}>Monza</Text>
+              <Text style={styles.buttonVeiculoTextManutencaoRed}><Feather name="x-circle" size={16} color="#D9534F" /> Requer manutenção</Text>
+            </View>
+            <Image source={require('../../../assets/images/Monza.jpg')} style={styles.imgVeiculo} />
           </RectButton>
-        </View>
-        <View style={styles.veiculos}>
-          <RectButton
-            style={styles.buttonVeiculo}
-            onPress={handleNavigateToVisualizarVeiculo}
-          >
-            <Text style={styles.text}>Veiculo 2</Text>
-          </RectButton>
-          <View style={styles.content}></View>
         </View>
       </View>
     </View>
