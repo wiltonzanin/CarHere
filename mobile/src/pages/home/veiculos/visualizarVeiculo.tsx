@@ -1,7 +1,7 @@
 import * as React from "react";
 import { View, Text, ScrollView } from "react-native";
 import { DrawerActions, useNavigation } from "@react-navigation/native";
-import styles from "./styles";
+import styles from "./DetalheVeiculoStyle";
 import { RectButton } from "react-native-gesture-handler";
 import { Feather } from "@expo/vector-icons";
 
@@ -13,7 +13,7 @@ function visualizarVeiculo({ navigation }: any) {
         <View style={styles.search}>
           <RectButton
             onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-            style={styles.button}
+            style={styles.buttonsHeader}
           >
             <Feather name="align-justify" size={25} color="#F0EFF4" />
           </RectButton>
@@ -21,7 +21,7 @@ function visualizarVeiculo({ navigation }: any) {
           <View style={styles.search}>
             <RectButton
               onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-              style={styles.button}
+              style={styles.buttonsHeader}
             >
               <Feather name="edit" size={25} color="#F0EFF4" />
             </RectButton>

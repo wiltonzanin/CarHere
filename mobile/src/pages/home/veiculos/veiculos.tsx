@@ -17,7 +17,7 @@ function Veiculos({ navigation }: any) {
         <View style={styles.search}>
           <RectButton
             onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-            style={styles.button}
+            style={styles.buttonsHeader}
           >
             <Feather name="align-justify" size={25} color="#F0EFF4" />
           </RectButton>
@@ -25,7 +25,7 @@ function Veiculos({ navigation }: any) {
           <View style={styles.search}>
             <RectButton
               onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-              style={styles.button}
+              style={styles.buttonsHeader}
             >
               <Feather name="search" size={25} color="#F0EFF4" />
             </RectButton>
@@ -33,16 +33,22 @@ function Veiculos({ navigation }: any) {
         </View>
       </View>
       <View style={styles.content}>
-          <Text style={styles.text}>Area de vizualização dos veiculos</Text>
-        <View style={styles.veiculos}>
-          <RectButton style={styles.buttonVeiculo}
-          onPress={handleNavigateToVisualizarVeiculo}> 
-          <Text style={styles.text}>Veiculo 1</Text>
+        <View style={styles.buttonStyle}>
+          <RectButton style={styles.button}>
+            <Feather name="plus" size={25} color="#F0EFF4" />
+            <Text style={styles.buttonText}> Adicionar veículo</Text>
           </RectButton>
         </View>
         <View style={styles.veiculos}>
-          <RectButton style={styles.buttonVeiculo}> 
-          <Text style={styles.text}>Veiculo 2</Text>
+          <RectButton style={styles.buttonVeiculo}
+            onPress={handleNavigateToVisualizarVeiculo}>
+            <Text style={styles.text}>Impreza GC8</Text>
+          </RectButton>
+        </View>
+        <View style={styles.veiculos}>
+          <RectButton style={styles.buttonVeiculo}
+            onPress={handleNavigateToVisualizarVeiculo}>
+            <Text style={styles.text}>Veiculo 2</Text>
           </RectButton>
         </View>
         <View style={styles.content}></View>
