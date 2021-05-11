@@ -5,7 +5,7 @@ import Inicial from '../pages/inicial';
 import RecuperarSenha from '../pages/recuperarSenha';
 import CadastroUsuario from '../pages/cadastroUsuario';
 import CadastroVeiculo from '../pages/cadastroVeiculo/primeiraTelaCadastro';
-import App from '../pages/home/inicio';
+import Inicio from '../pages/home/inicio';
 import CodigoConfirmacao from '../pages/home/configuracoes/alterarSenha/confirmarCodigo';
 import Notificacao from '../pages/home/configuracoes/notificacao';
 import AlterarSenha from '../pages/home/configuracoes/alterarSenha/confirmarEmail';
@@ -23,7 +23,7 @@ function AppStack() {
                 <Screen name="RecuperarSenha" component={RecuperarSenha} />
                 <Screen name="CadastroUsuario" component={CadastroUsuario} />
                 <Screen name="CadastroVeiculo" component={CadastroVeiculo} />
-                <Screen name="App" component={App} />
+                <Screen name="Inicio" component={Inicio} />
                 <Screen name="CodigoConfirmacao" component={CodigoConfirmacao} />
                 <Screen name="Notificacao" component={Notificacao} />
                 <Screen name="AlterarSenha" component={AlterarSenha} />

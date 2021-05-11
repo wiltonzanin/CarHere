@@ -30,23 +30,8 @@ const styles = StyleSheet.create({
     paddingTop: 20,
   },
 
-  button: {
-    backgroundColor: '#5863f8',
-    height: 40,
-    borderRadius: 5,
-    padding: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'row'
-  },
-
-  buttonText: {
-    color: '#F0EFF4',
-    fontSize: 18,
-  },
-
   veiculos: {
-    marginTop: 20,
+    marginTop: 15,
   },
 
   buttonVeiculo: {

@@ -14,6 +14,7 @@ import Configuracoes from "../home/configuracoes/telaPrincipal";
 import CadastroVeiculo from "../cadastroVeiculo/primeiraTelaCadastro";
 import Veiculos from "../home//veiculos/veiculos";
 import Principal from "../home/ajudaEfeedback/principal";
+import {ButtonAdicionar} from '../../components/button';
 
 function Inicio({ navigation }: any) {
   const { navigate } = useNavigation();
@@ -38,12 +39,7 @@ function Inicio({ navigation }: any) {
         </View>
       </View>
       <View style={styles.content}>
-        <RectButton
-          style={styles.buttonAdicionar}
-          onPress={handleNavigateToCadastroVeiculo}
-        >
-          <Text style={styles.buttonText}>Adicionar veículo {"\n"} + </Text>
-        </RectButton>
+        <ButtonAdicionar title=" + Adicionar veículo" onPress={handleNavigateToCadastroVeiculo}/>
       </View>
     </View>
   );

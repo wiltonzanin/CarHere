@@ -35,26 +35,7 @@ const styles = StyleSheet.create({
 
   content: {
     alignContent: "space-between",
-  },
-
-  buttonAdicionar: {
-    height: 120,
-    alignItems: "center",
-    justifyContent: "center",
-    marginBottom: 5,
-    borderColor: "red",
-    borderWidth: 1,
-    borderRadius: 20,
-  },
-
-  buttonText: {
-    color: "#fff",
-    fontSize: 28,
-    padding: 10,
-    borderColor: "black",
-    borderWidth: 1,
-    width: "100%",
-    textAlign: "center",
+    paddingTop:15
   },
 
   drawer: {

@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     dropdown: {
         backgroundColor: '#333333',
         borderColor: '#525252',
-        width: 80
+        width: 90
     },
 
     dropdownSegundo: {

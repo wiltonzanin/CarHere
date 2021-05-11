@@ -4,6 +4,7 @@ import { DrawerActions, useNavigation } from "@react-navigation/native";
 import styles from "./styles";
 import { RectButton } from "react-native-gesture-handler";
 import { Feather } from "@expo/vector-icons";
+import {ButtonAdicionar} from '../../../components/button';
 
 function Veiculos({ navigation }: any) {
   const { navigate } = useNavigation();
@@ -33,10 +34,7 @@ function Veiculos({ navigation }: any) {
         </View>
       </View>
       <View style={styles.content}>
-        <RectButton style={styles.button}>
-          <Feather name="plus" size={25} color="#F0EFF4" />
-          <Text style={styles.buttonText}> Adicionar veículo</Text>
-        </RectButton>
+        <ButtonAdicionar title= "+ Adicionar veículo"/>
         <View style={styles.veiculos}>
           <RectButton style={styles.buttonVeiculo} onPress={handleNavigateToVisualizarVeiculo}>
             <View style={styles.buttonGroupText}>

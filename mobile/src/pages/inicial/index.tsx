@@ -5,6 +5,7 @@ import { Text, View, ScrollView } from 'react-native';
 import { Svg, Path } from 'react-native-svg';
 import styles from './styles';
 import TextField from '../../components/textField'
+import {Button} from '../../components/button';
 
 
 function Inicial() {
@@ -19,8 +20,8 @@ function Inicial() {
         navigate('RecuperarSenha');
     }
 
-    function handleNavigateToApp() {
-        navigate('App');
+    function handleNavigateToInicio() {
+        navigate('Inicio');
     }
 
     return (
@@ -49,9 +50,7 @@ function Inicial() {
                         </RectButton>
                     </View>
                     <View style={styles.buttonsSection}>
-                        <RectButton onPress={handleNavigateToApp} style={styles.button}>
-                            <Text style={styles.buttonText}>Entrar</Text>
-                        </RectButton>
+                        <Button title = "Entrar" onPress={handleNavigateToInicio}/>
                         <RectButton onPress={handleNavigateToCadastroUsarioPage} style={styles.textButton}>
                             <Text style={styles.registerText}>
                                 Não tem uma conta!

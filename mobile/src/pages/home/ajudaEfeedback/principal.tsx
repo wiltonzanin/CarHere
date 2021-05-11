@@ -4,6 +4,7 @@ import { DrawerActions, useNavigation } from "@react-navigation/native";
 import styles from "./styles";
 import { RectButton } from "react-native-gesture-handler";
 import { Feather } from "@expo/vector-icons";
+import {Button} from '../../../components/button';
 
 function Principal({ navigation }: any) {
   /* const { navigate } = useNavigation();
@@ -56,10 +57,10 @@ function Principal({ navigation }: any) {
         </View>
         <Text style={styles.text}>Feedback</Text>
         <View style={styles.bottomSection}>
-          <RectButton style={styles.buttonAvaliar}>
+           <RectButton style={styles.buttonAvaliar}>
             <Feather name="star" size={20} color="white" />
             <Text style={styles.buttonText}>Nos avalie na Google Play!</Text>
-          </RectButton>
+          </RectButton> 
         </View>
       </View>
       <View style={styles.bottomSection}>
