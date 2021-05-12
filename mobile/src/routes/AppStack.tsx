@@ -12,6 +12,8 @@ import AlterarSenha from '../pages/home/configuracoes/alterarSenha/confirmarEmai
 import VisualizarVeiculo from '../pages/home/veiculos/visualizarVeiculo';
 import Metrica from '../pages/home/configuracoes/metrica/metrica';
 import AppVersion from '../pages/home/configuracoes/appVersion';
+import RelatarProblema from '../pages/home/configuracoes/relatarProblema';
+import VisualizarServicos from '../pages/home/servicos/VisualizarServico';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -30,6 +32,8 @@ function AppStack() {
                 <Screen name="VisualizarVeiculo" component={VisualizarVeiculo} />
                 <Screen name="Metrica" component={Metrica} />
                 <Screen name="AppVersion" component={AppVersion} />
+                <Screen name="RelatarProblema" component={RelatarProblema} />
+                <Screen name="VisualizarServicos" component={VisualizarServicos} />
             </Navigator>
         </NavigationContainer>
     );

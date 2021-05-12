@@ -131,6 +131,8 @@ function CadastroVeiculo() {
                   { label: "Alcool", value: "alcool" },
                   { label: "Diesel", value: "Diesel" },
                   { label: "Flex", value: "Flex" },
+                  { label: "Hibrido", value: "Hibrido" },
+                  { label: "Elétrico", value: "Eletrico" },
                 ]}
                 style={styles.dropdownSegundo}
               ></DropDownPicker>

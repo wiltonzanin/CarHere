@@ -7,6 +7,8 @@ import TextField from "../../components/textField";
 import BackScreen from "../../components/backScreen";
 import api from "../../services/api";
 import { Button } from "../../components/button";
+import { CheckBox } from 'react-native-elements';
+import { color } from "react-native-elements/dist/helpers";
 
 function CadastroUsuario() {
   const [nome, setNome] = useState("");
@@ -55,6 +57,12 @@ function CadastroUsuario() {
           {/* <TextField labelName="Confirme sua senha" value={confirmeSenha} funcaoOnChangeText={setConfirmeSenha} /> */}
         </View>
         <View style={styles.buttonStyle}>
+          {/* documentação: https://reactnativeelements.com/docs/checkbox/ */}
+          <CheckBox title="Aceito os termos e condições" 
+          containerStyle={{backgroundColor:'#252525', borderColor:'#252525'}}
+          textStyle={{color:'#fff'}}
+          checkedIcon='dot-circle-o'
+          checkedColor='#8F1622'/>
           <Button title="Próximo" onPress={handleCreateUsuario} />
         </View>
       </View>

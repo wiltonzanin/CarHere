@@ -22,6 +22,10 @@ function Configuracoes({ navigation }: any) {
     navigate("AppVersion");
   }
 
+  function handleNavigateToRelatarProblema() {
+    navigate("RelatarProblema");
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -76,7 +80,7 @@ function Configuracoes({ navigation }: any) {
         <View style={styles.top}>
           <View style={styles.meio}>
             <RectButton
-              onPress={handleNavigateToSobre}
+              onPress={handleNavigateToRelatarProblema}
               style={styles.buttonContent}
             >
               <Text style={styles.buttonText}>Relatar um problema</Text>

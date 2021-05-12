@@ -14,6 +14,7 @@ import Configuracoes from "../home/configuracoes/telaPrincipal";
 import CadastroVeiculo from "../cadastroVeiculo/primeiraTelaCadastro";
 import Veiculos from "../home//veiculos/veiculos";
 import Principal from "../home/ajudaEfeedback/principal";
+import Servicos from "../home/servicos";
 import {ButtonAdicionar} from '../../components/button';
 
 function Inicio({ navigation }: any) {
@@ -89,6 +90,19 @@ function MyDrawer() {
           drawerIcon: ({ focused, size }) => (
             <Feather
               name="list"
+              size={size}
+              color={focused ? "#F0EFF4" : "#F0EFF4"}
+            />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="Serviços"
+        component={Servicos}
+        options={{
+          drawerIcon: ({ focused, size }) => (
+            <Feather
+              name="tool"
               size={size}
               color={focused ? "#F0EFF4" : "#F0EFF4"}
             />
