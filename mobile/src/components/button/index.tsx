@@ -18,7 +18,7 @@ export function Button({ title, ...rest }: ButtonProps) {
 export function ButtonAdicionar({ title, ...rest }: ButtonProps) {
   return (
     <TouchableOpacity style={styles.buttonAdicionar} {...rest}>
-      <Text style={styles.textAdicionar}>{title}</Text>
+      <Text style={styles.textAdicionar}><Feather name="plus" size={18} color={"#F0EFF4"}/> {title}</Text>
     </TouchableOpacity>
   );
 }

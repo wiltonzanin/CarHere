@@ -34,7 +34,7 @@ function Veiculos({ navigation }: any) {
         </View>
       </View>
       <View style={styles.content}>
-        <ButtonAdicionar title= "+ Adicionar veículo"/>
+        <ButtonAdicionar title= "Adicionar veículo"/>
         <View style={styles.veiculos}>
           <RectButton style={styles.buttonVeiculo} onPress={handleNavigateToVisualizarVeiculo}>
             <View style={styles.buttonGroupText}>

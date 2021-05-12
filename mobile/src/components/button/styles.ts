@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
   },
 
   textAdicionar:{
-    color: "#fff",
+    color: "#F0EFF4",
     fontSize: 18,
     padding: 10,
     textAlign: "center",

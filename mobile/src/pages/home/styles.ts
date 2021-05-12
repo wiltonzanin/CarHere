@@ -8,9 +8,7 @@ const styles = StyleSheet.create({
   },
 
   header: {
-    width: "100%",
     paddingTop: 20,
-    justifyContent: "space-between",
   },
 
   search: {
@@ -24,18 +22,12 @@ const styles = StyleSheet.create({
   },
 
   text: {
-    color: "white",
+    color: "#F0EFF4",
     fontSize: 20,
   },
 
-  button: {
-    height: 30,
-    width: 30,
-  },
-
   content: {
-    alignContent: "space-between",
-    paddingTop:15
+    paddingTop: 20
   },
 
   drawer: {

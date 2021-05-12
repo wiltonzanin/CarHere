@@ -40,7 +40,7 @@ function Inicio({ navigation }: any) {
         </View>
       </View>
       <View style={styles.content}>
-        <ButtonAdicionar title=" + Adicionar veículo" onPress={handleNavigateToCadastroVeiculo}/>
+        <ButtonAdicionar title="Adicionar veículo" onPress={handleNavigateToCadastroVeiculo}/>
       </View>
     </View>
   );
