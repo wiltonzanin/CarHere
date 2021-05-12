@@ -9,54 +9,44 @@ const styles = StyleSheet.create({
   },
 
   header: {
-    width: "100%",
-    paddingTop: 10,
+    paddingTop: 20,
     flexDirection: "row",
-  },
-  
-  search: {
-    justifyContent: "flex-start",
-    width: "30%",
-  },
-
-  button: {
-    paddingTop:10,
-    height: 30,
-    width: 30,
+    justifyContent: "space-between",
   },
 
   headerTitle: {
-    color: "#fff",
+    color: "#F0EFF4",
     fontSize: 20,
-    paddingTop:10
   },
 
   content: {
-    color: "#fff",
-    justifyContent: "flex-start",
-    paddingTop: 20,
-    width: "100%",
-    height: "75%",
-  },
-  
-  text: {
-    color: "#fff",
-    fontSize: 20,
-    paddingTop: 10,
-    paddingBottom: 10
-  },
-  
-  bottomSection: {
-    width: "100%",
-    height: "100%",
+    flex: 1,
+    marginBottom: 20
   },
 
-  bottomtext:{
-    color: "#fff",
+  text: {
+    color: "#F0EFF4",
+    fontSize: 20,
+    paddingBottom: 20
+  },
+
+  textInput: {
+    padding: 10,
+    backgroundColor: '#333333',
+    borderColor: '#525252',
+    borderStyle: 'solid',
+    borderRadius: 5,
+    borderWidth: 1,
+    fontSize: 16,
+    color: '#F0EFF4',
+    flex: 1
+  },
+
+  bottomtext: {
+    color: "#F0EFF4",
     fontSize: 18,
-    alignSelf:'center',
+    alignSelf: 'center',
   }
- 
 });
 
 export default styles;

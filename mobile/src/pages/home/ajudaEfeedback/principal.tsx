@@ -41,24 +41,24 @@ function Principal({ navigation }: any) {
           <View style={styles.meio}>
             <RectButton style={styles.buttonContent}>
               <Text style={styles.buttonText}>Entre em contato</Text>
-              <Feather name="chevron-right" size={25} color="white" />
+              <Feather name="chevron-right" size={25} color="#F0EFF4" />
             </RectButton>
           </View>
           <View style={styles.meio}>
             <RectButton style={styles.buttonContent}>
               <Text style={styles.buttonText}>Relatar um problema</Text>
-              <Feather name="chevron-right" size={25} color="white" />
+              <Feather name="chevron-right" size={25} color="#F0EFF4" />
             </RectButton>
           </View>
           <RectButton style={styles.buttonContent}>
             <Text style={styles.buttonText}>Enviar diagnóstico</Text>
-            <Feather name="chevron-right" size={25} color="white" />
+            <Feather name="chevron-right" size={25} color="#F0EFF4" />
           </RectButton>
         </View>
         <Text style={styles.text}>Feedback</Text>
         <View style={styles.bottomSection}>
            <RectButton style={styles.buttonAvaliar}>
-            <Feather name="star" size={20} color="white" />
+            <Feather name="star" size={20} color="#F0EFF4" />
             <Text style={styles.buttonText}>Nos avalie na Google Play!</Text>
           </RectButton> 
         </View>

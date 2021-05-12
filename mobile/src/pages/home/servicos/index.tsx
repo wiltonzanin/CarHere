@@ -24,7 +24,7 @@ function Servicos({ navigation }: any) {
           <Text style={styles.headerText}>Serviços</Text>
       </View>
       <View style={styles.content}>
-        <ButtonAdicionar title= "+ Adicionar serviço"/>
+        <ButtonAdicionar title= "Adicionar serviço"/>
         <View style={styles.servicos}>
           <RectButton style={styles.buttonServico} onPress={handleNavigateToVisualizarServicos}>
           <View style={styles.ButtonText}>

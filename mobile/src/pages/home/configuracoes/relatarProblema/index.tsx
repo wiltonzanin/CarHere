@@ -1,43 +1,25 @@
 import * as React from "react";
 import { View, Text, TextInput } from "react-native";
-import { DrawerActions, useNavigation } from "@react-navigation/native";
 import styles from "./styles";
-import { RectButton } from "react-native-gesture-handler";
-import { Feather } from "@expo/vector-icons";
 import { Button } from "../../../../components/button";
+import BackScreen from "../../../../components/backScreen";
 
-function Principal({ navigation }: any) {
+function RelatarProblema() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <View style={styles.search}>
-          <RectButton
-            onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-            style={styles.button}
-          >
-            <Feather name="align-justify" size={25} color="#F0EFF4" />
-          </RectButton>
-        </View>
-          <Text style={styles.headerTitle}>Relatar um Problema</Text>
+        <BackScreen />
+        <Text style={styles.headerTitle}>Relatar um Problema</Text>
+        <View />{/* Remover esta linha e substituir por um css que funcione */}
       </View>
       <View style={styles.content}>
-        <Text style={styles.text}>
-          Descreva o problema que {"\n"}
-          você está enfrentando{" "}
-        </Text>
-        <View style={{ backgroundColor: "#252525", height: "70%" }}>
+        <Text style={styles.text}>Descreva o problema que você está enfrentando</Text>
         {/* documentação: https://reactnative.dev/docs/textinput */}
-        <TextInput style={{height:'100%', width:'100%', backgroundColor:'#525252', fontSize:16, color:'white'}}
-        multiline={true}/>
-        </View>
+        <TextInput style={styles.textInput} multiline={true} textAlignVertical='top' />
       </View>
-      <View style={styles.bottomSection}>
-        <Button title="Enviar" />
-        <Text style={styles.bottomtext}>Versão do App</Text>
-        <Text style={styles.bottomtext}>1.0</Text>
-      </View>
+      <Button title="Enviar" />
     </View>
   );
 }
 
-export default Principal;
+export default RelatarProblema;

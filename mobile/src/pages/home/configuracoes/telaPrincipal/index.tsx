@@ -15,9 +15,6 @@ function Configuracoes({ navigation }: any) {
     navigate("Metrica");
   }
 
-  function handleNavigateToSobre() {
-    navigate("Sobre");
-  }
   function handleNavigateToAppVersion() {
     navigate("AppVersion");
   }
@@ -50,7 +47,7 @@ function Configuracoes({ navigation }: any) {
               style={styles.buttonContent}
             >
               <Text style={styles.buttonText}>Alterar Senha</Text>
-              <Feather name="chevron-right" size={25} color="white" />
+              <Feather name="chevron-right" size={25} color="#F0EFF4" />
             </RectButton>
           </View>
           <View style={styles.meio}>
@@ -59,21 +56,18 @@ function Configuracoes({ navigation }: any) {
               style={styles.buttonContent}
             >
               <Text style={styles.buttonText}>Tipo de métrica</Text>
-              <Feather name="chevron-right" size={25} color="white" />
+              <Feather name="chevron-right" size={25} color="#F0EFF4" />
             </RectButton>
           </View>
           <View style={styles.meio}>
             <RectButton style={styles.buttonContent}>
               <Text style={styles.buttonText}>Ajuda</Text>
-              <Feather name="chevron-right" size={25} color="white" />
+              <Feather name="chevron-right" size={25} color="#F0EFF4" />
             </RectButton>
           </View>
-          <RectButton
-            onPress={handleNavigateToSobre}
-            style={styles.buttonContent}
-          >
+          <RectButton style={styles.buttonContent}>
             <Text style={styles.buttonText}>Notificações</Text>
-            <Feather name="chevron-right" size={25} color="white" />
+            <Feather name="chevron-right" size={25} color="#F0EFF4" />
           </RectButton>
         </View>
         <Text style={styles.text}>Sobre</Text>
@@ -84,7 +78,7 @@ function Configuracoes({ navigation }: any) {
               style={styles.buttonContent}
             >
               <Text style={styles.buttonText}>Relatar um problema</Text>
-              <Feather name="chevron-right" size={25} color="white" />
+              <Feather name="chevron-right" size={25} color="#F0EFF4" />
             </RectButton>
           </View>
           <RectButton
@@ -92,7 +86,7 @@ function Configuracoes({ navigation }: any) {
             style={styles.buttonContent}
           >
             <Text style={styles.buttonText}>Versão do App</Text>
-            <Feather name="chevron-right" size={25} color="white" />
+            <Feather name="chevron-right" size={25} color="#F0EFF4" />
           </RectButton>
         </View>
       </View>
