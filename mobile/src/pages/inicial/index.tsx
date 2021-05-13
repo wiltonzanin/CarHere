@@ -5,7 +5,7 @@ import { Text, View, ScrollView } from 'react-native';
 import { Svg, Path } from 'react-native-svg';
 import styles from './styles';
 import TextField from '../../components/textField'
-import {Button} from '../../components/button';
+import {Button} from '../../components/buttons';
 
 
 function Inicial() {

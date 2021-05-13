@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
 
   header: {
     width: "100%",
-    paddingTop: 10,
+    paddingTop: 20,
     flexDirection: "row",
   },
   
@@ -28,7 +28,6 @@ const styles = StyleSheet.create({
   headerTitle: {
     color: "#fff",
     fontSize: 20,
-    paddingTop:10
   },
 
   content: {

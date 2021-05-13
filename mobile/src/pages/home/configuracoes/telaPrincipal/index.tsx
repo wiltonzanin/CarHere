@@ -4,6 +4,7 @@ import { DrawerActions, useNavigation } from "@react-navigation/native";
 import styles from "./styles";
 import { RectButton } from "react-native-gesture-handler";
 import { Feather } from "@expo/vector-icons";
+import {ButtonMenu} from '../../../../components/buttons';
 
 function Configuracoes({ navigation }: any) {
   const { navigate } = useNavigation();
@@ -27,12 +28,7 @@ function Configuracoes({ navigation }: any) {
     <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.search}>
-          <RectButton
-            onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-            style={styles.button}
-          >
-            <Feather name="align-justify" size={25} color="#F0EFF4" />
-          </RectButton>
+          <ButtonMenu title="" onPress={() => navigation.dispatch(DrawerActions.openDrawer())}/>
         </View>
         <View style={{ width: "50%" }}>
           <Text style={styles.headerTitle}>Configurações</Text>

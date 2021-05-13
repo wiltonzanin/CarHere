@@ -1,7 +1,7 @@
 import * as React from "react";
 import { View, Text, TextInput } from "react-native";
 import styles from "./styles";
-import { Button } from "../../../../components/button";
+import { Button } from "../../../../components/buttons";
 import BackScreen from "../../../../components/backScreen";
 
 function RelatarProblema() {

@@ -17,12 +17,7 @@ const styles = StyleSheet.create({
   search: {
     justifyContent: "flex-start",
     width: "30%",
-  },
-
-  button: {
-    paddingTop: 10,
-    height: 30,
-    width: 30,
+    paddingTop: 10
   },
 
   headerTitle: {

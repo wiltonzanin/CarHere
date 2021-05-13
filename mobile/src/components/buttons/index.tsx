@@ -22,3 +22,11 @@ export function ButtonAdicionar({ title, ...rest }: ButtonProps) {
     </TouchableOpacity>
   );
 }
+
+export function ButtonMenu({ title, ...rest }: ButtonProps) {
+  return (
+    <TouchableOpacity style={styles.buttonMenu} {...rest}>
+      <Text><Feather name="align-justify" size={25} color={"#F0EFF4"}/>{title}</Text>
+    </TouchableOpacity>
+  );
+}

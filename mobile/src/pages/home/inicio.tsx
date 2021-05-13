@@ -15,7 +15,8 @@ import CadastroVeiculo from "../cadastroVeiculo/primeiraTelaCadastro";
 import Veiculos from "../home//veiculos/veiculos";
 import Principal from "../home/ajudaEfeedback/principal";
 import Servicos from "../home/servicos";
-import {ButtonAdicionar} from '../../components/button';
+import {ButtonAdicionar} from '../../components/buttons';
+import {ButtonMenu} from '../../components/buttons';
 
 function Inicio({ navigation }: any) {
   const { navigate } = useNavigation();
@@ -27,16 +28,9 @@ function Inicio({ navigation }: any) {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-      <View style={styles.search}>
-          <RectButton
-            onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-            style={styles.buttonsHeader}
-          >
-            <Feather name="align-justify" size={25} color="#F0EFF4" />
-          </RectButton>
+      <ButtonMenu title="" onPress={() => navigation.dispatch(DrawerActions.openDrawer())}/>
         <View style={{paddingRight:'43%'}}>
           <Text style={styles.text}>Inicio</Text>
-        </View>
         </View>
       </View>
       <View style={styles.content}>

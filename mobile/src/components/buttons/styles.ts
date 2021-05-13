@@ -32,6 +32,11 @@ const styles = StyleSheet.create({
     fontSize: 18,
     padding: 10,
     textAlign: "center",
+  },
+
+  buttonMenu:{
+      height: 30,
+      width: 30,
   }
 });
 

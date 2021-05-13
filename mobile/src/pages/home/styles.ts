@@ -9,9 +9,6 @@ const styles = StyleSheet.create({
 
   header: {
     paddingTop: 20,
-  },
-
-  search: {
     flexDirection: "row",
     justifyContent: "space-between",
   },

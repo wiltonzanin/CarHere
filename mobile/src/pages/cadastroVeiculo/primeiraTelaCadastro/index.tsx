@@ -6,7 +6,7 @@ import styles from "./styles";
 import TextField from "../../../components/textField";
 import DropDownPicker from "react-native-dropdown-picker";
 import BackScreen from "../../../components/backScreen";
-import { Button } from "../../../components/button";
+import { Button } from "../../../components/buttons";
 
 function CadastroVeiculo() {
   const { navigate } = useNavigation();

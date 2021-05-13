@@ -4,7 +4,9 @@ import { DrawerActions, useNavigation } from "@react-navigation/native";
 import styles from "./styles";
 import { RectButton } from "react-native-gesture-handler";
 import { Feather } from "@expo/vector-icons";
-import {ButtonAdicionar} from '../../../components/button';
+import {ButtonAdicionar} from '../../../components/buttons';
+import {ButtonMenu} from '../../../components/buttons';
+
 
 function Servicos({ navigation }: any) {
   const { navigate } = useNavigation();
@@ -15,12 +17,7 @@ function Servicos({ navigation }: any) {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-          <RectButton
-            onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-            style={styles.buttonsHeader}
-          >
-            <Feather name="align-justify" size={25} color="#F0EFF4" />
-          </RectButton>
+      <ButtonMenu title="" onPress={() => navigation.dispatch(DrawerActions.openDrawer())}/>
           <Text style={styles.headerText}>Serviços</Text>
       </View>
       <View style={styles.content}>

@@ -6,7 +6,7 @@ import styles from "./styles";
 import TextField from "../../components/textField";
 import BackScreen from "../../components/backScreen";
 import api from "../../services/api";
-import { Button } from "../../components/button";
+import { Button } from "../../components/buttons";
 import { CheckBox } from 'react-native-elements';
 import { color } from "react-native-elements/dist/helpers";
 
