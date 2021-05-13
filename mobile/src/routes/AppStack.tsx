@@ -12,7 +12,7 @@ import AlterarSenha from '../pages/home/configuracoes/alterarSenha/confirmarEmai
 import VisualizarVeiculo from '../pages/home/veiculos/visualizarVeiculo';
 import Metrica from '../pages/home/configuracoes/metrica/metrica';
 import AppVersion from '../pages/home/configuracoes/appVersion';
-import RelatarProblema from '../pages/home/configuracoes/relatarProblema';
+import RelatarProblema from '../pages/home/ajudaEfeedback/relatarProblema';
 import VisualizarServicos from '../pages/home/servicos/VisualizarServico';
 
 const { Navigator, Screen } = createStackNavigator();

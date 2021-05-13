@@ -4,32 +4,22 @@ import { DrawerActions, useNavigation } from "@react-navigation/native";
 import styles from "./styles";
 import { RectButton } from "react-native-gesture-handler";
 import { Feather } from "@expo/vector-icons";
-import {Button} from '../../../components/buttons';
-import {ButtonMenu} from '../../../components/buttons';
+import { ButtonMenu } from '../../../components/buttons';
 
-function Principal({ navigation }: any) {
-  /* const { navigate } = useNavigation();
+function AjudaFeedback({ navigation }: any) {
+  const { navigate } = useNavigation();
 
-  function handleNavigateToAlterarSenhaPage() {
-    navigate("AlterarSenha");
+  function handleNavigateToRelatarProblema() {
+    navigate("RelatarProblema");
   }
-
-  function handleNavigateToSobre() {
-    navigate("Sobre");
-  }
-  function handleNavigateToVersionApp() {
-    navigate("VersionApp");
-  } */
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.search}>
-        <ButtonMenu title="" onPress={() => navigation.dispatch(DrawerActions.openDrawer())}/>
+          <ButtonMenu title="" onPress={() => navigation.dispatch(DrawerActions.openDrawer())} />
         </View>
-        <View style={{ width: "50%" }}>
-          <Text style={styles.headerTitle}>Ajuda e Feedback</Text>
-        </View>
+        <Text style={styles.headerTitle}>Ajuda e Feedback</Text>
       </View>
       <View style={styles.content}>
         <Text style={styles.text}>Ajuda</Text>
@@ -41,7 +31,9 @@ function Principal({ navigation }: any) {
             </RectButton>
           </View>
           <View style={styles.meio}>
-            <RectButton style={styles.buttonContent}>
+            <RectButton
+              onPress={handleNavigateToRelatarProblema}
+              style={styles.buttonContent}>
               <Text style={styles.buttonText}>Relatar um problema</Text>
               <Feather name="chevron-right" size={25} color="#F0EFF4" />
             </RectButton>
@@ -53,18 +45,18 @@ function Principal({ navigation }: any) {
         </View>
         <Text style={styles.text}>Feedback</Text>
         <View style={styles.bottomSection}>
-           <RectButton style={styles.buttonAvaliar}>
+          <RectButton style={styles.buttonAvaliar}>
             <Feather name="star" size={20} color="#F0EFF4" />
             <Text style={styles.buttonText}>Nos avalie na Google Play!</Text>
-          </RectButton> 
+          </RectButton>
         </View>
       </View>
       <View style={styles.bottomSection}>
         <Text style={styles.bottomtext}>Versão do App</Text>
-        <Text style={styles.bottomtext}>1.0</Text>
+        <Text style={styles.bottomtext}>1.0.0</Text>
       </View>
     </View>
   );
 }
 
-export default Principal;
+export default AjudaFeedback;

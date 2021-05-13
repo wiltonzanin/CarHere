@@ -9,53 +9,43 @@ const styles = StyleSheet.create({
   },
 
   header: {
-    width: "100%",
     paddingTop: 20,
     flexDirection: "row",
   },
-  
+
   search: {
     justifyContent: "flex-start",
     width: "30%",
   },
 
-  button: {
-    paddingTop:10,
-    height: 30,
-    width: 30,
-  },
-
   headerTitle: {
-    color: "#fff",
+    color: "#F0EFF4",
     fontSize: 20,
   },
 
   content: {
-    color: "#fff",
+    color: "#F0EFF4",
     justifyContent: "flex-start",
-    paddingTop: 20,
-    width: "100%",
     height: "85%",
   },
-  
+
   text: {
-    color: "#fff",
+    color: "#F0EFF4",
     fontSize: 20,
-    paddingTop: 10,
-    paddingBottom: 10
+    paddingTop: 20,
+    paddingBottom: 20
   },
 
-  top:{
+  top: {
     backgroundColor: "#333333",
-    borderRadius:10,
-    borderColor:'#525252',
-    borderWidth:1,
-    borderBottomWidth: 1,
+    borderRadius: 5,
+    borderColor: '#525252',
+    borderWidth: 1,
   },
 
-  meio:{
+  meio: {
     borderBottomWidth: 1,
-    borderColor:'#525252',
+    borderColor: '#525252',
   },
 
   buttonContent: {
@@ -63,33 +53,31 @@ const styles = StyleSheet.create({
     padding: 5,
     alignItems: "center",
     justifyContent: "space-between",
-    flexDirection:'row',
+    flexDirection: 'row',
   },
-  
+
   buttonText: {
-    color: "#fff",
+    color: "#F0EFF4",
     paddingLeft: 5
   },
 
   bottomSection: {
-    width: "100%",
     height: "100%",
   },
 
-  buttonAvaliar:{
+  buttonAvaliar: {
     height: 60,
-    backgroundColor:'#8F1622',
+    backgroundColor: '#8F1622',
     alignItems: "center",
-    paddingTop: 10,   
-    borderRadius:5
+    paddingTop: 10,
+    borderRadius: 5
   },
 
-  bottomtext:{
-    color: "#fff",
+  bottomtext: {
+    color: "#F0EFF4",
     fontSize: 18,
-    alignSelf:'center',
+    alignSelf: 'center',
   }
- 
 });
 
 export default styles;
