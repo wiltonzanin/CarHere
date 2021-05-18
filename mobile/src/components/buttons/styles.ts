@@ -37,6 +37,19 @@ const styles = StyleSheet.create({
   buttonMenu:{
       height: 30,
       width: 30,
+  },
+
+  buttonAjuda:{
+    height: 60,
+    padding: 5,
+    alignItems: "center",
+    justifyContent: "space-between",
+    flexDirection: 'row',
+  },
+
+  textAjuda:{
+    color: "#F0EFF4",
+    paddingLeft: 5
   }
 });
 

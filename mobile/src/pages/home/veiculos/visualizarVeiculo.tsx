@@ -4,7 +4,8 @@ import { DrawerActions } from "@react-navigation/native";
 import styles from "./DetalheVeiculoStyle";
 import { RectButton } from "react-native-gesture-handler";
 import { Feather } from "@expo/vector-icons";
-import BackButton from '../../../components/backScreen'
+import BackButton from '../../../components/backScreen';
+import { Servico } from "../../../components/infosVeic";
 
 function visualizarVeiculo({ navigation }: any) {
   return (
@@ -54,6 +55,7 @@ function visualizarVeiculo({ navigation }: any) {
               horizontal={true}
               contentContainerStyle={{ flexGrow: 1 }}
             >
+             
               <View style={styles.espacamentoServicos}>
                 <View style={styles.servicos}>
                   <Text style={styles.textInfo1}>Nome do serviço</Text>

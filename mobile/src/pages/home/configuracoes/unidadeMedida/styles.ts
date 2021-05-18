@@ -4,11 +4,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    justifyContent: "space-between",
+    justifyContent: 'space-between',
+
   },
 
   header: {
-    width: "100%",
     paddingTop: 10,
     flexDirection: "row",
   },
@@ -19,21 +19,17 @@ const styles = StyleSheet.create({
   },
 
   content: {
-    width: "100%",
-    alignContent: "space-between",
+    height:'100%'
   },
 
   inputGroup: {
-    flexDirection: "row",
     justifyContent: "space-between",
-    height: "100%",
-    paddingTop:10
+
   },
 
   dropdown: {
     backgroundColor: "#333333",
     borderColor: "#525252",
-    width: 300,
   },
 });
 

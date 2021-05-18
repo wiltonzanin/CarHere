@@ -4,7 +4,7 @@ import { DrawerActions, useNavigation } from "@react-navigation/native";
 import styles from "./styles";
 import { RectButton } from "react-native-gesture-handler";
 import { Feather } from "@expo/vector-icons";
-import { ButtonMenu } from '../../../components/buttons';
+import { ButtonMenu, ButtonPadrao } from '../../../components/buttons';
 
 function AjudaFeedback({ navigation }: any) {
   const { navigate } = useNavigation();
@@ -25,23 +25,12 @@ function AjudaFeedback({ navigation }: any) {
         <Text style={styles.text}>Ajuda</Text>
         <View style={styles.top}>
           <View style={styles.meio}>
-            <RectButton style={styles.buttonContent}>
-              <Text style={styles.buttonText}>Entre em contato</Text>
-              <Feather name="chevron-right" size={25} color="#F0EFF4" />
-            </RectButton>
+            <ButtonPadrao title="Entre em contato"/>
           </View>
           <View style={styles.meio}>
-            <RectButton
-              onPress={handleNavigateToRelatarProblema}
-              style={styles.buttonContent}>
-              <Text style={styles.buttonText}>Relatar um problema</Text>
-              <Feather name="chevron-right" size={25} color="#F0EFF4" />
-            </RectButton>
+            <ButtonPadrao title="Relatar um problema" onPress={handleNavigateToRelatarProblema}/>
           </View>
-          <RectButton style={styles.buttonContent}>
-            <Text style={styles.buttonText}>Enviar diagnóstico</Text>
-            <Feather name="chevron-right" size={25} color="#F0EFF4" />
-          </RectButton>
+          <ButtonPadrao title="Enviar diagnóstico"/>
         </View>
         <Text style={styles.text}>Feedback</Text>
         <View style={styles.bottomSection}>

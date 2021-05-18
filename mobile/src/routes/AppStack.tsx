@@ -10,10 +10,13 @@ import CodigoConfirmacao from '../pages/home/configuracoes/alterarSenha/confirma
 import Notificacao from '../pages/home/configuracoes/notificacao';
 import AlterarSenha from '../pages/home/configuracoes/alterarSenha/confirmarEmail';
 import VisualizarVeiculo from '../pages/home/veiculos/visualizarVeiculo';
-import Metrica from '../pages/home/configuracoes/metrica/metrica';
+import UnidadeMedida from '../pages/home/configuracoes/unidadeMedida';
 import AppVersion from '../pages/home/configuracoes/appVersion';
 import RelatarProblema from '../pages/home/ajudaEfeedback/relatarProblema';
 import VisualizarServicos from '../pages/home/servicos/VisualizarServico';
+import TermoServico from '../pages/home/configuracoes/termosEpoliticas/termoServico';
+import PadroesComunidade from '../pages/home/configuracoes/termosEpoliticas/PadroesComunidade';
+import PoliticaDados from '../pages/home/configuracoes/termosEpoliticas/PoliticaDados';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -30,10 +33,13 @@ function AppStack() {
                 <Screen name="Notificacao" component={Notificacao} />
                 <Screen name="AlterarSenha" component={AlterarSenha} />
                 <Screen name="VisualizarVeiculo" component={VisualizarVeiculo} />
-                <Screen name="Metrica" component={Metrica} />
+                <Screen name="UnidadeMedida" component={UnidadeMedida} />
                 <Screen name="AppVersion" component={AppVersion} />
                 <Screen name="RelatarProblema" component={RelatarProblema} />
                 <Screen name="VisualizarServicos" component={VisualizarServicos} />
+                <Screen name="TermoServico" component={TermoServico} />
+                <Screen name="PadroesComunidade" component={PadroesComunidade} />
+                <Screen name="PoliticaDados" component={PoliticaDados} />
             </Navigator>
         </NavigationContainer>
     );

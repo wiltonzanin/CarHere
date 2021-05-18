@@ -30,3 +30,11 @@ export function ButtonMenu({ title, ...rest }: ButtonProps) {
     </TouchableOpacity>
   );
 }
+
+export function ButtonPadrao({ title, ...rest }: ButtonProps) {
+  return (
+    <TouchableOpacity style={styles.buttonAjuda} {...rest}>
+      <Text style={styles.textAjuda}>{title}</Text><Feather name="chevron-right" size={25} color={"#F0EFF4"}/>
+    </TouchableOpacity>
+  );
+}

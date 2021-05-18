@@ -1,5 +1,5 @@
 import * as React from "react";
-import { View, Text, Image } from "react-native";
+import { View, Text, Image,ScrollView } from "react-native";
 import { DrawerActions, useNavigation } from "@react-navigation/native";
 import styles from "./styles";
 import { RectButton } from "react-native-gesture-handler";
@@ -14,6 +14,7 @@ function Veiculos({ navigation }: any) {
     navigate("VisualizarVeiculo");
   }
   return (
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }}> 
     <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.search}>
@@ -51,6 +52,7 @@ function Veiculos({ navigation }: any) {
         </View>
       </View>
     </View>
+    </ScrollView>
   );
 }
 export default Veiculos;

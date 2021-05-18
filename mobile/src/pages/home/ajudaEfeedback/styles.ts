@@ -48,14 +48,6 @@ const styles = StyleSheet.create({
     borderColor: '#525252',
   },
 
-  buttonContent: {
-    height: 60,
-    padding: 5,
-    alignItems: "center",
-    justifyContent: "space-between",
-    flexDirection: 'row',
-  },
-
   buttonText: {
     color: "#F0EFF4",
     paddingLeft: 5

@@ -1,36 +1,51 @@
 import React from "react";
-import { useNavigation } from "@react-navigation/native";
 import { Text, View, ScrollView } from "react-native";
 import styles from "./styles";
 import DropDownPicker from "react-native-dropdown-picker";
 import BackScreen from "../../../../components/backScreen";
 
-function CadastroVeiculo() {
-  const { navigate } = useNavigation();
-
-  function handleNavigateToApp() {
-    navigate("App");
-  }
-
+function UnidadeMedida() {
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View style={styles.container}>
         <View style={styles.header}>
           <BackScreen />
-          <View style={{ paddingStart: "30%" }}>
-            <Text style={styles.title}>Métrica</Text>
+          <View style={{paddingLeft:'15%'}}>
+          <Text style={styles.title}>Cadastre seu veículo:</Text>
           </View>
         </View>
         <View style={styles.content}>
-          <Text style={styles.title}>Tipo de Métrica</Text>
           <View style={styles.inputGroup}>
             <View>
+              <Text style={styles.title}>Tipo de métrica</Text>
               <DropDownPicker
                 placeholder="Selecione um item"
                 dropDownStyle={{
                   backgroundColor: "#333333",
                   borderColor: "#525252",
-                  width: 300,
+                  width: '100%',
+                }}
+                
+                labelStyle={{
+                  fontSize: 16,
+                  color: "#fff",
+                }}
+                arrowColor={"white"}
+                items={[
+                  { label: "Quilômetros", value: "Quilometros" },
+                  { label: "Milhas", value: "Milhas" },
+                ]}
+                style={styles.dropdown}
+              ></DropDownPicker>
+            </View>
+            <View style={{paddingTop:20}}>
+              <Text style={styles.title}>Unidade de medida de volume</Text>
+              <DropDownPicker
+                placeholder="Selecione um item"
+                dropDownStyle={{
+                  backgroundColor: "#333333",
+                  borderColor: "#525252",
+                  width: '100%',
                 }}
                 labelStyle={{
                   fontSize: 16,
@@ -38,8 +53,8 @@ function CadastroVeiculo() {
                 }}
                 arrowColor={"white"}
                 items={[
-                  { label: "Quilômetros", value: "Quilômetros" },
-                  { label: "Milhas", value: "Milhas" },
+                  { label: "Litros", value: "Litros" },
+                  { label: "sla", value: "sla" },
                 ]}
                 style={styles.dropdown}
               ></DropDownPicker>
@@ -51,4 +66,4 @@ function CadastroVeiculo() {
   );
 }
 
-export default CadastroVeiculo;
+export default UnidadeMedida;
