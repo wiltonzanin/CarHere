@@ -9,37 +9,29 @@ const styles = StyleSheet.create({
 
     header: {
         width: '100%',
-        paddingTop: 20
+        paddingTop: 20,
+        flexDirection: 'row',
+        justifyContent: 'space-between'
     },
 
     title: {
         color: '#F0EFF4',
-        fontSize: 25,
-        fontWeight: 'bold',
-    },
-
-    content: {
-        width: '100%'    
-    },
-
-    buttonStyle: {
-        width: '100%'
-    },
-
-    button: {
-        backgroundColor: '#5863f8',
-        height: 60,
-        borderRadius: 8,
-        padding: 24,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-
-    buttonText: {
-        color: '#F0EFF4',
         fontSize: 20,
-        fontWeight: 'bold',
     },
+
+    termosECondicoes: {
+        flexDirection: 'row',
+        paddingBottom: 20
+    },
+
+    buttonTermosECondicoes: {
+        alignSelf: 'center'
+    },
+
+    textTermosECondicoes: {
+        color: '#F0EFF4',
+        fontSize: 15
+    }
 });
 
 export default styles;

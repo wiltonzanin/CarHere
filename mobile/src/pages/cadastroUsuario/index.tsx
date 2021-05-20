@@ -8,13 +8,13 @@ import BackScreen from "../../components/backScreen";
 import api from "../../services/api";
 import { Button } from "../../components/buttons";
 import { CheckBox } from 'react-native-elements';
-import { color } from "react-native-elements/dist/helpers";
 
 function CadastroUsuario() {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   //const [confirmeSenha, setConfirmeSenha] = useState('');
+  const [isSelected, setIsSelected] = useState(false);
 
   const { navigate } = useNavigation();
 
@@ -35,9 +35,10 @@ function CadastroUsuario() {
       <View style={styles.container}>
         <View style={styles.header}>
           <BackScreen />
-          <Text style={styles.title}>Vamos começar:</Text>
+          <Text style={styles.title}>Vamos começar</Text>
+          <View />
         </View>
-        <View style={styles.content}>
+        <View>
           <TextField
             labelName="Nome"
             value={nome}
@@ -56,13 +57,20 @@ function CadastroUsuario() {
           />
           {/* <TextField labelName="Confirme sua senha" value={confirmeSenha} funcaoOnChangeText={setConfirmeSenha} /> */}
         </View>
-        <View style={styles.buttonStyle}>
+        <View>
           {/* documentação: https://reactnativeelements.com/docs/checkbox/ */}
-          <CheckBox title="Aceito os termos e condições" 
-          containerStyle={{backgroundColor:'#252525', borderColor:'#252525'}}
-          textStyle={{color:'#fff'}}
-          checkedIcon='dot-circle-o'
-          checkedColor='#8F1622'/>
+          <View style={styles.termosECondicoes}>
+            <CheckBox
+              containerStyle={{ backgroundColor: '#252525', borderColor: '#252525', padding: 0, margin: 0, marginLeft: 0 }}
+              checkedIcon='check-square'
+              checkedColor='#8F1622'
+              size={25}
+              checked={isSelected}
+              onPress={() => setIsSelected(!isSelected)} />
+            <RectButton style={styles.buttonTermosECondicoes}>
+              <Text style={styles.textTermosECondicoes}>Aceito os termos e condições</Text>
+            </RectButton>
+          </View>
           <Button title="Próximo" onPress={handleCreateUsuario} />
         </View>
       </View>
