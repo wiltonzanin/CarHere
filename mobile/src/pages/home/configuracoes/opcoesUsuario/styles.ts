@@ -10,27 +10,30 @@ const styles = StyleSheet.create({
 
   header: {
     width: "100%",
-    paddingTop: 10,
+    paddingTop: 20,
     flexDirection: "row",
-  },
-
-  search: {
-    justifyContent: "flex-start",
-    paddingTop: 10
   },
 
   headerTitle: {
     color: "#fff",
     fontSize: 20,
-    paddingTop: 10,
   },
 
   content: {
+    flex:1,
     color: "#fff",
     justifyContent: "flex-start",
-    paddingTop: 20,
     width: "100%",
     height: "85%",
+    paddingTop:20
+  },
+
+  foto:{
+borderRadius:100,
+height:150,
+width:150,
+backgroundColor:'black',
+alignSelf:'center'
   },
 
   text: {

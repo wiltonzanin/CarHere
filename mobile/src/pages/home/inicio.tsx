@@ -25,7 +25,7 @@ function Inicio({ navigation }: any) {
   }
   function handleNavigateToMfa() {
     navigate("Mfa");
-  }
+  } 
 
   return (
     <View style={styles.container}>

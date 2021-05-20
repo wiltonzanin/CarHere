@@ -9,14 +9,14 @@ const styles = StyleSheet.create({
     },
 
     header: {
+        flexDirection:'row',
         width: '100%',
-        paddingTop: 20
+        //paddingTop: 20,
     },
 
     title: {
         color: '#F0EFF4',
-        fontSize: 25,
-        fontWeight: 'bold',
+        fontSize: 22,
     },
 
     content: {
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     dropdown: {
         backgroundColor: '#333333',
         borderColor: '#525252',
-        width: 90
+        width: 90,
     },
 
     dropdownSegundo: {
