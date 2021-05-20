@@ -2,21 +2,25 @@ import React from "react";
 import { Text, View, ScrollView } from "react-native";
 import styles from "./styles";
 import BackScreen from "../../../../components/backScreen";
+import { Accordion } from "@material-ui/core";
 
-function PoliticaDados() {
+function Termos() {
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View style={styles.container}>
         <View style={styles.header}>
           <BackScreen />
           <View style={{ paddingLeft: "15%" }}>
-            <Text style={styles.title}>Politica de Dados</Text>
+            <Text style={styles.title}>Termos</Text>
           </View>
         </View>
         <View style={styles.content}>
-          <Text style={styles.title}>
-            Quais Tipos de Informações Coletamos?
-          </Text>
+          <Text style={styles.title}>Politica de Dados</Text>
+         
+
+              <Text style={styles.title}>
+                Quais Tipos de Informações Coletamos?
+              </Text>
           <Text style={styles.text}>
             Esta Política descreve as informações que processamos para
             viabilizar a operação do Meu Possante e de outros Produtos e
@@ -37,10 +41,14 @@ function PoliticaDados() {
             Dispositivo * Dados das configurações do dispositivos{"\n"} * Rede e
             conexões
           </Text>
+          <Text style={styles.title}>
+            Quais Tipos de Informações Coletamos?
+          </Text>
+          <Text style={styles.text}></Text>
         </View>
       </View>
     </ScrollView>
   );
 }
 
-export default PoliticaDados;
+export default Termos;

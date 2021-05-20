@@ -14,9 +14,9 @@ import UnidadeMedida from '../pages/home/configuracoes/unidadeMedida';
 import AppVersion from '../pages/home/configuracoes/appVersion';
 import RelatarProblema from '../pages/home/ajudaEfeedback/relatarProblema';
 import VisualizarServicos from '../pages/home/servicos/VisualizarServico';
-import TermoServico from '../pages/home/configuracoes/termosEpoliticas/termoServico';
-import PadroesComunidade from '../pages/home/configuracoes/termosEpoliticas/PadroesComunidade';
-import PoliticaDados from '../pages/home/configuracoes/termosEpoliticas/PoliticaDados';
+import Termos from '../pages/home/configuracoes/termosEpoliticas';
+import OpcoesUsuario  from '../pages/home/configuracoes/opcoesUsuario';
+import Mfa  from '../pages/cadastroUsuario/mfa';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -37,9 +37,9 @@ function AppStack() {
                 <Screen name="AppVersion" component={AppVersion} />
                 <Screen name="RelatarProblema" component={RelatarProblema} />
                 <Screen name="VisualizarServicos" component={VisualizarServicos} />
-                <Screen name="TermoServico" component={TermoServico} />
-                <Screen name="PadroesComunidade" component={PadroesComunidade} />
-                <Screen name="PoliticaDados" component={PoliticaDados} />
+                <Screen name="Termos" component={Termos} />
+                <Screen name="OpcoesUsuario" component={OpcoesUsuario} />
+                <Screen name="Mfa" component={Mfa} />
             </Navigator>
         </NavigationContainer>
     );

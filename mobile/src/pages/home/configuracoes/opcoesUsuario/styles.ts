@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
 
   search: {
     justifyContent: "flex-start",
-    paddingTop: 10,
+    paddingTop: 10
   },
 
   headerTitle: {
@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     paddingTop: 20,
     width: "100%",
+    height: "85%",
   },
 
   text: {
@@ -37,6 +38,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     paddingTop: 10,
     paddingBottom: 10,
+    alignSelf:'center'
   },
 
   top: {

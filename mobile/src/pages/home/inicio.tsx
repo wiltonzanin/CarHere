@@ -8,7 +8,6 @@ import {
   DrawerContentComponentProps,
 } from "@react-navigation/drawer";
 import styles from "./styles";
-import { RectButton } from "react-native-gesture-handler";
 import { Feather } from "@expo/vector-icons";
 import Configuracoes from "../home/configuracoes/telaPrincipal";
 import CadastroVeiculo from "../cadastroVeiculo/primeiraTelaCadastro";
@@ -24,6 +23,9 @@ function Inicio({ navigation }: any) {
   function handleNavigateToCadastroVeiculo() {
     navigate("CadastroVeiculo");
   }
+  function handleNavigateToMfa() {
+    navigate("Mfa");
+  }
 
   return (
     <View style={styles.container}>
@@ -35,6 +37,7 @@ function Inicio({ navigation }: any) {
       </View>
       <View style={styles.content}>
         <ButtonAdicionar title="Adicionar veículo" onPress={handleNavigateToCadastroVeiculo}/>
+        <ButtonAdicionar title="Mfa" onPress={handleNavigateToMfa}/>
       </View>
     </View>
   );
