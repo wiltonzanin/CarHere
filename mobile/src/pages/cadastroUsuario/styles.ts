@@ -30,7 +30,8 @@ const styles = StyleSheet.create({
 
     textTermosECondicoes: {
         color: '#F0EFF4',
-        fontSize: 15
+        fontSize: 15,
+        textDecorationLine: 'underline'
     }
 });
 

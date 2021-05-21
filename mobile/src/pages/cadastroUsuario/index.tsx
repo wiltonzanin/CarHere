@@ -13,7 +13,7 @@ function CadastroUsuario() {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-  //const [confirmeSenha, setConfirmeSenha] = useState('');
+  const [confirmeSenha, setConfirmeSenha] = useState('');
   const [isSelected, setIsSelected] = useState(false);
 
   const { navigate } = useNavigation();
@@ -24,12 +24,17 @@ function CadastroUsuario() {
     data.append("nome", nome);
     data.append("email", email);
     data.append("senha", senha);
-    //data.append('confirmeSenha', confirmeSenha);
+    data.append('confirmeSenha', confirmeSenha);
 
     await api.post("/usuarios", data);
 
     navigate("CadastroVeiculo");
   }
+
+  function handleNavigateToTermos() {
+    navigate("Termos");
+  }
+
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View style={styles.container}>
@@ -55,19 +60,22 @@ function CadastroUsuario() {
             value={senha}
             funcaoOnChangeText={setSenha}
           />
-          {/* <TextField labelName="Confirme sua senha" value={confirmeSenha} funcaoOnChangeText={setConfirmeSenha} /> */}
+          <TextField
+            labelName="Confirme sua senha"
+            value={confirmeSenha}
+            funcaoOnChangeText={setConfirmeSenha} />
         </View>
         <View>
           {/* documentação: https://reactnativeelements.com/docs/checkbox/ */}
           <View style={styles.termosECondicoes}>
             <CheckBox
               containerStyle={{ backgroundColor: '#252525', borderColor: '#252525', padding: 0, margin: 0, marginLeft: 0 }}
-              checkedIcon='check-square'
+              checkedIcon='check-square-o'
               checkedColor='#8F1622'
               size={25}
               checked={isSelected}
               onPress={() => setIsSelected(!isSelected)} />
-            <RectButton style={styles.buttonTermosECondicoes}>
+            <RectButton style={styles.buttonTermosECondicoes} onPress={handleNavigateToTermos}>
               <Text style={styles.textTermosECondicoes}>Aceito os termos e condições</Text>
             </RectButton>
           </View>

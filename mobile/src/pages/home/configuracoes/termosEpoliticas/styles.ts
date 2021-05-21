@@ -5,7 +5,10 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     justifyContent: 'space-between',
+  },
 
+  content: {
+    height: '100%'
   },
 
   header: {
@@ -13,21 +16,29 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
 
+  accordionTitle: {
+    color: "#F0EFF4",
+    fontSize: 18,
+  },
+
+  textBody: {
+    borderColor: '#525252',
+    padding: 20,
+    borderRadius: 5,
+    marginBottom: 20
+  },
+
   title: {
     color: "#F0EFF4",
-    fontSize: 20,
-  },
-
-  content: {
-    height:'100%'
-  },
-
-  text:{
-    paddingTop:10,
-    color: "#F0EFF4",
     fontSize: 16,
-  }
+    fontWeight: 'bold'
+  },
 
+  text: {
+    color: "#F0EFF4",
+    textAlign: 'justify',
+    fontSize: 14
+  },
 });
 
 export default styles;

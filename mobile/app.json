@@ -6,7 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
-      "image": "./src/assets/images/eduardo.png",
+      "image": "./src/assets/images/Monza-Icone.png",
       "resizeMode": "contain",
       "backgroundColor": "#252525"
     },

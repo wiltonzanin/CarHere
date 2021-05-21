@@ -13,10 +13,11 @@ function Configuracoes({ navigation }: any) {
   function handleNavigateToUnidadeMedida() {
     navigate("UnidadeMedida");
   }
+
   function handleNavigateToTermos() {
     navigate("Termos");
   }
- 
+
   function handleNavigateToOpcoesUsuario() {
     navigate("OpcoesUsuario");
   }
@@ -31,7 +32,7 @@ function Configuracoes({ navigation }: any) {
               onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
             />
           </View>
-          <View style={{ paddingLeft:'20%' }}>
+          <View style={{ paddingLeft: '20%' }}>
             <Text style={styles.headerTitle}>Configurações</Text>
           </View>
         </View>
@@ -61,13 +62,13 @@ function Configuracoes({ navigation }: any) {
           </View>
           <Text style={styles.text}>Conta</Text>
           <View style={styles.top}>
-            <ButtonPadrao title="Opções de usuário" 
-            onPress={handleNavigateToOpcoesUsuario}/>
+            <ButtonPadrao title="Opções de usuário"
+              onPress={handleNavigateToOpcoesUsuario} />
           </View>
           <Text style={styles.text}>Preferências</Text>
           <View style={styles.top}>
-              <ButtonPadrao title="Termos de Serviço" 
-              onPress={handleNavigateToTermos}/>
+            <ButtonPadrao title="Termos de Serviço"
+              onPress={handleNavigateToTermos} />
           </View>
         </View>
       </View>
