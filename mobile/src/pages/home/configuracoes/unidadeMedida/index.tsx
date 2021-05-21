@@ -11,7 +11,7 @@ function UnidadeMedida() {
         <View style={styles.header}>
           <BackScreen />
           <View style={{paddingLeft:'15%'}}>
-          <Text style={styles.title}>Cadastre seu veículo:</Text>
+          <Text style={styles.title}>Unidades de medida</Text>
           </View>
         </View>
         <View style={styles.content}>
@@ -54,7 +54,7 @@ function UnidadeMedida() {
                 arrowColor={"white"}
                 items={[
                   { label: "Litros", value: "Litros" },
-                  { label: "sla", value: "sla" },
+                  { label: "Galões", value: "galoes" },
                 ]}
                 style={styles.dropdown}
               ></DropDownPicker>

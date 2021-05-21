@@ -13,6 +13,11 @@ function Veiculos({ navigation }: any) {
   function handleNavigateToVisualizarVeiculo() {
     navigate("VisualizarVeiculo");
   }
+
+  function handleNavigateToCadastroVeiculo() {
+    navigate("CadastroVeiculo");
+  }
+
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}> 
     <View style={styles.container}>
@@ -31,7 +36,7 @@ function Veiculos({ navigation }: any) {
         </View>
       </View>
       <View style={styles.content}>
-        <ButtonAdicionar title= "Adicionar veículo"/>
+        <ButtonAdicionar title= "Adicionar veículo" onPress={handleNavigateToCadastroVeiculo}/>
         <View style={styles.veiculos}>
           <RectButton style={styles.buttonVeiculo} onPress={handleNavigateToVisualizarVeiculo}>
             <View style={styles.buttonGroupText}>

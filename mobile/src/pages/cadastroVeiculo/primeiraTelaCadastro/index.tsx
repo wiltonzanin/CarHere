@@ -20,7 +20,9 @@ function CadastroVeiculo() {
       <View style={styles.container}>
         <View style={styles.header}>
           <BackScreen />
-          <Text style={styles.title}>Cadastre seu veículo:</Text>
+          <View style={{paddingLeft:'15%'}}>
+          <Text style={styles.title}>Cadastre seu veículo</Text>
+          </View>
         </View>
         <View style={styles.content}>
           <TextField labelName="Marca" />

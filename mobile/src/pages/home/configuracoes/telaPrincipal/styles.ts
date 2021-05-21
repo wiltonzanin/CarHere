@@ -5,11 +5,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#252525",
     padding: 20,
-    justifyContent: "space-between",
+    justifyContent: "space-between", 
   },
 
   header: {
-    width: "100%",
+   // width: "100%",
     paddingTop: 10,
     flexDirection: "row",
   },
@@ -28,8 +28,9 @@ const styles = StyleSheet.create({
   content: {
     color: "#fff",
     justifyContent: "flex-start",
-    paddingTop: 20,
-    width: "100%",
+    flex:1,
+    //paddingTop: 20,
+    //width: "100%",
   },
 
   text: {
@@ -52,24 +53,12 @@ const styles = StyleSheet.create({
     borderColor: "#525252",
   },
 
-  buttonContent: {
-    height: 60,
-    padding: 5,
-    alignItems: "center",
-    justifyContent: "space-between",
-    flexDirection: "row",
-  },
-
   buttonText: {
     color: "#fff",
     justifyContent: "center",
     paddingLeft: 5,
   },
 
-  buttonsSection: {
-    width: "100%",
-    height: "100%",
-  },
 });
 
 export default styles;

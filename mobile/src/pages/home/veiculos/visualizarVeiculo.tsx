@@ -5,7 +5,6 @@ import styles from "./DetalheVeiculoStyle";
 import { RectButton } from "react-native-gesture-handler";
 import { Feather } from "@expo/vector-icons";
 import BackButton from '../../../components/backScreen';
-import { Servico } from "../../../components/infosVeic";
 
 function visualizarVeiculo({ navigation }: any) {
   return (
