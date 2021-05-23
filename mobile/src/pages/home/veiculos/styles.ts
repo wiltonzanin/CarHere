@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   imgVeiculo:{
     width: 120,
     height: 100,
-    backgroundColor: '#5863f8',
+    backgroundColor: '#333333',
     borderTopRightRadius: 5,
     borderBottomRightRadius: 5,
   }

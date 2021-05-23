@@ -6,10 +6,6 @@ import { List } from 'react-native-paper';
 
 function Termos() {
 
-  const [expanded, setExpanded] = React.useState(true);
-
-  const handlePress = () => setExpanded(!expanded);
-
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View style={styles.container}>
@@ -20,6 +16,7 @@ function Termos() {
           </View>
         </View>
         <View style={styles.content}>
+          {/* Documentação: https://callstack.github.io/react-native-paper/2.0/list-accordion.html */}
           <List.Section>
             <List.Accordion
               title="Termos de serviço"

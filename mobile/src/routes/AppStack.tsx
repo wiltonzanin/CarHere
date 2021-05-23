@@ -9,7 +9,7 @@ import Inicio from '../pages/home/inicio';
 import CodigoConfirmacao from '../pages/home/configuracoes/alterarSenha/confirmarCodigo';
 import Notificacao from '../pages/home/configuracoes/notificacao';
 import AlterarSenha from '../pages/home/configuracoes/alterarSenha/confirmarEmail';
-import VisualizarVeiculo from '../pages/home/veiculos/visualizarVeiculo';
+import VisualizarVeiculo from '../pages/home/veiculos/DetalhesVeiculo';
 import UnidadeMedida from '../pages/home/configuracoes/unidadeMedida';
 import AppVersion from '../pages/home/configuracoes/appVersion';
 import RelatarProblema from '../pages/home/ajudaEfeedback/relatarProblema';
