@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     },
 
     inputGroup:{
-        marginBottom: 25    
+        marginBottom: 20    
     },
     
     input: {

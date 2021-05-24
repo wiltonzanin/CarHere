@@ -4,43 +4,33 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#252525",
-    padding: 20,
-    justifyContent: "space-between", 
+    padding: 20
   },
 
   header: {
-   // width: "100%",
-    paddingTop: 10,
     flexDirection: "row",
+    justifyContent: "space-between",
+    paddingTop: 20
   },
 
   search: {
-    justifyContent: "flex-start",
-    paddingTop: 10,
+    paddingTop: 10
   },
 
   headerTitle: {
-    color: "#fff",
+    color: "#F0EFF4",
     fontSize: 20,
     paddingTop: 10,
   },
 
-  content: {
-    color: "#fff",
-    justifyContent: "flex-start",
-    flex:1,
-    //paddingTop: 20,
-    //width: "100%",
-  },
-
-  text: {
-    color: "#fff",
+  sectionTitle: {
+    color: "#F0EFF4",
     fontSize: 20,
-    paddingTop: 10,
-    paddingBottom: 10,
+    paddingTop: 20,
+    paddingBottom: 20,
   },
 
-  top: {
+  buttonsGroup: {
     backgroundColor: "#333333",
     borderRadius: 10,
     borderColor: "#525252",
@@ -48,17 +38,16 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
   },
 
-  meio: {
+  buttonsGroupContent: {
     borderBottomWidth: 1,
     borderColor: "#525252",
   },
 
   buttonText: {
-    color: "#fff",
+    color: "#F0EFF4",
     justifyContent: "center",
     paddingLeft: 5,
-  },
-
+  }
 });
 
 export default styles;

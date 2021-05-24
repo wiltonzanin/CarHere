@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 
-  buttonAdicionar:{
+  buttonAdicionar: {
     backgroundColor: "#8F1622",
     height: 28,
     borderRadius: 8,
@@ -27,19 +27,19 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 
-  textAdicionar:{
+  textAdicionar: {
     color: "#F0EFF4",
     fontSize: 18,
     padding: 10,
     textAlign: "center",
   },
 
-  buttonMenu:{
-      height: 30,
-      width: 30,
+  buttonMenu: {
+    height: 30,
+    width: 30,
   },
 
-  buttonAjuda:{
+  buttonAjuda: {
     height: 60,
     padding: 5,
     alignItems: "center",
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
 
-  textAjuda:{
+  textAjuda: {
     color: "#F0EFF4",
     paddingLeft: 5
   }

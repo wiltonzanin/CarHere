@@ -7,9 +7,6 @@ import { ButtonMenu, ButtonPadrao } from "../../../../components/buttons";
 function Configuracoes({ navigation }: any) {
   const { navigate } = useNavigation();
 
-  function handleNavigateToAlterarSenhaPage() {
-    navigate("AlterarSenha");
-  }
   function handleNavigateToUnidadeMedida() {
     navigate("UnidadeMedida");
   }
@@ -32,41 +29,40 @@ function Configuracoes({ navigation }: any) {
               onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
             />
           </View>
-          <View style={{ paddingLeft: '20%' }}>
             <Text style={styles.headerTitle}>Configurações</Text>
-          </View>
+          <View/>
         </View>
-        <View style={styles.content}>
-          <Text style={styles.text}>Preferências</Text>
-          <View style={styles.top}>
-            <View style={styles.meio}>
+        <View>
+          <Text style={styles.sectionTitle}>Preferências</Text>
+          <View style={styles.buttonsGroup}>
+            <View style={styles.buttonsGroupContent}>
               <ButtonPadrao
                 title="Unidades de medida"
                 onPress={handleNavigateToUnidadeMedida}
               />
             </View>
-            <View style={styles.meio}>
+            <View style={styles.buttonsGroupContent}>
               <ButtonPadrao
                 title="Acessibilidade"
               />
             </View>
-            <View style={styles.meio}>
+            <View style={styles.buttonsGroupContent}>
               <ButtonPadrao
                 title="Dicas e Manual do usuário"
               />
             </View>
-            <View style={styles.meio}>
+            <View style={styles.buttonsGroupContent}>
               <ButtonPadrao title="Aparência" />
             </View>
             <ButtonPadrao title="Notificações" />
           </View>
-          <Text style={styles.text}>Conta</Text>
-          <View style={styles.top}>
+          <Text style={styles.sectionTitle}>Conta</Text>
+          <View style={styles.buttonsGroup}>
             <ButtonPadrao title="Opções de usuário"
               onPress={handleNavigateToOpcoesUsuario} />
           </View>
-          <Text style={styles.text}>Preferências</Text>
-          <View style={styles.top}>
+          <Text style={styles.sectionTitle}>Preferências</Text>
+          <View style={styles.buttonsGroup}>
             <ButtonPadrao title="Termos de Serviço"
               onPress={handleNavigateToTermos} />
           </View>

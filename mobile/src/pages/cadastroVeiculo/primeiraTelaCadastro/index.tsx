@@ -20,33 +20,21 @@ function CadastroVeiculo() {
       <View style={styles.container}>
         <View style={styles.header}>
           <BackScreen />
-          <View style={{paddingLeft:'15%'}}>
           <Text style={styles.title}>Cadastre seu veículo</Text>
-          </View>
+          <View />
         </View>
-        <View style={styles.content}>
+        <View>
           <TextField labelName="Marca" />
           <TextField labelName="Modelo" />
           <TextField labelName="Motorização" />
-
           <View style={styles.inputGroup}>
-            <View>
+            <View style={styles.inputGroupRow}>
               <Text style={styles.text}>Ano</Text>
               <DropDownPicker
                 placeholder=""
-                dropDownStyle={{
-                  backgroundColor: "#333333",
-                  borderColor: "#525252",
-                  width: 90,
-                }}
-                placeholderStyle={{
-                  width: 90,
-                }}
-                labelStyle={{
-                  fontSize: 16,
-                  color: "#fff",
-                }}
-                arrowColor={"white"}
+                dropDownStyle={styles.dropdown}
+                labelStyle={styles.dropdownText}
+                arrowColor={"#F0EFF4"}
                 items={[
                   { label: "2020", value: "2020" },
                   { label: "2019", value: "2019" },
@@ -114,20 +102,13 @@ function CadastroVeiculo() {
                 style={styles.dropdown}
               ></DropDownPicker>
             </View>
-            <View>
+            <View style={styles.inputGroupSecondRow}>
               <Text style={styles.text}>Combustível</Text>
               <DropDownPicker
                 placeholder="Selecione um item"
-                dropDownStyle={{
-                  backgroundColor: "#333333",
-                  borderColor: "#525252",
-                  width: 200,
-                }}
-                labelStyle={{
-                  fontSize: 16,
-                  color: "#fff",
-                }}
-                arrowColor={"white"}
+                dropDownStyle={styles.dropdown}
+                labelStyle={styles.dropdownText}
+                arrowColor={"#F0EFF4"}
                 items={[
                   { label: "Gasolina", value: "gasolina" },
                   { label: "Alcool", value: "alcool" },
@@ -136,14 +117,12 @@ function CadastroVeiculo() {
                   { label: "Hibrido", value: "Hibrido" },
                   { label: "Elétrico", value: "Eletrico" },
                 ]}
-                style={styles.dropdownSegundo}
+                style={styles.dropdown}
               ></DropDownPicker>
             </View>
           </View>
         </View>
-        <View style={styles.buttonStyle}>
-          <Button title="Concluir" onPress={handleNavigateToInicio} />
-        </View>
+        <Button title="Concluir" onPress={handleNavigateToInicio} />
       </View>
     </ScrollView>
   );

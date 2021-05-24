@@ -3,25 +3,20 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 30,
+        padding: 20,
         justifyContent: 'space-between',
         backgroundColor: "#252525"
     },
 
     header: {
-        flexDirection:'row',
-        width: '100%',
-        //paddingTop: 20,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingTop: 20,
     },
 
     title: {
         color: '#F0EFF4',
-        fontSize: 22,
-    },
-
-    content: {
-        width: '100%',
-        alignContent: 'space-between'
+        fontSize: 20,
     },
 
     text: {
@@ -30,41 +25,28 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
 
-    buttonStyle: {
-        width: '100%',
-        paddingTop: 20
-    },
-
     inputGroup: {
         flexDirection: 'row',
         justifyContent: 'space-between'
     },
 
-    button: {
-        backgroundColor: '#8F1622',
-        height: 60,
-        borderRadius: 8,
-        padding: 24,
-        alignItems: 'center',
-        justifyContent: 'center',
+    inputGroupRow: {
+        flex: 1,
+        marginRight: 15
     },
 
-    buttonText: {
-        color: '#F0EFF4',
-        fontSize: 20,
-        fontWeight: 'bold',
+    inputGroupSecondRow: {
+        flex: 2
     },
 
     dropdown: {
-        backgroundColor: '#333333',
-        borderColor: '#525252',
-        width: 90,
+        backgroundColor: "#333333",
+        borderColor: "#525252"
     },
 
-    dropdownSegundo: {
-        backgroundColor: '#333333',
-        borderColor: '#525252',
-        width: 200
+    dropdownText: {
+        fontSize: 16,
+        color: "#F0EFF4",
     }
 });
 
