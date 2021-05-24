@@ -17,6 +17,8 @@ import VisualizarServicos from '../pages/home/servicos/VisualizarServico';
 import Termos from '../pages/home/configuracoes/termosEpoliticas';
 import OpcoesUsuario  from '../pages/home/configuracoes/opcoesUsuario';
 import Mfa  from '../pages/cadastroUsuario/mfa';
+import EntrarEmContato  from '../pages/home/ajudaEfeedback/entreEmContato';
+import Solicitacao  from '../pages/home/ajudaEfeedback/entreEmContato/solicitacao';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -40,6 +42,8 @@ function AppStack() {
                 <Screen name="Termos" component={Termos} />
                 <Screen name="OpcoesUsuario" component={OpcoesUsuario} />
                 <Screen name="Mfa" component={Mfa} />
+                <Screen name="EntrarEmContato" component={EntrarEmContato} />
+                <Screen name="Solicitacao" component={Solicitacao} />
             </Navigator>
         </NavigationContainer>
     );

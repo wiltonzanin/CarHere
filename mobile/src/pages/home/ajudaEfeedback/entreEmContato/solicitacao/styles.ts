@@ -11,11 +11,7 @@ const styles = StyleSheet.create({
   header: {
     paddingTop: 20,
     flexDirection: "row",
-  },
-
-  search: {
-    justifyContent: "flex-start",
-    //width: "30%",
+    justifyContent: "space-between",
   },
 
   headerTitle: {
@@ -24,51 +20,47 @@ const styles = StyleSheet.create({
   },
 
   content: {
-    color: "#F0EFF4",
-    justifyContent: "flex-start",
-    height: "85%",
+    flex: 1,
+    marginBottom: 20
   },
 
   text: {
     color: "#F0EFF4",
     fontSize: 20,
-    paddingTop: 20,
-    paddingBottom: 20
+    paddingBottom: 10,
+    paddingTop:10
   },
 
-  top: {
-    backgroundColor: "#333333",
+  textInput: {
+    padding: 10,
+    backgroundColor: '#333333',
+    borderColor: '#525252',
+    borderStyle: 'solid',
     borderRadius: 5,
-    borderColor: '#525252',
     borderWidth: 1,
+    fontSize: 16,
+    color: '#F0EFF4',
+    flex: 1
   },
 
-  meio: {
-    borderBottomWidth: 1,
+  textOutro:{
+    padding: 10,
+    backgroundColor: '#333333',
     borderColor: '#525252',
-  },
-
-  buttonText: {
-    color: "#F0EFF4",
-    paddingLeft: 5
-  },
-
-  bottomSection: {
-    height: "100%",
-  },
-
-  buttonAvaliar: {
-    height: 60,
-    backgroundColor: '#8F1622',
-    alignItems: "center",
-    paddingTop: 10,
-    borderRadius: 5
+    borderStyle: 'solid',
+    borderRadius: 5,
+    borderWidth: 1,
+    fontSize: 16,
+    color: '#F0EFF4',
   },
 
   bottomtext: {
     color: "#F0EFF4",
     fontSize: 18,
     alignSelf: 'center',
+  },
+  checkbox:{
+    flexDirection: "row",
   }
 });
 

@@ -1,12 +1,9 @@
-import React, { useState } from "react";
-import { RectButton } from "react-native-gesture-handler";
-import { useNavigation } from "@react-navigation/native";
+import React from "react";
 import { Text, View, ScrollView } from "react-native";
 import styles from "./styles";
 import TextField from "../../../components/textField";
 import BackScreen from "../../../components/backScreen";
 import { Button } from "../../../components/buttons";
-import { CheckBox } from 'react-native-elements';
 import DropDownPicker from "react-native-dropdown-picker";
 
 function Mfa(){
@@ -23,7 +20,7 @@ return (
         <Text style={styles.text}>Escolha sua pergunta de segurança</Text>
         <View style={{paddingTop:10 }}>
         <DropDownPicker
-                placeholder="Selecione um item"
+                placeholder="Escolher pergunta"
                 dropDownStyle={{
                   backgroundColor: "#333333",
                   borderColor: "#525252",
