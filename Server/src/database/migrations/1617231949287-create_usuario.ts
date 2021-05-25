@@ -7,7 +7,7 @@ export class createUsuario1617231949287 implements MigrationInterface {
             name: 'usuarios',
             columns: [
                 {
-                    name: 'id',
+                    name: 'id_usuario',
                     type: 'integer',
                     unsigned: true,
                     isPrimary: true,
@@ -61,5 +61,4 @@ export class createUsuario1617231949287 implements MigrationInterface {
     public async down(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.dropTable('usuarios')
     }
-
 }
