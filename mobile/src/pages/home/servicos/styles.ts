@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     flexDirection: "row",
     justifyContent: "space-between",
-    paddingRight:"38%"
+    paddingRight:"45%"
   },
 
   buttonsHeader: {
