@@ -19,6 +19,8 @@ import OpcoesUsuario  from '../pages/home/configuracoes/opcoesUsuario';
 import Mfa  from '../pages/cadastroUsuario/mfa';
 import EntrarEmContato  from '../pages/home/ajudaEfeedback/entreEmContato';
 import Solicitacao  from '../pages/home/ajudaEfeedback/entreEmContato/solicitacao';
+import Aparencia  from '../pages/home/configuracoes/aparencia';
+import Acessibilidade  from '../pages/home/configuracoes/acessibilidade';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -44,6 +46,8 @@ function AppStack() {
                 <Screen name="Mfa" component={Mfa} />
                 <Screen name="EntrarEmContato" component={EntrarEmContato} />
                 <Screen name="Solicitacao" component={Solicitacao} />
+                <Screen name="Aparencia" component={Aparencia} />
+                <Screen name="Acessibilidade" component={Acessibilidade} />
             </Navigator>
         </NavigationContainer>
     );

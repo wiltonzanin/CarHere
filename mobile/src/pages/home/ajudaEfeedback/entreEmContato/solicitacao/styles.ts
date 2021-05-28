@@ -54,14 +54,6 @@ const styles = StyleSheet.create({
     color: '#F0EFF4',
   },
 
-  bottomtext: {
-    color: "#F0EFF4",
-    fontSize: 18,
-    alignSelf: 'center',
-  },
-  checkbox:{
-    flexDirection: "row",
-  }
 });
 
 export default styles;
