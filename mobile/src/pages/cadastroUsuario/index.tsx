@@ -1,22 +1,24 @@
 import React, { useState } from "react";
 import { RectButton } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
-import { Text, View, ScrollView } from "react-native";
+import { Text, View, ScrollView, Modal, Pressable } from "react-native";
 import styles from "./styles";
 import TextField from "../../components/textField";
 import BackScreen from "../../components/backScreen";
 import api from "../../services/api";
 import { Button } from "../../components/buttons";
 import { CheckBox } from 'react-native-elements';
+import { Feather } from "@expo/vector-icons";
 
 function CadastroUsuario() {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-  const [confirmeSenha, setConfirmeSenha] = useState('');
   const [isSelected, setIsSelected] = useState(false);
 
   const { navigate } = useNavigation();
+  const [modalVisible, setModalVisible] = useState(false);
+  const [modalWarning, setModalWarning] = useState(false);
 
   async function handleCreateUsuario() {
     const data = new FormData();
@@ -24,19 +26,64 @@ function CadastroUsuario() {
     data.append("nome", nome);
     data.append("email", email);
     data.append("senha", senha);
-    data.append('confirmeSenha', confirmeSenha);
 
-    await api.post("/usuarios", data);
+    try {
+      await api.post("/usuarios", data);
+    } catch (error) {
+      setModalWarning(true);
+    }
 
-    navigate("CadastroVeiculo");
+    setModalVisible(true);
   }
 
   function handleNavigateToTermos() {
     navigate("Termos");
   }
 
+  function handleNavigateToMfa() {
+    setModalVisible(!modalVisible);
+    navigate("Mfa");
+  }
+
+  function handleNavigateToIncial() {
+    setModalVisible(!modalVisible);
+    navigate("Inicial");
+  }
+
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+      <Modal
+        animationType="fade"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => { handleNavigateToIncial() }}
+        statusBarTranslucent={true}
+      >
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            {modalWarning
+              ? <Feather name='alert-circle' size={50} color={'#eca400'} style={{ marginTop: 20 }} />
+              : <Feather name='check-circle' size={50} color={'#5CB85C'} style={{ marginTop: 20 }} />
+            }
+            {modalWarning
+              ? <Text style={styles.modalText}>Ops, tivemos um problema! Por favor tente novamente mais tarde.</Text>
+              : <Text style={styles.modalText}>Cadastro realizado com sucesso!</Text>
+            }
+            {modalWarning
+              ? <Pressable
+                style={styles.button}
+                onPress={() => handleNavigateToIncial()}>
+                <Text style={styles.textStyle}>OK</Text>
+              </Pressable>
+              : <Pressable
+                style={styles.button}
+                onPress={() => handleNavigateToMfa()}>
+                <Text style={styles.textStyle}>OK</Text>
+              </Pressable>
+            }
+          </View>
+        </View>
+      </Modal>
       <View style={styles.container}>
         <View style={styles.header}>
           <BackScreen />
@@ -50,7 +97,7 @@ function CadastroUsuario() {
             funcaoOnChangeText={setNome}
           />
           <TextField
-            labelName="Email"
+            labelName="E-mail"
             value={email}
             funcaoOnChangeText={setEmail}
             tipoTeclado={"email-address"}
@@ -59,11 +106,12 @@ function CadastroUsuario() {
             labelName="Senha"
             value={senha}
             funcaoOnChangeText={setSenha}
+            secureTextEntry={true}
           />
           <TextField
             labelName="Confirme sua senha"
-            value={confirmeSenha}
-            funcaoOnChangeText={setConfirmeSenha} />
+            secureTextEntry={true}
+          />
         </View>
         <View>
           {/* documentação: https://reactnativeelements.com/docs/checkbox/ */}
@@ -76,10 +124,10 @@ function CadastroUsuario() {
               checked={isSelected}
               onPress={() => setIsSelected(!isSelected)} />
             <RectButton style={styles.buttonTermosECondicoes} onPress={handleNavigateToTermos}>
-              <Text style={styles.textTermosECondicoes}>Aceito os termos e condições</Text>
+              <Text style={styles.textTermosECondicoes}>Aceito os termos e condições de uso de dados</Text>
             </RectButton>
           </View>
-          <Button title="Próximo" onPress={handleCreateUsuario} />
+          <Button title="Próximo" onPress={() => handleCreateUsuario()} />
         </View>
       </View>
     </ScrollView>

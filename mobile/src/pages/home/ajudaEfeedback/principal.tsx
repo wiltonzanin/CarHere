@@ -13,26 +13,25 @@ function AjudaFeedback({ navigation }: any) {
     navigate("RelatarProblema");
   }
 
-   function handleNavigateToEntrarEmContato() {
+  function handleNavigateToEntrarEmContato() {
     navigate("EntrarEmContato");
   }
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-          <ButtonMenu title="" onPress={() => navigation.dispatch(DrawerActions.openDrawer())} />
-        <View style={{paddingLeft:'35%'}}>
+        <ButtonMenu title="" onPress={() => navigation.dispatch(DrawerActions.openDrawer())} />
         <Text style={styles.headerTitle}>Ajuda e Feedback</Text>
-        </View>
+        <View />
       </View>
       <View style={styles.content}>
         <Text style={styles.text}>Ajuda</Text>
         <View style={styles.top}>
           <View style={styles.meio}>
             <ButtonPadrao title="Entre em contato"
-            onPress={handleNavigateToEntrarEmContato}/>
+              onPress={handleNavigateToEntrarEmContato} />
           </View>
-            <ButtonPadrao title="Relatar um problema" onPress={handleNavigateToRelatarProblema}/>
+          <ButtonPadrao title="Relatar um problema" onPress={handleNavigateToRelatarProblema} />
         </View>
         <Text style={styles.text}>Feedback</Text>
         <View style={styles.bottomSection}>

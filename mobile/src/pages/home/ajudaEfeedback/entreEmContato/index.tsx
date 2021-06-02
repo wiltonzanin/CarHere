@@ -16,22 +16,20 @@ function EntreEmContato({ navigation }: any) {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-          <ButtonMenu title="" onPress={() => navigation.dispatch(DrawerActions.openDrawer())} />
-        <View style={{paddingLeft:'35%'}}>
-        <Text style={styles.headerTitle}>Entre em Contato</Text>
-        </View>
+        <ButtonMenu title="" onPress={() => navigation.dispatch(DrawerActions.openDrawer())} />
+        <Text style={styles.headerTitle}>Entre em contato</Text>
+        <View />
       </View>
       <View style={styles.content}>
-        <Text style={styles.text}>Escolha a melhor forma para
-entrar em contato</Text>
+        <Text style={styles.text}>Escolha a melhor forma para entrar em contato</Text>
         <View style={styles.top}>
           <View style={styles.meio}>
-            <ButtonPadrao title="Enviar um email"/>
+            <ButtonPadrao title="Enviar um email" />
           </View>
-            <ButtonPadrao title="Enviar uma solicitação pelo App" onPress={handleNavigateTosolicitacao}/>
+          <ButtonPadrao title="Enviar uma solicitação pelo App" onPress={handleNavigateTosolicitacao} />
         </View>
       </View>
-    </View>
+    </View >
   );
 }
 

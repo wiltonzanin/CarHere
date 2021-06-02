@@ -9,6 +9,7 @@ interface TextFieldProps {
     funcaoOnChangeText?: any;
     tipoTeclado?: any;
     exibeOpcional?: boolean;
+    secureTextEntry?: boolean;
 }
 
 /**
@@ -18,9 +19,10 @@ interface TextFieldProps {
  * @param value: (string) Informe o value do campo;
  * @param tipoTeclado: (any) Tipos de teclado mais usados: email-address, numeric, number-pad, decimal-pad, phone-pad;
  * @param exibeOpcional: (boolean) Exibe ou não o texto (opcional) acima do TextInput;
+ * @param secureTextEntry: (boolean) Exibe ou não os caracters de texto;
  * 
  */
-const textField: React.FC<TextFieldProps> = ({ labelName, value, funcaoOnChangeText, tipoTeclado, exibeOpcional }) => {
+const textField: React.FC<TextFieldProps> = ({ labelName, value, funcaoOnChangeText, tipoTeclado, exibeOpcional, secureTextEntry }) => {
 
     //#region variaveis    
     let exibirLabelOpcional = exibeOpcional ? true : false;
@@ -39,7 +41,7 @@ const textField: React.FC<TextFieldProps> = ({ labelName, value, funcaoOnChangeT
                 {exibirLabelOpcional && <Text style={styles.labelOpcional}>(Opcional)</Text>}
             </View>
             <View style={styles.inputGroup}>
-                <TextInput style={styles.input} value={value} onChangeText={funcaoOnChangeText} keyboardType={tipoTeclado} />
+                <TextInput style={styles.input} value={value} onChangeText={funcaoOnChangeText} keyboardType={tipoTeclado} secureTextEntry={secureTextEntry} />
                 {exibirMensagemErro && <Text style={styles.labelErro}><Feather name="alert-triangle" /> {mensagemErro}</Text>}
             </View>
         </View>

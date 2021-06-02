@@ -8,7 +8,6 @@ const styles = StyleSheet.create({
     padding: 24,
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: 5,
   },
 
   text: {
@@ -23,8 +22,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 24,
     alignItems: "center",
-    justifyContent: "center",
-    marginBottom: 5,
+    justifyContent: "center"
   },
 
   textAdicionar: {

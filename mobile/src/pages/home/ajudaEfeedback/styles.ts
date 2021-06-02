@@ -11,11 +11,11 @@ const styles = StyleSheet.create({
   header: {
     paddingTop: 20,
     flexDirection: "row",
+    justifyContent: "space-between",
   },
 
   search: {
     justifyContent: "flex-start",
-    //width: "30%",
   },
 
   headerTitle: {

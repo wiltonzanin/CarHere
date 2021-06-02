@@ -3,15 +3,14 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 30,
-        justifyContent: 'space-between'
+        padding: 30
     },
 
     header: {
-        width: '100%',
         paddingTop: 20,
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'center',
+        marginBottom: 20
     },
 
     title: {
@@ -19,30 +18,22 @@ const styles = StyleSheet.create({
         fontSize: 20,
     },
 
-    subtitle:{
-        fontStyle:'italic',
-        color:'#fff'
+    subtitle: {
+        fontStyle: 'italic',
+        color: '#F0EFF4',
+        paddingBottom: 20
     },
-    
-  content: {
-    height:'100%',
-  },
 
-  text:{
-      color:'#fff',
-      fontSize:18,
-      paddingTop:10
-  },
-  dropdown: {
-    backgroundColor: '#333333',
-    borderColor: '#525252',
-},
+    dropdownLabel: {
+        color: '#F0EFF4',
+        fontSize: 18,
+        paddingBottom: 10
+    },
 
-buttonStyle: {
-    width: '100%',
-    paddingTop: 20
-},
-
+    dropdown: {
+        backgroundColor: '#333333',
+        borderColor: '#525252',
+    }
 });
 
 export default styles;
