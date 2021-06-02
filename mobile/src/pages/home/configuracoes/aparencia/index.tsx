@@ -4,7 +4,7 @@ import styles from "./styles";
 import DropDownPicker from "react-native-dropdown-picker";
 import BackScreen from "../../../../components/backScreen";
 
-function UnidadeMedida() {
+function Aparencia() {
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View style={styles.container}>
@@ -12,15 +12,14 @@ function UnidadeMedida() {
         <View style={styles.header}>
           <BackScreen />
           </View>
-          <View style={{paddingLeft:'30%'}}>
-
-          <Text style={styles.title}>Unidades de medida</Text>
-          </View>
+          <View style={{paddingLeft:'40%'}}>
+          <Text style={styles.title}>Aparência</Text>
+        </View>
         </View>
         <View style={styles.content}>
           <View style={styles.inputGroup}>
             <View>
-              <Text style={styles.title}>Tipo de métrica</Text>
+              <Text style={styles.title}>Tema</Text>
               <DropDownPicker
                 placeholder="Selecione um item"
                 dropDownStyle={{
@@ -35,29 +34,8 @@ function UnidadeMedida() {
                 }}
                 arrowColor={"white"}
                 items={[
-                  { label: "Quilômetros", value: "Quilometros" },
-                  { label: "Milhas", value: "Milhas" },
-                ]}
-                style={styles.dropdown}
-              ></DropDownPicker>
-            </View>
-            <View style={{paddingTop:20}}>
-              <Text style={styles.title}>Unidade de medida de volume</Text>
-              <DropDownPicker
-                placeholder="Selecione um item"
-                dropDownStyle={{
-                  backgroundColor: "#333333",
-                  borderColor: "#525252",
-                  width: '100%',
-                }}
-                labelStyle={{
-                  fontSize: 16,
-                  color: "#fff",
-                }}
-                arrowColor={"white"}
-                items={[
-                  { label: "Litros", value: "Litros" },
-                  { label: "Galões", value: "galoes" },
+                  { label: "Claro", value: "Claro" },
+                  { label: "Escuro", value: "Escuro" },
                 ]}
                 style={styles.dropdown}
               ></DropDownPicker>
@@ -69,4 +47,4 @@ function UnidadeMedida() {
   );
 }
 
-export default UnidadeMedida;
+export default Aparencia;

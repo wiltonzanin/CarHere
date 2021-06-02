@@ -4,8 +4,8 @@ import { DrawerActions, useNavigation } from "@react-navigation/native";
 import styles from "./styles";
 import { ButtonMenu, ButtonPadrao } from "../../../../components/buttons";
 
-function Configuracoes({ navigation }: any) {
-  const { navigate } = useNavigation();
+function Acessibilidade({ navigation }: any) {
+/*   const { navigate } = useNavigation();
 
   function handleNavigateToUnidadeMedida() {
     navigate("UnidadeMedida");
@@ -24,10 +24,7 @@ function Configuracoes({ navigation }: any) {
   function handleNavigateToAparencia() {
     navigate("Aparencia");
   }
-  function handleNavigateToAcessibilidade() {
-    navigate("Acessibilidade");
-  }
-
+ */
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View style={styles.container}>
@@ -38,49 +35,36 @@ function Configuracoes({ navigation }: any) {
               onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
             />
           </View>
-          <Text style={styles.headerTitle}>Configurações</Text>
+          <Text style={styles.headerTitle}>Acessibilidade</Text>
           <View />
         </View>
         <View>
-          <Text style={styles.sectionTitle}>Preferências</Text>
+          <Text style={styles.sectionTitle}>Leitores de tela</Text>
           <View style={styles.buttonsGroup}>
             <View style={styles.buttonsGroupContent}>
               <ButtonPadrao
-                title="Unidades de medida"
-                onPress={handleNavigateToUnidadeMedida}
+                title="Selecionar leitor de tela"
               />
             </View>
-            <View style={styles.buttonsGroupContent}>
-              <ButtonPadrao title="Acessibilidade" 
-              onPress={handleNavigateToAcessibilidade}/>
-            </View>
-            <View style={styles.buttonsGroupContent}>
-              <ButtonPadrao title="Dicas e Manual do usuário" />
-            </View>
+            <ButtonPadrao title="Conversão de texto em voz" />
+          </View>
+
+          <Text style={styles.sectionTitle}>Audio e texto na tela</Text>
+          <View style={styles.buttonsGroup}>
+            <ButtonPadrao
+              title="Legendas"
+            />
+          </View>
+          <Text style={styles.sectionTitle}>Controles de interação</Text>
+          <View style={styles.buttonsGroup}>
             <View style={styles.buttonsGroupContent}>
               <ButtonPadrao
-                title="Aparência"
-                onPress={handleNavigateToAparencia}
+                title="Atraso ao tocar e pressionar"
               />
             </View>
-            <ButtonPadrao
-              title="Notificações"
-              onPress={handleNavigateToNotificacao}
-            />
-          </View>
-          <Text style={styles.sectionTitle}>Conta</Text>
-          <View style={styles.buttonsGroup}>
-            <ButtonPadrao
-              title="Opções de usuário"
-              onPress={handleNavigateToOpcoesUsuario}
-            />
-          </View>
-          <Text style={styles.sectionTitle}>Preferências</Text>
-          <View style={styles.buttonsGroup}>
-            <ButtonPadrao
-              title="Termos de Serviço"
-              onPress={handleNavigateToTermos}
-            />
+              <ButtonPadrao
+                title="Vibração"
+              />
           </View>
         </View>
       </View>
@@ -88,4 +72,4 @@ function Configuracoes({ navigation }: any) {
   );
 }
 
-export default Configuracoes;
+export default Acessibilidade;
