@@ -26,7 +26,8 @@ const styles = StyleSheet.create({
 
   text: {
     color: "#F0EFF4",
-    fontSize: 20,
+    fontSize: 18,
+    paddingTop: 20,
     paddingBottom: 20
   },
 

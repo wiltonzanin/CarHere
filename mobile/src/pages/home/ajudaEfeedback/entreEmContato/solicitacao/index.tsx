@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { View, Text, TextInput } from "react-native";
 import styles from "./styles";
 import { Button } from "../../../../../components/buttons";
 import BackScreen from "../../../../../components/backScreen";
-import { CheckBox } from "react-native-elements";
 import { Checkbox } from "../../../../../components/checkbox";
 
 function Solicitacao() {
@@ -13,7 +12,6 @@ function Solicitacao() {
         <BackScreen />
         <Text style={styles.headerTitle}>Enviar solicitação</Text>
         <View />
-        {/* Remover esta linha e substituir por um css que funcione */}
       </View>
       <View style={styles.content}>
         <Text style={styles.text}>Assunto</Text>
@@ -23,7 +21,7 @@ function Solicitacao() {
         <Checkbox title={"Problema ao realizar cadastro do veículo"} />
         <Checkbox title={"Outro:"} />
         <TextInput
-          style={styles.textOutro}
+          style={styles.textInputOutro}
           multiline={true}
           textAlignVertical="top"
         />

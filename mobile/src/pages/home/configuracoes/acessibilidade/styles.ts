@@ -8,24 +8,19 @@ const styles = StyleSheet.create({
   },
 
   header: {
+    paddingTop: 20,
     flexDirection: "row",
     justifyContent: "space-between",
-    paddingTop: 20
-  },
-
-  search: {
-    paddingTop: 10
   },
 
   headerTitle: {
     color: "#F0EFF4",
-    fontSize: 20,
-    paddingTop: 10,
+    fontSize: 20
   },
 
   sectionTitle: {
     color: "#F0EFF4",
-    fontSize: 20,
+    fontSize: 18,
     paddingTop: 20,
     paddingBottom: 20,
   },

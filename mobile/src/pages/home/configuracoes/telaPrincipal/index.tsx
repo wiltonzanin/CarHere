@@ -32,12 +32,10 @@ function Configuracoes({ navigation }: any) {
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View style={styles.container}>
         <View style={styles.header}>
-          <View style={styles.search}>
-            <ButtonMenu
-              title=""
-              onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-            />
-          </View>
+          <ButtonMenu
+            title=""
+            onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+          />
           <Text style={styles.headerTitle}>Configurações</Text>
           <View />
         </View>
@@ -51,8 +49,8 @@ function Configuracoes({ navigation }: any) {
               />
             </View>
             <View style={styles.buttonsGroupContent}>
-              <ButtonPadrao title="Acessibilidade" 
-              onPress={handleNavigateToAcessibilidade}/>
+              <ButtonPadrao title="Acessibilidade"
+                onPress={handleNavigateToAcessibilidade} />
             </View>
             <View style={styles.buttonsGroupContent}>
               <ButtonPadrao title="Dicas e Manual do usuário" />

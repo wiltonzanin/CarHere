@@ -9,9 +9,6 @@ const styles = StyleSheet.create({
 
   header: {
     paddingTop: 20,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    paddingRight:"45%"
   },
 
   buttonsHeader: {
@@ -20,16 +17,21 @@ const styles = StyleSheet.create({
   },
 
   headerText: {
-    color: "#F0EFF4",
+    color: '#F0EFF4',
     fontSize: 20,
   },
 
+  search: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+
   content: {
-    paddingTop: 20,
+    marginTop: 20,
   },
 
   servicos: {
-    marginTop: 15,
+    marginTop: 20,
   },
 
   buttonServico: {
@@ -59,7 +61,6 @@ const styles = StyleSheet.create({
     color: "#D9534F",
     fontSize: 16,
   },
-
 });
 
 export default styles;

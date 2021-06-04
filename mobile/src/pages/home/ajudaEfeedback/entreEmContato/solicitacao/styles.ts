@@ -26,9 +26,20 @@ const styles = StyleSheet.create({
 
   text: {
     color: "#F0EFF4",
-    fontSize: 20,
-    paddingBottom: 10,
-    paddingTop:10
+    fontSize: 18,
+    paddingBottom: 20,
+    paddingTop: 20
+  },
+
+  textInputOutro: {
+    padding: 10,
+    backgroundColor: '#333333',
+    borderColor: '#525252',
+    borderStyle: 'solid',
+    borderRadius: 5,
+    borderWidth: 1,
+    fontSize: 16,
+    color: '#F0EFF4',
   },
 
   textInput: {
@@ -42,18 +53,6 @@ const styles = StyleSheet.create({
     color: '#F0EFF4',
     flex: 1
   },
-
-  textOutro:{
-    padding: 10,
-    backgroundColor: '#333333',
-    borderColor: '#525252',
-    borderStyle: 'solid',
-    borderRadius: 5,
-    borderWidth: 1,
-    fontSize: 16,
-    color: '#F0EFF4',
-  },
-
 });
 
 export default styles;

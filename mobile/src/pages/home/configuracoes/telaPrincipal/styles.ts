@@ -10,22 +10,17 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: "row",
     justifyContent: "space-between",
-    paddingTop: 20
-  },
-
-  search: {
-    paddingTop: 10
+    marginTop: 20
   },
 
   headerTitle: {
     color: "#F0EFF4",
     fontSize: 20,
-    paddingTop: 10,
   },
 
   sectionTitle: {
     color: "#F0EFF4",
-    fontSize: 20,
+    fontSize: 18,
     paddingTop: 20,
     paddingBottom: 20,
   },

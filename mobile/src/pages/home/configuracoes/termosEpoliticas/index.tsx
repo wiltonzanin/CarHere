@@ -11,11 +11,10 @@ function Termos() {
       <View style={styles.container}>
         <View style={styles.header}>
           <BackScreen />
-          <View style={{ paddingLeft: "15%" }}>
-            <Text style={styles.title}>Termos</Text>
-          </View>
+          <Text style={styles.headerTitle}>Termos</Text>
+          <View />
         </View>
-        <View style={styles.content}>
+        <View>
           {/* Documentação: https://callstack.github.io/react-native-paper/2.0/list-accordion.html */}
           <List.Section>
             <List.Accordion
