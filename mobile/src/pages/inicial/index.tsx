@@ -4,13 +4,23 @@ import { useNavigation } from '@react-navigation/native';
 import { Text, View, ScrollView } from 'react-native';
 import { Svg, Path } from 'react-native-svg';
 import styles from './styles';
-import TextField from '../../components/textField'
-import {Button} from '../../components/buttons';
-
+import TextField from '../../components/textField';
+import { Button } from '../../components/buttons';
+import { useAuth } from '../../contexts/auth'
 
 function Inicial() {
 
+    const { signed, user, signIn } = useAuth();
+
+    console.log(signed)
+    console.log(user)
+
     const { navigate } = useNavigation();
+
+    function handleSignIn() {
+        signIn();
+        console.log("Logar")
+    }
 
     function handleNavigateToCadastroUsarioPage() {
         navigate('CadastroUsuario');
@@ -50,7 +60,7 @@ function Inicial() {
                         </RectButton>
                     </View>
                     <View style={styles.buttonsSection}>
-                        <Button title = "Entrar" onPress={handleNavigateToInicio}/>
+                        <Button title="Entrar" onPress={handleSignIn} />
                         <RectButton onPress={handleNavigateToCadastroUsarioPage} style={styles.textButton}>
                             <Text style={styles.registerText}>
                                 Não tem uma conta!
