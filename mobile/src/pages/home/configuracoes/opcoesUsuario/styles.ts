@@ -20,20 +20,20 @@ const styles = StyleSheet.create({
   },
 
   content: {
-    flex:1,
+    flex: 1,
     color: "#fff",
     justifyContent: "flex-start",
     width: "100%",
     height: "85%",
-    paddingTop:20
+    paddingTop: 20
   },
 
-  foto:{
-borderRadius:100,
-height:150,
-width:150,
-backgroundColor:'black',
-alignSelf:'center'
+  foto: {
+    borderRadius: 100,
+    height: 150,
+    width: 150,
+    backgroundColor: 'black',
+    alignSelf: 'center'
   },
 
   text: {
@@ -41,7 +41,7 @@ alignSelf:'center'
     fontSize: 20,
     paddingTop: 10,
     paddingBottom: 10,
-    alignSelf:'center'
+    alignSelf: 'center'
   },
 
   top: {
