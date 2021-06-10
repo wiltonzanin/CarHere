@@ -17,6 +17,8 @@ import EntrarEmContato from '../pages/home/ajudaEfeedback/entreEmContato';
 import Solicitacao from '../pages/home/ajudaEfeedback/entreEmContato/solicitacao';
 import Aparencia from '../pages/home/configuracoes/aparencia';
 import Acessibilidade from '../pages/home/configuracoes/acessibilidade';
+import Seguranca from '../pages/home/configuracoes/opcoesUsuario/seguranca';
+import SelecionaFoto from '../pages/home/configuracoes/opcoesUsuario/modal/selecionarFoto';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -41,6 +43,8 @@ function AppStack() {
             <Screen name="Solicitacao" component={Solicitacao} />
             <Screen name="Aparencia" component={Aparencia} />
             <Screen name="Acessibilidade" component={Acessibilidade} />
+            <Screen name="Seguranca" component={Seguranca} />
+            <Screen name="SelecionaFoto" component={SelecionaFoto} />
         </Navigator>
     );
 }

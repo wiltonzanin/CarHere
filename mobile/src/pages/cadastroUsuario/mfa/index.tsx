@@ -7,12 +7,8 @@ import { Button } from "../../../components/buttons";
 import DropDownPicker from "react-native-dropdown-picker";
 
 function Mfa() {
+  const navigation = useNavigation();
 
-  const { navigate } = useNavigation();
-
-  function handleNavigateToIncial() {
-    navigate("Inicial");
-  }
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
@@ -36,7 +32,7 @@ function Mfa() {
               }}
               arrowColor={"#F0EFF4"}
               items={[
-                { label: "Nome do primeiro animal de estimação", value: "Nome do primeiro animal de estimação" },
+                { label: "Primeiro animal de estimação", value: "Primeiro animal de estimação" },
                 { label: "Nome do primeiro chefe", value: "Nome do primeiro chefe" },
                 { label: "Nome do primeiro carro", value: "Nome do primeiro carro" },
                 { label: "Comida preferida", value: "Comida preferida" },
@@ -48,7 +44,7 @@ function Mfa() {
           <View style={{ marginTop: 20 }}>
             <TextField labelName={'Resposta'} />
           </View>
-          <Button title="Concluir" onPress={handleNavigateToIncial} />
+          <Button title="Concluir" onPress={navigation.goBack} />
         </View>
       </View>
     </ScrollView>

@@ -48,6 +48,11 @@ const styles = StyleSheet.create({
   textAjuda: {
     color: "#F0EFF4",
     paddingLeft: 5
+  },
+
+  buttonFoto:{
+    height:75,
+    width:65,
   }
 });
 
