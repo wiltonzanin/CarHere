@@ -1,6 +1,6 @@
 import { Feather } from "@expo/vector-icons";
 import React from "react";
-import { TouchableOpacity, Text, TouchableOpacityProps } from "react-native";
+import { TouchableOpacity, Text, TouchableOpacityProps, View, Image } from "react-native";
 import styles from "./styles";
 
 interface ButtonProps extends TouchableOpacityProps {
@@ -38,11 +38,4 @@ export function ButtonPadrao({ title, ...rest }: ButtonProps) {
     </TouchableOpacity>
   );
 }
-
-export function ButtonFoto({ title, ...rest }: ButtonProps) {
-  return (
-    <TouchableOpacity style={styles.buttonFoto} {...rest}>
-      <Feather name="camera" size={40} color={"#F0EFF4"}/><Text style={styles.textAjuda}>{title}</Text>
-    </TouchableOpacity>
-  );
-}
+ 

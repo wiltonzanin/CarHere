@@ -31,7 +31,34 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   btn: {
-    padding:5
+    padding:5,
+    backgroundColor:'black',
+    width:55
+  },
+
+  textTitle:{
+color:'#F0EFF4',
+fontSize: 18,
+paddingTop:15
+  },
+
+  imgVeiculo:{
+    height:55,
+    width:55,
+    backgroundColor: '#333333',
+    borderTopRightRadius: 5,
+    borderBottomRightRadius: 5,
+    alignSelf:'center'
+  },
+
+  buttonFoto:{
+    height:75,
+    width:65,
+  },
+
+  textModal:{
+    color:'#F0EFF4',
+    alignSelf:'center'
   }
 })
 

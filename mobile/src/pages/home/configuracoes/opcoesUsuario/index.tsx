@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, ScrollView } from "react-native";
+import { View, Text, ScrollView, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import styles from "./styles";
 import { ButtonPadrao } from "../../../../components/buttons";
@@ -10,6 +10,7 @@ import Modal from "./modal";
 function OpcoesUsuario() {
   const { navigate } = useNavigation();
   const [modal, setModal] = useState(false);
+  const [image, setImage] = useState(null);
 
   function handleNavigateToAlterarSenhaPage() {
     navigate("AlterarSenha");
@@ -30,7 +31,7 @@ function OpcoesUsuario() {
         </View>
         <View style={styles.content}>
           <View style={styles.foto}>
-            <Text style={styles.text}>Foto</Text>
+            <Image source={require ('../../../../assets/images/galeria.png')} style={styles.foto}/>
           </View>
           <Text style={styles.text}>
             Fulana da Silva <Feather name="edit" color="#fff" size={18} />{" "}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {
   View,
-  Button,
+  Image,
   Text,
   ScrollView,
   TouchableOpacity,
@@ -10,8 +10,6 @@ import {
 } from "react-native";
 import styles from "./styles";
 import { Feather } from "@expo/vector-icons";
-import { ButtonFoto, ButtonMenu} from "../../../../../components/buttons";
-import SelecionarFotoGaleria from "./selecionarFoto";
 import { useNavigation } from "@react-navigation/native";
 const { height } = Dimensions.get("window");
 
@@ -100,15 +98,62 @@ const Modal = ({ show, close }: any) => {
           onPress={close}
         ></TouchableOpacity>
         <ScrollView>
+          <Text style={styles.textTitle}> Escolha um App </Text>
+        <View style={{ flexDirection: "row", justifyContent:'space-between', paddingTop:10 }}>
           <View style={{ flexDirection: "row" }}>
-            <ButtonFoto
-            title={'Galeria'}
-              onPress={handleNavigateToSelecionarFoto}
-            />
-            <TouchableOpacity style={styles.btn} onPress={close}>
-              <Feather name="x" color="#fff" size={20} />
+            <TouchableOpacity
+              style={styles.buttonFoto}
+            >
+              <Image
+                source={require("../../../../../assets/images/onedrive.png")}
+                style={styles.imgVeiculo}
+              />
+              <Text style={styles.textModal}>OneDrive</Text>
+            </TouchableOpacity>
+            
+          </View>
+
+          <View style={{ flexDirection: "row" }}>
+            <TouchableOpacity
+              style={styles.buttonFoto}
+            >
+              <Image
+                source={require("../../../../../assets/images/arquivos.png")}
+                style={styles.imgVeiculo}
+              />
+              <Text style={styles.textModal}>Arquivos</Text>
             </TouchableOpacity>
           </View>
+
+          <View style={{ flexDirection: "row" }}>
+            <TouchableOpacity
+              style={styles.buttonFoto}
+              onPress={handleNavigateToSelecionarFoto}
+            >
+              <Image
+                source={require("../../../../../assets/images/galeria.png")}
+                style={styles.imgVeiculo}
+              />
+              <Text style={styles.textModal}>Galeria</Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={{ flexDirection: "row" }}>
+            <TouchableOpacity
+              style={styles.buttonFoto}
+            >
+              <Image
+                source={require("../../../../../assets/images/drive.png")}
+                style={styles.imgVeiculo}
+              />
+              <Text style={styles.textModal}>Drive</Text>
+            </TouchableOpacity>
+          </View>
+          </View>
+            <TouchableOpacity style={styles.btn} onPress={close}>
+              <Feather name="x" color="#fff" size={20} />
+              <Text style={{color:'white'}}>Fechar</Text>
+            </TouchableOpacity>
         </ScrollView>
       </Animated.View>
     </Animated.View>

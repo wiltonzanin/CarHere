@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 24,
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
 
   textAdicionar: {
@@ -42,18 +42,15 @@ const styles = StyleSheet.create({
     padding: 5,
     alignItems: "center",
     justifyContent: "space-between",
-    flexDirection: 'row',
+    flexDirection: "row",
   },
 
   textAjuda: {
     color: "#F0EFF4",
-    paddingLeft: 5
+    paddingLeft: 5,
   },
 
-  buttonFoto:{
-    height:75,
-    width:65,
-  }
+
 });
 
 export default styles;
