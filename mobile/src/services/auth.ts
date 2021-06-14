@@ -16,6 +16,6 @@ export function signIn(): Promise<Response> {
                     email: 'wilton@email.com',
                 },
             });
-        }, 2000);
+        }, 750);
     });
 }

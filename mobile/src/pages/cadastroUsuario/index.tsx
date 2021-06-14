@@ -40,11 +40,6 @@ function CadastroUsuario() {
     navigate("Termos");
   }
 
-  function handleNavigateToMfa() {
-    setModalVisible(!modalVisible);
-    navigate("Mfa");
-  }
-
   function handleNavigateToIncial() {
     setModalVisible(!modalVisible);
     navigate("Inicial");
@@ -77,7 +72,7 @@ function CadastroUsuario() {
               </Pressable>
               : <Pressable
                 style={styles.button}
-                onPress={() => handleNavigateToMfa()}>
+                onPress={() => handleNavigateToIncial()}>
                 <Text style={styles.textStyle}>OK</Text>
               </Pressable>
             }

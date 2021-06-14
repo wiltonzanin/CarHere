@@ -3,7 +3,7 @@ import Usuarios from '../models/usuarios'
 export default {
     render(usuarios: Usuarios){
         return{
-            id: usuarios.id,
+            id: usuarios.id_usuario,
             nome: usuarios.nome,
             //cpf: usuarios.cpf,
             email: usuarios.email,

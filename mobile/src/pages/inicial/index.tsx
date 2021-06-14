@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { RectButton } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import { Text, View, ScrollView } from 'react-native';
@@ -10,6 +10,9 @@ import { useAuth } from '../../contexts/auth'
 
 function Inicial() {
 
+    const [email, setEmail] = useState("");
+    const [senha, setSenha] = useState("");
+
     const { signed, user, signIn } = useAuth();
 
     console.log(signed)
@@ -18,6 +21,7 @@ function Inicial() {
     const { navigate } = useNavigation();
 
     function handleSignIn() {
+        console.log(email + senha)
         signIn();
         console.log("Logar")
     }
@@ -53,8 +57,8 @@ function Inicial() {
                 </View>
                 <View style={styles.content}>
                     <View>
-                        <TextField labelName="E-mail" tipoTeclado={"email-address"} />
-                        <TextField labelName="Senha" secureTextEntry={true} />
+                        <TextField labelName="E-mail" tipoTeclado={"email-address"} funcaoOnChangeText={setEmail}/>
+                        <TextField labelName="Senha" secureTextEntry={true} funcaoOnChangeText={setSenha} />
                         <RectButton onPress={handleNavigateToRecuperarSenhaPage} style={styles.forgotPasswordTextButton} rippleColor='#1C00ff00'>
                             <Text style={styles.forgotPassword}>Esqueceu a senha?</Text>
                         </RectButton>
