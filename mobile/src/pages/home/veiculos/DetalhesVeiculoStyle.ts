@@ -42,22 +42,24 @@ const styles = StyleSheet.create({
 
   infosServicos: {
     flexDirection: "row",
-    justifyContent: 'space-between',
-    marginBottom: 20
+    //justifyContent: 'space-between',
+    marginBottom: 20,
   },
 
   autonomia: {
     backgroundColor: '#F0EFF4',
-    width: 160,
+    width: 150,
     height: 140,
     padding: 10,
     borderRadius: 10,
+    marginRight: 20,
   },
 
   textInfo1: {
     color: "#252525",
     fontSize: 18,
-    paddingBottom: 5
+    paddingBottom: 5,
+    
   },
 
   textInfo2: {
@@ -83,7 +85,6 @@ const styles = StyleSheet.create({
   servicos: {
     backgroundColor: "#F0EFF4",
     width: 126,
-    height: 140,
     borderRadius: 10,
     padding: 10,
     marginRight: 10,
