@@ -1,0 +1,46 @@
+#navbar{
+    background-color: #8F1622;
+}
+
+.avatar{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.icons{
+    color: white;
+}
+
+.icons:first-child {
+    margin-right: 10px;
+}
+
+.dropdown-sytle{
+    background-color: #333333;
+    border: #525252 2px solid;
+}
+
+.dropdown-header{
+    color: #F0EFF4 !important;
+    font-size: 1em !important;
+    font-weight: bold !important;
+}
+
+.dropdown-item{
+    color: #F0EFF4 !important;
+}
+
+.dropdown-item:hover{
+    background-color: #252525 !important;
+}
+
+.dropdown-item.no-hover:hover{
+    background-color: #333333 !important;
+    
+}
+
+.dropdown-divider{
+    background-color: #F0EFF4;
+}
