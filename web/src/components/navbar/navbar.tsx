@@ -1,7 +1,7 @@
 import React from 'react';
 import './navbarStyles.css';
 import { IconContext } from "react-icons";
-import { FiSettings, FiHelpCircle } from "react-icons/fi";
+import { FiPlus, FiSettings, FiHelpCircle } from "react-icons/fi";
 
 import user from '../../assets/meme.png';
 
@@ -33,16 +33,20 @@ function navbar() {
                 <li>
                   <hr className="dropdown-divider" />
                 </li>
-                <li><a className="dropdown-item" href="#">+ Adicionar veículos</a></li>
+                <li><a className="dropdown-item" href="#">
+                  <IconContext.Provider value={{ className: 'icons' }}>
+                    <FiPlus />
+                  </IconContext.Provider>
+                  Adicionar veículos</a></li>
               </ul>
             </li>
           </ul>
           <div className="d-flex">
-          <div className="collapse navbar-collapse" id="navbarDropdownAvatar">
+            <div className="collapse navbar-collapse" id="navbarDropdownAvatar">
               <ul className="navbar-nav">
                 <li className="nav-item dropdown">
                   <a className="nav-link" href="#" id="navbarDropdownMenuLinkAvatar" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img className="avatar" src={user} alt="Avatar do usuário" />
+                    <img className="avatar" src={user} alt="Avatar do usuário" />
                   </a>
                   <ul className="dropdown-menu dropdown-menu-end dropdown-sytle" aria-labelledby="navbarDropdownMenuLinkAvatar">
                     <li><span className="dropdown-header">Opções do perfil</span></li>
