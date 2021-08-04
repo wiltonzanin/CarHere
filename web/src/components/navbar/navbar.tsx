@@ -91,7 +91,6 @@ function navbar() {
                   <ul className="dropdown-menu dropdown-menu-end dropdown-sytle" aria-labelledby="navbarDropdownMenuLinkAjuda">
                     <li><span className="dropdown-header">Ajuda</span></li>
                     <li><a className="dropdown-item" href="#">Entre em contato</a></li>
-                    <li><a className="dropdown-item" href="#">Relatar um problema</a></li>
                     <li>
                       <hr className="dropdown-divider" />
                     </li>

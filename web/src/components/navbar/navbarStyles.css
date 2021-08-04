@@ -6,7 +6,7 @@
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    margin-right: 10px;
+    margin-right: .5rem;
 }
 
 .icons{
@@ -14,7 +14,7 @@
 }
 
 .icons:first-child {
-    margin-right: 10px;
+    margin-right: .5rem;
 }
 
 .dropdown-sytle{
