@@ -14,7 +14,7 @@ function RecuperarSenha() {
 
     return (
         <BorderlessButton onPress={navigation.goBack} style={styles.backButtonStyle}>
-            <Feather name="arrow-left" size={25} color='#F0EFF4' />
+            <Feather name="arrow-left" size={24} color='#F0EFF4' />
         </BorderlessButton>
     );
 }

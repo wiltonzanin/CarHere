@@ -9,9 +9,9 @@ const styles = StyleSheet.create({
   },
 
   header: {
-    width: "100%",
     paddingTop: 20,
     flexDirection: "row",
+    justifyContent: "space-between"
   },
 
   headerTitle: {

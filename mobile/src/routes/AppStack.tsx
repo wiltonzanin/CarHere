@@ -5,6 +5,7 @@ import CadastroVeiculo from '../pages/cadastroVeiculo/primeiraTelaCadastro';
 import CodigoConfirmacao from '../pages/home/configuracoes/alterarSenha/confirmarCodigo';
 import Notificacao from '../pages/home/configuracoes/notificacao';
 import AlterarSenha from '../pages/home/configuracoes/alterarSenha/confirmarEmail';
+import VeiculosCadastrados from '../pages/home/veiculos/veiculos';
 import VisualizarVeiculo from '../pages/home/veiculos/DetalhesVeiculo';
 import UnidadeMedida from '../pages/home/configuracoes/unidadeMedida';
 import AppVersion from '../pages/home/configuracoes/appVersion';
@@ -31,6 +32,7 @@ function AppStack() {
             <Screen name="CodigoConfirmacao" component={CodigoConfirmacao} />
             <Screen name="Notificacao" component={Notificacao} />
             <Screen name="AlterarSenha" component={AlterarSenha} />
+            <Screen name="VeiculosCadastrados" component={VeiculosCadastrados} />
             <Screen name="VisualizarVeiculo" component={VisualizarVeiculo} />
             <Screen name="UnidadeMedida" component={UnidadeMedida} />
             <Screen name="AppVersion" component={AppVersion} />

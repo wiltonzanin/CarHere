@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { RectButton } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
 import { Text, View, ScrollView } from "react-native";
+
+import api from "../../../services/api";
 import styles from "./styles";
 import TextField from "../../../components/textField";
 import DropDownPicker from "react-native-dropdown-picker";
@@ -11,8 +13,44 @@ import { Button } from "../../../components/buttons";
 function CadastroVeiculo() {
   const { navigate } = useNavigation();
 
-  function handleNavigateToInicio() {
-    navigate("Inicio");
+  // const [modalVisible, setModalVisible] = useState(false);
+  // const [modalWarning, setModalWarning] = useState(false);
+
+  const [marca, setMarca] = useState("");
+  const [modelo, setModelo] = useState("");
+  const [motorizacao, setMotorizacao] = useState("");
+  const [quilometragem, setQuilometragem] = useState("");
+  const [ano, setAno] = useState("");
+  const [combustivel, setCombustivel] = useState("");
+  const [foto_carro, setFoto_carro] = useState("teste");
+
+  async function handleCreateVeiculo() {
+    const data = new FormData();
+
+    data.append("marca", marca);
+    data.append("modelo", modelo);
+    data.append("motorizacao", motorizacao);
+    data.append("ano", ano);
+    data.append("combustivel", combustivel);
+    data.append("km", quilometragem);
+    data.append("fotoCarro", foto_carro);
+
+    await api.post("/carros", data);
+
+    navigate("VeiculosCadastrados");
+
+    // try {
+    //   await api.post("/carros", data);
+    // } catch (error) {
+    //   setModalWarning(true);
+    // }
+
+    // setModalVisible(true);
+  }
+
+  function handleNavigateToVeiculos() {
+    //setModalVisible(!modalVisible);
+    navigate("VisualizarVeiculo");
   }
 
   return (
@@ -24,11 +62,18 @@ function CadastroVeiculo() {
           <View />
         </View>
         <View>
-          <TextField labelName="Marca" />
-          <TextField labelName="Modelo" />
-          <TextField labelName="Motorização" />
+          <TextField labelName="Marca" funcaoOnChangeText={setMarca} />
+          <TextField labelName="Modelo" funcaoOnChangeText={setModelo} />
           <View style={styles.inputGroup}>
-            <View style={styles.inputGroupRow}>
+            <View style={styles.inputGroupColumn}>
+              <TextField labelName="Motorização" tipoTeclado={"numeric"} funcaoOnChangeText={setMotorizacao} />
+            </View>
+            <View style={styles.inputGroupSecondColumn}>
+              <TextField labelName="Quilometragem" tipoTeclado={"numeric"} funcaoOnChangeText={setQuilometragem} />
+            </View>
+          </View>
+          <View style={styles.inputGroup}>
+            <View style={styles.inputGroupColumn}>
               <Text style={styles.text}>Ano</Text>
               <DropDownPicker
                 placeholder=""
@@ -100,9 +145,10 @@ function CadastroVeiculo() {
                   { label: "", value: "" },
                 ]}
                 style={styles.dropdown}
+                onChangeItem={(item) => {setAno(item.value)}}
               ></DropDownPicker>
             </View>
-            <View style={styles.inputGroupSecondRow}>
+            <View style={styles.inputGroupSecondColumn}>
               <Text style={styles.text}>Combustível</Text>
               <DropDownPicker
                 placeholder="Selecione um item"
@@ -118,11 +164,12 @@ function CadastroVeiculo() {
                   { label: "Elétrico", value: "Eletrico" },
                 ]}
                 style={styles.dropdown}
+                onChangeItem={(item) => {setCombustivel(item.value)}}
               ></DropDownPicker>
             </View>
           </View>
         </View>
-        <Button title="Concluir" onPress={handleNavigateToInicio} />
+        <Button title="Concluir" onPress={handleCreateVeiculo} />
       </View>
     </ScrollView>
   );

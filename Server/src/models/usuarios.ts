@@ -1,4 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, JoinColumn } from 'typeorm';
+
+import Carro from './carro'
 
 @Entity('usuarios')
 export default class Usuarios {
@@ -28,4 +30,10 @@ export default class Usuarios {
 
     // @Column()
     // genero: string;
+
+    @OneToMany(() => Carro, carro => carro.usuario, {
+        cascade: ['insert', 'update']
+    })
+    @JoinColumn({ name: 'id_usuario'})
+    carros: Carro[];
 }

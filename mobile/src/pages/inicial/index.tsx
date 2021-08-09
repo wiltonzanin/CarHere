@@ -6,7 +6,7 @@ import { Svg, Path } from 'react-native-svg';
 import styles from './styles';
 import TextField from '../../components/textField';
 import { Button } from '../../components/buttons';
-import { useAuth } from '../../contexts/auth'
+import { useAuth } from '../../contexts/auth';
 
 function Inicial() {
 

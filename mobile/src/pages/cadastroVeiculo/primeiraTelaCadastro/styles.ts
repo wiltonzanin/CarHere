@@ -30,12 +30,12 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     },
 
-    inputGroupRow: {
+    inputGroupColumn: {
         flex: 1,
         marginRight: 15
     },
 
-    inputGroupSecondRow: {
+    inputGroupSecondColumn: {
         flex: 2
     },
 
