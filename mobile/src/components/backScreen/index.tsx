@@ -8,7 +8,7 @@ import styles from './styles';
  * Componente para retonar a tela anterior.
  * 
  */
-function RecuperarSenha() {
+function backScreen() {
 
     const navigation = useNavigation();
 
@@ -19,4 +19,4 @@ function RecuperarSenha() {
     );
 }
 
-export default RecuperarSenha;
+export default backScreen;

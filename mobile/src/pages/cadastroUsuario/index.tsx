@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { RectButton } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
-import { Text, View, ScrollView, Modal, Pressable } from "react-native";
+import { Text, View, ScrollView, Modal, ActivityIndicator } from "react-native";
+
 import styles from "./styles";
 import TextField from "../../components/textField";
 import BackScreen from "../../components/backScreen";
 import api from "../../services/api";
 import { Button } from "../../components/buttons";
 import { CheckBox } from 'react-native-elements';
-import { Feather } from "@expo/vector-icons";
+import FeedbackModal from "../../components/feedbackModal";
+import LoadingScreen from "../../components/loadingScreen";
 
 function CadastroUsuario() {
   const [nome, setNome] = useState("");
@@ -20,6 +22,8 @@ function CadastroUsuario() {
   const [modalVisible, setModalVisible] = useState(false);
   const [modalWarning, setModalWarning] = useState(false);
 
+  const [carregando, setCarregando] = useState(false);
+
   async function handleCreateUsuario() {
     const data = new FormData();
 
@@ -28,8 +32,10 @@ function CadastroUsuario() {
     data.append("senha", senha);
 
     try {
+      setCarregando(true)
       await api.post("/usuarios", data);
     } catch (error) {
+      setCarregando(false)
       setModalWarning(true);
     }
 
@@ -42,43 +48,17 @@ function CadastroUsuario() {
 
   function handleNavigateToIncial() {
     setModalVisible(!modalVisible);
+    setCarregando(false);
     navigate("Inicial");
   }
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-      <Modal
-        animationType="fade"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => { handleNavigateToIncial() }}
-        statusBarTranslucent={true}
-      >
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            {modalWarning
-              ? <Feather name='alert-circle' size={50} color={'#eca400'} style={{ marginTop: 20 }} />
-              : <Feather name='check-circle' size={50} color={'#5CB85C'} style={{ marginTop: 20 }} />
-            }
-            {modalWarning
-              ? <Text style={styles.modalText}>Ops, tivemos um problema! Por favor tente novamente mais tarde.</Text>
-              : <Text style={styles.modalText}>Cadastro realizado com sucesso!</Text>
-            }
-            {modalWarning
-              ? <Pressable
-                style={styles.button}
-                onPress={() => handleNavigateToIncial()}>
-                <Text style={styles.textStyle}>OK</Text>
-              </Pressable>
-              : <Pressable
-                style={styles.button}
-                onPress={() => handleNavigateToIncial()}>
-                <Text style={styles.textStyle}>OK</Text>
-              </Pressable>
-            }
-          </View>
-        </View>
-      </Modal>
+      <LoadingScreen carregando={carregando} />
+      <FeedbackModal
+        modalVisible={modalVisible}
+        funcaoOnRequestClose={handleNavigateToIncial}
+        modalTypeWarning={modalWarning} />
       <View style={styles.container}>
         <View style={styles.header}>
           <BackScreen />
@@ -125,7 +105,7 @@ function CadastroUsuario() {
           <Button title="Próximo" onPress={() => handleCreateUsuario()} />
         </View>
       </View>
-    </ScrollView>
+    </ScrollView >
   );
 }
 
