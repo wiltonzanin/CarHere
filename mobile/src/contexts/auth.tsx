@@ -3,7 +3,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as auth from '../services/auth';
 import api from '../services/api';
 
-
 interface AuthContextData {
     signed: boolean;
     user: object | null;

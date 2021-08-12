@@ -30,35 +30,39 @@ const styles = StyleSheet.create({
     marginTop: 50,
     textAlign: 'center'
   },
+
   btn: {
-    padding:5,
-    backgroundColor:'black',
-    width:55
+    flex: 1,
+    backgroundColor: '#8F1622',
+    marginTop: 20,
+    height: 50,
+    borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 5,
   },
 
-  textTitle:{
-color:'#F0EFF4',
-fontSize: 18,
-paddingTop:15
+  textTitle: {
+    color: '#F0EFF4',
+    fontSize: 18,
+    paddingTop: 15
   },
 
-  imgVeiculo:{
-    height:55,
-    width:55,
+  imgVeiculo: {
     backgroundColor: '#333333',
     borderTopRightRadius: 5,
     borderBottomRightRadius: 5,
-    alignSelf:'center'
+    alignSelf: 'center'
   },
 
-  buttonFoto:{
-    height:75,
-    width:65,
+  buttonFoto: {
+    height: 75,
+    width: 65,
   },
 
-  textModal:{
-    color:'#F0EFF4',
-    alignSelf:'center'
+  textModal: {
+    color: '#F0EFF4',
+    alignSelf: 'center'
   }
 })
 

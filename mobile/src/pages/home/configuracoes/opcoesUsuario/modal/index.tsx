@@ -8,9 +8,10 @@ import {
   Animated,
   Dimensions,
 } from "react-native";
-import styles from "./styles";
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import styles from "./styles";
+
 const { height } = Dimensions.get("window");
 
 const Modal = ({ show, close }: any) => {
@@ -104,25 +105,10 @@ const Modal = ({ show, close }: any) => {
             <TouchableOpacity
               style={styles.buttonFoto}
             >
-              <Image
-                source={require("../../../../../assets/images/onedrive.png")}
-                style={styles.imgVeiculo}
-              />
-              <Text style={styles.textModal}>OneDrive</Text>
+              <Feather name='camera' size={40} color={'#F0EFF4'} style={styles.imgVeiculo}/>
+              <Text style={styles.textModal}>Camera</Text>
             </TouchableOpacity>
             
-          </View>
-
-          <View style={{ flexDirection: "row" }}>
-            <TouchableOpacity
-              style={styles.buttonFoto}
-            >
-              <Image
-                source={require("../../../../../assets/images/arquivos.png")}
-                style={styles.imgVeiculo}
-              />
-              <Text style={styles.textModal}>Arquivos</Text>
-            </TouchableOpacity>
           </View>
 
           <View style={{ flexDirection: "row" }}>
@@ -137,22 +123,9 @@ const Modal = ({ show, close }: any) => {
               <Text style={styles.textModal}>Galeria</Text>
             </TouchableOpacity>
           </View>
-
-          <View style={{ flexDirection: "row" }}>
-            <TouchableOpacity
-              style={styles.buttonFoto}
-            >
-              <Image
-                source={require("../../../../../assets/images/drive.png")}
-                style={styles.imgVeiculo}
-              />
-              <Text style={styles.textModal}>Drive</Text>
-            </TouchableOpacity>
-          </View>
           </View>
             <TouchableOpacity style={styles.btn} onPress={close}>
-              <Feather name="x" color="#fff" size={20} />
-              <Text style={{color:'white'}}>Fechar</Text>
+              <Text style={{color:'white'}}>Cancelar</Text>
             </TouchableOpacity>
         </ScrollView>
       </Animated.View>

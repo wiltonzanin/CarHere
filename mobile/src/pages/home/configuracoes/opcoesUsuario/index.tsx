@@ -1,23 +1,46 @@
 import React, { useState } from "react";
-import { View, Text, ScrollView, Image } from "react-native";
+import { View, Text, ScrollView, Image, TouchableOpacity } from "react-native";
+import * as ImagePicker from 'expo-image-picker';
 import { useNavigation } from "@react-navigation/native";
+
 import styles from "./styles";
 import { ButtonPadrao } from "../../../../components/buttons";
 import { Feather } from "@expo/vector-icons";
 import BackScreen from "../../../../components/backScreen";
 import { useAuth } from '../../../../contexts/auth';
-import Modal from "./modal";
 
 function OpcoesUsuario() {
   const { navigate } = useNavigation();
-  const [modal, setModal] = useState(false);
-  const [image, setImage] = useState(null);
 
   const { signOut } = useAuth();
+  const [image, setImage] = useState<string>();
+
+  async function handleSelecionarFoto() {
+    const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    if (status !== "granted") {
+      alert("Opa, precisamos da permissão de acesso a galeria para que possamos salvar as imagens :)");
+      return;
+    }
+
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    if (result.cancelled) {
+      return;
+    }
+
+    const { uri } = result;
+
+    setImage(uri)
+  }
 
   function handleSignOut() {
     signOut();
-}
+  }
 
   function handleNavigateToAlterarSenhaPage() {
     navigate("AlterarSenha");
@@ -34,11 +57,13 @@ function OpcoesUsuario() {
           <View>
             <Text style={styles.headerTitle}>Opções do Usuário</Text>
           </View>
-          <View/>
+          <View />
         </View>
         <View style={styles.content}>
           <View style={styles.foto}>
-            <Image source={require('../../../../assets/images/muie.jpg')} style={styles.foto} />
+            <TouchableOpacity onPress={handleSelecionarFoto}>
+              <Image source={{ uri: image }} style={styles.foto} />
+            </TouchableOpacity>
           </View>
           <Text style={styles.text}>
             Fulana da Silva <Feather name="edit" color="#fff" size={18} />{" "}
@@ -51,10 +76,7 @@ function OpcoesUsuario() {
               />
             </View>
             <View style={styles.meio}>
-              <ButtonPadrao
-                title="Alterar foto"
-                onPress={() => setModal(true)}
-              />
+              <ButtonPadrao title="Alterar foto" onPress={handleSelecionarFoto} />
             </View>
             <View style={styles.meio}>
               <ButtonPadrao title="Segurança" onPress={handleNavigateToSeguranca} />
@@ -63,7 +85,6 @@ function OpcoesUsuario() {
           </View>
         </View>
       </View>
-      <Modal show={modal} close={() => setModal(false)} />
     </ScrollView>
   );
 }

@@ -9,12 +9,15 @@ import TextField from "../../../components/textField";
 import DropDownPicker from "react-native-dropdown-picker";
 import BackScreen from "../../../components/backScreen";
 import { Button } from "../../../components/buttons";
+import LoadingScreen from "../../../components/loadingScreen";
+import FeedbackModal from "../../../components/feedbackModal";
 
 function CadastroVeiculo() {
   const { navigate } = useNavigation();
 
-  // const [modalVisible, setModalVisible] = useState(false);
-  // const [modalWarning, setModalWarning] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [modalWarning, setModalWarning] = useState(false);
+  const [carregando, setCarregando] = useState(false);
 
   const [marca, setMarca] = useState("");
   const [modelo, setModelo] = useState("");
@@ -35,26 +38,32 @@ function CadastroVeiculo() {
     data.append("km", quilometragem);
     data.append("fotoCarro", foto_carro);
 
-    await api.post("/carros", data);
+    try {
+      setCarregando(true)
+      await api.post("/carros", data);
+    } catch (error) {
+      setCarregando(false)
+      setModalWarning(true);
+    }
 
-    navigate("VeiculosCadastrados");
-
-    // try {
-    //   await api.post("/carros", data);
-    // } catch (error) {
-    //   setModalWarning(true);
-    // }
-
-    // setModalVisible(true);
+    setModalVisible(true);
   }
 
   function handleNavigateToVeiculos() {
-    //setModalVisible(!modalVisible);
-    navigate("VisualizarVeiculo");
+    setModalVisible(!modalVisible);
+    setCarregando(false);
+    if (modalWarning == false) {
+      navigate("VeiculosCadastrados");
+    }
   }
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+      <LoadingScreen carregando={carregando} />
+      <FeedbackModal
+        modalVisible={modalVisible}
+        funcaoOnRequestClose={handleNavigateToVeiculos}
+        modalTypeWarning={modalWarning} />
       <View style={styles.container}>
         <View style={styles.header}>
           <BackScreen />
@@ -81,6 +90,8 @@ function CadastroVeiculo() {
                 labelStyle={styles.dropdownText}
                 arrowColor={"#F0EFF4"}
                 items={[
+                  { label: "2022", value: "2022" },
+                  { label: "2021", value: "2021" },
                   { label: "2020", value: "2020" },
                   { label: "2019", value: "2019" },
                   { label: "2018", value: "2018" },
@@ -145,7 +156,7 @@ function CadastroVeiculo() {
                   { label: "", value: "" },
                 ]}
                 style={styles.dropdown}
-                onChangeItem={(item) => {setAno(item.value)}}
+                onChangeItem={(item) => { setAno(item.value) }}
               ></DropDownPicker>
             </View>
             <View style={styles.inputGroupSecondColumn}>
@@ -164,7 +175,7 @@ function CadastroVeiculo() {
                   { label: "Elétrico", value: "Eletrico" },
                 ]}
                 style={styles.dropdown}
-                onChangeItem={(item) => {setCombustivel(item.value)}}
+                onChangeItem={(item) => { setCombustivel(item.value) }}
               ></DropDownPicker>
             </View>
           </View>
