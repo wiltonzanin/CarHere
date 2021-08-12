@@ -33,7 +33,6 @@ export default {
             motorizacao,
             ano,
             combustivel,
-            km,
             fotoCarro
         } = request.body;
 
@@ -47,7 +46,6 @@ export default {
             motorizacao,
             ano,
             combustivel,
-            km,
             fotoCarro,
             usuario
         };
@@ -58,7 +56,6 @@ export default {
             motorizacao: Yup.string().required(),
             ano: Yup.number().required(),
             combustivel: Yup.string(),
-            km: Yup.number(),
             fotoCarro: Yup.string()
         });
 

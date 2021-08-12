@@ -39,12 +39,6 @@ export class createCarro1621980851628 implements MigrationInterface {
                     isNullable: false
                 },
                 {
-                    name: 'km',
-                    type: 'integer',
-                    length: "6",
-                    isNullable: false
-                },
-                {
                     name: 'motorizacao',
                     type: 'varchar',
                     length: "20",

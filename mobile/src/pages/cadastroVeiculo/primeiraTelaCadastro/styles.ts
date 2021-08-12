@@ -27,7 +27,8 @@ const styles = StyleSheet.create({
 
     inputGroup: {
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        marginTop: 20
     },
 
     inputGroupColumn: {
@@ -36,17 +37,41 @@ const styles = StyleSheet.create({
     },
 
     inputGroupSecondColumn: {
-        flex: 2
+        flex: 1
     },
 
     dropdown: {
         backgroundColor: "#333333",
-        borderColor: "#525252"
+        borderColor: "#525252",
+        height: 40
+    },
+
+    dropdownList: {
+        backgroundColor: "#333333",
+        borderColor: "#525252",
     },
 
     dropdownText: {
         fontSize: 16,
         color: "#F0EFF4",
+    },
+
+    imageSelector: {
+        backgroundColor: '#333333',
+        borderWidth: 1,
+        borderColor: "#525252",
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: 120,
+        height: 120,
+        borderRadius: 10
+    },
+
+    carImages:{
+        width: 120,
+        height: 120,
+        borderRadius: 10,
+        marginRight: 10
     }
 });
 

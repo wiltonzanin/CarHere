@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { RectButton } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
-import { Text, View, ScrollView } from "react-native";
+import { Text, View, ScrollView, TouchableOpacity, Image } from "react-native";
+import * as ImagePicker from 'expo-image-picker';
 
 import api from "../../../services/api";
 import styles from "./styles";
@@ -11,6 +11,7 @@ import BackScreen from "../../../components/backScreen";
 import { Button } from "../../../components/buttons";
 import LoadingScreen from "../../../components/loadingScreen";
 import FeedbackModal from "../../../components/feedbackModal";
+import { Feather } from "@expo/vector-icons";
 
 function CadastroVeiculo() {
   const { navigate } = useNavigation();
@@ -18,14 +19,41 @@ function CadastroVeiculo() {
   const [modalVisible, setModalVisible] = useState(false);
   const [modalWarning, setModalWarning] = useState(false);
   const [carregando, setCarregando] = useState(false);
+  const [disableButton, setDisableButton] = useState(false);
 
   const [marca, setMarca] = useState("");
   const [modelo, setModelo] = useState("");
   const [motorizacao, setMotorizacao] = useState("");
-  const [quilometragem, setQuilometragem] = useState("");
   const [ano, setAno] = useState("");
   const [combustivel, setCombustivel] = useState("");
-  const [foto_carro, setFoto_carro] = useState("teste");
+  const [foto_carro, setFoto_carro] = useState<string[]>([]);
+
+  async function handleSelecionarFoto() {
+    const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    if (status !== "granted") {
+      alert("Opa, precisamos da permissão de acesso a galeria para que possamos salvar as imagens :)");
+      return;
+    }
+
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    if (result.cancelled) {
+      return;
+    }
+
+    const { uri } = result;
+
+    if (foto_carro.length >= 4) {
+      setDisableButton(true);
+    }
+
+    setFoto_carro([...foto_carro, uri])
+  }
 
   async function handleCreateVeiculo() {
     const data = new FormData();
@@ -35,8 +63,7 @@ function CadastroVeiculo() {
     data.append("motorizacao", motorizacao);
     data.append("ano", ano);
     data.append("combustivel", combustivel);
-    data.append("km", quilometragem);
-    data.append("fotoCarro", foto_carro);
+    data.append("fotoCarro", "foto_carro");
 
     try {
       setCarregando(true)
@@ -73,20 +100,32 @@ function CadastroVeiculo() {
         <View>
           <TextField labelName="Marca" funcaoOnChangeText={setMarca} />
           <TextField labelName="Modelo" funcaoOnChangeText={setModelo} />
+          <Text style={styles.text}>Combustível</Text>
+          <DropDownPicker
+            placeholder="Selecione um item"
+            dropDownStyle={styles.dropdownList}
+            labelStyle={styles.dropdownText}
+            arrowColor={"#F0EFF4"}
+            items={[
+              { label: "Gasolina", value: "gasolina" },
+              { label: "Alcool", value: "alcool" },
+              { label: "Diesel", value: "Diesel" },
+              { label: "Flex", value: "Flex" },
+              { label: "Hibrido", value: "Hibrido" },
+              { label: "Elétrico", value: "Eletrico" },
+            ]}
+            style={styles.dropdown}
+            onChangeItem={(item) => { setCombustivel(item.value) }}
+          ></DropDownPicker>
           <View style={styles.inputGroup}>
             <View style={styles.inputGroupColumn}>
               <TextField labelName="Motorização" tipoTeclado={"numeric"} funcaoOnChangeText={setMotorizacao} />
             </View>
             <View style={styles.inputGroupSecondColumn}>
-              <TextField labelName="Quilometragem" tipoTeclado={"numeric"} funcaoOnChangeText={setQuilometragem} />
-            </View>
-          </View>
-          <View style={styles.inputGroup}>
-            <View style={styles.inputGroupColumn}>
               <Text style={styles.text}>Ano</Text>
               <DropDownPicker
                 placeholder=""
-                dropDownStyle={styles.dropdown}
+                dropDownStyle={styles.dropdownList}
                 labelStyle={styles.dropdownText}
                 arrowColor={"#F0EFF4"}
                 items={[
@@ -159,26 +198,18 @@ function CadastroVeiculo() {
                 onChangeItem={(item) => { setAno(item.value) }}
               ></DropDownPicker>
             </View>
-            <View style={styles.inputGroupSecondColumn}>
-              <Text style={styles.text}>Combustível</Text>
-              <DropDownPicker
-                placeholder="Selecione um item"
-                dropDownStyle={styles.dropdown}
-                labelStyle={styles.dropdownText}
-                arrowColor={"#F0EFF4"}
-                items={[
-                  { label: "Gasolina", value: "gasolina" },
-                  { label: "Alcool", value: "alcool" },
-                  { label: "Diesel", value: "Diesel" },
-                  { label: "Flex", value: "Flex" },
-                  { label: "Hibrido", value: "Hibrido" },
-                  { label: "Elétrico", value: "Eletrico" },
-                ]}
-                style={styles.dropdown}
-                onChangeItem={(item) => { setCombustivel(item.value) }}
-              ></DropDownPicker>
-            </View>
           </View>
+          <Text style={styles.text}>Fotos</Text>
+          <ScrollView horizontal>
+            {foto_carro.map(foto_carro => {
+              return (
+                <Image key={foto_carro} source={{ uri: foto_carro }} style={styles.carImages} />
+              )
+            })}
+            <TouchableOpacity onPress={handleSelecionarFoto} disabled={disableButton} style={disableButton ? { display: "none" } : styles.imageSelector}>
+              <Feather name="plus" size={50} color="#F0EFF4" />
+            </TouchableOpacity>
+          </ScrollView>
         </View>
         <Button title="Concluir" onPress={handleCreateVeiculo} />
       </View>

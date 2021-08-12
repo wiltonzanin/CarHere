@@ -9,7 +9,6 @@ export default {
             motorizacao: carro.motorizacao,
             ano: carro.ano,
             combustivel: carro.combustivel,
-            km: carro.km,
             fotoCarro: carro.fotoCarro,
             id_usuario: carro.usuario
         };

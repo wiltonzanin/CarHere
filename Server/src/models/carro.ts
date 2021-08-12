@@ -23,9 +23,6 @@ export default class Carro {
     combustivel: string;
 
     @Column()
-    km: number;
-
-    @Column()
     fotoCarro: string;
 
     @ManyToOne(() => Usuario, usuario => usuario.carros)
