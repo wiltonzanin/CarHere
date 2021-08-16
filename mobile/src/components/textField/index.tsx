@@ -3,14 +3,16 @@ import { Text, TextInput, View } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
 import styles from './styles';
+import { TextInputProps } from 'react-native';
 
-interface TextFieldProps {
+interface TextFieldProps extends TextInputProps{
     labelName: string;
     value?: any;
     funcaoOnChangeText?: any;
     tipoTeclado?: any;
     exibeOpcional?: boolean;
     secureTextEntry?: boolean;
+    mensagemErro?: string;
 }
 
 /**
@@ -23,14 +25,19 @@ interface TextFieldProps {
  * @param secureTextEntry: (boolean) Exibe ou não os caracters de texto;
  * 
  */
-const textField: React.FC<TextFieldProps> = ({ labelName, value, funcaoOnChangeText, tipoTeclado, exibeOpcional, secureTextEntry }) => {
+const textField: React.FC<TextFieldProps> = ({ labelName, value, funcaoOnChangeText, tipoTeclado, exibeOpcional, secureTextEntry, mensagemErro, ...rest }) => {
 
     //#region variaveis    
     let exibirLabelOpcional = exibeOpcional ? true : false;
 
-    let exibirMensagemErro = false;
+    let exbirMensagemErro = false;
 
-    let mensagemErro = "Preencha o campo com um valor válido!";
+    // console.log("Mensagem: " + mensagemErro)
+    // console.log("==========================")
+
+    if (mensagemErro != '' && mensagemErro !== undefined) {
+        exbirMensagemErro = true;
+    }
     //#endregion
 
     const [getValue, setValue] = useState('')
@@ -42,8 +49,8 @@ const textField: React.FC<TextFieldProps> = ({ labelName, value, funcaoOnChangeT
                 {exibirLabelOpcional && <Text style={styles.labelOpcional}>(Opcional)</Text>}
             </View>
             <View style={styles.inputGroup}>
-                <TextInput style={styles.input} value={value} onChangeText={funcaoOnChangeText} keyboardType={tipoTeclado} secureTextEntry={secureTextEntry} />
-                {exibirMensagemErro && <Text style={styles.labelErro}><Feather name="alert-triangle" /> {mensagemErro}</Text>}
+                <TextInput style={styles.input} value={value} onChangeText={funcaoOnChangeText} keyboardType={tipoTeclado} secureTextEntry={secureTextEntry} {...rest}/>
+                {exbirMensagemErro && <Text style={styles.labelErro}><Feather name="alert-triangle" /> {mensagemErro}</Text>}
             </View>
         </View>
     );
