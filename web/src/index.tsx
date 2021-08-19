@@ -1,14 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import Login from './login';
 import Navbar from './components/navbar/navbar'
 import reportWebVitals from './reportWebVitals';
+import Teste from './teste';
+
+function logado() {
+  return false;
+}
 
 ReactDOM.render(
   <React.StrictMode>
-    <Navbar />
-    <App />
+
+    {logado() ? <Navbar /> : <Login />}
+
   </React.StrictMode>,
   document.getElementById('root')
 );

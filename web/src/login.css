@@ -1,0 +1,92 @@
+*{
+  align-items: 0;
+  margin: 0;
+}
+.row{
+ padding-top: 1rem ;  
+}
+
+.main{
+  background: url(./assets/fundo.svg);
+  background-size: 100% 100% 100% 100%;
+  background-repeat: no-repeat;
+  
+  justify-content: center;
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  align-items: center;
+  
+  padding: 0;
+}
+.card{
+  border: 0 none;
+  text-align: center;
+  background-color:#252525;
+  color: white;
+  width: 448px;
+  height: 448px;
+
+}
+h1{
+  padding: 1rem ;
+  font-size: 35px;
+}
+h2{
+  padding: 0.5rem ;
+  font-size: 30px;
+ 
+}
+h3{
+  margin: 0.5rem 30% 0 0;
+
+  font-size: 18px;
+  
+}
+input{
+  box-sizing: border-box;
+  appearance: none;
+  background-color: #333333;
+  border: solid #525252;
+  border-width: 1px;
+  border-radius: 3px;
+  cursor: pointer;
+  color: white;
+  margin:0 20% 0 20%;
+}
+
+.divisoria{
+  padding: 1rem;
+}
+
+.botao {
+  font-size: 100%;
+  border-radius: 0.2rem;
+  letter-spacing: 0.3%;
+  cursor: pointer;
+  font-family: Roboto, sans-serif;
+  background-color: #8F1622;
+  color: white;
+  line-height: 4.1;
+  align-items: center;
+  margin-left: 30%;
+  width: 40%;
+  text-decoration: none;
+  
+}
+.cadastrar{
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 10;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 18px;
+}
+ 
+.botao:hover{
+  color: white;
+}
+.cadastrar:hover{
+  color: white;
+}
