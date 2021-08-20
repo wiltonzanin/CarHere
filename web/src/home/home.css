@@ -5,20 +5,14 @@
   --color-wine: #8f1622;
 }
 
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-;
-}
 
 .container {
   background-color: var(--color-gray-dark);
 }
 
 /*cards*/
-
 .row{
-  width: 100%;
+  margin: 0;
 }
 .col.car {
   background-color: var(--color-gray-light);

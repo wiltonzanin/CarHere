@@ -60,6 +60,7 @@ input{
 }
 
 .botao {
+  text-decoration: none; 
   font-size: 100%;
   border-radius: 0.2rem;
   letter-spacing: 0.3%;
@@ -69,11 +70,10 @@ input{
   color: white;
   line-height: 4.1;
   align-items: center;
-  margin-left: 30%;
   width: 40%;
-  text-decoration: none;
-  
+  display: inline-block;
 }
+
 .cadastrar{
   color: white;
   text-decoration: none;
@@ -83,10 +83,7 @@ input{
   font-weight: bold;
   font-size: 18px;
 }
- 
-.botao:hover{
-  color: white;
-}
+
 .cadastrar:hover{
   color: white;
 }

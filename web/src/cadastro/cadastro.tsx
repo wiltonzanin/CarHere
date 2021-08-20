@@ -1,16 +1,15 @@
-import React from "react";
+import React, { Component } from "react";
 import "./cadastro.css";
-import { Link } from "react-router-dom";
 
-function Cadastro() {
-  return (
-    <div>
-      isso é um cadastro
-      <li>
-        <Link to="/home">Home</Link>
-      </li>
+class Sobre extends Component {
+ render() {
+ return (
+    <div >
+       <header>
+          <h1 >Cadastro</h1>
+       </header>
     </div>
-  );
+ );
+ }
 }
-
-export default Cadastro;
+export default Sobre;

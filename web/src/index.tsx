@@ -1,27 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Login from './login';
-import Navbar from './components/navbar/navbar'
-import reportWebVitals from './reportWebVitals';
-import Teste from './teste';
-import Routes from './routes';
-
-function logado() {
-  return false;
-}
+import App from './App';
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import Home from './home/home';
+import Cadastro from './cadastro/cadastro';
 
 ReactDOM.render(
-  <React.StrictMode>
-    
-
-<Routes/>
-
-  </React.StrictMode>,
-  document.getElementById('root')
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+    <BrowserRouter>
+        <Switch>
+            <Route path="/" exact={true} component={App} />
+            <Route path="/home" component={Home}  />
+            <Route path="/cadastro" component={Cadastro}  />
+        </Switch>
+    </ BrowserRouter>
+    , document.getElementById('root'));
+// registerServiceWorker();

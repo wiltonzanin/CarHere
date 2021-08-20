@@ -3,10 +3,12 @@ import mococa from "../assets/mococa.svg";
 import Impreza from "../assets/Impreza.svg";
 import "./home.css";
 import { Link } from "react-router-dom";
+import Navbar from "../components/navbar/navbar";
 
 function Home() {
   return (
-    <main className="container">
+    <main>
+<Navbar/>
       <div className="row">
         <div className="col car">
           <h1>Carros</h1>
