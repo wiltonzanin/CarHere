@@ -5,6 +5,7 @@ import Login from './login';
 import Navbar from './components/navbar/navbar'
 import reportWebVitals from './reportWebVitals';
 import Teste from './teste';
+import Routes from './routes';
 
 function logado() {
   return false;
@@ -12,8 +13,9 @@ function logado() {
 
 ReactDOM.render(
   <React.StrictMode>
+    
 
-    {logado() ? <Navbar /> : <Login />}
+<Routes/>
 
   </React.StrictMode>,
   document.getElementById('root')

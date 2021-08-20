@@ -1,16 +1,17 @@
 import React from "react";
 import "./login.css";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { Route,Link, BrowserRouter } from "react-router-dom";
+
 import Teste from "./teste";
+import Home from "./home/home";
+import Cadastro from "./cadastro/cadastro";
 
 
-function App() {
+
+function Login() {
   return (
+   
+
     <div className="main">
       <div className="row">
         <div className="col">
@@ -22,7 +23,7 @@ function App() {
             <input id= "senha" type="password" name="Senha" />
             <div className="divisoria"></div>
             <div className="botao entrar">
-            <a  >Entrar</a>
+            <Link to="/home">Entrar</Link>
             </div>
             <div>
             <div className="row">
@@ -35,7 +36,24 @@ function App() {
       </div>
      
     </div>
+
   );
 }
 
-export default App;
+
+function logado(){
+  return false;
+}
+const Routes = () => {
+  return(
+
+    <BrowserRouter>
+
+           <Route component = { Login }  path="/login" />
+           <Route component = { Home }  path="/home"  />
+           <Route component = { Cadastro }  path="/cadastro"  /> 
+       </BrowserRouter>
+   )
+}
+
+export default Routes;
