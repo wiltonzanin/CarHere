@@ -71,7 +71,7 @@ input{
   align-items: center;
   margin-left: 30%;
   width: 40%;
-  transition-duration: 0.4s;
+  text-decoration: none;
   
 }
 .cadastrar{
@@ -85,16 +85,8 @@ input{
 }
  
 .botao:hover{
-  background-color: #8f1622; 
   color: white;
-  transition: 0.5s;
-  opacity: 0.7;
 }
 .cadastrar:hover{
   color: white;
-}
-
-.button1 {
-  background-color: white; 
-  color: black; 
 }
