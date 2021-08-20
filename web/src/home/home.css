@@ -5,23 +5,23 @@
   --color-wine: #8f1622;
 }
 
-
 .container {
   background-color: var(--color-gray-dark);
 }
 
 /*cards*/
-.row{
+.row {
   margin: 0;
+  padding-left: 2rem;
 }
 .col.car {
   background-color: var(--color-gray-light);
   margin: 2vw;
   border-radius: 10px;
-  height: 40vh;
+  height: 50vh;
 }
 
-.col.ToDo{
+.col.ToDo {
   background-color: var(--color-gray-light);
   margin: 2vw;
   border-radius: 10px;
@@ -31,7 +31,8 @@
 .card.car {
   background-color: white;
   border-radius: 10px;
-  width: 42%;
+  width: 40%;
+  height: 30vh;
   margin-left: 2vw;
 }
 
@@ -39,6 +40,7 @@
   background-color: white;
   border-radius: 10px;
   width: 10px;
+  height: auto;
   margin-left: 2vw;
 }
 
@@ -51,3 +53,8 @@ h1 {
   padding-left: 0.5vw;
 }
 
+/*imagens*/
+.imagem {
+  width: fit-content;
+  height: 20px;
+}

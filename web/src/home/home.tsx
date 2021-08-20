@@ -8,14 +8,12 @@ import Navbar from "../components/navbar/navbar";
 function Home() {
   return (
     <main>
-<Navbar/>
+      <Navbar />
       <div className="row">
         <div className="col car">
           <h1>Carros</h1>
           <div className="row">
-            <section className="card car">
-              <img src={mococa} alt="" />
-            </section>
+            <section className="card car"></section>
             <section className="card car">
               <img src={Impreza} alt="" />
             </section>

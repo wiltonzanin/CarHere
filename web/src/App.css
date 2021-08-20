@@ -1,89 +1,102 @@
-*{
+/*Global*/
+:root {
+  --color-gray-claro: #525252;
+  --color-gray-light: #333333;
+  --color-gray-dark: #252525;
+  --color-wine: #8f1622;
+  --color-white: white;
+}
+
+* {
   align-items: 0;
   margin: 0;
 }
-.row{
- padding-top: 1rem ;  
+/*Body*/
+
+.row {
+  padding-top: 1rem;
 }
 
-.main{
+.main {
   background: url(./assets/fundo.svg);
   background-size: 100% 100% 100% 100%;
   background-repeat: no-repeat;
-  
   justify-content: center;
   display: flex;
   height: 100vh;
   width: 100vw;
   align-items: center;
-  
+
   padding: 0;
 }
-.card{
+.card {
   border: 0 none;
   text-align: center;
-  background-color:#252525;
-  color: white;
+  background-color: var(--color-gray-dark);
+  color: var(--color-white);
   width: 448px;
   height: 448px;
-
 }
-h1{
-  padding: 1rem ;
+
+/*Text*/
+h1 {
+  padding: 1rem;
   font-size: 35px;
 }
-h2{
-  padding: 0.5rem ;
+h2 {
+  padding: 0.5rem;
   font-size: 30px;
- 
 }
-h3{
+h3 {
   margin: 0.5rem 30% 0 0;
-
   font-size: 18px;
-  
 }
-input{
+/*Campo*/
+
+input {
   box-sizing: border-box;
   appearance: none;
-  background-color: #333333;
-  border: solid #525252;
+  background-color: var(--color-gray-light);
+  border: solid var(--color-gray-claro);
   border-width: 1px;
   border-radius: 3px;
-  cursor: pointer;
-  color: white;
-  margin:0 20% 0 20%;
+  color: var(--color-white);
+  margin: 0 20% 0 20%;
 }
 
-.divisoria{
+.divisoria {
   padding: 1rem;
 }
 
+/*Button*/
+
 .botao {
-  text-decoration: none; 
+  text-decoration: none;
   font-size: 100%;
   border-radius: 0.2rem;
   letter-spacing: 0.3%;
   cursor: pointer;
   font-family: Roboto, sans-serif;
-  background-color: #8F1622;
-  color: white;
+  background-color: var(--color-wine);
+  color: var(--color-white);
   line-height: 4.1;
   align-items: center;
   width: 40%;
   display: inline-block;
+  align-self: center;
 }
 
-.cadastrar{
-  color: white;
+.cadastrar {
+  color: var(--color-white);
   text-decoration: none;
   cursor: pointer;
   opacity: 10;
   display: inline-block;
   font-weight: bold;
   font-size: 18px;
+  align-self: center;
 }
 
-.cadastrar:hover{
-  color: white;
+.cadastrar:hover {
+  color: var(--color-white);
 }
