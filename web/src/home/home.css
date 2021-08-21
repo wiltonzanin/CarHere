@@ -1,0 +1,60 @@
+/*global*/
+:root {
+  --color-gray-light: #333333;
+  --color-gray-dark: #252525;
+  --color-wine: #8f1622;
+}
+
+.container {
+  background-color: var(--color-gray-dark);
+}
+
+/*cards*/
+.row {
+  margin: 0;
+  padding-left: 2rem;
+}
+.col.car {
+  background-color: var(--color-gray-light);
+  margin: 2vw;
+  border-radius: 10px;
+  height: 50vh;
+}
+
+.col.ToDo {
+  background-color: var(--color-gray-light);
+  margin: 2vw;
+  border-radius: 10px;
+  height: 40vh;
+}
+
+.card.car {
+  background-color: white;
+  border-radius: 10px;
+  width: 40%;
+  height: 30vh;
+  margin-left: 2vw;
+}
+
+.card.Todo {
+  background-color: white;
+  border-radius: 10px;
+  width: 10px;
+  height: auto;
+  margin-left: 2vw;
+}
+
+/*titles*/
+h1 {
+  color: white;
+  font-size: 18px;
+  font-weight: lighter;
+  line-height: 3rem;
+  padding-left: 0.5vw;
+}
+
+/*imagens*/
+.imagem {
+  width: fit-content;
+  height: 20px;
+}

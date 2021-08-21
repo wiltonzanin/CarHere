@@ -14,6 +14,11 @@ function Servicos({ navigation }: any) {
   function handleNavigateToVisualizarServicos() {
     navigate("VisualizarServicos");
   }
+  
+  function handleNavigateToCadastrarServicos() {
+    navigate("CadastroServicos");
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -34,7 +39,7 @@ function Servicos({ navigation }: any) {
         </View>
       </View>
       <View style={styles.content}>
-        <ButtonAdicionar title="Adicionar serviço" />
+        <ButtonAdicionar title="Adicionar serviço" onPress={handleNavigateToCadastrarServicos}/>
         <Servico nome="*nome do serviço*" data="*data*" />
         <Servico nome="*nome do serviço*" data="*data*" />
       </View>
