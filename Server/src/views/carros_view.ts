@@ -1,4 +1,5 @@
-import Carros from '../models/carro'
+import Carros from '../models/carro';
+import imagens_carrosView from './imagens_carros_view'
 
 export default {
     render(carro: Carros){
@@ -9,7 +10,7 @@ export default {
             motorizacao: carro.motorizacao,
             ano: carro.ano,
             combustivel: carro.combustivel,
-            fotoCarro: carro.fotoCarro,
+            images: imagens_carrosView.renderMany(carro.images),
             id_usuario: carro.usuario
         };
     },

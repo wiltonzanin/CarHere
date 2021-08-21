@@ -33,7 +33,6 @@ function AppStack() {
             <Screen name="Notificacao" component={Notificacao} />
             <Screen name="AlterarSenha" component={AlterarSenha} />
             <Screen name="VeiculosCadastrados" component={VeiculosCadastrados} />
-            <Screen name="VisualizarVeiculo" component={VisualizarVeiculo} />
             <Screen name="UnidadeMedida" component={UnidadeMedida} />
             <Screen name="AppVersion" component={AppVersion} />
             <Screen name="RelatarProblema" component={RelatarProblema} />

@@ -45,11 +45,6 @@ export class createCarro1621980851628 implements MigrationInterface {
                     isNullable: false
                 },
                 {
-                    name: 'fotoCarro',
-                    type: 'varchar',
-                    isNullable: false
-                },
-                {
                     name: 'id_usuario',
                     type: 'integer'
                 },

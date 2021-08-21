@@ -8,7 +8,6 @@ import { TextInputProps } from 'react-native';
 interface TextFieldProps extends TextInputProps{
     labelName: string;
     value?: any;
-    funcaoOnChangeText?: any;
     tipoTeclado?: any;
     exibeOpcional?: boolean;
     secureTextEntry?: boolean;
@@ -25,22 +24,17 @@ interface TextFieldProps extends TextInputProps{
  * @param secureTextEntry: (boolean) Exibe ou não os caracters de texto;
  * 
  */
-const textField: React.FC<TextFieldProps> = ({ labelName, value, funcaoOnChangeText, tipoTeclado, exibeOpcional, secureTextEntry, mensagemErro, ...rest }) => {
+const textField: React.FC<TextFieldProps> = ({ labelName, value, tipoTeclado, exibeOpcional, secureTextEntry, mensagemErro, ...rest }) => {
 
     //#region variaveis    
     let exibirLabelOpcional = exibeOpcional ? true : false;
 
     let exbirMensagemErro = false;
 
-    // console.log("Mensagem: " + mensagemErro)
-    // console.log("==========================")
-
     if (mensagemErro != '' && mensagemErro !== undefined) {
         exbirMensagemErro = true;
     }
     //#endregion
-
-    const [getValue, setValue] = useState('')
 
     return (
         <View>
@@ -49,7 +43,7 @@ const textField: React.FC<TextFieldProps> = ({ labelName, value, funcaoOnChangeT
                 {exibirLabelOpcional && <Text style={styles.labelOpcional}>(Opcional)</Text>}
             </View>
             <View style={styles.inputGroup}>
-                <TextInput style={styles.input} value={value} onChangeText={funcaoOnChangeText} keyboardType={tipoTeclado} secureTextEntry={secureTextEntry} {...rest}/>
+                <TextInput style={styles.input} value={value} keyboardType={tipoTeclado} secureTextEntry={secureTextEntry} {...rest}/>
                 {exbirMensagemErro && <Text style={styles.labelErro}><Feather name="alert-triangle" /> {mensagemErro}</Text>}
             </View>
         </View>

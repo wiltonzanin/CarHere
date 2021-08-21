@@ -1,6 +1,7 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToOne, JoinColumn } from 'typeorm';
 
-import Usuario from './usuarios'
+import Usuario from './usuarios';
+import Imagens_carro from './imagens_carro';
 
 @Entity('carro')
 export default class Carro {
@@ -22,10 +23,13 @@ export default class Carro {
     @Column()
     combustivel: string;
 
-    @Column()
-    fotoCarro: string;
-
     @ManyToOne(() => Usuario, usuario => usuario.carros)
     @JoinColumn({ name: 'id_usuario' })
     usuario: Usuario;
+
+    @OneToMany(() => Imagens_carro, imagens_carro => imagens_carro.carro, {
+        cascade: ['insert', 'update']
+    })
+    @JoinColumn({ name: 'id_carro' })
+    images: Imagens_carro[]
 }

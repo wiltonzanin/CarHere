@@ -14,8 +14,8 @@ import CadastroVeiculo from "../cadastroVeiculo/primeiraTelaCadastro";
 import Veiculos from "../home//veiculos/veiculos";
 import Principal from "../home/ajudaEfeedback/principal";
 import Servicos from "../home/servicos";
-import {ButtonAdicionar} from '../../components/buttons';
-import {ButtonMenu} from '../../components/buttons';
+import { ButtonAdicionar } from '../../components/buttons';
+import { ButtonMenu } from '../../components/buttons';
 
 function Inicio({ navigation }: any) {
   const { navigate } = useNavigation();
@@ -27,13 +27,13 @@ function Inicio({ navigation }: any) {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-      <ButtonMenu title="" onPress={() => navigation.dispatch(DrawerActions.openDrawer())}/>
-        <View style={{paddingRight:'43%'}}>
+        <ButtonMenu title="" onPress={() => navigation.dispatch(DrawerActions.openDrawer())} />
+        <View style={{ paddingRight: '43%' }}>
           <Text style={styles.text}>Inicio</Text>
         </View>
       </View>
       <View style={styles.content}>
-        <ButtonAdicionar title="Adicionar veículo" onPress={handleNavigateToCadastroVeiculo}/>
+        <ButtonAdicionar title="Adicionar veículo" onPress={handleNavigateToCadastroVeiculo} />
       </View>
     </View>
   );
@@ -80,6 +80,7 @@ function MyDrawer() {
         name="Veículos Cadastrados"
         component={Veiculos}
         options={{
+          unmountOnBlur: true,
           drawerIcon: ({ focused, size }) => (
             <Feather
               name="list"

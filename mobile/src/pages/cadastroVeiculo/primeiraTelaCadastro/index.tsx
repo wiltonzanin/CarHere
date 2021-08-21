@@ -13,8 +13,7 @@ import LoadingScreen from "../../../components/loadingScreen";
 import FeedbackModal from "../../../components/feedbackModal";
 import { Feather } from "@expo/vector-icons";
 
-function CadastroVeiculo() {
-  const { navigate } = useNavigation();
+function CadastroVeiculo({ navigation }: any) {
 
   const [modalVisible, setModalVisible] = useState(false);
   const [modalWarning, setModalWarning] = useState(false);
@@ -26,7 +25,7 @@ function CadastroVeiculo() {
   const [motorizacao, setMotorizacao] = useState("");
   const [ano, setAno] = useState("");
   const [combustivel, setCombustivel] = useState("");
-  const [foto_carro, setFoto_carro] = useState<string[]>([]);
+  const [images, setImages] = useState<string[]>([]);
 
   async function handleSelecionarFoto() {
     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -48,11 +47,11 @@ function CadastroVeiculo() {
 
     const { uri } = result;
 
-    if (foto_carro.length >= 4) {
+    if (images.length >= 4) {
       setDisableButton(true);
     }
 
-    setFoto_carro([...foto_carro, uri])
+    setImages([...images, uri])
   }
 
   async function handleCreateVeiculo() {
@@ -63,7 +62,14 @@ function CadastroVeiculo() {
     data.append("motorizacao", motorizacao);
     data.append("ano", ano);
     data.append("combustivel", combustivel);
-    data.append("fotoCarro", "foto_carro");
+    
+    images.forEach((image, index) => {
+      data.append("images", {
+        name: `image_${index}.jpg`,
+        type: "image/jpg",
+        uri: image,
+      } as any);
+    });
 
     try {
       setCarregando(true)
@@ -80,7 +86,8 @@ function CadastroVeiculo() {
     setModalVisible(!modalVisible);
     setCarregando(false);
     if (modalWarning == false) {
-      navigate("VeiculosCadastrados");
+      navigation.navigate("VeiculosCadastrados");
+      //navigate("VeiculosCadastrados");
     }
   }
 
@@ -98,8 +105,8 @@ function CadastroVeiculo() {
           <View />
         </View>
         <View>
-          <TextField labelName="Marca" funcaoOnChangeText={setMarca} />
-          <TextField labelName="Modelo" funcaoOnChangeText={setModelo} />
+          <TextField labelName="Marca" onChangeText={setMarca} />
+          <TextField labelName="Modelo" onChangeText={setModelo} />
           <Text style={styles.text}>Combustível</Text>
           <DropDownPicker
             placeholder="Selecione um item"
@@ -119,7 +126,7 @@ function CadastroVeiculo() {
           ></DropDownPicker>
           <View style={styles.inputGroup}>
             <View style={styles.inputGroupColumn}>
-              <TextField labelName="Motorização" tipoTeclado={"numeric"} funcaoOnChangeText={setMotorizacao} />
+              <TextField labelName="Motorização" tipoTeclado={"numeric"} onChangeText={setMotorizacao} />
             </View>
             <View style={styles.inputGroupSecondColumn}>
               <Text style={styles.text}>Ano</Text>
@@ -199,11 +206,14 @@ function CadastroVeiculo() {
               ></DropDownPicker>
             </View>
           </View>
-          <Text style={styles.text}>Fotos</Text>
+          <View style={styles.labelGroup}>
+            <Text style={styles.text}>Fotos</Text>
+            <Text style={styles.labelOpcional}>(Opcional)</Text>
+          </View>
           <ScrollView horizontal>
-            {foto_carro.map(foto_carro => {
+            {images.map(images => {
               return (
-                <Image key={foto_carro} source={{ uri: foto_carro }} style={styles.carImages} />
+                <Image key={images} source={{ uri: images }} style={styles.carImages} />
               )
             })}
             <TouchableOpacity onPress={handleSelecionarFoto} disabled={disableButton} style={disableButton ? { display: "none" } : styles.imageSelector}>

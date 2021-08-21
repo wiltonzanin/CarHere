@@ -9,9 +9,15 @@ const styles = StyleSheet.create({
 
   header: {
     paddingTop: 20,
+    marginBottom: 20
   },
 
-  buttonsHeader: {
+  headerGroup: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+
+  searhButton: {
     height: 30,
     width: 30,
   },
@@ -21,17 +27,18 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
 
-  search: {
-    flexDirection: "row",
-    justifyContent: "space-between",
+  content: {
+    flexGrow: 1
   },
 
-  content: {    
-    paddingTop: 20,
+  listagemErro: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
 
   veiculos: {
-    marginTop: 15,
+    marginTop: 20,
   },
 
   buttonVeiculo: {
@@ -63,9 +70,11 @@ const styles = StyleSheet.create({
     fontSize: 16
   },
 
-  imgVeiculo:{
+  imgVeiculo: {
     width: 120,
     height: 100,
+    alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: '#333333',
     borderTopRightRadius: 5,
     borderBottomRightRadius: 5,

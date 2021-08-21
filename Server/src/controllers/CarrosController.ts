@@ -19,11 +19,13 @@ export default {
     async show(request: Request, response: Response) {
         const { id } = request.params;
 
-        const carrosRepositorio = getRepository(Carros).createQueryBuilder('carro').where('carro.usuario = :id', { id });
+        const carrosRepositorio = getRepository(Carros).createQueryBuilder('carro')
+        .leftJoinAndSelect("carro.images", "imagens_carros.id_carro")
+        .where('carro.usuario = :id', { id });
 
         const carros = await carrosRepositorio.getMany();
 
-        return response.status(302).json(carrosView.renderMany(carros));
+        return response.json(carrosView.renderMany(carros));
     },
 
     async create(request: Request, response: Response) {
@@ -32,11 +34,15 @@ export default {
             modelo,
             motorizacao,
             ano,
-            combustivel,
-            fotoCarro
+            combustivel
         } = request.body;
 
         const carrosRepositorio = getRepository(Carros);
+
+        const requestImages = request.files as Express.Multer.File[]
+        const images = requestImages.map(image => {
+            return { path: image.filename }
+        })
 
         const usuario = await getRepository(Usuarios).findOneOrFail(1); // Busca via Id FIXO POR ENQUANTO
 
@@ -46,9 +52,11 @@ export default {
             motorizacao,
             ano,
             combustivel,
-            fotoCarro,
+            images,
             usuario
         };
+
+        console.log(data)
 
         const schema = Yup.object().shape({
             marca: Yup.string().required(),
@@ -56,7 +64,10 @@ export default {
             motorizacao: Yup.string().required(),
             ano: Yup.number().required(),
             combustivel: Yup.string(),
-            fotoCarro: Yup.string()
+            imagesPath: Yup.array(
+                Yup.object().shape({
+                path: Yup.string().required()
+            }))
         });
 
         await schema.validate(data, {

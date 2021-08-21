@@ -69,18 +69,18 @@ function CadastroUsuario() {
           <TextField
             labelName="Nome"
             value={nome}
-            funcaoOnChangeText={setNome}
+            onChangeText={setNome}
           />
           <TextField
             labelName="E-mail"
             value={email}
-            funcaoOnChangeText={setEmail}
+            onChangeText={setEmail}
             tipoTeclado={"email-address"}
           />
           <TextField
             labelName="Senha"
             value={senha}
-            funcaoOnChangeText={setSenha}
+            onChangeText={setSenha}
             secureTextEntry={true}
           />
           <TextField
