@@ -1,6 +1,6 @@
 import * as React from "react";
-import { View, Text } from "react-native";
-import { DrawerActions, useNavigation } from "@react-navigation/native";
+import { View, Text, BackHandler, Alert } from "react-native";
+import { DrawerActions, useNavigation, useFocusEffect } from "@react-navigation/native";
 import {
   createDrawerNavigator,
   DrawerContentScrollView,
@@ -19,6 +19,27 @@ import { ButtonMenu } from '../../components/buttons';
 
 function Inicio({ navigation }: any) {
   const { navigate } = useNavigation();
+
+  useFocusEffect(() => {
+    const backAction = () => {
+      Alert.alert("Espera aí", "Você tem certeza que deseja sair do aplicativo?", [
+        {
+          text: "Não",
+          onPress: () => null,
+          style: "cancel"
+        },
+        { text: "SIM", onPress: () => BackHandler.exitApp() }
+      ]);
+      return true;
+    };
+
+    const backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      backAction
+    );
+
+    return () => backHandler.remove();
+  });
 
   function handleNavigateToCadastroVeiculo() {
     navigate("CadastroVeiculo");

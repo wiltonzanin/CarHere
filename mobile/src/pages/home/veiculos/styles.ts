@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
   },
 
   buttonGroupText: {
+    flex: 1,
     padding: 10,
     justifyContent: 'space-between'
   },

@@ -47,27 +47,19 @@ function Veiculos({ navigation }: any) {
     })
   }, [])
 
-  // useFocusEffect(() => {
-  //   console.log("Não execute infinitamente pf :)")
-  //   const backAction = () => {
-  //     Alert.alert("Hold on!", "Are you sure you want to go back?", [
-  //       {
-  //         text: "Cancel",
-  //         onPress: () => null,
-  //         style: "cancel"
-  //       },
-  //       { text: "YES", onPress: () =>  navigation.navigate('Inicio')}
-  //     ]);
-  //     return true;
-  //   };
+  useFocusEffect(() => {
+    const backAction = () => {
+      navigation.push('Inicio');
+      return true;
+    };
 
-  //   const backHandler = BackHandler.addEventListener(
-  //     "hardwareBackPress",
-  //     backAction
-  //   );
+    const backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      backAction
+    );
 
-  //   return () => backHandler.remove();
-  // });
+    return () => backHandler.remove();
+  });
 
   if (carros.length > 0) {
     listaVazia = false
@@ -110,7 +102,7 @@ function Veiculos({ navigation }: any) {
                   <View key={carro.id} style={styles.veiculos}>
                     <RectButton style={styles.buttonVeiculo} onPress={handleNavigateToVisualizarVeiculo}>
                       <View style={styles.buttonGroupText}>
-                        <Text style={styles.buttonVeiculoText}>{carro.modelo}</Text>
+                        <Text numberOfLines={1} style={styles.buttonVeiculoText}>{carro.modelo}</Text>
                         <Text style={styles.buttonVeiculoTextManutencaoGreen}><Feather name="check-circle" size={16} color="#5CB85C" /> Manutenção em dia</Text>
                       </View>
                       {carro.images.length > 0
