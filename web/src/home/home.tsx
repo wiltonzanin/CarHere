@@ -21,7 +21,7 @@ function Home() {
         </div>
         <div className="col ToDo">
           <h1>To Do</h1>
-          <div className="row">
+          <div className="card">
             <section className="card Todo"></section>
             <section className="card Todo"></section>
           </div>
