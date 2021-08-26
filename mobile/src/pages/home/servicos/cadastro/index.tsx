@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { Text, View, ScrollView, TouchableOpacity, Image } from "react-native";
+import { Text, View, ScrollView, TextInput, TouchableOpacity, Image } from "react-native";
 import * as ImagePicker from 'expo-image-picker';
 
 import styles from "./styles";
@@ -10,9 +10,9 @@ import BackScreen from "../../../../components/backScreen";
 import { Button } from "../../../../components/buttons";
 import { Feather } from "@expo/vector-icons";
 
-function CadastroVeiculo() {
+function CadastroServicos() {
   const { navigate } = useNavigation();
-  const [motorizacao, setMotorizacao] = useState("");
+  const [datadoservico, setMotorizacao] = useState("");
   const [ano, setAno] = useState("");
 
   return (
@@ -26,13 +26,9 @@ function CadastroVeiculo() {
         <View>
           <TextField labelName="Nome" />
           <TextField labelName="Local que foi realizado o Serviço" />
-          <TextField labelName="Data do Seviço" />
           <View style={styles.inputGroup}>
-            <View style={styles.inputGroupColumn}>
-              <TextField labelName="Motorização" tipoTeclado={"numeric"} funcaoOnChangeText={setMotorizacao} />
-            </View>
             <View style={styles.inputGroupSecondColumn}>
-              <Text style={styles.text}>Ano</Text>
+              <Text style={styles.text}>Data do serviço</Text>
               <DropDownPicker
                 placeholder=""
                 dropDownStyle={styles.dropdownList}
@@ -108,11 +104,18 @@ function CadastroVeiculo() {
                 onChangeItem={(item) => { setAno(item.value) }}
               ></DropDownPicker>
             </View>
+            <View style={styles.inputGroupColumn}>
+              <TextField labelName="Tempo de Serviço" tipoTeclado={"numeric"} onChangeText={setMotorizacao} />
+            </View>
           </View>
-          <TextField labelName="Tempo do Serviço" />
           <TextField labelName="Valor do Serviço" />
           <TextField labelName="Descrição do serviço realizado" />
-          <TextField labelName="Observação:" />
+          <Text style={styles.text}>Descrição:</Text>
+          {/* documentação: https://reactnative.dev/docs/textinput */}
+          <TextInput
+          style={styles.textInput}
+          multiline={true}
+          textAlignVertical="top"/>
         </View>
         <Button title="Concluir" />
       </View>
@@ -120,4 +123,4 @@ function CadastroVeiculo() {
   );
 }
 
-export default CadastroVeiculo;
+export default CadastroServicos;
