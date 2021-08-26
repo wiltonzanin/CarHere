@@ -7,14 +7,18 @@
   --color-white: white;
 }
 
-*{
+* {
   align-items: 0;
   margin: 0;
 }
+/*Body*/
 
-/*body*/ 
-.main{
-  background: url(/src/assets/fundo.svg);
+.row {
+  padding-top: 1rem;
+}
+
+.main {
+  background: url(./assets/fundo.svg);
   background-size: 100% 100% 100% 100%;
   background-repeat: no-repeat;
   justify-content: center;
@@ -22,8 +26,11 @@
   height: 100vh;
   width: 100vw;
   align-items: center;
+
+  padding: 0;
 }
-.card{
+.card {
+  border: 0 none;
   text-align: center;
   background-color: var(--color-gray-dark);
   color: var(--color-white);
@@ -32,39 +39,40 @@
 }
 
 /*Text*/
-h2{
-  padding: 2rem 0 1rem 0 ;
+h1 {
+  padding: 1rem;
   font-size: 35px;
 }
-h3{
-  margin-bottom: 0.1rem;
-  padding: 1rem 0 0 0 ;
-  font-size: 20px;
+h2 {
+  padding: 0.5rem;
+  font-size: 30px;
 }
-p{
-  margin: 2rem 0 0 0;
+h3 {
+  margin: 0.5rem 30% 0 0;
   font-size: 18px;
 }
-
 /*Campo*/
-input{
+
+input {
   box-sizing: border-box;
   appearance: none;
   background-color: var(--color-gray-light);
   border: solid var(--color-gray-claro);
   border-width: 1px;
   border-radius: 3px;
-  cursor: pointer;
   color: var(--color-white);
-  margin:0 20% 0 20%;
-  box-shadow: rgb(0 0 0 / 20%) 0px 18px 30px;
+  margin: 0 20% 0 20%;
 }
-.divisoria{
+
+.divisoria {
   padding: 1rem;
 }
 
- /*Button*/
+/*Button*/
+
 .botao {
+  text-decoration: none;
+  font-size: 100%;
   border-radius: 0.2rem;
   letter-spacing: 0.3%;
   cursor: pointer;
@@ -73,14 +81,12 @@ input{
   color: var(--color-white);
   line-height: 4.1;
   align-items: center;
-  width: 35%;
+  width: 40%;
   display: inline-block;
   align-self: center;
-  text-decoration: none;
-  transition-duration: 0.4s;
-  box-shadow: rgb(0 0 0 / 20%) 0px 18px 30px;
 }
-.cadastrar{
+
+.cadastrar {
   color: var(--color-white);
   text-decoration: none;
   cursor: pointer;
@@ -90,13 +96,7 @@ input{
   font-size: 18px;
   align-self: center;
 }
-.botao:hover{
-  background-color: #8F1622; 
+
+.cadastrar:hover {
   color: var(--color-white);
-  opacity: 0.7;
-}
-.cadastrar:hover{
-  background-color: transparent;
-  color: var(--color-white);
-  opacity: 0.7;
 }
