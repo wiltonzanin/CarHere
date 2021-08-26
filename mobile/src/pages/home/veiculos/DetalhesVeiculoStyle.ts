@@ -14,12 +14,25 @@ const styles = StyleSheet.create({
     marginBottom: 10
   },
 
+  card: {
+    backgroundColor: '#333333',
+    padding: 20,
+    borderRadius: 10,
+    marginBottom: 20
+  },
+
+  cardStyle: {
+    backgroundColor: '#333333',
+    padding: 20,
+    borderRadius: 10
+  },
+
   text: {
     color: "#F0EFF4",
     fontSize: 20,
   },
 
-  sectionTitle: {
+  cardTitle: {
     color: "#F0EFF4",
     fontSize: 20,
     fontWeight: 'bold',
@@ -30,41 +43,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#333333',
     marginLeft: -20,
     marginRight: -20,
-    marginBottom: 20,
-    height: 180,
+    marginBottom: -30,
+    height: 300,
   },
 
   imgVeiculo: {
     width: Dimensions.get('window').width,
-    height: 180,
+    height: 300,
     resizeMode: 'cover',
-  },
-
-  infosServicos: {
-    flexDirection: "row",
-    //justifyContent: 'space-between',
-    marginBottom: 20,
-  },
-
-  autonomia: {
-    backgroundColor: '#F0EFF4',
-    width: 150,
-    height: 140,
-    padding: 10,
-    borderRadius: 10,
-    marginRight: 20,
-  },
-
-  textInfo1: {
-    color: "#252525",
-    fontSize: 18,
-    paddingBottom: 5,
-    
-  },
-
-  textInfo2: {
-    color: "#252525",
-    fontSize: 14,
   },
 
   textStatusOk: {
@@ -82,29 +68,32 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
 
-  servicos: {
-    backgroundColor: "#F0EFF4",
-    width: 126,
-    borderRadius: 10,
+  cardServices: {
+    backgroundColor: '#F0EFF4',
     padding: 10,
-    marginRight: 10,
+    borderRadius: 5,
+    marginBottom: 20
+  },
+
+  servicesHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingBottom: 20
+  },
+
+  servicesTitle: {
+    fontWeight: "bold",
+    fontSize: 18
+  },
+
+  servicesText: {
+    fontSize: 18
   },
 
   infos: {
     flexDirection: "row",
     justifyContent: 'space-between'
-  },
-
-  textInfo: {
-    color: "#F0EFF4",
-    fontSize: 18,
-  },
-
-  textInfoCampo: {
-    color: "#F0EFF4",
-    fontSize: 16,
-    paddingBottom: 20,
-  },
+  }
 });
 
 export default styles;

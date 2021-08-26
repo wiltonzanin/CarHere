@@ -7,10 +7,11 @@ import {
   DrawerItemList,
   DrawerContentComponentProps,
 } from "@react-navigation/drawer";
-import styles from "./styles";
 import { Feather } from "@expo/vector-icons";
+
+import styles from "./styles";
 import Configuracoes from "../home/configuracoes/telaPrincipal";
-import CadastroVeiculo from "../cadastroVeiculo/primeiraTelaCadastro";
+import CadastroVeiculo from "../cadastroVeiculo";
 import Veiculos from "../home//veiculos/veiculos";
 import Principal from "../home/ajudaEfeedback/principal";
 import Servicos from "../home/servicos";

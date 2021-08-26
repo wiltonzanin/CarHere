@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { RectButton } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
-import { Text, View, ScrollView, Modal, ActivityIndicator } from "react-native";
+import { Text, View, ScrollView } from "react-native";
 
 import styles from "./styles";
 import TextField from "../../components/textField";

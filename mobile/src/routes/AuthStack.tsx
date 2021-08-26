@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Inicial from '../pages/inicial';
 import RecuperarSenha from '../pages/recuperarSenha';
 import CadastroUsuario from '../pages/cadastroUsuario';
-import CadastroVeiculo from '../pages/cadastroVeiculo/primeiraTelaCadastro';
+import CadastroVeiculo from '../pages/cadastroVeiculo';
 import Termos from '../pages/home/configuracoes/termosEpoliticas';
 
 const { Navigator, Screen } = createStackNavigator();

@@ -1,7 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import Inicio from '../pages/home/inicio';
-import CadastroVeiculo from '../pages/cadastroVeiculo/primeiraTelaCadastro';
+import CadastroVeiculo from '../pages/cadastroVeiculo';
 import CodigoConfirmacao from '../pages/home/configuracoes/alterarSenha/confirmarCodigo';
 import Notificacao from '../pages/home/configuracoes/notificacao';
 import AlterarSenha from '../pages/home/configuracoes/alterarSenha/confirmarEmail';

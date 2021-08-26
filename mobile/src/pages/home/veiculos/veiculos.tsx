@@ -30,7 +30,6 @@ function Veiculos({ navigation }: any) {
   const [carros, setCarros] = useState<Carros[]>([]);
 
   function handleNavigateToVisualizarVeiculo() {
-    console.log('Isso renderiza?')
     navigate("VisualizarVeiculo");
   }
 
@@ -41,9 +40,11 @@ function Veiculos({ navigation }: any) {
   useEffect(() => {
     setCarregando(true);
     api.get('carros/1').then(response => {
-      console.log('Agora não buga mais')
       setCarros(response.data);
       setCarregando(false);
+    }).catch(() => {
+      setCarregando(false);
+      setErroCarregar(true);
     })
   }, [])
 

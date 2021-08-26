@@ -3,14 +3,14 @@ import { useNavigation } from "@react-navigation/native";
 import { Text, View, ScrollView, TouchableOpacity, Image } from "react-native";
 import * as ImagePicker from 'expo-image-picker';
 
-import api from "../../../services/api";
+import api from "../../services/api";
 import styles from "./styles";
-import TextField from "../../../components/textField";
+import TextField from "../../components/textField";
 import DropDownPicker from "react-native-dropdown-picker";
-import BackScreen from "../../../components/backScreen";
-import { Button } from "../../../components/buttons";
-import LoadingScreen from "../../../components/loadingScreen";
-import FeedbackModal from "../../../components/feedbackModal";
+import BackScreen from "../../components/backScreen";
+import { Button } from "../../components/buttons";
+import LoadingScreen from "../../components/loadingScreen";
+import FeedbackModal from "../../components/feedbackModal";
 import { Feather } from "@expo/vector-icons";
 
 function CadastroVeiculo({ navigation }: any) {
