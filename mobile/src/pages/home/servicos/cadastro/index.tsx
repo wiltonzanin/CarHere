@@ -105,12 +105,11 @@ function CadastroServicos() {
               ></DropDownPicker>
             </View>
             <View style={styles.inputGroupColumn}>
-              <TextField labelName="Tempo de Serviço" tipoTeclado={"numeric"} onChangeText={setMotorizacao} />
+              <TextField labelName="Tempo de Serviço" tipoTeclado={"numeric"} onChangeText={setMotorizacao} maxLength={4} />
             </View>
           </View>
           <TextField labelName="Valor do Serviço" />
-          <TextField labelName="Descrição do serviço realizado" />
-          <Text style={styles.text}>Descrição:</Text>
+          <Text style={styles.text}>Descrição do serviço realizado:</Text>
           {/* documentação: https://reactnative.dev/docs/textinput */}
           <TextInput
           style={styles.textInput}
