@@ -9,7 +9,7 @@ import BackScreen from "../../components/backScreen";
 import api from "../../services/api";
 import { Button } from "../../components/buttons";
 import { CheckBox } from 'react-native-elements';
-import FeedbackModal from "../../components/feedbackModal";
+import { FeedbackModal } from "../../components/feedbackModal";
 import LoadingScreen from "../../components/loadingScreen";
 
 function CadastroUsuario() {
@@ -57,8 +57,7 @@ function CadastroUsuario() {
       <LoadingScreen carregando={carregando} />
       <FeedbackModal
         modalVisible={modalVisible}
-        funcaoOnRequestClose={handleNavigateToIncial}
-        modalTypeWarning={modalWarning} />
+        funcaoOnRequestClose={handleNavigateToIncial} />
       <View style={styles.container}>
         <View style={styles.header}>
           <BackScreen />

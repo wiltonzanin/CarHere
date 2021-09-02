@@ -28,6 +28,19 @@ export default {
         return response.json(carrosView.renderMany(carros));
     },
 
+    async showListagem(request: Request, response: Response) {
+
+        const { id } = request.params;
+
+        const carroRepositorio = getRepository(Carros)
+
+        const carro = await carroRepositorio.findOneOrFail(id, {
+            relations: ['images']
+        })
+
+        return response.json(carrosView.render(carro));
+    },
+
     async create(request: Request, response: Response) {
         const {
             marca,

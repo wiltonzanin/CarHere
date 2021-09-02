@@ -15,8 +15,7 @@ interface InfoProps {
 
 interface InfoProps2 {
   marca: string;
-  ano: string;
-  quilometragem: string;
+  ano: number;
   modelo: string;
   motorizacao: string;
   combustivel: string;
@@ -51,7 +50,6 @@ export function Infos({
   ano,
   modelo,
   motorizacao,
-  quilometragem,
   combustivel,
   ...rest
 }: InfoProps2) {
@@ -71,7 +69,6 @@ export function Infos({
         <Text style={styles.textInfo}>Combustível</Text>
         <Text style={styles.textInfoCampo}>{combustivel}</Text>
         <Text style={styles.textInfo}>Quilometragem</Text>
-        <Text style={styles.textInfoCampo}>{quilometragem}</Text>
       </View>
     </View>
   );
