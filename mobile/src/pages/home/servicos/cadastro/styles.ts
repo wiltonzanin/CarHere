@@ -27,13 +27,12 @@ const styles = StyleSheet.create({
 
   inputGroup: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 20
+    justifyContent: 'space-between'
   },
 
   inputGroupColumn: {
     flex: 1,
-    marginRight: 15
+    marginLeft: 15
   },
 
   inputGroupSecondColumn: {
@@ -43,7 +42,7 @@ const styles = StyleSheet.create({
   dropdown: {
     backgroundColor: "#333333",
     borderColor: "#525252",
-    height: 40
+    height: 40,
   },
 
   dropdownList: {
@@ -56,23 +55,33 @@ const styles = StyleSheet.create({
     color: "#F0EFF4",
   },
 
-  imageSelector: {
+  textInput: {
+    padding: 10,
+    //height: 40,
+    minHeight: 85, 
     backgroundColor: '#333333',
+    borderColor: '#525252',
+    borderStyle: 'solid',
     borderWidth: 1,
-    borderColor: "#525252",
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: 120,
-    height: 120,
-    borderRadius: 10
+    borderRadius: 4,
+    fontSize: 16,
+    color: '#F0EFF4',
+    flex: 1,
+    marginBottom: 20  
   },
 
-  carImages: {
-    width: 120,
-    height: 120,
-    borderRadius: 10,
-    marginRight: 10
-  },
+  /*: {
+    height: 40,
+    padding: 10,
+    backgroundColor: '#333333',
+    borderColor: '#525252',
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderRadius: 4,
+    color: '#F0EFF4',
+    fontSize: 16,  
+}*/
+
 });
 
 export default styles;
