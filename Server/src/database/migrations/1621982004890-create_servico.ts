@@ -15,37 +15,35 @@ export class createServico1621982004890 implements MigrationInterface {
                     generationStrategy: 'increment'
                 },
                 {
-                    name: 'Nome',
+                    name: 'titulo',
                     type: 'varchar',
                     length: "50",
                     isNullable: false
                 },
                 {
-                    name: 'LocalServico',
+                    name: 'localservico',
                     type: 'varchar',
                     length: "100",
                     isNullable: false
                 },
                 {
-                    name: 'DataServico',
-                    type: 'varchar',
-                    length: "8",
-                    isNullable: false
+                    name: 'dataservico',
+                    type: 'date',
                 },
                 {
-                    name: 'TempoServico',
-                    type: 'varchar',
+                    name: 'temposervico',
+                    type: 'time',
                     length: "4",
                     isNullable: false
                 },
                 {
-                    name: 'ValorServico',
+                    name: 'valorservico',
                     type: 'varchar',
                     length: "25",
                     isNullable: false
                 },
                 {
-                    name: 'DescricaoServico',
+                    name: 'descricaoservico',
                     type: 'varchar',
                     length: "255",
                     isNullable: false
