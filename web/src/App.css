@@ -13,11 +13,11 @@
 }
 /*Body*/
 
-.row {
+.row-Login {
   padding-top: 1rem;
 }
 
-.main {
+.main-Login{
   background: url(./assets/fundo.svg);
   background-size: 100% 100% 100% 100%;
   background-repeat: no-repeat;
@@ -29,8 +29,9 @@
 
   padding: 0;
 }
-.card {
+.card-Login {
   border: 0 none;
+  border-radius: 10px;
   text-align: center;
   background-color: var(--color-gray-dark);
   color: var(--color-white);
@@ -39,29 +40,34 @@
 }
 
 /*Text*/
-h1 {
-  padding: 1rem;
+.Titulo-Login {
+  padding: 2.5rem 0 1rem 0;
   font-size: 35px;
 }
-h2 {
-  padding: 0.5rem;
-  font-size: 30px;
+.Titulo-Senha-Email {
+  margin: 0;
+  padding: 0.5rem 0 0.3rem 0;
+  font-size: 20px;
 }
-h3 {
-  margin: 0.5rem 30% 0 0;
-  font-size: 18px;
+.Subtitulo-Conta {
+  margin: 0 25% 0 25%;
+  font-size: 20px;
 }
 /*Campo*/
 
 input {
   box-sizing: border-box;
   appearance: none;
+  text-align: start;
+  height: 30px;
+  width: 18rem;
   background-color: var(--color-gray-light);
   border: solid var(--color-gray-claro);
   border-width: 1px;
   border-radius: 3px;
   color: var(--color-white);
   margin: 0 20% 0 20%;
+  box-shadow: rgb(0 0 0 / 10%) 0px 18px 30px;
 }
 
 .divisoria {
@@ -70,23 +76,31 @@ input {
 
 /*Button*/
 
-.botao {
+.Botao-Entrar{
+  align-items: center;
   text-decoration: none;
-  font-size: 100%;
-  border-radius: 0.2rem;
-  letter-spacing: 0.3%;
+  border-radius: 10px;
   cursor: pointer;
   font-family: Roboto, sans-serif;
   background-color: var(--color-wine);
   color: var(--color-white);
-  line-height: 4.1;
+  line-height:2.8;
   align-items: center;
   width: 40%;
+  height: 10%;
   display: inline-block;
   align-self: center;
+  text-decoration: none;
+  transition-duration: 0.4s;
+  box-shadow: rgb(0 0 0 / 10%) 0px 18px 30px;
+}
+.Botao-Entrar:hover{
+  background-color: #8F1622; 
+  color: var(--color-white);
+  opacity: 0.7;
 }
 
-.cadastrar {
+.registrate {
   color: var(--color-white);
   text-decoration: none;
   cursor: pointer;
@@ -95,8 +109,11 @@ input {
   font-weight: bold;
   font-size: 18px;
   align-self: center;
+  box-shadow: rgb(0 0 0 / 10%) 0px 18px 30px;
 }
 
-.cadastrar:hover {
+.registrate:hover {
+  background-color: transparent;
   color: var(--color-white);
+  opacity: 0.7;
 }

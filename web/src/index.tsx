@@ -4,16 +4,16 @@ import "./index.css";
 import App from "./App";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Home from "./home/home";
-import Cadastro from "./cadastro/cadastro";
-import Servicos from "./servicos/servicos";
+import Registrate from "./registrate/registrate";
+import Servicos from "./services/services";
 
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
       <Route path="/" exact={true} component={App} />
       <Route path="/home" component={Home} />
-      <Route path="/cadastro" component={Cadastro} />
-      <Route path="/servicos" component={Servicos} />
+      <Route path="/registrate" component={Registrate} />
+      <Route path="/services" component={Servicos} />
     </Switch>
   </BrowserRouter>,
   document.getElementById("root")
