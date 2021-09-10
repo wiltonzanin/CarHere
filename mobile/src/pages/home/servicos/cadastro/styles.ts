@@ -82,6 +82,9 @@ const styles = StyleSheet.create({
     fontSize: 16,  
 }*/
 
+Icon: {
+  padding: 10,
+}
 });
 
 export default styles;
