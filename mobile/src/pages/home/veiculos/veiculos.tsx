@@ -29,8 +29,8 @@ function Veiculos({ navigation }: any) {
   const [erroCarregar, setErroCarregar] = useState(false);
   const [carros, setCarros] = useState<Carros[]>([]);
 
-  function handleNavigateToVisualizarVeiculo() {
-    navigate("VisualizarVeiculo");
+  function handleNavigateToVisualizarVeiculo(id: number) {
+    navigation.navigate("VisualizarVeiculo", { id });
   }
 
   function handleNavigateToCadastroVeiculo() {
@@ -101,7 +101,7 @@ function Veiculos({ navigation }: any) {
               carros.map(carro => {
                 return (
                   <View key={carro.id} style={styles.veiculos}>
-                    <RectButton style={styles.buttonVeiculo} onPress={handleNavigateToVisualizarVeiculo}>
+                    <RectButton style={styles.buttonVeiculo} onPress={() => handleNavigateToVisualizarVeiculo(carro.id)}>
                       <View style={styles.buttonGroupText}>
                         <Text numberOfLines={1} style={styles.buttonVeiculoText}>{carro.modelo}</Text>
                         <Text style={styles.buttonVeiculoTextManutencaoGreen}><Feather name="check-circle" size={16} color="#5CB85C" /> Manutenção em dia</Text>

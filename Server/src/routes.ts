@@ -14,5 +14,6 @@ routes.post('/usuarios', upload.array('usuario'), UsuariosController.create)
 
 routes.post('/carros', upload.array('images'), CarrosController.create)
 routes.get('/carros/:id', CarrosController.show)
+routes.get('/carros/detalhes/:id', CarrosController.showListagem)
 
 export default routes;

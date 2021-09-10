@@ -10,7 +10,7 @@ import DropDownPicker from "react-native-dropdown-picker";
 import BackScreen from "../../components/backScreen";
 import { Button } from "../../components/buttons";
 import LoadingScreen from "../../components/loadingScreen";
-import FeedbackModal from "../../components/feedbackModal";
+import { FeedbackModal } from "../../components/feedbackModal";
 import { Feather } from "@expo/vector-icons";
 
 function CadastroVeiculo({ navigation }: any) {
@@ -27,10 +27,14 @@ function CadastroVeiculo({ navigation }: any) {
   const [combustivel, setCombustivel] = useState("");
   const [images, setImages] = useState<string[]>([]);
 
+  const [modalMensage, setModalMensage] = useState("");
+
   async function handleSelecionarFoto() {
     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
     if (status !== "granted") {
-      alert("Opa, precisamos da permissão de acesso a galeria para que possamos salvar as imagens :)");
+      setModalWarning(true);
+      setModalMensage("Opa, precisamos da permissão de acesso a galeria para que possamos salvar as imagens :)");
+      setModalVisible(true);
       return;
     }
 
@@ -62,7 +66,7 @@ function CadastroVeiculo({ navigation }: any) {
     data.append("motorizacao", motorizacao);
     data.append("ano", ano);
     data.append("combustivel", combustivel);
-    
+
     images.forEach((image, index) => {
       data.append("images", {
         name: `image_${index}.jpg`,
@@ -75,7 +79,8 @@ function CadastroVeiculo({ navigation }: any) {
       setCarregando(true)
       await api.post("/carros", data);
     } catch (error) {
-      setCarregando(false)
+      setCarregando(false);
+      setModalMensage("");
       setModalWarning(true);
     }
 
@@ -87,7 +92,6 @@ function CadastroVeiculo({ navigation }: any) {
     setCarregando(false);
     if (modalWarning == false) {
       navigation.navigate("VeiculosCadastrados");
-      //navigate("VeiculosCadastrados");
     }
   }
 
@@ -97,7 +101,7 @@ function CadastroVeiculo({ navigation }: any) {
       <FeedbackModal
         modalVisible={modalVisible}
         funcaoOnRequestClose={handleNavigateToVeiculos}
-        modalTypeWarning={modalWarning} />
+        mensage={modalMensage} />
       <View style={styles.container}>
         <View style={styles.header}>
           <BackScreen />

@@ -7,7 +7,7 @@ import styles from './styles';
 interface modalProps {
     modalVisible: boolean;
     funcaoOnRequestClose?: any;
-    modalTypeWarning: boolean;
+    mensage?: string;
 }
 
 /**
@@ -18,7 +18,12 @@ interface modalProps {
  * @param modalTypeWarning: (boolean) Define se o tipo do modal é de aviso;
  * 
  */
-const feedbackModal: React.FC<modalProps> = ({ modalVisible, funcaoOnRequestClose, modalTypeWarning }) => {
+
+export const FeedbackModal: React.FC<modalProps> = ({ modalVisible, funcaoOnRequestClose, mensage }) => {
+
+    if (mensage == undefined || mensage == "") {
+        mensage = "Ops, tivemos um problema! Por favor tente novamente mais tarde."
+    }
 
     return (
         <Modal
@@ -30,30 +35,40 @@ const feedbackModal: React.FC<modalProps> = ({ modalVisible, funcaoOnRequestClos
         >
             <View style={styles.centeredView}>
                 <View style={styles.modalView}>
-                    {modalTypeWarning
-                        ? <Feather name='alert-circle' size={50} color={'#eca400'} style={{ marginTop: 20 }} />
-                        : <Feather name='check-circle' size={50} color={'#5CB85C'} style={{ marginTop: 20 }} />
-                    }
-                    {modalTypeWarning
-                        ? <Text style={styles.modalText}>Ops, tivemos um problema! Por favor tente novamente mais tarde.</Text>
-                        : <Text style={styles.modalText}>Cadastro realizado com sucesso!</Text>
-                    }
-                    {modalTypeWarning
-                        ? <Pressable
-                            style={styles.button}
-                            onPress={funcaoOnRequestClose}>
-                            <Text style={styles.textStyle}>OK</Text>
-                        </Pressable>
-                        : <Pressable
-                            style={styles.button}
-                            onPress={funcaoOnRequestClose}>
-                            <Text style={styles.textStyle}>OK</Text>
-                        </Pressable>
-                    }
+                    <Feather name='alert-circle' size={50} color={'#eca400'} style={{ marginTop: 20 }} />
+                    <Text style={styles.modalText}>{mensage}</Text>
+                    <Pressable
+                        style={styles.button}
+                        onPress={funcaoOnRequestClose}>
+                        <Text style={styles.textStyle}>OK</Text>
+                    </Pressable>
                 </View>
             </View>
         </Modal>
     );
 }
 
-export default feedbackModal;
+export const ErrorModal: React.FC<modalProps> = ({ modalVisible, funcaoOnRequestClose, mensage }) => {
+
+    return (
+        <Modal
+            animationType="fade"
+            transparent={true}
+            visible={modalVisible}
+            onRequestClose={funcaoOnRequestClose}
+            statusBarTranslucent={true}
+        >
+            <View style={styles.centeredView}>
+                <View style={styles.modalView}>
+                    <Feather name='x-circle' size={50} color={'#5CB85C'} style={{ marginTop: 20 }} />
+                    <Text style={styles.modalText}>{mensage}</Text>
+                    <Pressable
+                        style={styles.button}
+                        onPress={funcaoOnRequestClose}>
+                        <Text style={styles.textStyle}>OK</Text>
+                    </Pressable>
+                </View>
+            </View>
+        </Modal>
+    );
+}

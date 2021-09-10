@@ -21,6 +21,11 @@ const styles = StyleSheet.create({
     marginBottom: 20
   },
 
+  cardHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+
   cardStyle: {
     backgroundColor: '#333333',
     padding: 20,

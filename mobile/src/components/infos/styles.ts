@@ -3,11 +3,10 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   autonomia: {
     backgroundColor: "#F0EFF4",
-    width: 150,
+    width: 145,
     height: 140,
     padding: 10,
-    borderRadius: 10,
-    marginRight: 20,
+    borderRadius: 10
   },
 
   textInfo1: {
