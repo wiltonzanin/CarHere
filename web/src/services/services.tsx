@@ -1,10 +1,13 @@
 import React from "react";
 import "./services.css";
-import { Link } from "react-router-dom";
+import Navbar from "../components/navbar/navbar";
 
-function Registrate() {
+function Services() {
   return (
-    <div className="main"></div>
+  <main>
+    <Navbar/>
+<div></div>
+  </main>
   )
 }
-export default Registrate;
+export default Services;

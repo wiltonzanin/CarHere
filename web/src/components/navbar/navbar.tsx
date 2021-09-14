@@ -9,7 +9,7 @@ function navbar() {
   return (
     <nav id="navbar" className="navbar navbar-expand-lg navbar-dark">
       <div className="container-fluid">
-        <a className="navbar-brand" href="/home">Minha Mococa</a>
+        <a className="navbar-brand" href="/home">Meu Possante</a>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
@@ -20,7 +20,7 @@ function navbar() {
               <a className="nav-link active" aria-current="page" href="./home">Inicio</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="/servicos">Serviços</a>
+              <a className="nav-link active" aria-current="page" href="/services">Serviços</a>
             </li>
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle active" href="#" id="navbarDropdownVeiculos" role="button"
