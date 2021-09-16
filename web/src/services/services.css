@@ -1,0 +1,19 @@
+#formControl{
+  background-color: #333333;
+  border-color: #525252;
+  border-width: 1px;
+  border-style: solid;
+  width:300px;
+  color: #ffffff;
+}
+
+#dropDown{
+  background-color: #333333;
+  color: #ffffff;
+}
+
+#options{
+  background-color: #333333;
+  color: #ffffff;
+
+}

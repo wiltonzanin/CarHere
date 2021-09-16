@@ -1,8 +1,8 @@
 import React from "react";
-import mococa from "../assets/mococa.svg";
 import Impreza from "../assets/Impreza.svg";
 import "./home.css";
-import { Link } from "react-router-dom";
+import Calendar from 'react-calendar';
+/*import 'react-calendar/dist/Calendar.css';*/
 import Navbar from "../components/navbar/navbar";
 
 function Home() {
@@ -22,7 +22,15 @@ function Home() {
         </div>
         <div className="serviceCard">
         <div className="orderCardService">
+        <h1 className="title">Serviços</h1>
+        <div className="internalRow">
             <div className="whiteCardService"></div>
+            <div className="whiteCardService"></div>
+        </div>
+        <div className="internalRow">
+            <div className="whiteCardService"></div>
+            <div className="whiteCardService"></div>
+        </div>
           </div>
         </div>
       </div>
@@ -39,9 +47,7 @@ function Home() {
         <div className="secondRow">
 
         <div className="calendarCard">
-        <div className="orderCardCalendar">
-            <div className="whiteCardCalendar"></div>
-          </div>
+            <Calendar/>
         </div>
         <div className="monthServiceCard">
         <div className="orderCardMonthService">
