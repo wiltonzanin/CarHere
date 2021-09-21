@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import Inicio from '../pages/home/inicio';
+import Home from '../pages/home';
 import CadastroVeiculo from '../pages/cadastroVeiculo';
 import CodigoConfirmacao from '../pages/home/configuracoes/alterarSenha/confirmarCodigo';
 import Notificacao from '../pages/home/configuracoes/notificacao';
@@ -26,8 +26,8 @@ const { Navigator, Screen } = createStackNavigator();
 function AppStack() {
     return (
 
-        <Navigator initialRouteName="Inicio" screenOptions={{ headerShown: false, cardStyle: { backgroundColor: '#252525' } }}>
-            <Screen name="Inicio" component={Inicio} />
+        <Navigator initialRouteName="Home" screenOptions={{ headerShown: false, cardStyle: { backgroundColor: '#252525' } }}>
+            <Screen name="Home" component={Home} />
             <Screen name="CadastroVeiculo" component={CadastroVeiculo} />
             <Screen name="CodigoConfirmacao" component={CodigoConfirmacao} />
             <Screen name="Notificacao" component={Notificacao} />

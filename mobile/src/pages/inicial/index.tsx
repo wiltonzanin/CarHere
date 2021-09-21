@@ -34,10 +34,6 @@ function Inicial() {
         navigate('RecuperarSenha');
     }
 
-    function handleNavigateToInicio() {
-        navigate('Inicio');
-    }
-
     return (
         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
             <View style={styles.container}>

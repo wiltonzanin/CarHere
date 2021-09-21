@@ -10,15 +10,15 @@ import {
 import { Feather } from "@expo/vector-icons";
 
 import styles from "./styles";
-import Configuracoes from "../home/configuracoes/telaPrincipal";
+import Configuracoes from "./configuracoes/telaPrincipal";
 import CadastroVeiculo from "../cadastroVeiculo";
-import Veiculos from "../home//veiculos/veiculos";
-import Principal from "../home/ajudaEfeedback/principal";
-import Servicos from "../home/servicos";
+import Veiculos from "./veiculos/veiculos";
+import Principal from "./ajudaEfeedback/principal";
+import Servicos from "./servicos";
 import { ButtonAdicionar } from '../../components/buttons';
 import { ButtonMenu } from '../../components/buttons';
 
-function Inicio({ navigation }: any) {
+function Home({ navigation }: any) {
   const { navigate } = useNavigation();
 
   useFocusEffect(() => {
@@ -74,7 +74,7 @@ function MyDrawer() {
     >
       <Drawer.Screen
         name="Inicio"
-        component={Inicio}
+        component={Home}
         options={{
           drawerIcon: ({ focused, size }) => (
             <Feather
