@@ -5,19 +5,18 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#252525",
     padding: 20,
-    justifyContent: "space-between",
   },
 
   header: {
-    width: "100%",
     paddingTop: 20,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 20
   },
 
-  title: {
+  headerTitle: {
     color: "#F0EFF4",
-    fontSize: 25,
-    fontWeight: "bold",
-    paddingBottom: 20,
+    fontSize: 20
   },
 
   instructions: {
@@ -26,27 +25,22 @@ const styles = StyleSheet.create({
     textAlign: "auto",
   },
 
-  buttonContent: {
+  formContent: {
     paddingTop: 20,
-  },
-
-  buttonStyle: {
-    width: "100%",
-  },
-
-  buttonText: {
-    color: "#F0EFF4",
-    fontSize: 20,
-    fontWeight: "bold",
   },
 
   button: {
     backgroundColor: "#8F1622",
     height: 60,
-    borderRadius: 8,
+    borderRadius: 5,
     padding: 24,
     alignItems: "center",
     justifyContent: "center",
+  },
+
+  buttonText: {
+    color: "#F0EFF4",
+    fontSize: 18,
   },
 });
 

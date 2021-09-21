@@ -1,5 +1,7 @@
 import * as React from "react";
 import { View, Text, ScrollView } from "react-native";
+import { Feather } from "@expo/vector-icons";
+
 import styles from "./styles";
 import { ButtonPadrao } from "../../../../components/buttons";
 import BackScreen from "../../../../components/backScreen";
@@ -11,7 +13,7 @@ function Acessibilidade({ navigation }: any) {
         <View style={styles.header}>
           <BackScreen />
           <Text style={styles.headerTitle}>Acessibilidade</Text>
-          <View />
+          <Feather name="save" size={24} color='#F0EFF4' />
         </View>
         <View>
           <Text style={styles.sectionTitle}>Leitores de tela</Text>

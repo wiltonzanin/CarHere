@@ -86,7 +86,7 @@ function MyDrawer() {
         }}
       />
       <Drawer.Screen
-        name="Cadastrar Veículo"
+        name="Cadastrar veículo"
         component={CadastroVeiculo}
         options={{
           drawerIcon: ({ focused, size }) => (
@@ -99,7 +99,7 @@ function MyDrawer() {
         }}
       />
       <Drawer.Screen
-        name="Veículos Cadastrados"
+        name="Veículos cadastrados"
         component={Veiculos}
         options={{
           unmountOnBlur: true,

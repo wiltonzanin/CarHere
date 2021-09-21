@@ -9,22 +9,15 @@ const styles = StyleSheet.create({
   },
 
   header: {
-    width: "100%",
     paddingTop: 20,
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
 
-  title: {
+  headerTitle: {
     color: "#F0EFF4",
-    fontSize: 25,
-    fontWeight: "bold",
-    paddingBottom: 20,
-  },
-
-  instructions: {
-    color: "#F0EFF4",
-    fontSize: 16,
-    textAlign: "auto",
-  },
+    fontSize: 20
+  }
 });
 
 export default styles;

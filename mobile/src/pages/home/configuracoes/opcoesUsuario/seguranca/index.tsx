@@ -3,7 +3,6 @@ import { View, Text, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import styles from "./styles";
 import { ButtonPadrao } from "../../../../../components/buttons";
-import { Feather } from "@expo/vector-icons";
 import BackScreen from "../../../../../components/backScreen";
 
 function Seguranca() {
@@ -18,9 +17,10 @@ function Seguranca() {
       <View style={styles.container}>
         <View style={styles.header}>
           <BackScreen />
-          <View style={{ paddingLeft: "20%" }}>
+          <View>
             <Text style={styles.headerTitle}>Segurança</Text>
           </View>
+          <View />
         </View>
         <View style={styles.content}>
     

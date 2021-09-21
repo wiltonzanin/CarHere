@@ -2,6 +2,8 @@ import React from "react";
 import { Text, View, ScrollView } from "react-native";
 import styles from "./styles";
 import DropDownPicker from "react-native-dropdown-picker";
+import { Feather } from '@expo/vector-icons';
+
 import BackScreen from "../../../../components/backScreen";
 
 function UnidadeMedida() {
@@ -11,7 +13,7 @@ function UnidadeMedida() {
         <View style={styles.header}>
           <BackScreen />
           <Text style={styles.headerTitle}>Unidades de medida</Text>
-          <View />
+          <Feather name="save" size={24} color='#F0EFF4' />
         </View>
         <View>
           <Text style={styles.title}>Tipo de métrica</Text>

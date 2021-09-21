@@ -4,17 +4,19 @@ import { useNavigation } from "@react-navigation/native";
 import styles from "./styles";
 import TextField from "../../../components/textField";
 import { Button } from "../../../components/buttons";
+import BackScreen from "../../../components/backScreen";
 import DropDownPicker from "react-native-dropdown-picker";
 
 function Mfa() {
   const navigation = useNavigation();
 
-
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View style={styles.container}>
         <View style={styles.header}>
+          <BackScreen />
           <Text style={styles.title}>Autenticação em duas etapas</Text>
+          <View />
         </View>
         <View>
           <Text style={styles.subtitle}>Opcional</Text>

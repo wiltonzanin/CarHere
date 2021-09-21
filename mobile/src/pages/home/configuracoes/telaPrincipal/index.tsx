@@ -53,7 +53,7 @@ function Configuracoes({ navigation }: any) {
                 onPress={handleNavigateToAcessibilidade} />
             </View>
             <View style={styles.buttonsGroupContent}>
-              <ButtonPadrao title="Dicas e Manual do usuário" />
+              <ButtonPadrao title="Dicas" />
             </View>
             <View style={styles.buttonsGroupContent}>
               <ButtonPadrao

@@ -25,26 +25,23 @@ function VisualizarServicos({ navigation }: any) {
           </View>
         </View>
         <View style={styles.content}>
-          <Text style={styles.title}> *nome do serviço* </Text>
-          <Text style={styles.subtitle}> Realizado no dia *data* </Text>
+          <Text style={styles.title}>Troca de óleo </Text>
+          <Text style={styles.subtitle}> Realizado no dia 09/09/2021 </Text>
           <View style={styles.secao}>
-            <Text style={styles.title}> Local onde foi realizado </Text>
-            <Text style={styles.subtitle}> *nome e endereço do local* </Text>
+            <Text style={styles.title}>Local onde foi realizado </Text>
+            <Text style={styles.subtitle}>Centro, 1234 </Text>
           </View>
           <View style={styles.secao}>
-            <Text style={styles.title}>
-              {" "}
-              Descrição dos serviçoes realizados{" "}
-            </Text>
-            <Text style={styles.subtitle}> *descrição* </Text>
+            <Text style={styles.title}>Descrição dos serviçoes realizados</Text>
+            <Text style={styles.subtitle}>Realizado troca de óleo e filtro, óleo: Ipiranga 2030w</Text>
           </View>
           <View style={styles.secao}>
             <Text style={styles.title}>Valor Total </Text>
-            <Text style={styles.subtitle}> R$ *valor* </Text>
+            <Text style={styles.subtitle}>R$ 120,00 </Text>
           </View>
           <View style={styles.secao}>
             <Text style={styles.title}>Observações</Text>
-            <Text style={styles.subtitle}> *obs* </Text>
+            <Text style={styles.subtitle}>Nenhuma</Text>
           </View>
         </View>
       </View>

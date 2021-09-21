@@ -3,13 +3,13 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 30
+        padding: 20
     },
 
     header: {
         paddingTop: 20,
         flexDirection: 'row',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         marginBottom: 20
     },
 
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     dropdownLabel: {
         color: '#F0EFF4',
         fontSize: 18,
-        paddingBottom: 10
+        paddingBottom: 20
     },
 
     dropdown: {

@@ -9,10 +9,6 @@ import { ButtonMenu, ButtonPadrao } from '../../../components/buttons';
 function AjudaFeedback({ navigation }: any) {
   const { navigate } = useNavigation();
 
-  function handleNavigateToRelatarProblema() {
-    navigate("RelatarProblema");
-  }
-
   function handleNavigateToEntrarEmContato() {
     navigate("EntrarEmContato");
   }
@@ -31,7 +27,7 @@ function AjudaFeedback({ navigation }: any) {
             <ButtonPadrao title="Entre em contato"
               onPress={handleNavigateToEntrarEmContato} />
           </View>
-          <ButtonPadrao title="Relatar um problema" onPress={handleNavigateToRelatarProblema} />
+          <ButtonPadrao title="Manual do usuário" />
         </View>
         <Text style={styles.text}>Feedback</Text>
         <View style={styles.bottomSection}>

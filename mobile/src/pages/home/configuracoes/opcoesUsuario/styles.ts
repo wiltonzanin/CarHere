@@ -39,8 +39,8 @@ alignSelf:'center'
   text: {
     color: "#fff",
     fontSize: 20,
-    paddingTop: 10,
-    paddingBottom: 10,
+    paddingTop: 20,
+    paddingBottom: 20,
     alignSelf:'center'
   },
 

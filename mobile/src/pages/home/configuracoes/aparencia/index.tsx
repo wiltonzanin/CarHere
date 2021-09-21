@@ -1,7 +1,9 @@
 import React from "react";
 import { Text, View, ScrollView } from "react-native";
-import styles from "./styles";
 import DropDownPicker from "react-native-dropdown-picker";
+import { Feather } from "@expo/vector-icons";
+
+import styles from "./styles";
 import BackScreen from "../../../../components/backScreen";
 
 function Aparencia() {
@@ -11,7 +13,7 @@ function Aparencia() {
         <View style={styles.header}>
           <BackScreen />
           <Text style={styles.headerTitle}>Aparência</Text>
-          <View />
+          <Feather name="save" size={24} color='#F0EFF4' />
         </View>
         <Text style={styles.title}>Tema</Text>
         <DropDownPicker
