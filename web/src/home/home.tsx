@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import Impreza from "../assets/Impreza.svg";
 import "./home.css";
 import Calendar from 'react-calendar';
 /*import 'react-calendar/dist/Calendar.css';*/
 import Navbar from "../components/navbar/navbar";
+import { CardVehicle } from "../components/cards/CardVehicle";
+import { CardService } from "../components/cards/CardServices";
+import { CardToDo } from "../components/cards/CardToDo";
 
 function Home() {
+const [services] = useState([]);
+const service = [5]
   return (
     <main>
       <Navbar />
@@ -14,22 +19,21 @@ function Home() {
         <div className="CarCard">
           <h1 className="title">Carros</h1>
           <div className="orderCardCar">
-            <div className="whiteCardCar"></div>
-            <div className="whiteCardCar"></div>
-            <div className="whiteCardCar"></div>
-            <div className="whiteCardCar"></div>
+            <CardVehicle/>
           </div>
         </div>
         <div className="serviceCard">
         <div className="orderCardService">
         <h1 className="title">Serviços</h1>
         <div className="internalRow">
-            <div className="whiteCardService"></div>
-            <div className="whiteCardService"></div>
+          {services.map(service =>{
+            return <CardService/>
+          }
+          )}
         </div>
         <div className="internalRow">
-            <div className="whiteCardService"></div>
-            <div className="whiteCardService"></div>
+        <CardService/>
+        <CardService/>
         </div>
           </div>
         </div>
@@ -38,10 +42,7 @@ function Home() {
       <div className="ToDoCard">
           <h1 className="title">To Do</h1>
           <div className="orderCardToDo">
-            <div className="whiteCardToDo"></div>
-            <div className="whiteCardToDo"></div>
-            <div className="whiteCardToDo"></div>
-            <div className="whiteCardToDo"></div>
+            <CardToDo/>
           </div>
         </div>
         <div className="secondRow">

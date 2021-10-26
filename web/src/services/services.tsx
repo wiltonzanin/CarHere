@@ -4,11 +4,13 @@ import Navbar from "../components/navbar/navbar";
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import { FormControl } from "@material-ui/core";
+import Calendar from "react-calendar";
 
 function Services() {
   return (
     <main>
       <Navbar />
+      <div className="sideBySide">
         <div className="firstColumn">
           <h1 className="title">De qual veículo deseja ver os serviços?</h1>
           <FormControl id="formControl">
@@ -26,6 +28,10 @@ function Services() {
           <option id="options" value={"Impreza"}>Impreza</option>
         </Select>
       </FormControl>
+      </div>
+      <div className="secondColumn">
+      <Calendar className="serviceCalendar"/>
+      </div>
       </div>
     </main>
   );

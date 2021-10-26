@@ -1,3 +1,8 @@
+sideBySide{
+  display: flex;
+  flex-direction: row;
+}
+
 #formControl{
   background-color: #333333;
   border-color: #525252;
@@ -15,5 +20,9 @@
 #options{
   background-color: #333333;
   color: #ffffff;
+}
 
+.react-calendar{
+  width: 4000px;
+  height: 4000px;
 }
