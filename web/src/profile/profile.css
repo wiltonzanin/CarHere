@@ -1,0 +1,71 @@
+*{
+    margin: 0;
+}
+.mainProfile{
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    text-align: center;
+    color: white;
+}
+
+.tituloProfile{
+    font-size: 36px;
+}
+.subtituloProfile{
+    font-size: 24px;
+}
+.inputNomeUsuario{
+    box-sizing: border-box;
+    appearance: none;
+    text-align: start;
+    height: 30px;
+    width: 20rem;
+    background-color: var(--color-gray-light);
+    border: solid var(--color-gray-claro);
+    border-width: 1px;
+    border-radius: 3px;
+    color: var(--color-white);
+    box-shadow: rgb(0 0 0 / 10%) 0px 18px 30px;
+}
+
+
+.inputLink{
+    box-sizing: border-box;
+    appearance: none;
+    text-align: start;
+    height: 30px;
+    width: 20rem;
+    background-color: var(--color-gray-light);
+    border: solid var(--color-gray-claro);
+    border-width: 1px;
+    border-radius: 3px;
+    color: var(--color-white);
+    box-shadow: rgb(0 0 0 / 10%) 0px 18px 30px;
+}
+img {
+    border-radius: 100%;
+    padding: 5px;
+    width: 200px;
+    height: 200px;
+  }
+  .container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 0 680px 0 0;
+    margin: 0;
+  }
+  .sidebar {
+    background-color:#e32223;  
+    grid-column-start: 1; 
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 3;  
+  }
+  .conteudo {
+    background-color:#f3e500; 
+    grid-column-start: 2; 
+    grid-column-end: 6;
+    grid-row-start: 2;
+    grid-row-end: 6;  
+  }

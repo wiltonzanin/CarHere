@@ -28,8 +28,8 @@ function navbar() {
                 Veículos cadastrados
               </a>
               <ul className="dropdown-menu dropdown-sytle" aria-labelledby="navbarDropdownVeiculos">
-                <li><a className="dropdown-item" href="#">Impreza</a></li>
-                <li><a className="dropdown-item" href="#">Monza</a></li>
+                <li><a className="dropdown-item" href="#"></a></li>
+                <li><a className="dropdown-item" href="#"></a></li>
                 <li>
                   <hr className="dropdown-divider" />
                 </li>
@@ -52,15 +52,8 @@ function navbar() {
                     </IconContext.Provider>
                   </a>
                   <ul className="dropdown-menu dropdown-menu-end dropdown-sytle" aria-labelledby="navbarDropdownMenuLinkConfiguracao">
-                    <li><span className="dropdown-header">Preferências</span></li>
-                    <li><a className="dropdown-item" href="#">Unidades de medida</a></li>
-                    <li><a className="dropdown-item" href="#">Acessibilidade</a></li>
-                    <li><a className="dropdown-item" href="#">Dicas e manual de usuario</a></li>
-                    <li><a className="dropdown-item" href="#">Aparência</a></li>
-                    <li><a className="dropdown-item" href="#">Notificações</a></li>
-                    <li><h6 className="dropdown-header">Conteúdo legal e políticas</h6></li>
-                    <li><a className="dropdown-item" href="#">Termos de serviço</a></li>
-                    <li><a className="dropdown-item" href="#">Politica de dados</a></li>
+                    <li><a className="dropdown-item" href="#">Configurações</a></li>
+                    <li><a className="dropdown-item" href="#">Conteúdo legal e políticas</a></li>
                   </ul>
                 </li>
               </ul>
@@ -91,12 +84,8 @@ function navbar() {
                     <img className="avatar" src={user} alt="Avatar do usuário" />
                   </a>
                   <ul className="dropdown-menu dropdown-menu-end dropdown-sytle" aria-labelledby="navbarDropdownMenuLinkAvatar">
-                    <li><span className="dropdown-header">Opções do perfil</span></li>
-                    <li><a className="dropdown-item" href="#">Alterar Senha</a></li>
-                    <li><a className="dropdown-item" href="#">Alterar Foto</a></li>
-                    <li><a className="dropdown-item" href="#">Alterar nome</a></li>
-                    <li><a className="dropdown-item" href="#">Segurança</a></li>
-                    <li><a className="dropdown-item" href="#">Sair</a></li>
+                    <li><a className="dropdown-item" href="/profile">Opções do perfil</a></li>
+                    <li><a className="dropdown-item" href="./">Sair</a></li>
                   </ul>
                 </li>
               </ul>
