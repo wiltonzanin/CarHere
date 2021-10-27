@@ -8,16 +8,15 @@
 }
 
 * {
-  align-items: 0;
   margin: 0;
 }
 /*Body*/
 
-.row-Login {
+.rowLogin {
   padding-top: 1rem;
 }
 
-.main-Login{
+.mainLogin{
   background: url(./assets/fundo.svg);
   background-size: 100% 100% 100% 100%;
   background-repeat: no-repeat;
@@ -26,10 +25,9 @@
   height: 100vh;
   width: 100vw;
   align-items: center;
-
   padding: 0;
 }
-.card-Login {
+.cardLogin {
   border: 0 none;
   border-radius: 10px;
   text-align: center;
@@ -40,16 +38,16 @@
 }
 
 /*Text*/
-.Titulo-Login {
+.tituloLogin {
   padding: 2.5rem 0 1rem 0;
   font-size: 35px;
 }
-.Titulo-Senha-Email {
+.tituloSenhaEmail {
   margin: 0;
   padding: 0.5rem 0 0.3rem 0;
   font-size: 20px;
 }
-.Subtitulo-Conta {
+.subtituloConta {
   margin: 0 25% 0 25%;
   font-size: 20px;
 }
@@ -76,7 +74,7 @@ input {
 
 /*Button*/
 
-.Botao-Entrar{
+.botaoEntrar{
   align-items: center;
   text-decoration: none;
   border-radius: 10px;
@@ -94,7 +92,7 @@ input {
   transition-duration: 0.4s;
   box-shadow: rgb(0 0 0 / 10%) 0px 18px 30px;
 }
-.Botao-Entrar:hover{
+.botaoEntrar:hover{
   background-color: #8F1622; 
   color: var(--color-white);
   opacity: 0.7;
