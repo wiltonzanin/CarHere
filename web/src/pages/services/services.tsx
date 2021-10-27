@@ -1,6 +1,6 @@
 import React from "react";
 import "./services.css";
-import Navbar from "../components/navbar/navbar";
+import Navbar from "../../components/navbar/navbar";
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import { FormControl } from "@material-ui/core";

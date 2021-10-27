@@ -3,10 +3,10 @@ import Impreza from "../assets/Impreza.svg";
 import "./home.css";
 import Calendar from 'react-calendar';
 /*import 'react-calendar/dist/Calendar.css';*/
-import Navbar from "../components/navbar/navbar";
-import { CardVehicle } from "../components/cards/CardVehicle";
-import { CardService } from "../components/cards/CardServices";
-import { CardToDo } from "../components/cards/CardToDo";
+import Navbar from "../../components/navbar/navbar";
+import { CardVehicle } from "../../components/cards/CardVehicle";
+import { CardService } from "../../components/cards/CardServices";
+import { CardToDo } from "../../components/cards/CardToDo";
 
 function Home() {
 const [services] = useState([]);

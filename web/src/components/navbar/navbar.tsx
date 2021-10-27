@@ -1,11 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 import './navbarStyles.css';
 import { IconContext } from "react-icons";
 import { FiPlus, FiSettings, FiHelpCircle } from "react-icons/fi";
 
 import user from '../../assets/meme.png';
+import api from "../../services/api";
+
+interface Carros {
+  id: number;
+  modelo: string;
+}
+
+function GetCars() {
+
+  const [carros, setCarros] = useState<Carros[]>([]);
+
+  useEffect(() => {
+    api
+      .get('carros/1')
+      .then((response) => setCarros(response.data));
+  }, []);
+
+  return carros;
+}
 
 function navbar() {
+
+  const carros = GetCars()
+
   return (
     <nav id="navbar" className="navbar navbar-expand-lg navbar-dark">
       <div className="container-fluid">
@@ -28,8 +50,12 @@ function navbar() {
                 Veículos cadastrados
               </a>
               <ul className="dropdown-menu dropdown-sytle" aria-labelledby="navbarDropdownVeiculos">
-                <li><a className="dropdown-item" href="#">Impreza</a></li>
-                <li><a className="dropdown-item" href="#">Monza</a></li>
+                {carros.map(carro => {
+                  return (
+                    <li key={carro.id}><a className="dropdown-item" href="#" >{carro.modelo}</a></li>
+                  );
+                })
+                }
                 <li>
                   <hr className="dropdown-divider" />
                 </li>
@@ -42,7 +68,7 @@ function navbar() {
             </li>
           </ul>
           <div className="d-flex">
-            
+
             <div className="collapse navbar-collapse" id="navbarDropdownConfiguracoes">
               <ul className="navbar-nav">
                 <li className="nav-item dropdown">

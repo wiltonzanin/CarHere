@@ -3,9 +3,9 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Home from "./home/home";
-import Registrate from "./registrate/registrate";
-import Services from "./services/services";
+import Home from "./pages/home/home";
+import Registrate from "./pages/registrate/registrate";
+import Services from "./pages/services/services";
 
 ReactDOM.render(
   <BrowserRouter>
