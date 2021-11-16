@@ -3,7 +3,7 @@ import "./profile.css";
 import { Link } from "react-router-dom";
 import Navbar from "../components/navbar/navbar";
 
-function Profile() {
+function RecuperarSenha() {
 
     const [avatarUrl, setAvatarUrl] = useState('');
 
@@ -30,9 +30,7 @@ function Profile() {
                 <input type="Name" name="Name" className="inputMFA" placeholder="MFA"/>
                 <a className="botaoRecuperarSenha"  href="/recuperarSenha"  type="submit">Alterar Senha</a>
                 <h3 className="opçaoSegurança">Escolha uma pergunta de segurança</h3>
-                <input type="Name" name="Name" className="inputEscolhaPergunta" placeholder="Escolha uma pergunta"/>
                 <h3 className="resposta">Resposta</h3>
-                <input type="Name" name="Name" className="inputResposta"/>
                 <button className="botaoSalvar" type="submit">Salvar</button>
                 
                 </div>
@@ -42,4 +40,4 @@ function Profile() {
     )
 }
 
-export default Profile;
+export default RecuperarSenha;
