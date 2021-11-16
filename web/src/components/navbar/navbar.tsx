@@ -13,6 +13,7 @@ interface Carros {
 
 function GetCars() {
 
+
   const [carros, setCarros] = useState<Carros[]>([]);
 
   useEffect(() => {
@@ -27,6 +28,12 @@ function GetCars() {
 function navbar() {
 
   const carros = GetCars()
+
+  let listaVazia = true;
+
+  if (carros.length > 0) {
+    listaVazia = false
+  }
 
   return (
     <nav id="navbar" className="navbar navbar-expand-lg navbar-dark">
@@ -50,12 +57,15 @@ function navbar() {
                 Veículos cadastrados
               </a>
               <ul className="dropdown-menu dropdown-sytle" aria-labelledby="navbarDropdownVeiculos">
-                {carros.map(carro => {
-                  return (
-                    <li key={carro.id}><a className="dropdown-item" href="#" >{carro.modelo}</a></li>
-                  );
-                })
-                }
+                {listaVazia
+                  ?
+                  <span className="dropdown-item">Não há carros cadastrados!</span>
+                  :
+                  carros.map(carro => {
+                    return (
+                      <li key={carro.id}><a className="dropdown-item" href="#" >{carro.modelo}</a></li>
+                    );
+                  })}
                 <li>
                   <hr className="dropdown-divider" />
                 </li>
