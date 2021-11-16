@@ -1,7 +1,6 @@
 import React from "react";
 import "./services.css";
 import Navbar from "../../components/navbar/navbar";
-import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import { FormControl } from "@material-ui/core";
 import Calendar from "react-calendar";
@@ -13,25 +12,34 @@ function Services() {
       <div className="sideBySide">
         <div className="firstColumn">
           <h1 className="title">De qual veículo deseja ver os serviços?</h1>
-          <FormControl id="formControl">
-        <Select id="dropDown"
-          native
-          /* value={state.age}
-          onChange={handleChange} 
-          inputProps={{
-            name: 'vehicle',
-            id: 'age-native-simple',
-          }}*/
-        >
-          <option id="options" aria-label="None" value="" />
-          <option id="options" value={"Monza"}>Monza</option>
-          <option id="options" value={"Impreza"}>Impreza</option>
-        </Select>
-      </FormControl>
-      </div>
-      <div className="secondColumn">
-      <Calendar className="serviceCalendar"/>
-      </div>
+          <FormControl id="formControl" className="options">
+            <Select
+              className="dropDown"
+              native
+              inputProps={{
+                name: "vehicle",
+                id: "age-native-simple",
+              }}
+            >
+              <option className="options" id="options" value={"Monza"}>
+                Todos
+              </option>
+              <option className="options" id="options" value={"Monza"}>
+                Monza
+              </option>
+              <option className="options" id="options" value={"Impreza"}>
+                Impreza
+              </option>
+            </Select>
+          </FormControl>
+          <h1 className="title" id="titleServices">Serviços já cadastrados</h1>
+        </div>
+        <div className="secondColumn">
+          <h1 className="title" id="titleCalendar">Selecione a data que deseja visualizar </h1>
+          <div className="calendarSize">
+          <Calendar className="serviceCalendar" />
+          </div>
+        </div>
       </div>
     </main>
   );

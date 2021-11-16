@@ -1,7 +1,12 @@
-sideBySide{
+.sideBySide{
   display: flex;
   flex-direction: row;
 }
+.options{
+  color: white;
+  background-color:#333333;
+}
+
 
 #formControl{
   background-color: #333333;
@@ -12,17 +17,33 @@ sideBySide{
   color: #ffffff;
 }
 
-#dropDown{
-  background-color: #333333;
+.dropDown{
   color: #ffffff;
 }
 
 #options{
   background-color: #333333;
-  color: #ffffff;
 }
 
 .react-calendar{
-  width: 4000px;
-  height: 4000px;
+  width: 800px;
+  height: 100%;
+}
+
+.calendarSize{
+  height: 650px;
+  padding-left: 6rem;
+  padding-top: 20px;
+}
+
+.react-calendar__month-view__days{
+  
+}
+
+#titleServices{
+  padding-top: 20px;
+}
+
+#titleCalendar{
+  padding-left: 6rem;
 }
