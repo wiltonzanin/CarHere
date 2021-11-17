@@ -68,6 +68,24 @@ main{
   flex: none;
 }
 
+.carCardInfo{
+  padding-left: 10px;
+}
+
+.carName{
+  font-weight: bold;
+  padding-top: 15px;
+  padding-bottom: 5px;
+}
+
+.iconsGreen{
+  color: #5CB85C;
+}
+
+.textGreen{
+  color: #5CB85C;
+}
+
 /*Cards Services*/
 
 .serviceCard {
@@ -116,7 +134,7 @@ main{
   border-radius: 10px;
   margin-top: 20px;
   margin-right: 30px;
-  flex: none;
+  flex: 1;
 }
 
 /*Cards Calendar*/
@@ -165,8 +183,8 @@ main{
 
 /*Images*/
 .carImage {
-  height: 140px;
-  resize:'cover';
+  width: 280px;
+  border-radius: 10px 10px 0 0;
 }
 
 /*Calendar*/

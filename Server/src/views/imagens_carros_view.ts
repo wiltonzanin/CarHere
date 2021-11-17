@@ -4,7 +4,7 @@ export default {
     render(image: Imagens_carro) {
         return {
             id: image.id,
-            url: `http://10.30.51.144:3333/uploads/${image.path}`, //Alterar para variavéis ambiente
+            url: `http://10.30.51.233:3333/uploads/${image.path}`, //Alterar para variavéis ambiente
         }
     },
 
