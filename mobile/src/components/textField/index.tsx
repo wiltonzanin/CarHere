@@ -21,10 +21,9 @@ interface TextFieldProps extends TextInputProps{
  * @param value: (string) Informe o value do campo;
  * @param tipoTeclado: (any) Tipos de teclado mais usados: email-address, numeric, number-pad, decimal-pad, phone-pad;
  * @param exibeOpcional: (boolean) Exibe ou não o texto (opcional) acima do TextInput;
- * @param secureTextEntry: (boolean) Exibe ou não os caracters de texto;
  * 
  */
-const textField: React.FC<TextFieldProps> = ({ labelName, value, tipoTeclado, exibeOpcional, secureTextEntry, mensagemErro, ...rest }) => {
+const textField: React.FC<TextFieldProps> = ({ labelName, value, tipoTeclado, exibeOpcional, mensagemErro, ...rest }) => {
 
     //#region variaveis    
     let exibirLabelOpcional = exibeOpcional ? true : false;
@@ -43,7 +42,7 @@ const textField: React.FC<TextFieldProps> = ({ labelName, value, tipoTeclado, ex
                 {exibirLabelOpcional && <Text style={styles.labelOpcional}>(Opcional)</Text>}
             </View>
             <View style={styles.inputGroup}>
-                <TextInput style={styles.input} value={value} keyboardType={tipoTeclado} secureTextEntry={secureTextEntry} {...rest}/>
+                <TextInput style={styles.input} value={value} keyboardType={tipoTeclado} {...rest}/>
                 {exbirMensagemErro && <Text style={styles.labelErro}><Feather name="alert-triangle" /> {mensagemErro}</Text>}
             </View>
         </View>

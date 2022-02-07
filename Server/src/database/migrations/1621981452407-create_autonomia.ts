@@ -15,12 +15,6 @@ export class createAutonomia1621981452407 implements MigrationInterface {
                     generationStrategy: 'increment'
                 },
                 {
-                    name: 'capacidadeTanque',
-                    type: 'integer',
-                    length: "3",
-                    isNullable: false
-                },
-                {
                     name: 'kmInicial',
                     type: 'integer',
                     length: "6",
@@ -42,6 +36,12 @@ export class createAutonomia1621981452407 implements MigrationInterface {
                     name: 'litroAbastecidos',
                     type: 'integer',
                     length: "3",
+                    isNullable: false
+                },
+                {
+                    name: 'criado',
+                    type: 'string',
+                    length: "10",
                     isNullable: false
                 },
                 {
