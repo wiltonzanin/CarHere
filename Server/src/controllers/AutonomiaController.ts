@@ -26,6 +26,19 @@ export default {
         return response.json(autonomiaView.renderMany(autonomia));
     },
 
+    async last(request: Request, response: Response) {
+        const { id } = request.params;
+
+        const autonomiaRepositorio = getRepository(Autonomia).createQueryBuilder('autonomia')
+        .where('autonomia.id_carro = :id', { id })
+        .orderBy('id_autonomia', 'DESC')
+        .getOne();
+
+        const autonomia = await autonomiaRepositorio;
+
+        return response.json(autonomia);
+    },
+
     async create(request: Request, response: Response) {
 
         const {
@@ -33,6 +46,8 @@ export default {
             kmFinal,
             tipoCombustivel,
             litroAbastecidos,
+            percurso,
+            mediaConsumo,
             carro
         } = request.body;
     
@@ -43,6 +58,8 @@ export default {
             kmFinal,
             tipoCombustivel,
             litroAbastecidos,
+            percurso,
+            mediaConsumo,
             carro
         };
         

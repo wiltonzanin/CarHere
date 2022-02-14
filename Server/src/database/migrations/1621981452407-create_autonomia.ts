@@ -39,6 +39,18 @@ export class createAutonomia1621981452407 implements MigrationInterface {
                     isNullable: false
                 },
                 {
+                    name: 'percurso',
+                    type: 'varchar',
+                    length: "20",
+                    isNullable: false
+                },
+                {
+                    name: 'mediaConsumo',
+                    type: 'integer',
+                    length: "4",
+                    isNullable: false
+                },
+                {
                     name: 'criado',
                     type: 'string',
                     length: "10",

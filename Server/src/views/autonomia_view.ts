@@ -8,6 +8,8 @@ export default {
             kmFinal: autonomia.kmFinal,
             litrosAbastecidos: autonomia.litroAbastecidos,
             tipoCombustivel: autonomia.tipoCombustivel,
+            percurso: autonomia.percurso,
+            mediaConsumo: autonomia.mediaConsumo,
             id_carro: autonomia.carro
         };
     },

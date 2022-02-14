@@ -19,6 +19,7 @@ routes.get('/carros/detalhes/:id', CarrosController.showListagem)
 
 routes.get('/autonomia', AutonomiaController.index)
 routes.get('/autonomia/:id', AutonomiaController.show)
+routes.get('/autonomia/last/:id', AutonomiaController.last)
 routes.post('/autonomia', upload.array('autonomia'), AutonomiaController.create)
 
 export default routes;

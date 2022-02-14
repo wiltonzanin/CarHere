@@ -5,7 +5,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#8F1622",
     height: 60,
     borderRadius: 8,
-    padding: 24,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -18,9 +17,8 @@ const styles = StyleSheet.create({
 
   buttonAdicionar: {
     backgroundColor: "#8F1622",
-    height: 28,
+    height: 50,
     borderRadius: 8,
-    padding: 24,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -49,8 +47,6 @@ const styles = StyleSheet.create({
     color: "#F0EFF4",
     paddingLeft: 5,
   },
-
-
 });
 
 export default styles;

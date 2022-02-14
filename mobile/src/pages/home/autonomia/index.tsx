@@ -24,11 +24,13 @@ function visualizarVeiculo({ navigation }: any) {
     const [kmFinal, setkmFinal] = useState("");
     const [litrosAbastecidos, setLitrosAbastecidos] = useState("");
     const [combustivel, setCombustivel] = useState("");
+    const [percurso, setPercurso] = useState("");
 
     const kmRodados = Number(kmFinal) - Number(kmInicial);
     var mediaConsumo = 0;
     if (kmRodados > 0 && Number(litrosAbastecidos) > 0) {
         mediaConsumo = kmRodados / Number(litrosAbastecidos);
+        mediaConsumo = Number(mediaConsumo.toFixed(2))
     }
 
     useEffect(() => {
@@ -45,6 +47,8 @@ function visualizarVeiculo({ navigation }: any) {
         data.append("kmFinal", kmFinal);
         data.append("litroAbastecidos", litrosAbastecidos);
         data.append("tipoCombustivel", combustivel);
+        data.append("percurso", percurso);
+        data.append("mediaConsumo", mediaConsumo.toString());
         data.append("carro", carro);
 
         console.log(data)
@@ -90,7 +94,27 @@ function visualizarVeiculo({ navigation }: any) {
                             <TextField labelName="Km final" onChangeText={setkmFinal} />
                         </View>
                     </View>
-                    <TextField labelName="Litros abastecidos" onChangeText={setLitrosAbastecidos} />
+                    <View style={styles.inputGroup}>
+                        <View style={styles.inputGroupColumn}>
+                            <TextField labelName="Litros abastecidos" onChangeText={setLitrosAbastecidos} />
+                        </View>
+                        <View style={styles.inputGroupSecondColumn}>
+                            <Text style={styles.text}>Percurso</Text>
+                            <DropDownPicker
+                                placeholder="Selecione"
+                                dropDownStyle={styles.dropdownList}
+                                labelStyle={styles.dropdownText}
+                                arrowColor={"#F0EFF4"}
+                                items={[
+                                    { label: "Rodoviário", value: "Rodoviário" },
+                                    { label: "Urbano", value: "Urbano" },
+                                    { label: "Misto", value: "Misto" },
+                                ]}
+                                style={styles.dropdown}
+                                onChangeItem={(item) => { setPercurso(item.value) }}
+                            ></DropDownPicker>
+                        </View>
+                    </View>
                     <Text style={styles.text}>Combustível</Text>
                     <DropDownPicker
                         placeholder="Selecione um item"
@@ -98,8 +122,8 @@ function visualizarVeiculo({ navigation }: any) {
                         labelStyle={styles.dropdownText}
                         arrowColor={"#F0EFF4"}
                         items={[
-                            { label: "Gasolina", value: "gasolina" },
-                            { label: "Alcool", value: "alcool" },
+                            { label: "Gasolina", value: "Gasolina" },
+                            { label: "Alcool", value: "Alcool" },
                             { label: "Diesel", value: "Diesel" },
                         ]}
                         style={styles.dropdown}

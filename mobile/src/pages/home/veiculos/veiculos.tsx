@@ -6,6 +6,7 @@ import { Feather } from "@expo/vector-icons";
 
 import styles from "./styles";
 import LoadingScreen from "../../../components/loadingScreen";
+import SearchBar from "../../../components/searchBar";
 import { ButtonAdicionar } from '../../../components/buttons';
 import { ButtonMenu } from '../../../components/buttons';
 import api from "../../../services/api";
@@ -74,12 +75,7 @@ function Veiculos({ navigation }: any) {
           <View style={styles.headerGroup}>
             <ButtonMenu title="" onPress={() => navigation.dispatch(DrawerActions.openDrawer())} />
             <Text style={styles.headerText}>Veículos</Text>
-            <RectButton
-              onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-              style={styles.searhButton}
-            >
-              <Feather name="search" size={25} color="#F0EFF4" />
-            </RectButton>
+            <SearchBar></SearchBar>
           </View>
         </View>
         <ButtonAdicionar title="Adicionar veículo" onPress={handleNavigateToCadastroVeiculo} />

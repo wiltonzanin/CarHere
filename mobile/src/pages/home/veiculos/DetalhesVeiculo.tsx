@@ -27,17 +27,31 @@ interface Carro {
   }>;
 }
 
+interface Autonomia {
+  id: number;
+  tipoCombustivel: string;
+  percurso: string;
+  mediaConsumo: number;
+}
+
 function visualizarVeiculo({ navigation }: any) {
 
   const route = useRoute();
   const params = route.params as DetalhesCarroRouteParams;
 
   const [carro, setCarro] = useState<Carro>();
+  const [autonomia, setAutonomia] = useState<Autonomia>();
 
   useEffect(() => {
     api
       .get(`carros/detalhes/${params.id}`)
       .then((response) => setCarro(response.data));
+  }, [params.id]);
+
+  useEffect(() => {
+    api
+      .get(`autonomia/last/${params.id}`)
+      .then((response) => setAutonomia(response.data));
   }, [params.id]);
 
   if (!carro) {
@@ -112,22 +126,21 @@ function visualizarVeiculo({ navigation }: any) {
               <Text style={styles.cardTitle}>Autonomia</Text>
               <Feather name="chevron-right" size={24} color="#F0EFF4" />
             </View>
-            <View style={styles.infos}>
-              <InfoServico
-                info1="Gasolina"
-                info2="Cidade"
-                info3="12 km/L"
-                info4="Estrada"
-                info5="12 km/L"
-              />
-              <InfoServico
-                info1="Álcool"
-                info2="Cidade"
-                info3="n/a km/L"
-                info4="Estrada"
-                info5="n/a km/L"
-              />
-            </View>
+            {!autonomia
+              ?
+              <View style={styles.noInfo}>
+                <Feather name="alert-circle" size={25} color="#eca400" />
+                <Text style={styles.noInfoText}>Você ainda não possui uma autonomia cadastrada!</Text>
+              </View>
+              :
+              <View style={[carro.combustivel.includes("flex") ? styles.infoGroup : styles.info]}>
+                <View>
+                  <Text style={styles.titleInfo}>{autonomia.tipoCombustivel}</Text>
+                  <Text style={styles.textInfo2}>{autonomia.percurso}</Text>
+                  <Text style={styles.textInfo2}>{autonomia.mediaConsumo} Km/L</Text>
+                </View>
+              </View>
+            }
           </View>
         </View>
       </View>

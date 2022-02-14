@@ -19,6 +19,12 @@ export default class Autonomia {
     @Column()
     litroAbastecidos: number;
 
+    @Column()
+    percurso: string;
+
+    @Column()
+    mediaConsumo: number;
+
     @Column({ default: () => `datetime('now', 'localtime')` })
     criado: string;
 
