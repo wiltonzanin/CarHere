@@ -1,5 +1,5 @@
 import * as React from "react";
-import { View, Text, BackHandler, Alert } from "react-native";
+import { View, Text, BackHandler, Alert, ScrollView, Image, TouchableOpacity } from "react-native";
 import { DrawerActions, useNavigation, useFocusEffect } from "@react-navigation/native";
 import {
   createDrawerNavigator,
@@ -13,10 +13,11 @@ import styles from "./styles";
 import Configuracoes from "./configuracoes/telaPrincipal";
 import CadastroVeiculo from "../cadastroVeiculo";
 import Veiculos from "./veiculos/veiculos";
+import Autonomia from "./autonomia"
 import Principal from "./ajudaEfeedback/principal";
 import Servicos from "./servicos";
-import { ButtonAdicionar } from '../../components/buttons';
 import { ButtonMenu } from '../../components/buttons';
+import { ButtonAdicionar } from '../../components/buttons';
 
 function Home({ navigation }: any) {
   const { navigate } = useNavigation();
@@ -50,12 +51,43 @@ function Home({ navigation }: any) {
     <View style={styles.container}>
       <View style={styles.header}>
         <ButtonMenu title="" onPress={() => navigation.dispatch(DrawerActions.openDrawer())} />
-        <View style={{ paddingRight: '43%' }}>
-          <Text style={styles.text}>Inicio</Text>
-        </View>
+        <Text style={styles.title}>Início</Text>
+        <View />
       </View>
       <View style={styles.content}>
-        <ButtonAdicionar title="Adicionar veículo" onPress={handleNavigateToCadastroVeiculo} />
+        <ScrollView horizontal pagingEnabled>
+          <Image source={require('../../assets/images/impreza.jpg')} style={styles.imgVeiculo} />
+        </ScrollView>
+        <View style={styles.cardImg}>
+          <Text>Impreza GC8</Text>
+        </View>
+        <View style={styles.card}>
+          <View style={styles.cardHeader}>
+            <Text style={styles.cardTitle}>Serviços</Text>
+            <Feather name="chevron-right" size={24} color="#F0EFF4" />
+          </View>
+          <TouchableOpacity style={styles.cardServices}>
+            <View style={styles.servicesHeader}>
+              <Text style={styles.servicesTitle}>Monza</Text>
+              <Text style={styles.servicesText}>24/08/2021</Text>
+            </View>
+            <Text style={styles.textStatusOk}>
+              <Feather name="check-circle" size={14} color="#5CB85C" />{" "}
+              Tudo certo!
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.cardServices}>
+            <View style={styles.servicesHeader}>
+              <Text style={styles.servicesTitle}>Celta</Text>
+              <Text style={styles.servicesText}>24/08/2021</Text>
+            </View>
+            <Text style={styles.textStatusWarning}>
+              <Feather name="alert-circle" size={14} color="#F0AD4E" />{" "}
+              Requer ação!
+            </Text>
+          </TouchableOpacity>
+          <ButtonAdicionar title="Adicionar serviço"></ButtonAdicionar>
+        </View>
       </View>
     </View>
   );
@@ -106,6 +138,20 @@ function MyDrawer() {
           drawerIcon: ({ focused, size }) => (
             <Feather
               name="list"
+              size={size}
+              color={focused ? "#F0EFF4" : "#F0EFF4"}
+            />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="Autonomia"
+        component={Autonomia}
+        options={{
+          unmountOnBlur: true,
+          drawerIcon: ({ focused, size }) => (
+            <Feather
+              name="bar-chart-2"
               size={size}
               color={focused ? "#F0EFF4" : "#F0EFF4"}
             />

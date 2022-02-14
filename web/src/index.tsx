@@ -8,6 +8,7 @@ import Home from "./pages/home/home";
 import Registrate from "./pages/registrate/registrate";
 import Services from "./pages/services/services";
 import Profile from "./profile/profile";
+import RecuperarSenha from "./recuperarSenha/recuperarSenha";
 
 ReactDOM.render(
   <BrowserRouter>
@@ -17,6 +18,7 @@ ReactDOM.render(
       <Route path="/registrate" component={Registrate} />
       <Route path="/services" component={Services} />
       <Route path="/profile" component={Profile} />
+      <Route path="/recuperarSenha" component={RecuperarSenha}/>
     </Switch>
   </BrowserRouter>,
   document.getElementById("root")

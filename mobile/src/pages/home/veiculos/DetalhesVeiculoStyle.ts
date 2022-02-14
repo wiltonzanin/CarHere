@@ -95,10 +95,43 @@ const styles = StyleSheet.create({
     fontSize: 18
   },
 
-  infos: {
-    flexDirection: "row",
-    justifyContent: 'space-between'
-  }
+  noInfo: {
+    backgroundColor: "#F0EFF4",
+    padding: 10,
+    borderRadius: 10,
+    alignItems: 'center'
+  },
+
+  noInfoText: {
+    color: "#252525",
+    fontSize: 18,
+    textAlign: 'center'
+  },
+
+  info: {
+    backgroundColor: "#F0EFF4",
+    padding: 10,
+    borderRadius: 10,
+  },
+
+  infoGroup: {
+    backgroundColor: "#F0EFF4",
+    width: 145,
+    height: 140,
+    padding: 10,
+    borderRadius: 10
+  },
+
+  titleInfo: {
+    color: "#252525",
+    fontSize: 18,
+    paddingBottom: 5,
+  },
+
+  textInfo2: {
+    color: "#252525",
+    fontSize: 14,
+  },
 });
 
 export default styles;

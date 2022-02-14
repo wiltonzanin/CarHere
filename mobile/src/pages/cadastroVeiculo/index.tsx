@@ -10,7 +10,7 @@ import DropDownPicker from "react-native-dropdown-picker";
 import BackScreen from "../../components/backScreen";
 import { Button } from "../../components/buttons";
 import LoadingScreen from "../../components/loadingScreen";
-import { FeedbackModal } from "../../components/feedbackModal";
+import { SuccessModal, FeedbackModal } from "../../components/feedbackModal";
 import { Feather } from "@expo/vector-icons";
 
 function CadastroVeiculo({ navigation }: any) {
@@ -32,9 +32,8 @@ function CadastroVeiculo({ navigation }: any) {
   async function handleSelecionarFoto() {
     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
     if (status !== "granted") {
-      setModalWarning(true);
       setModalMensage("Opa, precisamos da permissão de acesso a galeria para que possamos salvar as imagens :)");
-      setModalVisible(true);
+      setModalWarning(true);
       return;
     }
 
@@ -82,8 +81,11 @@ function CadastroVeiculo({ navigation }: any) {
       setCarregando(false);
       setModalMensage("");
       setModalWarning(true);
+      return;
     }
 
+    console.log("passou aqui carai")
+    setModalMensage("Veículo cadastrado com sucesso!");
     setModalVisible(true);
   }
 
@@ -95,12 +97,21 @@ function CadastroVeiculo({ navigation }: any) {
     }
   }
 
+  function closeModal() {
+    setModalWarning(false);
+    setCarregando(false);
+  }
+
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <LoadingScreen carregando={carregando} />
-      <FeedbackModal
+      <SuccessModal
         modalVisible={modalVisible}
         funcaoOnRequestClose={handleNavigateToVeiculos}
+        mensage={modalMensage} />
+      <FeedbackModal
+        modalVisible={modalWarning}
+        funcaoOnRequestClose={closeModal}
         mensage={modalMensage} />
       <View style={styles.container}>
         <View style={styles.header}>
@@ -118,8 +129,8 @@ function CadastroVeiculo({ navigation }: any) {
             labelStyle={styles.dropdownText}
             arrowColor={"#F0EFF4"}
             items={[
-              { label: "Gasolina", value: "gasolina" },
-              { label: "Alcool", value: "alcool" },
+              { label: "Gasolina", value: "Gasolina" },
+              { label: "Alcool", value: "Alcool" },
               { label: "Diesel", value: "Diesel" },
               { label: "Flex", value: "Flex" },
               { label: "Hibrido", value: "Hibrido" },

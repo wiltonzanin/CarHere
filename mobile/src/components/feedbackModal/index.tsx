@@ -19,6 +19,35 @@ interface modalProps {
  * 
  */
 
+ export const SuccessModal: React.FC<modalProps> = ({ modalVisible, funcaoOnRequestClose, mensage }) => {
+
+    if (mensage == undefined || mensage == "") {
+        mensage = "Operação realizada com sucesso!"
+    }
+
+    return (
+        <Modal
+            animationType="fade"
+            transparent={true}
+            visible={modalVisible}
+            onRequestClose={funcaoOnRequestClose}
+            statusBarTranslucent={true}
+        >
+            <View style={styles.centeredView}>
+                <View style={styles.modalView}>
+                    <Feather name='check-circle' size={50} color={'#5cb85c'} style={{ marginTop: 20 }} />
+                    <Text style={styles.modalText}>{mensage}</Text>
+                    <Pressable
+                        style={styles.button}
+                        onPress={funcaoOnRequestClose}>
+                        <Text style={styles.textStyle}>OK</Text>
+                    </Pressable>
+                </View>
+            </View>
+        </Modal>
+    );
+}
+
 export const FeedbackModal: React.FC<modalProps> = ({ modalVisible, funcaoOnRequestClose, mensage }) => {
 
     if (mensage == undefined || mensage == "") {

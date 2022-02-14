@@ -54,7 +54,7 @@ function Inicial() {
                 <View style={styles.content}>
                     <View>
                         <TextField labelName="E-mail" tipoTeclado={"email-address"} onChangeText={setEmail}/>
-                        <TextField labelName="Senha" secureTextEntry={true} onChangeText={setSenha} />
+                        <TextField labelName="Senha" onChangeText={setSenha} secureTextEntry={true} />
                         <RectButton onPress={handleNavigateToRecuperarSenhaPage} style={styles.forgotPasswordTextButton} rippleColor='#1C00ff00'>
                             <Text style={styles.forgotPassword}>Esqueceu a senha?</Text>
                         </RectButton>

@@ -17,6 +17,10 @@ const styles = StyleSheet.create({
     fontSize: 20
   },
 
+  accordion: {
+    backgroundColor: "#252525"
+  },
+
   accordionTitle: {
     color: "#F0EFF4",
     fontSize: 18,

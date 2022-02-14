@@ -19,7 +19,9 @@ function Termos() {
           <List.Section>
             <List.Accordion
               title="Termos de serviço"
-              titleStyle={styles.accordionTitle}>
+              titleStyle={styles.accordionTitle}
+              style={styles.accordion}
+              theme={{ colors: { text: '#FFF' } }}>
               <View style={styles.textBody}>
                 <Text style={styles.title}>Lorem Ipsum{"\n"}</Text>
                 <Text style={styles.text}>
@@ -33,7 +35,9 @@ function Termos() {
 
             <List.Accordion
               title="Politica de dados"
-              titleStyle={styles.accordionTitle}>
+              titleStyle={styles.accordionTitle}
+              style={styles.accordion}
+              theme={{ colors: { text: '#FFF' } }}>
               <View style={styles.textBody}>
                 <Text style={styles.title}>Quais Tipos de Informações Coletamos?{"\n"}</Text>
                 <Text style={styles.text}>
@@ -44,18 +48,18 @@ function Termos() {
                   {"\t"}{"\t"} Para Fornecer os Produtos do Meu Possante, precisamos processar informações sobre você. Os tipos de informações que coletamos
                   dependem de como você usa nossos Produtos.{"\n"}{"\n"}
                   •	Coisas que você e outras pessoas fazem e fornecem{"\n"}
-                    *	Informações e conteúdos que você fornece{"\n"}
-                    *	Redes e conexões{"\n"}
-                    *	Seu uso{"\n"}
-                    *	O que os outros Fazem e informações que eles fornecem sobre você{"\n"}
+                  *	Informações e conteúdos que você fornece{"\n"}
+                  *	Redes e conexões{"\n"}
+                  *	Seu uso{"\n"}
+                  *	O que os outros Fazem e informações que eles fornecem sobre você{"\n"}
                   {"\n"}
                   •	Informações de dispositivo{"\n"}
-                    *	Atributos do Dispositivo{"\n"}
-                    *	Operações do dispositivo{"\n"}
-                    *	Identificadores{"\n"}
-                    *	Sinais do Dispositivo{"\n"}
-                    *	Dados das configurações do dispositivos{"\n"}
-                    *	Rede e conexões
+                  *	Atributos do Dispositivo{"\n"}
+                  *	Operações do dispositivo{"\n"}
+                  *	Identificadores{"\n"}
+                  *	Sinais do Dispositivo{"\n"}
+                  *	Dados das configurações do dispositivos{"\n"}
+                  *	Rede e conexões
                 </Text>
               </View>
             </List.Accordion>
