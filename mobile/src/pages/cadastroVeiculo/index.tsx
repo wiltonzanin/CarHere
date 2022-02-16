@@ -84,7 +84,6 @@ function CadastroVeiculo({ navigation }: any) {
       return;
     }
 
-    console.log("passou aqui carai")
     setModalMensage("Veículo cadastrado com sucesso!");
     setModalVisible(true);
   }

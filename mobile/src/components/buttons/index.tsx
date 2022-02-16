@@ -23,6 +23,14 @@ export function ButtonAdicionar({ title, ...rest }: ButtonProps) {
   );
 }
 
+export function ButtonDeletar({ title, ...rest }: ButtonProps) {
+  return (
+    <TouchableOpacity style={styles.button} {...rest}>
+      <Text style={styles.text}><Feather name="trash" size={18} color={"#F0EFF4"}/> {title}</Text>
+    </TouchableOpacity>
+  );
+}
+
 export function ButtonMenu({ title, ...rest }: ButtonProps) {
   return (
     <TouchableOpacity style={styles.buttonMenu} {...rest}>

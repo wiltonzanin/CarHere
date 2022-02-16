@@ -23,6 +23,23 @@ const styles = StyleSheet.create({
         elevation: 5
     },
 
+    groupButton: {
+        flexDirection: "row",
+    },
+
+    leftButton: {
+        flex: 1,
+        borderBottomLeftRadius: 20,
+        backgroundColor: '#525252',
+        padding: 10,
+    },
+
+    rightButton: {
+        flex: 1,
+        padding: 10,
+        borderBottomRightRadius: 20,
+    },
+
     button: {
         width: 300,
         backgroundColor: '#525252',

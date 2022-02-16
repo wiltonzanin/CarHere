@@ -132,6 +132,10 @@ const styles = StyleSheet.create({
     color: "#252525",
     fontSize: 14,
   },
+
+  deleteButton: {
+    marginTop: 20
+  }
 });
 
 export default styles;

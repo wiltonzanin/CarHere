@@ -8,15 +8,24 @@ import DropDownPicker from "react-native-dropdown-picker";
 
 import BackScreen from "../../../components/backScreen";
 import TextField from "../../../components/textField";
+import LoadingScreen from "../../../components/loadingScreen";
 import { Button } from "../../../components/buttons";
+import { SuccessModal, FeedbackModal } from "../../../components/feedbackModal";
 import api from "../../../services/api";
+
 
 interface Carros {
     id: number;
     modelo: string;
 }
 
-function visualizarVeiculo({ navigation }: any) {
+function Autonomia({ navigation }: any) {
+
+    const [carregando, setCarregando] = useState(false);
+    const [modalVisible, setModalVisible] = useState(false);
+    const [modalWarning, setModalWarning] = useState(false);
+    const [modalMensage, setModalMensage] = useState("");
+
 
     const [carros, setCarros] = useState<Carros[]>([]);
     const [carro, setCarro] = useState("");
@@ -51,22 +60,44 @@ function visualizarVeiculo({ navigation }: any) {
         data.append("mediaConsumo", mediaConsumo.toString());
         data.append("carro", carro);
 
-        console.log(data)
         try {
-            //setCarregando(true)
+            setCarregando(true)
             await api.post("/autonomia", data);
         } catch (error) {
-            console.log("Eh não deu")
-            // setCarregando(false);
-            // setModalMensage("");
-            // setModalWarning(true);
+            setCarregando(false);
+            setModalMensage("");
+            setModalWarning(true);
+            return;
         }
 
-        //setModalVisible(true);
+        setModalMensage("Autonomia do veículo cadastrada com sucesso!");
+        setModalVisible(true);
+    }
+
+    function handleNavigateToVeiculos() {
+        setModalVisible(!modalVisible);
+        setCarregando(false);
+        if (modalWarning == false) {
+            navigation.navigate("VeiculosCadastrados");
+        }
+    }
+
+    function closeModal() {
+        setModalWarning(false);
+        setCarregando(false);
     }
 
     return (
         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+            <LoadingScreen carregando={carregando} />
+            <SuccessModal
+                modalVisible={modalVisible}
+                funcaoOnRequestClose={handleNavigateToVeiculos}
+                mensage={modalMensage} />
+            <FeedbackModal
+                modalVisible={modalWarning}
+                funcaoOnRequestClose={closeModal}
+                mensage={modalMensage} />
             <View style={styles.container}>
                 <View style={styles.header}>
                     <BackScreen />
@@ -140,4 +171,4 @@ function visualizarVeiculo({ navigation }: any) {
     );
 }
 
-export default visualizarVeiculo;
+export default Autonomia;

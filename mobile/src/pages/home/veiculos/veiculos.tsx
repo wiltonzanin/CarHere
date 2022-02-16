@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, Image, ScrollView, BackHandler, Alert } from "react-native";
-import { DrawerActions, useNavigation, useFocusEffect } from "@react-navigation/native";
+import { View, Text, Image, ScrollView, BackHandler } from "react-native";
+import { DrawerActions, useFocusEffect, StackActions } from "@react-navigation/native";
 import { RectButton } from "react-native-gesture-handler";
 import { Feather } from "@expo/vector-icons";
 
@@ -22,7 +22,6 @@ interface Carros {
 }
 
 function Veiculos({ navigation }: any) {
-  const { navigate } = useNavigation();
 
   let listaVazia = true;
 
@@ -35,7 +34,7 @@ function Veiculos({ navigation }: any) {
   }
 
   function handleNavigateToCadastroVeiculo() {
-    navigate("CadastroVeiculo");
+    navigation.navigate("CadastroVeiculo");
   }
 
   useEffect(() => {
@@ -51,7 +50,8 @@ function Veiculos({ navigation }: any) {
 
   useFocusEffect(() => {
     const backAction = () => {
-      navigation.push('Inicio');
+      const pushAction = StackActions.push('Home');
+      navigation.dispatch(pushAction);
       return true;
     };
 

@@ -6,8 +6,9 @@ import { RectButton } from "react-native-gesture-handler";
 import { Feather } from "@expo/vector-icons";
 
 import BackButton from "../../../components/backScreen";
-import { Infos, InfoServico } from "../../../components/infos";
-import { ButtonAdicionar } from '../../../components/buttons';
+import { Infos } from "../../../components/infos";
+import { DecisionModal } from "../../../components/feedbackModal";
+import { ButtonAdicionar, ButtonDeletar } from '../../../components/buttons';
 import api from "../../../services/api";
 
 interface DetalhesCarroRouteParams {
@@ -34,11 +35,12 @@ interface Autonomia {
   mediaConsumo: number;
 }
 
-function visualizarVeiculo({ navigation }: any) {
+function VisualizarVeiculo({ navigation }: any) {
 
   const route = useRoute();
   const params = route.params as DetalhesCarroRouteParams;
 
+  const [modalDecisionVisible, setModalDecisionVisible] = useState(false);
   const [carro, setCarro] = useState<Carro>();
   const [autonomia, setAutonomia] = useState<Autonomia>();
 
@@ -54,6 +56,15 @@ function visualizarVeiculo({ navigation }: any) {
       .then((response) => setAutonomia(response.data));
   }, [params.id]);
 
+  function deteleVeiculo(){
+    setModalDecisionVisible(true);
+  }
+
+  function handleNavigateToVeiculos() {
+    setModalDecisionVisible(!modalDecisionVisible);
+    navigation.navigate("VeiculosCadastrados");
+  }
+
   if (!carro) {
     return (
       <Text>Erro</Text>
@@ -62,6 +73,10 @@ function visualizarVeiculo({ navigation }: any) {
 
   return (
     <ScrollView>
+      <DecisionModal
+        modalVisible={modalDecisionVisible}
+        funcaoOnRequestClose={handleNavigateToVeiculos}
+        mensage={"Você realmente deseja excluir este veículo?"} />
       <View style={styles.container}>
         <View style={styles.header}>
           <BackButton />
@@ -71,19 +86,23 @@ function visualizarVeiculo({ navigation }: any) {
           </RectButton>
         </View>
         <View>
-          <View style={styles.imagesContainer}>
-            <ScrollView horizontal pagingEnabled>
-              {carro.images.map((image) => {
-                return (
-                  <Image
-                    key={image.id}
-                    source={{ uri: image.url }}
-                    style={styles.imgVeiculo}
-                  />
-                );
-              })}
-            </ScrollView>
-          </View>
+          {carro.images.length == 0
+            ? <View style={{ marginTop: 20 }}></View>
+            :
+            <View style={styles.imagesContainer}>
+              <ScrollView horizontal pagingEnabled>
+                {carro.images.map((image) => {
+                  return (
+                    <Image
+                      key={image.id}
+                      source={{ uri: image.url }}
+                      style={styles.imgVeiculo}
+                    />
+                  );
+                })}
+              </ScrollView>
+            </View>
+          }
           <View style={styles.card}>
             <Text style={styles.cardTitle}>Informações</Text>
             <Infos
@@ -142,10 +161,13 @@ function visualizarVeiculo({ navigation }: any) {
               </View>
             }
           </View>
+          <View style={styles.deleteButton}>
+            <ButtonDeletar title="Deletar" onPress={deteleVeiculo}></ButtonDeletar>
+          </View>
         </View>
       </View>
     </ScrollView>
   );
 }
 
-export default visualizarVeiculo;
+export default VisualizarVeiculo;

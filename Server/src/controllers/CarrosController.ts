@@ -92,5 +92,21 @@ export default {
         await carrosRepositorio.save(carro);
 
         return response.status(201).send(carro);
-    }
+    },
+
+    async delete(request: Request, response: Response) {
+
+        const { id } = request.params;
+
+        const carroRepositorio = getRepository(Carros)
+
+        try {
+            await carroRepositorio.delete(id)
+            console.log("Deu bom")
+        } catch {
+            console.log("Não vai dar não :c")
+        }
+
+        return response.status(200).send();
+    },
 };

@@ -19,7 +19,7 @@ interface modalProps {
  * 
  */
 
- export const SuccessModal: React.FC<modalProps> = ({ modalVisible, funcaoOnRequestClose, mensage }) => {
+export const SuccessModal: React.FC<modalProps> = ({ modalVisible, funcaoOnRequestClose, mensage }) => {
 
     if (mensage == undefined || mensage == "") {
         mensage = "Operação realizada com sucesso!"
@@ -89,13 +89,50 @@ export const ErrorModal: React.FC<modalProps> = ({ modalVisible, funcaoOnRequest
         >
             <View style={styles.centeredView}>
                 <View style={styles.modalView}>
-                    <Feather name='x-circle' size={50} color={'#5CB85C'} style={{ marginTop: 20 }} />
+                    <Feather name='x-circle' size={50} color={'#d9534f'} style={{ marginTop: 20 }} />
                     <Text style={styles.modalText}>{mensage}</Text>
                     <Pressable
                         style={styles.button}
                         onPress={funcaoOnRequestClose}>
                         <Text style={styles.textStyle}>OK</Text>
                     </Pressable>
+                </View>
+            </View>
+        </Modal>
+    );
+}
+
+export const DecisionModal: React.FC<modalProps> = ({ modalVisible, funcaoOnRequestClose, mensage }) => {
+
+    function closeModal(){
+        modalVisible = false;
+        console.log(modalVisible)
+    } //Não funciona
+
+    return (
+        <Modal
+            animationType="fade"
+            transparent={true}
+            visible={modalVisible}
+            onRequestClose={funcaoOnRequestClose}
+            statusBarTranslucent={true}
+        >
+            <View style={styles.centeredView}>
+                <View style={styles.modalView}>
+                    <Feather name='help-circle' size={50} color={'#f0ad4e'} style={{ marginTop: 20 }} />
+                    <Text style={styles.modalText}>{mensage}</Text>
+                    <View style={styles.groupButton}>
+                        <Pressable
+                            style={styles.leftButton}
+                            onPress={closeModal}>
+                            <Text style={styles.textStyle}>Não</Text>
+                        </Pressable>
+                        <Pressable
+                            style={styles.rightButton}
+                            onPress={funcaoOnRequestClose}>
+                            <Text style={styles.textStyle}>Sim</Text>
+                        </Pressable>
+                    </View>
                 </View>
             </View>
         </Modal>

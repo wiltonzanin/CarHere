@@ -43,10 +43,6 @@ function Home({ navigation }: any) {
     return () => backHandler.remove();
   });
 
-  function handleNavigateToCadastroVeiculo() {
-    navigate("CadastroVeiculo");
-  }
-
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -100,7 +96,7 @@ function MyDrawer() {
   return (
     <Drawer.Navigator
       drawerContentOptions={{ activeBackgroundColor: "#8F1622" }}
-      drawerContent={(props) => (
+      drawerContent={(props: DrawerContentComponentProps) => (
         <CustomDrawerContent {...props} style={styles.drawer} />
       )}
     >
@@ -204,7 +200,7 @@ function MyDrawer() {
 function CustomDrawerContent(props: DrawerContentComponentProps) {
   return (
     <DrawerContentScrollView {...props}>
-      <DrawerItemList {...props} labelStyle={styles.drawerText} />
+      <DrawerItemList labelStyle={styles.drawerText} {...props}  />
     </DrawerContentScrollView>
   );
 }
