@@ -4,6 +4,7 @@ import { Text, View, ScrollView } from "react-native";
 import styles from "./styles";
 import TextField from "../../../../components/textField";
 import BackScreen from "../../../../components/backScreen";
+import { Button } from '../../../../components/buttons';
 import { useNavigation } from "@react-navigation/native";
 
 function AlterarSenha() {
@@ -28,11 +29,7 @@ function AlterarSenha() {
           </Text>
           <View style={styles.formContent}>
             <TextField labelName="Email" tipoTeclado={"email-address"} />
-            <RectButton
-              onPress={handleNavigateToCodigoConfirmacao}
-              style={styles.button}>
-              <Text style={styles.buttonText}>Enviar instruções</Text>
-            </RectButton>
+            <Button title="Enviar instruções" onPress={handleNavigateToCodigoConfirmacao} />
           </View>
         </View>
       </View>

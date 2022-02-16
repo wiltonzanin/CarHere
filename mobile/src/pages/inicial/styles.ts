@@ -43,7 +43,6 @@ const styles = StyleSheet.create({
 
     forgotPasswordTextButton: {
         width: '50%',
-        height: '10%',
         marginTop: -26,
         alignSelf: 'flex-end',
         justifyContent: 'center',

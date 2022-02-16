@@ -4,6 +4,7 @@ import { Text, View, ScrollView } from 'react-native';
 import styles from './styles';
 import TextField from '../../components/textField';
 import BackScreen from '../../components/backScreen';
+import { Button } from '../../components/buttons';
 
 function RecuperarSenha() {
 
@@ -19,9 +20,7 @@ function RecuperarSenha() {
                     </View>
                 </View>
                 <View style={styles.buttonStyle}>
-                    <RectButton style={styles.button}>
-                        <Text style={styles.buttonText}>Enviar instruções</Text>
-                    </RectButton>
+                    <Button title='Enviar instruções' />
                 </View>
             </View>
         </ScrollView>
