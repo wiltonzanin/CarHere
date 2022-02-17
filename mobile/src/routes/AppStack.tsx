@@ -11,6 +11,7 @@ import Autonomia from '../pages/home/autonomia/';
 import UnidadeMedida from '../pages/home/configuracoes/unidadeMedida';
 import CadastroServicos from '../pages/home/servicos/cadastro';
 import VisualizarServicos from '../pages/home/servicos/VisualizarServico';
+import Mapa from '../pages/home/mapa';
 import Termos from '../pages/home/configuracoes/termosEpoliticas';
 import OpcoesUsuario from '../pages/home/configuracoes/opcoesUsuario';
 import Mfa from '../pages/cadastroUsuario/mfa';
@@ -38,6 +39,7 @@ function AppStack() {
             <Screen name="UnidadeMedida" component={UnidadeMedida} />
             <Screen name="CadastroServicos" component={CadastroServicos} />
             <Screen name="VisualizarServicos" component={VisualizarServicos} />
+            <Screen name="Mapa" component={Mapa} />
             <Screen name="Termos" component={Termos} />
             <Screen name="OpcoesUsuario" component={OpcoesUsuario} />
             <Screen name="Mfa" component={Mfa} />

@@ -16,6 +16,7 @@ import Veiculos from "./veiculos/veiculos";
 import Autonomia from "./autonomia"
 import Principal from "./ajudaEfeedback/principal";
 import Servicos from "./servicos";
+import Mapa from "./mapa";
 import { ButtonMenu } from '../../components/buttons';
 import { ButtonAdicionar } from '../../components/buttons';
 
@@ -168,6 +169,19 @@ function MyDrawer() {
         }}
       />
       <Drawer.Screen
+        name="Mapas"
+        component={Mapa}
+        options={{
+          drawerIcon: ({ focused, size }) => (
+            <Feather
+              name="map"
+              size={size}
+              color={focused ? "#F0EFF4" : "#F0EFF4"}
+            />
+          ),
+        }}
+      />
+      <Drawer.Screen
         name="Configurações"
         component={Configuracoes}
         options={{
@@ -200,7 +214,7 @@ function MyDrawer() {
 function CustomDrawerContent(props: DrawerContentComponentProps) {
   return (
     <DrawerContentScrollView {...props}>
-      <DrawerItemList labelStyle={styles.drawerText} {...props}  />
+      <DrawerItemList labelStyle={styles.drawerText} {...props} />
     </DrawerContentScrollView>
   );
 }
