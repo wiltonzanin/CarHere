@@ -11,8 +11,7 @@ import Autonomia from '../pages/home/autonomia/';
 import UnidadeMedida from '../pages/home/configuracoes/unidadeMedida';
 import CadastroServicos from '../pages/home/servicos/cadastro';
 import VisualizarServicos from '../pages/home/servicos/VisualizarServico';
-import Mapa from '../pages/home/mapa';
-import PremiumAccount from '../pages/home/contaPremium';
+// import Mapa from '../pages/home/mapa';
 import Termos from '../pages/home/configuracoes/termosEpoliticas';
 import OpcoesUsuario from '../pages/home/configuracoes/opcoesUsuario';
 import Mfa from '../pages/cadastroUsuario/mfa';
@@ -22,6 +21,8 @@ import Aparencia from '../pages/home/configuracoes/aparencia';
 import Acessibilidade from '../pages/home/configuracoes/acessibilidade';
 import Seguranca from '../pages/home/configuracoes/opcoesUsuario/seguranca';
 import SelecionaFoto from '../pages/home/configuracoes/opcoesUsuario/modal/selecionarFoto';
+import Subscription from '../pages/home/subscription';
+import Card from '../pages/home/subscription/card';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -40,8 +41,7 @@ function AppStack() {
             <Screen name="UnidadeMedida" component={UnidadeMedida} />
             <Screen name="CadastroServicos" component={CadastroServicos} />
             <Screen name="VisualizarServicos" component={VisualizarServicos} />
-            <Screen name="Mapa" component={Mapa} />
-            <Screen name="PremiumAccount" component={PremiumAccount} />
+            {/* <Screen name="Mapa" component={Mapa} /> */}
             <Screen name="Termos" component={Termos} />
             <Screen name="OpcoesUsuario" component={OpcoesUsuario} />
             <Screen name="Mfa" component={Mfa} />
@@ -51,6 +51,8 @@ function AppStack() {
             <Screen name="Acessibilidade" component={Acessibilidade} />
             <Screen name="Seguranca" component={Seguranca} />
             <Screen name="SelecionaFoto" component={SelecionaFoto} />
+            <Screen name="Subscription" component={Subscription} />
+            <Screen name="Card" component={Card} />
         </Navigator>
     );
 }

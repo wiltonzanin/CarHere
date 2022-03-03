@@ -16,9 +16,9 @@ import Veiculos from "./veiculos/veiculos";
 import Autonomia from "./autonomia"
 import Principal from "./ajudaEfeedback/principal";
 import Servicos from "./servicos";
-import PremiumAccount from "./contaPremium";
 import { ButtonMenu } from '../../components/buttons';
 import { ButtonAdicionar } from '../../components/buttons';
+import Subscription from '../home/subscription'
 
 function Home({ navigation }: any) {
   const { navigate } = useNavigation();
@@ -170,7 +170,7 @@ function MyDrawer() {
       />
       <Drawer.Screen
         name="Premium"
-        component={PremiumAccount}
+        component={Subscription}
         options={{
           drawerIcon: ({ focused, size }) => (
             <MaterialCommunityIcons

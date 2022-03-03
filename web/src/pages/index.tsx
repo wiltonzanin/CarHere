@@ -1,5 +1,4 @@
-import { Box, Button, Checkbox, Flex, Link, Stack, Text } from "@chakra-ui/react";
-import { Image } from "@chakra-ui/image";
+import { Button, Checkbox, Flex, Link, Stack, Text } from "@chakra-ui/react";
 import backgroundImage from "../../public/images/backgroundImage.svg";
 import { Input } from "../components/Input";
 export default function SigIn() {

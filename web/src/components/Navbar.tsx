@@ -21,7 +21,7 @@ export default function Navbar() {
 
   return (
     <>
-      <Box bg="red.700" paddingLeft="3rem">
+      <Box bg="red.700" paddingLeft="8.75rem" pr="8.75rem">
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"} >
           <IconButton
             size={"md"}
@@ -90,14 +90,27 @@ export default function Navbar() {
                 textDecoration: "none",
                 bgColor: "red.900",
               }}
-              href={"#"}
+              href={"/map"}
             >
               Mapa
             </Link>
 
+            <Link
+              px={2}
+              py={1}
+              rounded={"md"}
+              _hover={{
+                textDecoration: "none",
+                bgColor: "red.900",
+              }}
+              href={"/subscribe"}
+            >
+              Premium
+            </Link>
+
             {/* menu usuário */}
           </HStack>
-          <Flex alignSelf="center" ml="auto" paddingRight="3rem">
+          <Flex alignSelf="center" ml="auto" >
             <Menu>
               <MenuButton
                 as={Button}

@@ -8,24 +8,24 @@ function Configuracoes({ navigation }: any) {
   const { navigate } = useNavigation();
 
   function handleNavigateToUnidadeMedida() {
-    navigate("UnidadeMedida");
+    navigation.navigate("UnidadeMedida");
   }
 
   function handleNavigateToTermos() {
-    navigate("Termos");
+    navigation.navigate("Termos");
   }
 
   function handleNavigateToOpcoesUsuario() {
-    navigate("OpcoesUsuario");
+    navigation.navigate("OpcoesUsuario");
   }
   function handleNavigateToNotificacao() {
-    navigate("Notificacao");
+    navigation.navigate("Notificacao");
   }
   function handleNavigateToAparencia() {
-    navigate("Aparencia");
+    navigation.navigate("Aparencia");
   }
   function handleNavigateToAcessibilidade() {
-    navigate("Acessibilidade");
+    navigation.navigate("Acessibilidade");
   }
 
   return (

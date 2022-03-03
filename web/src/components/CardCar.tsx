@@ -8,7 +8,7 @@ export default function CardCar() {
     <Box minWidth="17rem" maxWidth="17rem" borderRadius="10" bgColor="white">
       <Image src={carImage} />
       <Box p="1rem" minHeight="8rem">
-        <Text fontSize="bold" color="black">
+        <Text fontWeight="bold" color="black" fontSize="1.5rem">
           Nome
         </Text>
         <HStack color="green.400" pt="5">

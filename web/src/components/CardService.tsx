@@ -11,7 +11,7 @@ export function CardService() {
     >
       <HStack color="black">
         <VStack alignItems="flex-start" spacing="0">
-          <Text fontSize="1.5rem">Monza</Text>
+          <Text fontSize="1.5rem" fontWeight="bold">Monza</Text>
           <Text>Troca de óleo</Text>
           <Text>24/02/2022</Text>
         </VStack>
