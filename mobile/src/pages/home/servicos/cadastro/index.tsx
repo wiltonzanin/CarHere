@@ -37,6 +37,7 @@ function CadastroServicos() {
   const showTimepicker = () => {
     showMode('time');
   };
+  console.log(date)
 
 
   return (
@@ -56,21 +57,14 @@ function CadastroServicos() {
 
           <View style={styles.inputGroup}>
             <View style={styles.inputGroupSecondColumn}>
-              <Text style={styles.text}>Data do serviço</Text>
-              <DropDownPicker
-                placeholder=""
-                dropDownStyle={styles.dropdownList}
-                labelStyle={styles.dropdownText}
-                arrowColor={"#F0EFF4"}
-                style={styles.dropdown}
-                onChangeItem={(item) => { setAno(item.value) }}
-              ></DropDownPicker>
+                <View>
+                  <TextField placeholder="teste" labelName="Data do Serviço" tipoTeclado={"numeric"} onTouchStart={showDatepicker} onChangeText={setMotorizacao} maxLength={8}/>
+                </View>
             </View>
 
             <View style={styles.inputGroupColumn}>
-              <TextField labelName="Tempo de serviço" tipoTeclado={"numeric"} onTouchStart={showTimepicker} onChangeText={setMotorizacao} maxLength={4}/>
+              <TextField placeholder="teste" labelName="Tempo de serviço" tipoTeclado={"numeric"} onTouchStart={showTimepicker} onChangeText={setMotorizacao} maxLength={4}/>
             </View>
-
             {show && (
               <DateTimePicker
                 testID="dateTimePicker"
@@ -82,7 +76,7 @@ function CadastroServicos() {
               />
             )}
           </View>
-
+          <Text style={styles.title}>date </Text>
           <TextField labelName="Valor do serviço" tipoTeclado={"numeric"} />
           <Text style={styles.text}>Descrição do serviço realizado:</Text>
           {/* documentação: https://reactnative.dev/docs/textinput */}
