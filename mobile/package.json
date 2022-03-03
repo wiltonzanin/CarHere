@@ -16,6 +16,7 @@
     "@react-navigation/drawer": "^5.12.5",
     "@react-navigation/native": "^6.0.2",
     "@react-navigation/stack": "^5.14.3",
+    "@stripe/stripe-react-native": "^0.3.0",
     "axios": "^0.21.1",
     "drawer": "^0.0.2",
     "expo": "^44.0.0",
@@ -40,6 +41,7 @@
     "react-native-svg": "12.1.1",
     "react-native-vector-icons": "^8.1.0",
     "react-native-web": "0.17.1",
+    "stripe": "^8.207.0",
     "styled-components": "^5.2.2",
     "yup": "^0.32.9"
   },

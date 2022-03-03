@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { View, Text, ScrollView, Image, TouchableOpacity } from "react-native";
 import { DrawerActions, useRoute } from "@react-navigation/native";
 import styles from "./styles";
-import { RectButton } from "react-native-gesture-handler";
 import { Feather } from "@expo/vector-icons";
 import DropDownPicker from "react-native-dropdown-picker";
 

@@ -7,7 +7,7 @@ import {
   DrawerItemList,
   DrawerContentComponentProps,
 } from "@react-navigation/drawer";
-import { Feather } from "@expo/vector-icons";
+import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 
 import styles from "./styles";
 import Configuracoes from "./configuracoes/telaPrincipal";
@@ -16,7 +16,7 @@ import Veiculos from "./veiculos/veiculos";
 import Autonomia from "./autonomia"
 import Principal from "./ajudaEfeedback/principal";
 import Servicos from "./servicos";
-import Mapa from "./mapa";
+import PremiumAccount from "./contaPremium";
 import { ButtonMenu } from '../../components/buttons';
 import { ButtonAdicionar } from '../../components/buttons';
 
@@ -169,12 +169,12 @@ function MyDrawer() {
         }}
       />
       <Drawer.Screen
-        name="Mapas"
-        component={Mapa}
+        name="Premium"
+        component={PremiumAccount}
         options={{
           drawerIcon: ({ focused, size }) => (
-            <Feather
-              name="map"
+            <MaterialCommunityIcons
+              name="crown-outline"
               size={size}
               color={focused ? "#F0EFF4" : "#F0EFF4"}
             />
