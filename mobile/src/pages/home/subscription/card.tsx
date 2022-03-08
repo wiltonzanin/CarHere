@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Button, ScrollView, TextInput } from "react-native";
+import { Alert, Button, ScrollView, TextInput } from "react-native";
 import styles from './styles'
-import {CardField} from '@stripe/stripe-react-native'
+import {CardField, useConfirmPayment} from '@stripe/stripe-react-native'
 import { API_URL } from "../../../../Config";
 
 export default function Card() {
   const [name, setName] = useState("");
+  const {confirmPayment, loading} = useConfirmPayment()
   const handlePayPress = async() => {
     const response = await fetch(`${API_URL}/create-payment-intent`,{
       method:'POST',
@@ -14,13 +15,25 @@ export default function Card() {
       },
       body: JSON.stringify({
         paymentMethodType: 'card',
-        // CURRENCY
+        currency: 'BRL'
       })
     })
+    const {clientsecret} = await response.json()
+    
+    const {error, paymentIntent } = await confirmPayment(clientsecret,{
+      type: 'Card',
+      billingDetails: {name}
+    })
+    
+    if(error) {
+      Alert.alert(`Error code: ${error.code}`, error.message)
+    }else if (paymentIntent){
+      Alert.alert('Success', `Payment successful: ${paymentIntent.id}`)
+    }
   }
-
-  return (
-    <ScrollView>
+    
+    return (
+      <ScrollView>
       <TextInput autoCapitalize="none" 
       placeholder="Name"
       keyboardType="name-phone-pad"
@@ -28,9 +41,10 @@ export default function Card() {
       style ={styles.input}
       />
       <CardField 
+      postalCodeEnabled={false}
       style={styles.cardField}
       />
-      <Button title="Pay" onPress={handlePayPress}/>
+      <Button title="Pay" onPress={handlePayPress} disabled={loading}/>
     </ScrollView>
   );
 }

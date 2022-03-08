@@ -7,13 +7,10 @@ import Card from "./card";
 import BackScreen from "../../../components/backScreen";
 import { Feather } from "@expo/vector-icons";
 import { Button } from "../../../components/buttons";
-import { useNavigation } from "@react-navigation/native";
 
 
 export default function Subscription({ navigation }: any) {
 
-  const { navigate } = useNavigation();
-  
     function handleNavigateToCard() {
       navigation.navigate(Card)
     }
