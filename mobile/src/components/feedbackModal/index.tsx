@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Text, View, Modal, Pressable } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import { Feather } from '@expo/vector-icons';
 
 import styles from './styles';
@@ -7,6 +8,7 @@ import styles from './styles';
 interface modalProps {
     modalVisible: boolean;
     funcaoOnRequestClose?: any;
+    funcaoFecharModal?: () => void;
     mensage?: string;
 }
 
@@ -102,12 +104,7 @@ export const ErrorModal: React.FC<modalProps> = ({ modalVisible, funcaoOnRequest
     );
 }
 
-export const DecisionModal: React.FC<modalProps> = ({ modalVisible, funcaoOnRequestClose, mensage }) => {
-
-    function closeModal(){
-        modalVisible = false;
-        console.log(modalVisible)
-    } //Não funciona
+export const DecisionModal: React.FC<modalProps> = ({ modalVisible, funcaoOnRequestClose, funcaoFecharModal, mensage }) => {
 
     return (
         <Modal
@@ -124,7 +121,7 @@ export const DecisionModal: React.FC<modalProps> = ({ modalVisible, funcaoOnRequ
                     <View style={styles.groupButton}>
                         <Pressable
                             style={styles.leftButton}
-                            onPress={closeModal}>
+                            onPress={funcaoFecharModal}>
                             <Text style={styles.textStyle}>Não</Text>
                         </Pressable>
                         <Pressable
