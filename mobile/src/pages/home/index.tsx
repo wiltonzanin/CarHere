@@ -45,7 +45,7 @@ function Home({ navigation }: any) {
   });
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.header}>
         <ButtonMenu title="" onPress={() => navigation.dispatch(DrawerActions.openDrawer())} />
         <Text style={styles.title}>Início</Text>
@@ -86,7 +86,7 @@ function Home({ navigation }: any) {
           <ButtonAdicionar title="Adicionar serviço"></ButtonAdicionar>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
