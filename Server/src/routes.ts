@@ -4,6 +4,7 @@ import multer from 'multer';
 import uploadConfig from './config/upload';
 import UsuariosController from './controllers/UsuariosController';
 import CarrosController from './controllers/CarrosController';
+import ServicoController from './controllers/ServicoController';
 import AutonomiaController from './controllers/AutonomiaController';
 
 const routes = Router();
@@ -17,6 +18,10 @@ routes.post('/carros', upload.array('images'), CarrosController.create)
 routes.get('/carros/:id', CarrosController.show)
 routes.get('/carros/detalhes/:id', CarrosController.showListagem)
 routes.delete('/carros/delete/:id', CarrosController.delete)
+
+routes.post('/servico', upload.array('servico'), ServicoController.create)
+routes.get('/servico/:id', ServicoController.show)
+routes.delete('/servico/delete/:id', ServicoController.delete)
 
 routes.get('/autonomia', AutonomiaController.index)
 routes.get('/autonomia/:id', AutonomiaController.show)

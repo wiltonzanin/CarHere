@@ -3,6 +3,7 @@ import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToOne, JoinColum
 import Usuario from './usuarios';
 import Imagens_carro from './imagens_carro';
 import Autonomia_carro from './autonomia'
+import Servico from './servico';
 
 @Entity('carro')
 export default class Carro {
@@ -39,4 +40,16 @@ export default class Carro {
     })
     @JoinColumn({ name: 'id_carro' })
     autonomia: Autonomia_carro[]
+
+    @ManyToOne(() => Servico, servico => servico.carro)
+    @JoinColumn({ name: 'id_carro' })
+    servico: Servico;
+/*
+    @OneToMany(() => Servico, servico => servico.carro, {
+        cascade: ['insert', 'update']
+    })
+    @JoinColumn({ name: 'id_carro' })
+    servico: Servico[]
+    */
+
 }
