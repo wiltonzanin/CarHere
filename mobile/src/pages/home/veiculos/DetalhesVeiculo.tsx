@@ -60,11 +60,16 @@ function VisualizarVeiculo({ navigation }: any) {
     setModalDecisionVisible(true);
   }
 
-  function handleNavigateToVeiculos() {
+  function fecharModal() {
+    setModalDecisionVisible(!modalDecisionVisible);
+  }
+
+  function handleDeleteVehicle() {
     setModalDecisionVisible(!modalDecisionVisible);
     navigation.navigate("VeiculosCadastrados");
   }
 
+  //Adicionar tratamento
   if (!carro) {
     return (
       <Text>Erro</Text>
@@ -75,7 +80,8 @@ function VisualizarVeiculo({ navigation }: any) {
     <ScrollView>
       <DecisionModal
         modalVisible={modalDecisionVisible}
-        funcaoOnRequestClose={handleNavigateToVeiculos}
+        funcaoOnRequestClose={handleDeleteVehicle}
+        funcaoFecharModal={fecharModal}
         mensage={"Você realmente deseja excluir este veículo?"} />
       <View style={styles.container}>
         <View style={styles.header}>

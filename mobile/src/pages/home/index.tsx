@@ -7,7 +7,7 @@ import {
   DrawerItemList,
   DrawerContentComponentProps,
 } from "@react-navigation/drawer";
-import { Feather } from "@expo/vector-icons";
+import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 
 import styles from "./styles";
 import Configuracoes from "./configuracoes/telaPrincipal";
@@ -16,9 +16,9 @@ import Veiculos from "./veiculos/veiculos";
 import Autonomia from "./autonomia"
 import Principal from "./ajudaEfeedback/principal";
 import Servicos from "./servicos";
-import Mapa from "./mapa";
 import { ButtonMenu } from '../../components/buttons';
 import { ButtonAdicionar } from '../../components/buttons';
+import Subscription from '../home/subscription'
 
 function Home({ navigation }: any) {
   const { navigate } = useNavigation();
@@ -45,7 +45,7 @@ function Home({ navigation }: any) {
   });
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.header}>
         <ButtonMenu title="" onPress={() => navigation.dispatch(DrawerActions.openDrawer())} />
         <Text style={styles.title}>Início</Text>
@@ -86,7 +86,7 @@ function Home({ navigation }: any) {
           <ButtonAdicionar title="Adicionar serviço"></ButtonAdicionar>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
@@ -169,12 +169,12 @@ function MyDrawer() {
         }}
       />
       <Drawer.Screen
-        name="Mapas"
-        component={Mapa}
+        name="Premium"
+        component={Subscription}
         options={{
           drawerIcon: ({ focused, size }) => (
-            <Feather
-              name="map"
+            <MaterialCommunityIcons
+              name="crown-outline"
               size={size}
               color={focused ? "#F0EFF4" : "#F0EFF4"}
             />

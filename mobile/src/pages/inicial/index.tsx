@@ -15,15 +15,11 @@ function Inicial() {
 
     const { signed, user, signIn } = useAuth();
 
-    console.log(signed)
-    console.log(user)
-
     const { navigate } = useNavigation();
 
     function handleSignIn() {
         console.log(email + senha)
         signIn();
-        console.log("Logar")
     }
 
     function handleNavigateToCadastroUsarioPage() {
