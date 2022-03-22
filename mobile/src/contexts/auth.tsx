@@ -25,8 +25,8 @@ export const AuthProvider: React.FC = ({ children }) => {
 
             if (storageUser && storageToken) {
                 //Exemplo de implementação de Token
-                //api.defaults.headers['Authorization'] = `Bearer ${storageToken}`;
                 setUser(JSON.parse(storageUser));
+                api.defaults.headers.Authorization = `Bearer ${storageToken}`;
                 setLoading(false);
             }
         };
@@ -39,7 +39,7 @@ export const AuthProvider: React.FC = ({ children }) => {
         setUser(response.user);
 
         //Exemplo de implementação de Token
-        //api.defaults.headers['Authorization'] = `Bearer ${response.token}`;
+        api.defaults.headers['Authorization'] = `Bearer ${response.token}`;
 
         await AsyncStorage.setItem('@MeuPossante:user', JSON.stringify(response.user));
         await AsyncStorage.setItem('@MeuPossante:token', response.token);
@@ -52,7 +52,7 @@ export const AuthProvider: React.FC = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ signed: !!user, user, loading, signIn, signOut }}>
+        <AuthContext.Provider value={{ signed: Boolean(user), user, loading, signIn, signOut }}>
             {children}
         </AuthContext.Provider>
     );
