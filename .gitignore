@@ -18,3 +18,8 @@ npm-debug.log
 yarn-error.log
 yarn.lock # include if you are using yarn - don't use both npm and yarn
 mobile/.expo/packager-info.json
+mobile/.expo/web/cache/development/babel-loader/02f95e74edb50c3b465be88d87fb3223.json
+mobile/.expo/web/cache/development/babel-loader/10a4c1e76632117ad9671f3e9ee8de04.json
+mobile/.expo/web/cache/development/babel-loader/1bccb65c3d68920e1b9b5200f70ae86d.json
+mobile/.expo/web/cache/development/babel-loader/1bdeba912023c92686ecc7c89e20e6fc.json
+*.json

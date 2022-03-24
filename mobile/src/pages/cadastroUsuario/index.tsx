@@ -9,16 +9,16 @@ import BackScreen from "../../components/backScreen";
 import api from "../../services/api";
 import { Button } from "../../components/buttons";
 import { CheckBox } from 'react-native-elements';
-import { FeedbackModal } from "../../components/feedbackModal";
+import { SuccessModal, FeedbackModal } from "../../components/feedbackModal";
+
 import LoadingScreen from "../../components/loadingScreen";
 
-function CadastroUsuario() {
+function CadastroUsuario({navigation}:any) {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [isSelected, setIsSelected] = useState(false);
 
-  const { navigate } = useNavigation();
   const [modalVisible, setModalVisible] = useState(false);
   const [modalWarning, setModalWarning] = useState(false);
 
@@ -31,25 +31,29 @@ function CadastroUsuario() {
     data.append("email", email);
     data.append("senha", senha);
 
-    try {
-      setCarregando(true)
-      await api.post("/usuarios", data);
-    } catch (error) {
+    //envia os dados do usuário para a api
+    await api.post('/usuarios', data)
+    .then(function (response) {
+      navigation.navigate("Inicial");
+      console.log(response);
+    })
+    //caso ocorra algum erro
+    .catch(function (error) {
       setCarregando(false)
+      // setModalVisible(true);
       setModalWarning(true);
-    }
-
-    setModalVisible(true);
+    });
+  
   }
 
   function handleNavigateToTermos() {
-    navigate("Termos");
+    navigation.navigate("Termos");
   }
 
   function handleNavigateToIncial() {
     setModalVisible(!modalVisible);
     setCarregando(false);
-    navigate("Inicial");
+    navigation.navigate("Inicial");
   }
 
   return (
@@ -101,7 +105,7 @@ function CadastroUsuario() {
               <Text style={styles.textTermosECondicoes}>Aceito os termos e condições de uso de dados</Text>
             </RectButton>
           </View>
-          <Button title="Próximo" onPress={() => handleCreateUsuario()} />
+          <Button title="Concluir" onPress={() => handleCreateUsuario()} />
         </View>
       </View>
     </ScrollView >

@@ -1,6 +1,6 @@
-import { MigrationInterface, QueryRunner, Table } from "typeorm";
+import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export class createServico1621982004890 implements MigrationInterface {
+export class createServico1647537557426 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(new Table({
@@ -15,44 +15,55 @@ export class createServico1621982004890 implements MigrationInterface {
                     generationStrategy: 'increment'
                 },
                 {
-                    name: 'titulo',
+                    name: 'nome',
+                    type: 'varchar',
+                    length: "40",
+                    isNullable: false
+                },
+                {
+                    name: 'local',
                     type: 'varchar',
                     length: "50",
                     isNullable: false
                 },
                 {
-                    name: 'localservico',
+                    name: 'datafor',
                     type: 'varchar',
-                    length: "100",
+                    length: "10",
+                },
+                {
+                    name: 'ValorServico',
+                    type: 'integer',
+                    length: "10",
                     isNullable: false
                 },
                 {
-                    name: 'dataservico',
-                    type: 'date',
-                },
-                {
-                    name: 'temposervico',
-                    type: 'time',
-                    length: "4",
-                    isNullable: false
-                },
-                {
-                    name: 'valorservico',
-                    type: 'varchar',
-                    length: "25",
-                    isNullable: false
-                },
-                {
-                    name: 'descricaoservico',
+                    name: 'descricao',
                     type: 'varchar',
                     length: "255",
                     isNullable: false
                 },
+                {
+                    name: 'id_carro',
+                    type: 'interger',
+                    
+                },
             ],
+            foreignKeys: [
+                {
+                    name: 'carro_fk',
+                    columnNames: ['id_carro'],
+                    referencedTableName: 'carro',
+                    referencedColumnNames: ['id_carro'],
+                    onUpdate: 'CASCADE',
+                }
+            ]
         }))
+
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.dropTable('servico')
     }
+
 }

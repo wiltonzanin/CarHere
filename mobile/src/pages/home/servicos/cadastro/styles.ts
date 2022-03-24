@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#333333",
     borderColor: "#525252",
     height: 40,
+    marginBottom: 20
   },
 
   dropdownList: {

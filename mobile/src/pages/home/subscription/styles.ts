@@ -10,47 +10,25 @@ const styles = StyleSheet.create({
 
     header: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
         paddingTop: 20,
+        justifyContent:"space-between"
     },
 
     title: {
         color: '#F0EFF4',
         fontSize: 20,
+        // marginTop: 20,
+        marginLeft:"auto",
+        marginRight:"auto"
     },
 
     text: {
         color: '#F0EFF4',
         fontSize: 18,
-        marginBottom: 10
+        marginBottom: 10,
+        marginTop: 10,
     },
 
-    content: {
-        marginTop: 20,
-        flex: 1,
-        flexDirection: 'row',
-    },
-
-    duvidas: {
-        flexDirection: 'column',
-    },
-
-    containerText: {
-        paddingLeft: 20,
-        paddingRight: 20,
-        color: '#F0EFF4',
-    },
-    //estilização card
-    cardField:{
-      width:"100%",
-      height:50,
-
-    },
-    input:{
-      height:50,
-      width:"100%",
-      
-    }
 });
 
 export default styles;
