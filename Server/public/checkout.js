@@ -2,7 +2,7 @@
       const stripe = Stripe("pk_test_51KZFMuI61EuHiQMEAlsKmdW0p7BWOVpXyID3E9RbC1FPAolSSTXOepQhBKirFPHrI8HTVbmoEyF3hxxFlVThrumI00iq8dFURS");
 
       // The items the customer wants to buy
-      const items = [{ id: "Premium" }];
+      const items = [{ id: "xl-tshirt" }];
       
       let elements;
       
@@ -15,7 +15,8 @@
       
       // Fetches a payment intent and captures the client secret
       async function initialize() {
-        const response = await fetch("http://10.30.56.34:4242/create-payment-intent", { // MUDAR URL antes de gerar''''''''''''''''''''''''''''
+        const response = await fetch("http://192.168.254.13:4242/create-payment-intent", { // MUDAR URL antes de gerar''''''''''''''''''''''''''''
+        // const response = await fetch("http://10.30.56.34:4242/create-payment-intent", { // MUDAR URL antes de gerar''''''''''''''''''''''''''''
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ items }),
@@ -39,7 +40,8 @@
           elements,
           confirmParams: {
             // Make sure to change this to your payment completion page
-            return_url: "http://10.30.56.34:4242/checkout.html", // MUDAR URL '''''''''''''''''''''''''''''''''''''''
+            return_url: "http://192.168.254.13:4242/checkout.html", // MUDAR URL '''''''''''''''''''''''''''''''''''''''
+            // return_url: "http://10.30.56.34:4242/checkout.html", // MUDAR URL '''''''''''''''''''''''''''''''''''''''
             receipt_email: document.getElementById("email").value,
           },
         });
@@ -59,7 +61,7 @@
       }
       
       // Fetches the payment intent status after payment submission
-      async function checkStatus() {
+      async function checkStatus({navigation}) {
         const clientSecret = new URLSearchParams(window.location.search).get(
           "payment_intent_client_secret"
         );

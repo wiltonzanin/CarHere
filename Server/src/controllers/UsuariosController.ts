@@ -26,29 +26,21 @@ export default {
     },
 
     async create(request: Request, response: Response) {
+        const nome1 = JSON.stringify(request.body); 
         const {
             nome,
-            //cpf,
             email,
             senha,
-            // celular,
-            // cep,
-            // data_nascimento,
-            // genero
         } = request.body;
     
         const usuariosRepositorio = getRepository(Usuarios);
 
         const data = {
             nome,
-            //cpf,
             email,
             senha,
-            // celular,
-            // cep,
-            // data_nascimento,
-            // genero
         };
+
 
         const schema = Yup.object().shape({
             nome: Yup.string().required(),
@@ -68,7 +60,7 @@ export default {
         const usuario = usuariosRepositorio.create(data);
     
         await usuariosRepositorio.save(usuario);
-    
+
         return response.status(201).send(usuario);
     }
 };

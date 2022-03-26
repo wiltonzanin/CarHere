@@ -8,14 +8,13 @@ import TextField from '../../components/textField';
 import { Button } from '../../components/buttons';
 import { useAuth } from '../../contexts/auth';
 
-function Inicial() {
+function Inicial({navigation}: any) {
 
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
 
     const { signed, user, signIn } = useAuth();
 
-    const { navigate } = useNavigation();
 
     function handleSignIn() {
         console.log(email + senha)
@@ -23,11 +22,11 @@ function Inicial() {
     }
 
     function handleNavigateToCadastroUsarioPage() {
-        navigate('CadastroUsuario');
+        navigation.navigate('CadastroUsuario');
     }
 
     function handleNavigateToRecuperarSenhaPage() {
-        navigate('RecuperarSenha');
+        navigation.navigate('RecuperarSenha');
     }
 
     return (

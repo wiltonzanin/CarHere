@@ -10,9 +10,11 @@ import AutonomiaController from './controllers/AutonomiaController';
 const routes = Router();
 const upload = multer(uploadConfig);
 
-routes.get('/usuarios', UsuariosController.index)
-routes.get('/usuarios/:id', UsuariosController.show)
-routes.post('/usuarios', upload.array('usuario'), UsuariosController.create)
+
+routes.get('/usuarios', UsuariosController.index)//OK
+routes.get('/usuarios/:id', UsuariosController.show) //OK
+routes.post('/usuarios', upload.array('usuarios'), UsuariosController.create)
+// routes.post('/usuarios', UsuariosController.create)
 
 routes.post('/carros', upload.array('images'), CarrosController.create)
 routes.get('/carros/:id', CarrosController.show)

@@ -9,7 +9,7 @@ import { Feather } from "@expo/vector-icons";
 import BackScreen from "../../../../components/backScreen";
 import { useAuth } from '../../../../contexts/auth';
 
-function OpcoesUsuario() {
+function OpcoesUsuario({navigation}: any) {
   const { navigate } = useNavigation();
 
   const { signOut } = useAuth();
@@ -43,10 +43,10 @@ function OpcoesUsuario() {
   }
 
   function handleNavigateToAlterarSenhaPage() {
-    navigate("AlterarSenha");
+    navigation.navigate("AlterarSenha");
   }
   function handleNavigateToSeguranca() {
-    navigate("Seguranca");
+    navigation.navigate("Seguranca");
   }
 
   return (

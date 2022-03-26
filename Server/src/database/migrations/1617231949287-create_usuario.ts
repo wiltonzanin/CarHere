@@ -19,12 +19,6 @@ export class createUsuario1617231949287 implements MigrationInterface {
                     type: 'varchar',
                     isNullable: false
                 },
-                // {
-                //     name: 'cpf',
-                //     type: 'integer',
-                //     length: "11",
-                //     isNullable: false
-                // },
                 {
                     name: 'email',
                     type: 'varchar',
@@ -35,25 +29,6 @@ export class createUsuario1617231949287 implements MigrationInterface {
                     type: 'varchar',
                     isNullable: false
                 },
-                // {
-                //     name: 'celular',
-                //     type: 'integer',
-                //     length: "11",
-                //     isNullable: false
-                // },
-                // {
-                //     name: 'cep',
-                //     type: 'integer',
-                //     length: "20"
-                // },
-                // {
-                //     name: 'data_nascimento',
-                //     type: 'date'
-                // },
-                // {
-                //     name: 'genero',
-                //     type: 'varchar'
-                // }
             ],
         }))
     }
