@@ -73,11 +73,29 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
 
+  servicos: {
+    marginTop: 20,
+  },
+
   cardServices: {
     backgroundColor: '#F0EFF4',
     padding: 10,
     borderRadius: 5,
     marginBottom: 20
+  },
+
+  buttonServico: {
+    backgroundColor: "#F0EFF4",
+    height: 100,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    borderRadius: 5,
+  },
+
+  buttonGroupTextServico: {
+    flex: 1,
+    padding: 10,
+    justifyContent: "space-between",
   },
 
   servicesHeader: {
@@ -89,6 +107,12 @@ const styles = StyleSheet.create({
   servicesTitle: {
     fontWeight: "bold",
     fontSize: 18
+  },
+
+  buttonServicoText: {
+    color: '#252525',
+    fontSize: 18,
+    fontWeight: 'bold',
   },
 
   servicesText: {

@@ -17,5 +17,6 @@ export default {
 
     renderMany(carros: Carros[]){
         return carros.map(carro => this.render(carro));
-    }
+    },
+
 };

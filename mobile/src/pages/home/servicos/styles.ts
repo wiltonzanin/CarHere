@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
 
   header: {
     paddingTop: 20,
+    marginBottom: 20
   },
 
   buttonsHeader: {
@@ -26,8 +27,30 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
 
-  content: {
-    marginTop: 20,
+  contentServico: {
+    flexGrow: 1
+  },
+
+  ButtonText: {
+    flexDirection: "column",
+    padding: 10,
+  },
+
+  headerGroup: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+
+  buttonServiceTextGreen: {
+    color: "#5CB85C",
+    fontSize: 16,
+    padding: 35,
+  },
+
+  listagemErroServico: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
 
   servicos: {
@@ -42,25 +65,32 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
 
-  ButtonText: {
-    flexDirection: "column",
+  buttonGroupTextServico: {
+    flex: 1,
     padding: 10,
-  },
-
-  buttonGroupText: {
     justifyContent: "space-between",
   },
 
-  buttonServiceTextGreen: {
-    color: "#5CB85C",
-    fontSize: 16,
-    padding: 35,
+  buttonServicoText: {
+    color: '#252525',
+    fontSize: 18,
+    fontWeight: 'bold',
   },
 
-  buttonVeiculoTextManutencaoRed: {
+  buttonServicoTextManutencaoGreen: {
+    color: '#5CB85C',
+    fontSize: 16
+  },
+
+  buttonServicoTextManutencaoRed: {
     color: "#D9534F",
     fontSize: 16,
   },
+  textInfo3: {
+    color: "#252525",
+    fontSize: 14,
+  },
+
 });
 
 export default styles;

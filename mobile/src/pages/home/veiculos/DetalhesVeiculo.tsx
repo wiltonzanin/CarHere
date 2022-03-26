@@ -35,14 +35,24 @@ interface Autonomia {
   mediaConsumo: number;
 }
 
+interface servico {
+  id: number;
+  nome: string;
+  local: string;
+  datafor: string;
+}
+
 function VisualizarVeiculo({ navigation }: any) {
 
   const route = useRoute();
   const params = route.params as DetalhesCarroRouteParams;
+  const [erroCarregar, setErroCarregar] = useState(false);
+  const [carregando, setCarregando] = useState(false);
 
   const [modalDecisionVisible, setModalDecisionVisible] = useState(false);
   const [carro, setCarro] = useState<Carro>();
   const [autonomia, setAutonomia] = useState<Autonomia>();
+  const [servico, setServico] = useState<servico[]>([]);
 
   useEffect(() => {
     api
@@ -55,6 +65,21 @@ function VisualizarVeiculo({ navigation }: any) {
       .get(`autonomia/last/${params.id}`)
       .then((response) => setAutonomia(response.data));
   }, [params.id]);
+
+
+  useEffect(() => {
+    api
+      .get(`servico/last/${params.id}`)
+      .then((response) => setServico(response.data));
+  }, [params.id]);
+
+  function handleNavigateToVisualizarServicos(id: number) {
+    navigation.navigate("VisualizarServicos", { id });
+  }
+
+  function handleNavigateToServicos() {
+    navigation.navigate("Servico");
+  }
 
   function deteleVeiculo(){
     setModalDecisionVisible(true);
@@ -120,31 +145,33 @@ function VisualizarVeiculo({ navigation }: any) {
             />
           </View>
           <View style={styles.card}>
+          <RectButton onPress={handleNavigateToServicos}>
             <View style={styles.cardHeader}>
               <Text style={styles.cardTitle}>Serviços</Text>
               <Feather name="chevron-right" size={24} color="#F0EFF4" />
             </View>
-            <TouchableOpacity style={styles.cardServices}>
-              <View style={styles.servicesHeader}>
-                <Text style={styles.servicesTitle}>Troca de óleo</Text>
-                <Text style={styles.servicesText}>24/08/2021</Text>
+            </RectButton>
+            {!servico
+              ?
+              <View style={styles.noInfo}>
+                <Feather name="alert-circle" size={25} color="#eca400" />
+                <Text style={styles.noInfoText}>Você ainda não possui uma serviço cadastrado!</Text>
               </View>
-              <Text style={styles.textStatusOk}>
-                <Feather name="check-circle" size={14} color="#5CB85C" />{" "}
-                Tudo certo!
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.cardServices}>
-              <View style={styles.servicesHeader}>
-                <Text style={styles.servicesTitle}>Revisão dos freios</Text>
-                <Text style={styles.servicesText}>24/08/2021</Text>
-              </View>
-              <Text style={styles.textStatusWarning}>
-                <Feather name="alert-circle" size={14} color="#F0AD4E" />{" "}
-                Requer ação!
-              </Text>
-            </TouchableOpacity>
-            <ButtonAdicionar title="Adicionar serviço"></ButtonAdicionar>
+              :
+              servico.map(servico => {
+                return (
+                  <View key={servico.id} style={styles.servicos}>
+                    <RectButton style={styles.buttonServico} onPress={() => handleNavigateToVisualizarServicos(servico.id)}>
+                      <View style={styles.buttonGroupTextServico}>
+                        <Text style={styles.buttonServicoText}>{servico.nome}</Text>
+                        <Text style={styles.textInfo2}>{servico.local}</Text>
+                        <Text style={styles.textInfo2}>{servico.datafor}</Text>
+                      </View>
+                    </RectButton>
+                  </View>
+                );
+              })
+            }
           </View>
           <View style={styles.cardStyle}>
             <View style={styles.cardHeader}>

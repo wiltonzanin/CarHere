@@ -21,11 +21,22 @@ interface InfoProps2 {
   combustivel: string;
 }
 
+interface InfoPropsService {
+  nome: string;
+  local: string;
+  veiculo: string;
+  quilometragem: number;
+  datafor: string;
+  ValorServico: number;
+  descricao: string;
+  carro: string;
+}
+
 interface Servicos {
   nome: string;
   data: string;
 }
-
+/*
 export function InfoServico({
   info1,
   info2,
@@ -44,7 +55,7 @@ export function InfoServico({
     </View>
   );
 }
-
+*/
 export function Infos({
   marca,
   ano,
@@ -53,7 +64,7 @@ export function Infos({
   combustivel,
   ...rest
 }: InfoProps2) {
-  return (
+  return(
     <View style={styles.infos}>
       <View>
         <Text style={styles.textInfo}>Marca</Text>
@@ -69,6 +80,39 @@ export function Infos({
         <Text style={styles.textInfo}>Combustível</Text>
         <Text style={styles.textInfoCampo}>{combustivel}</Text>
         <Text style={styles.textInfo}>Quilometragem</Text>
+      </View>
+    </View>
+  );
+}
+
+export function InfosService({
+  nome,
+  local,
+  veiculo,
+  quilometragem,
+  datafor,
+  ValorServico,
+  descricao,
+  carro,
+  ...rest
+}: InfoPropsService){
+  return (
+    <View style={styles.infos}>
+      <View>
+        <Text style={styles.textInfoService}>Nome</Text>
+        <Text style={styles.textInfoCampo}>{nome}</Text>
+        <Text style={styles.textInfoService}>Local</Text>
+        <Text style={styles.textInfoCampo}>{local}</Text>
+        <Text style={styles.textInfoService}>Veiculo</Text>
+        <Text style={styles.textInfoCampo}>{carro}</Text>
+        <Text style={styles.textInfoService}>Quilometragem</Text>
+        <Text style={styles.textInfoCampo}>{quilometragem}</Text>
+        <Text style={styles.textInfoService}>Data</Text>
+        <Text style={styles.textInfoCampo}>{datafor}</Text>
+        <Text style={styles.textInfoService}>Valor</Text>
+        <Text style={styles.textInfoCampo}>{ValorServico}</Text>
+        <Text style={styles.textInfoService}>Descrição</Text>
+        <Text style={styles.textInfoCampo}>{descricao}</Text>
       </View>
     </View>
   );

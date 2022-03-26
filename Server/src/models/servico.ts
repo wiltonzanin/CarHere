@@ -1,6 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToOne, JoinColumn } from 'typeorm';
 
 import Carro from './carro';
+import Usuario from './usuarios'
 
 
 @Entity('servico')
@@ -12,24 +13,46 @@ export default class Servico {
     nome: string;
 
     @Column()
-    id_carro: number;
+    local: string;
 
     @Column()
-    local: string;
+    quilometragem: number;
 
     @Column()
     datafor: string;
 
     @Column()
-    valor: number;
+    ValorServico: number;
 
     @Column()
     descricao: string;
+
+    @Column()
+    statusServico: number;
+
+    @Column()
+    id_carro: number
+
+    @Column()
+    id_usuario: number
+
+//////////////////////////////////////////////////////////////////////////////
 
     @OneToMany(() => Carro, carro => carro.servico, {
         cascade: ['insert', 'update']
     })
     @JoinColumn({ name: 'id_carro' })
-    carro: Carro[]
-    
+    carros: Carro[]
+
+//////////////////////////////////////////////////////////////////////////////
+
+    @ManyToOne(() => Usuario, usuario => usuario.servico, {
+        cascade: ['insert', 'update']
+    })
+    @JoinColumn({ name: 'id_usuario' })
+    usuario: Usuario[]
+
+//////////////////////////////////////////////////////////////////////////////
+ 
+
 }

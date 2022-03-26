@@ -28,6 +28,18 @@ export default {
         return response.json(carrosView.renderMany(carros));
     },
 
+    async showService(request: Request, response: Response) {
+        const { id } = request.params;
+
+        const carrosRepositorio = getRepository(Carros).createQueryBuilder('carro')
+        .leftJoinAndSelect("carro.id_carro", "servico.id_carro")
+        .where('servico.id_servico = :id', { id });
+
+        const carros = await carrosRepositorio.getMany();
+
+        return response.json(carrosView.renderMany(carros));
+    },
+
     async showListagem(request: Request, response: Response) {
 
         const { id } = request.params;
@@ -40,6 +52,8 @@ export default {
 
         return response.json(carrosView.render(carro));
     },
+
+    
 
     async create(request: Request, response: Response) {
         const {

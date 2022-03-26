@@ -9,6 +9,7 @@ import VeiculosCadastrados from '../pages/home/veiculos/veiculos';
 import VisualizarVeiculo from '../pages/home/veiculos/DetalhesVeiculo';
 import Autonomia from '../pages/home/autonomia/';
 import UnidadeMedida from '../pages/home/configuracoes/unidadeMedida';
+import Servico from '../pages/home/servicos/';
 import CadastroServicos from '../pages/home/servicos/cadastro';
 import VisualizarServicos from '../pages/home/servicos/VisualizarServico';
 // import Mapa from '../pages/home/mapa';
@@ -38,6 +39,7 @@ function AppStack() {
             <Screen name="VisualizarVeiculo" component={VisualizarVeiculo} />
             <Screen name="Autonomia" component={Autonomia} />
             <Screen name="UnidadeMedida" component={UnidadeMedida} />
+            <Screen name="Servico" component={Servico} />
             <Screen name="CadastroServicos" component={CadastroServicos} />
             <Screen name="VisualizarServicos" component={VisualizarServicos} />
             {/* <Screen name="Mapa" component={Mapa} /> */}

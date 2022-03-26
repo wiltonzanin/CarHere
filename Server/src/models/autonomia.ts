@@ -28,7 +28,12 @@ export default class Autonomia {
     @Column({ default: () => `datetime('now', 'localtime')` })
     criado: string;
 
-    @ManyToOne(() => Carro, carro => carro.autonomia)
+//////////////////////////////////////////////////////////////////////////////
+
+   @ManyToOne(() => Carro, carro => carro.autonomia)
     @JoinColumn({ name: 'id_carro' })
-    carro: Carro;
+    carro: Carro; 
+
+//////////////////////////////////////////////////////////////////////////////
+
 }

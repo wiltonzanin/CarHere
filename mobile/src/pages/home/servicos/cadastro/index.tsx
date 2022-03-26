@@ -12,6 +12,9 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import LoadingScreen from "../../../../components/loadingScreen";
 import { SuccessModal, FeedbackModal } from "../../../../components/feedbackModal";
 import DropDownPicker from "react-native-dropdown-picker";
+import { color } from "react-native-reanimated";
+import { red100 } from "react-native-paper/lib/typescript/styles/colors";
+import { CheckBox } from 'react-native-elements';
 
 interface Carros {
   id: number;
@@ -24,15 +27,19 @@ function CadastroServicos({navigation} : any) {
   const [modalWarning, setModalWarning] = useState(false);
   const [carregando, setCarregando] = useState(false);
   const [modalMensage, setModalMensage] = useState("");
+  const [isSelected, setIsSelected] = useState(false);
 
   const [carros, setCarros] = useState<Carros[]>([]);
-  const [carro, setCarro] = useState("");
+  const [id_carro, setCarro] = useState("");
 
   const [name, setName] = useState("")
   const [local, setLocal] = useState("")
-  const [datafor, setdata] = useState("")
+
   const [ValorServico, setValorServico] = useState("")
+  const [Quilometragem, setQuilometragem] = useState("")
+  var [ServicoStatus, setServicoStatus] = useState("")
   const [descricao, setDescricao] = useState("")
+  const [datafor, setdata] = useState("")
 
   const [date, setDate] = useState(new Date()); //validação data
   const [show, setShow] = useState(false); //validação datapicker
@@ -59,32 +66,51 @@ function CadastroServicos({navigation} : any) {
         setCarros(response.data);
     })
 }, [])
-
+/*
   console.log("--------------------------------------")
   console.log("Nome:" + name)
   console.log("Local:" + local)
-  console.log("Data:" + datafor)
+  //console.log("Data:" + datafor)
   console.log("Valor:" + ValorServico)
   console.log("Descrição:" + descricao)
-  console.log("teste id carro: " + carro)
-
+  console.log("teste id carro: " + id_carro)
+*/
   var dataformatada = date.getDate().toString().padStart(2, '0') + "/";
   dataformatada += (date.getMonth() + 1).toString().padStart(2, '0') + "/";
   dataformatada += date.getFullYear().toString();
 
+  if (isSelected == true){
+    ServicoStatus = "1"
+  }
+  else {
+    ServicoStatus = "0"
+  }
+
+
   async function CadastrarBanco() {
 
-    setdata(dataformatada.toString())
+    const dataserv = (dataformatada.toString())
 
     const data = new FormData();
 
-    data.append("name", name);
+    data.append("nome", name);
     data.append("local", local);
-    data.append("data", datafor);
-    data.append("valor", ValorServico);
+    data.append("quilometragem", Quilometragem);
+    data.append("datafor", dataserv);
+    data.append("ValorServico", ValorServico);
     data.append("descricao", descricao);
-    data.append("id_carro", carro);
-
+    data.append("statusServico", ServicoStatus);
+    data.append("id_carro", id_carro);
+/*
+    console.log("nome :"+ name);
+    console.log("local :"+ local);
+    console.log("quilometragem :"+ Quilometragem);
+    console.log("datafor :"+ dataserv);
+    console.log("ValorServico :"+ ValorServico);
+    console.log("descricao :"+ descricao);
+    console.log("ServicoStatus :"+ ServicoStatus);
+    console.log("id_carro :"+ id_carro);
+*/
     try{
       setCarregando(true)
       await api.post("/servico", data);
@@ -103,7 +129,7 @@ function CadastroServicos({navigation} : any) {
     setModalVisible(!modalVisible);
     setCarregando(false);
     if (modalWarning == false) {
-      navigation.navigate("VisualizarServicos");
+      navigation.navigate("Servico");
     }
   }
 
@@ -135,25 +161,35 @@ function CadastroServicos({navigation} : any) {
             onChangeText={setName}
             value={name}
           />
-          <Text style={styles.text}>Veículo</Text>
-                    <DropDownPicker
-                        placeholder="Selecione um item"
-                        dropDownStyle={styles.dropdownList}
-                        labelStyle={styles.dropdownText}
-                        arrowColor={"#F0EFF4"}
-                        items={carros.map(carro => ({ label: carro.modelo, value: carro.id }))}
-                        style={styles.dropdown}
-                        onChangeItem={(item) => {
-                            setCarro(item.value);
-                        }}>
-                    </DropDownPicker>
-
-
           <TextField
             labelName="Local que foi realizado o serviço"
             onChangeText={setLocal}
             value={local}
           />
+          <View style={styles.inputGroup}>
+            <View style={styles.inputGroupSecondColumn}>
+              <Text style={styles.text}>Veículo</Text>
+              <DropDownPicker
+                  dropDownStyle={styles.dropdownList}
+                  labelStyle={styles.dropdownText}
+                  arrowColor={"#F0EFF4"}
+                  items={carros.map(carro => ({ label: carro.modelo, value: carro.id }))}
+                  style={styles.dropdown}
+                  onChangeItem={(item) => {
+                      setCarro(item.value);
+                  
+                  }}>
+              </DropDownPicker>
+            </View>
+            <View style={styles.inputGroupColumn}>
+              <TextField labelName="Quilometragem"
+                maxLength={8}
+                tipoTeclado={"numeric"}
+                onChangeText={setQuilometragem}
+                value={Quilometragem}
+              />
+            </View>
+          </View>
           <View style={styles.inputGroup}>
             <View style={styles.inputGroupSecondColumn}>
               <TextField
@@ -184,7 +220,6 @@ function CadastroServicos({navigation} : any) {
               />
             </View>
           </View>
-
           <Text style={styles.text}>Descrição do serviço realizado:</Text>
           <TextInput
             style={styles.textInput}
@@ -194,6 +229,19 @@ function CadastroServicos({navigation} : any) {
             value={descricao}
             maxLength={255}
           />
+            <View style={styles.checkbox}>
+            <CheckBox
+              containerStyle={{ backgroundColor: '#252525', borderColor: '#252525', padding: 0, margin: 0, marginLeft: 0 }}
+              checkedIcon='check-square-o'
+              checkedColor='#8F1622'
+              size={25}
+              checked={isSelected}
+              onPress={() => setIsSelected(!isSelected)} 
+            />
+            <View style={styles.buttoncheckbox}>
+              <Text style={styles.textcheckbox}>Serviço foi realizado</Text>
+            </View>
+          </View>
         </View>
         <Button title="Concluir" onPress={CadastrarBanco} />
       </View>

@@ -1,6 +1,7 @@
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export class createServico1647537557426 implements MigrationInterface {
+export class createServico1648149553977 implements MigrationInterface {
+
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(new Table({
@@ -24,27 +25,46 @@ export class createServico1647537557426 implements MigrationInterface {
                     name: 'local',
                     type: 'varchar',
                     length: "50",
-                    isNullable: false
+                    isNullable: true
+                },
+                {
+                    name: 'quilometragem',
+                    type: 'integer',
+                    length: "10",
+                    isNullable: true
                 },
                 {
                     name: 'datafor',
                     type: 'varchar',
                     length: "10",
+                    isNullable: true
                 },
                 {
                     name: 'ValorServico',
                     type: 'integer',
                     length: "10",
-                    isNullable: false
+                    isNullable: true
                 },
                 {
                     name: 'descricao',
                     type: 'varchar',
                     length: "255",
-                    isNullable: false
+                    isNullable: true
                 },
                 {
+                    name: 'statusServico',
+                    type: 'integer',
+                    length: "2",
+                    isNullable: false
+                },
+
+                {
                     name: 'id_carro',
+                    type: 'interger',
+                    
+                },
+                {
+                    name: 'id_usuario',
                     type: 'interger',
                     
                 },
@@ -56,8 +76,15 @@ export class createServico1647537557426 implements MigrationInterface {
                     referencedTableName: 'carro',
                     referencedColumnNames: ['id_carro'],
                     onUpdate: 'CASCADE',
+                },
+                {
+                    name: 'usuario_fk',
+                    columnNames: ['id_usuario'],
+                    referencedTableName: 'usuarios',
+                    referencedColumnNames: ['id_usuario'],
+                    onUpdate: 'CASCADE',
                 }
-            ]
+            ],
         }))
 
     }
@@ -67,3 +94,5 @@ export class createServico1647537557426 implements MigrationInterface {
     }
 
 }
+
+

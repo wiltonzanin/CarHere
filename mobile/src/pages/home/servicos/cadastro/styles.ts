@@ -85,7 +85,22 @@ const styles = StyleSheet.create({
 
 Icon: {
   padding: 10,
-}
+},
+
+checkbox: {
+  flexDirection: 'row',
+  paddingBottom: 20
+},
+buttoncheckbox: {
+  alignSelf: 'center'
+},
+
+textcheckbox: {
+  color: '#F0EFF4',
+  fontSize: 15,
+
+},
+
 });
 
 export default styles;

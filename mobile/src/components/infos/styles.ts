@@ -25,11 +25,30 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
 
+  textInfoService: {
+    color: "#F0EFF4",
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+
+
   textInfoCampo: {
     color: "#F0EFF4",
     fontSize: 16,
     paddingBottom: 20,
   },
+
+  textInfoCampo1: {
+    color: "#F0EFF4",
+    fontSize: 16,
+    paddingBottom: 20,
+    paddingHorizontal: 10
+  },
+
+  card: {
+    maxHeight: 10,
+  },
+
 
   infos: {
     flexDirection: "row",
