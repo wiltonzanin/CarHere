@@ -27,6 +27,10 @@ function Configuracoes({ navigation }: any) {
   function handleNavigateToAcessibilidade() {
     navigation.navigate("Acessibilidade");
   }
+  function handleNavigateToManualDoUsuario() {
+    navigation.navigate("ManualDoUsuario");
+  }
+
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
@@ -53,7 +57,10 @@ function Configuracoes({ navigation }: any) {
                 onPress={handleNavigateToAcessibilidade} />
             </View>
             <View style={styles.buttonsGroupContent}>
-              <ButtonPadrao title="Dicas" />
+              <ButtonPadrao 
+              title="Manual Do Usuario" 
+              onPress={handleNavigateToManualDoUsuario}
+              />
             </View>
             <View style={styles.buttonsGroupContent}>
               <ButtonPadrao

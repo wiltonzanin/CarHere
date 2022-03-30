@@ -23,6 +23,7 @@ import Acessibilidade from '../pages/home/configuracoes/acessibilidade';
 import Seguranca from '../pages/home/configuracoes/opcoesUsuario/seguranca';
 import SelecionaFoto from '../pages/home/configuracoes/opcoesUsuario/modal/selecionarFoto';
 import Subscription from '../pages/home/subscription';
+import ManualDoUsuario from '../pages/home/configuracoes/manualDoUsuario';
 import PaymentScreen from '../pages/home/subscription/PaymentScreen';
 
 const { Navigator, Screen } = createStackNavigator();
@@ -45,6 +46,7 @@ function AppStack() {
             <Screen name="VisualizarServicos" component={VisualizarServicos} />
             {/* <Screen name="Mapa" component={Mapa} /> */}
             <Screen name="Termos" component={Termos} />
+            <Screen name="ManualDoUsuario" component={ManualDoUsuario} />
             <Screen name="OpcoesUsuario" component={OpcoesUsuario} />
             <Screen name="Mfa" component={Mfa} />
             <Screen name="EntrarEmContato" component={EntrarEmContato} />
