@@ -79,6 +79,17 @@ const styles = StyleSheet.create({
         borderRadius: 10
     },
 
+    buttonDelete: {
+        borderWidth: 1,
+        borderColor: "#8F1622",
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: 120,
+        height: 120,
+        borderRadius: 10,
+        marginLeft: 10
+    },
+
     carImages:{
         width: 120,
         height: 120,

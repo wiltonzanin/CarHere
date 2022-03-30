@@ -29,6 +29,10 @@ function CadastroVeiculo({ navigation }: any) {
 
   const [modalMensage, setModalMensage] = useState("");
 
+  function handleDeletePhotos(){
+    setImages([]);
+  }
+
   async function handleSelecionarFoto() {
     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
     if (status !== "granted") {
@@ -231,8 +235,13 @@ function CadastroVeiculo({ navigation }: any) {
               )
             })}
             <TouchableOpacity onPress={handleSelecionarFoto} disabled={disableButton} style={disableButton ? { display: "none" } : styles.imageSelector}>
-              <Feather name="plus" size={50} color="#F0EFF4" />
+              <Feather name="plus" size={40} color="#F0EFF4" />
             </TouchableOpacity>
+            {images.length > 0 &&
+              <TouchableOpacity onPress={handleDeletePhotos} style={styles.buttonDelete}>
+                <Feather name="trash" size={30} color="#8F1622" />
+              </TouchableOpacity>
+            }
           </ScrollView>
         </View>
         <Button title="Concluir" onPress={handleCreateVeiculo} />
