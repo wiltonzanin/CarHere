@@ -52,9 +52,7 @@ export default {
 
         return response.json(carrosView.render(carro));
     },
-
-    
-
+   
     async create(request: Request, response: Response) {
         const {
             marca,
