@@ -18,10 +18,10 @@ app.post("/create-payment-intent", async (req, res) => {
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); // If needed
     res.setHeader('Access-Control-Allow-Credentials', true); // If needed
   const { items } = req.body;
-
+  
   // Create a PaymentIntent with the order amount and currency
   const paymentIntent = await stripe.paymentIntents.create({
-    amount: 1000,
+    amount: 550,
     currency: "BRL",
     automatic_payment_methods: {
       enabled: true,

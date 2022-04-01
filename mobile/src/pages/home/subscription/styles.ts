@@ -22,11 +22,17 @@ const styles = StyleSheet.create({
         marginRight:"auto"
     },
 
+    centeredView:{
+        alignContent: 'center',
+    },
+
     text: {
         color: '#F0EFF4',
         fontSize: 18,
         marginBottom: 10,
         marginTop: 10,
+        alignSelf: "center",
+        justifyContent: "flex-end"
     },
 
 });
