@@ -3,6 +3,7 @@ import React from 'react';
 import { Feather } from "@expo/vector-icons";
 import { Dimensions, Animated, TextInput, TouchableOpacity } from 'react-native';
 import styles from './styles';
+import colors from '../../Styles/colors';
 
 export default function SearchBar() {
     const animation = new Animated.Value(30);
@@ -19,7 +20,7 @@ export default function SearchBar() {
         <Animated.View style={[styles.container, {width: animation}]}>
             <TextInput style={styles.textInput}/>
             <TouchableOpacity onPress={onSearch} style={styles.boxButtonSearch}>
-                <Feather name="search" size={25} color={"#F0EFF4"} />
+                <Feather name="search" size={25} color={colors.grayLight} />
             </TouchableOpacity>
         </Animated.View>
     );

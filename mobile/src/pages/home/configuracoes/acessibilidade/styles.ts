@@ -1,9 +1,10 @@
 import { StyleSheet } from "react-native";
+import colors from '../../../../Styles/colors'
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#252525",
+    backgroundColor: colors.background,
     padding: 20
   },
 
@@ -14,32 +15,32 @@ const styles = StyleSheet.create({
   },
 
   headerTitle: {
-    color: "#F0EFF4",
+    color: colors.grayLight,
     fontSize: 20
   },
 
   sectionTitle: {
-    color: "#F0EFF4",
+    color: colors.grayLight,
     fontSize: 18,
     paddingTop: 20,
     paddingBottom: 20,
   },
 
   buttonsGroup: {
-    backgroundColor: "#333333",
+    backgroundColor: colors.grayDark,
     borderRadius: 10,
-    borderColor: "#525252",
+    borderColor: colors.grayMedium,
     borderWidth: 1,
     borderBottomWidth: 1,
   },
 
   buttonsGroupContent: {
     borderBottomWidth: 1,
-    borderColor: "#525252",
+    borderColor: colors.grayMedium,
   },
 
   buttonText: {
-    color: "#F0EFF4",
+    color: colors.grayLight,
     justifyContent: "center",
     paddingLeft: 5,
   }

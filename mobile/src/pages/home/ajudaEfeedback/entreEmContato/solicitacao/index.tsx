@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, TextInput } from "react-native";
+import { View, Text, TextInput, ScrollView } from "react-native";
 import styles from "./styles";
 import { Button } from "../../../../../components/buttons";
 import BackScreen from "../../../../../components/backScreen";
@@ -7,6 +7,7 @@ import { Checkbox } from "../../../../../components/checkbox";
 
 function Solicitacao() {
   return (
+    <ScrollView>
     <View style={styles.container}>
       <View style={styles.header}>
         <BackScreen />
@@ -36,6 +37,7 @@ function Solicitacao() {
       </View>
       <Button title="Enviar" />
     </View>
+    </ScrollView>
   );
 }
 

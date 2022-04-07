@@ -1,9 +1,10 @@
 import { StyleSheet } from "react-native";
+import colors from "../../../../Styles/colors";
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#252525",
+    backgroundColor: colors.background,
     padding: 20,
     justifyContent: "space-between",
   },
@@ -14,14 +15,14 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    color: "#F0EFF4",
+    color: colors.grayLight,
     fontSize: 25,
     fontWeight: "bold",
     paddingBottom: 20,
   },
 
   instructions: {
-    color: "#F0EFF4",
+    color: colors.grayLight,
     fontSize: 16,
     textAlign: "auto",
   },
@@ -30,24 +31,6 @@ const styles = StyleSheet.create({
     paddingTop: 20,
   },
 
-  buttonStyle: {
-    width: "100%",
-  },
-
-  button: {
-    backgroundColor: "#8F1622",
-    height: 60,
-    borderRadius: 8,
-    padding: 24,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-
-  buttonText: {
-    color: "#F0EFF4",
-    fontSize: 20,
-    fontWeight: "bold",
-  },
 });
 
 export default styles;

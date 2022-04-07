@@ -21,17 +21,37 @@ import Solicitacao from '../pages/home/ajudaEfeedback/entreEmContato/solicitacao
 import Aparencia from '../pages/home/configuracoes/aparencia';
 import Acessibilidade from '../pages/home/configuracoes/acessibilidade';
 import Seguranca from '../pages/home/configuracoes/opcoesUsuario/seguranca';
-import SelecionaFoto from '../pages/home/configuracoes/opcoesUsuario/modal/selecionarFoto';
+// import SelecionaFoto from '../pages/home/configuracoes/opcoesUsuario/modal/selecionarFoto';
 import Subscription from '../pages/home/subscription';
 import ManualDoUsuario from '../pages/home/configuracoes/manualDoUsuario';
 import PaymentScreen from '../pages/home/subscription/PaymentScreen';
+import colors from '../Styles/colors';
+import { NavigationContainer } from '@react-navigation/native';
+import { useFonts, Rajdhani_300Light,
+    Rajdhani_400Regular,
+    Rajdhani_500Medium,
+    Rajdhani_600SemiBold,
+    Rajdhani_700Bold,
+} from '@expo-google-fonts/rajdhani';
+import AppLoading from "expo-app-loading";
 
 const { Navigator, Screen } = createStackNavigator();
 
 function AppStack() {
+    let [fontsLoaded] = useFonts({
+        Rajdhani_300Light,
+        Rajdhani_400Regular,
+        Rajdhani_500Medium,
+        Rajdhani_600SemiBold,
+        Rajdhani_700Bold,
+      });
+
+      if (!fontsLoaded) {
+        return <AppLoading />;
+      } else {
     return (
 
-        <Navigator initialRouteName="Home" screenOptions={{ headerShown: false, cardStyle: { backgroundColor: '#252525' } }}>
+        <Navigator initialRouteName="Home" screenOptions={{ headerShown: false, cardStyle: { backgroundColor: colors.background },  }} >
             <Screen name="Home" component={Home} />
             <Screen name="CadastroVeiculo" component={CadastroVeiculo} />
             <Screen name="CodigoConfirmacao" component={CodigoConfirmacao} />
@@ -54,11 +74,13 @@ function AppStack() {
             <Screen name="Aparencia" component={Aparencia} />
             <Screen name="Acessibilidade" component={Acessibilidade} />
             <Screen name="Seguranca" component={Seguranca} />
-            <Screen name="SelecionaFoto" component={SelecionaFoto} />
+            {/* <Screen name="SelecionaFoto" component={SelecionaFoto} /> */}
             <Screen name="Subscription" component={Subscription} />
             <Screen name="PaymentScreen" component={PaymentScreen} />
         </Navigator>
-    );
+
+);
+}
 }
 
 export default AppStack;

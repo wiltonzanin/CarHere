@@ -1,11 +1,12 @@
 import { StyleSheet } from 'react-native';
+import colors from '../../Styles/colors'
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 20,
         justifyContent: 'space-between',
-        backgroundColor: "#252525"
+        backgroundColor: colors.background
     },
 
     header: {
@@ -15,7 +16,7 @@ const styles = StyleSheet.create({
     },
 
     title: {
-        color: '#F0EFF4',
+        color: colors.grayLight,
         fontSize: 20,
     },
 
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
     },
 
     text: {
-        color: '#F0EFF4',
+        color: colors.grayLight,
         fontSize: 18,
         marginBottom: 10
     },
@@ -53,25 +54,25 @@ const styles = StyleSheet.create({
     },
 
     dropdown: {
-        backgroundColor: "#333333",
-        borderColor: "#525252",
+        backgroundColor: colors.grayDark,
+        borderColor: colors.grayMedium,
         height: 40
     },
 
     dropdownList: {
-        backgroundColor: "#333333",
-        borderColor: "#525252",
+        backgroundColor: colors.grayDark,
+        borderColor: colors.grayMedium,
     },
 
     dropdownText: {
         fontSize: 16,
-        color: "#F0EFF4",
+        color: colors.grayLight,
     },
 
     imageSelector: {
-        backgroundColor: '#333333',
+        backgroundColor: colors.grayDark,
         borderWidth: 1,
-        borderColor: "#525252",
+        borderColor: colors.grayMedium,
         alignItems: 'center',
         justifyContent: 'center',
         width: 120,
@@ -81,7 +82,7 @@ const styles = StyleSheet.create({
 
     buttonDelete: {
         borderWidth: 1,
-        borderColor: "#8F1622",
+        borderColor: colors.button,
         alignItems: 'center',
         justifyContent: 'center',
         width: 120,

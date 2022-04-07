@@ -15,12 +15,13 @@
       
       // Fetches a payment intent and captures the client secret
       async function initialize() {
-        const response = await fetch("http://192.168.254.13:4242/create-payment-intent", { // MUDAR URL antes de gerar''''''''''''''''''''''''''''
-        // const response = await fetch("http://10.30.56.154:4242/create-payment-intent", { // MUDAR URL antes de gerar''''''''''''''''''''''''''''
+        // const response = await fetch("http://192.168.254.13:4242/create-payment-intent", { // MUDAR URL antes de gerar''''''''''''''''''''''''''''
+        const response = await fetch("http://10.30.56.189:4242/create-payment-intent", { // MUDAR URL antes de gerar''''''''''''''''''''''''''''
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ items }),
         });
+        //pega a secret do usuário
         const { clientSecret } = await response.json();
       
         const appearance = {
@@ -35,13 +36,13 @@
       async function handleSubmit(e) {
         e.preventDefault();
         setLoading(true);
-      
+      //completa o pagamento
         const { error } = await stripe.confirmPayment({
           elements,
           confirmParams: {
             // Make sure to change this to your payment completion page
-            return_url: "http://192.168.254.13:4242/checkout.html", // MUDAR URL '''''''''''''''''''''''''''''''''''''''
-            // return_url: "http://10.30.56.154:4242/checkout.html", // MUDAR URL '''''''''''''''''''''''''''''''''''''''
+            // return_url: "http://192.168.254.13:4242/checkout.html", // MUDAR URL '''''''''''''''''''''''''''''''''''''''
+            return_url: "http://10.30.56.189:4242/success.html", // MUDAR URL '''''''''''''''''''''''''''''''''''''''
             receipt_email: document.getElementById("email").value,
           },
         });

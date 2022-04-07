@@ -25,8 +25,8 @@ function Inicial({navigation}: any) {
         navigation.navigate('CadastroUsuario');
     }
 
-    function handleNavigateToRecuperarSenhaPage() {
-        navigation.navigate('RecuperarSenha');
+    function handleNavigateToAlterarSenhaPage() {
+        navigation.navigate('AlterarSenha');
     }
 
     return (
@@ -50,7 +50,7 @@ function Inicial({navigation}: any) {
                     <View>
                         <TextField labelName="E-mail" tipoTeclado={"email-address"} onChangeText={setEmail}/>
                         <TextField labelName="Senha" onChangeText={setSenha} secureTextEntry={true} />
-                        <RectButton onPress={handleNavigateToRecuperarSenhaPage} style={styles.forgotPasswordTextButton} rippleColor='#1C00ff00'>
+                        <RectButton onPress={handleNavigateToAlterarSenhaPage} style={styles.forgotPasswordTextButton} rippleColor='#1C00ff00'>
                             <Text style={styles.forgotPassword}>Esqueceu a senha?</Text>
                         </RectButton>
                     </View>

@@ -38,13 +38,13 @@ export default function SelecionarFotoGaleria() {
     setImage(uri)
   };
 
-  return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+  // return (
+  //   <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       
-      <Button title="Botão chato" onPress={pickImage} />
-      {image && (
-        <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />
-      )}
-    </View>
-  );
+  //     {/* <Button title="Botão chato" onPress={pickImage} /> */}
+  //     {/* {image && (
+  //       <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />
+  //     )} */}
+  //   </View>
+  // );
 }

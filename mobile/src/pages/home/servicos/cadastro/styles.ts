@@ -1,11 +1,12 @@
 import { StyleSheet } from 'react-native';
+import colors from '../../../../Styles/colors';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
     justifyContent: 'space-between',
-    backgroundColor: "#252525"
+    backgroundColor: colors.background
   },
 
   header: {
@@ -15,12 +16,12 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    color: '#F0EFF4',
+    color: colors.grayLight,
     fontSize: 20,
   },
 
   text: {
-    color: '#F0EFF4',
+    color: colors.grayLight,
     fontSize: 18,
     marginBottom: 10
   },
@@ -40,33 +41,33 @@ const styles = StyleSheet.create({
   },
 
   dropdown: {
-    backgroundColor: "#333333",
-    borderColor: "#525252",
+    backgroundColor: colors.grayDark,
+    borderColor: colors.grayMedium,
     height: 40,
     marginBottom: 20
   },
 
   dropdownList: {
-    backgroundColor: "#333333",
-    borderColor: "#525252",
+    backgroundColor: colors.grayDark,
+    borderColor: colors.grayMedium,
   },
 
   dropdownText: {
     fontSize: 16,
-    color: "#F0EFF4",
+    color: colors.grayLight,
   },
 
   textInput: {
     padding: 10,
     //height: 40,
     minHeight: 85, 
-    backgroundColor: '#333333',
-    borderColor: '#525252',
+    backgroundColor: colors.grayDark,
+    borderColor: colors.grayMedium,
     borderStyle: 'solid',
     borderWidth: 1,
     borderRadius: 4,
     fontSize: 16,
-    color: '#F0EFF4',
+    color: colors.grayLight,
     flex: 1,
     marginBottom: 20  
   },
@@ -74,12 +75,12 @@ const styles = StyleSheet.create({
   /*: {
     height: 40,
     padding: 10,
-    backgroundColor: '#333333',
-    borderColor: '#525252',
+    backgroundColor: colors.grayDark,
+    borderColor: colors.grayMedium,
     borderStyle: 'solid',
     borderWidth: 1,
     borderRadius: 4,
-    color: '#F0EFF4',
+    color: colors.grayLight,
     fontSize: 16,  
 }*/
 
@@ -96,7 +97,7 @@ buttoncheckbox: {
 },
 
 textcheckbox: {
-  color: '#F0EFF4',
+  color: colors.grayLight,
   fontSize: 15,
 
 },

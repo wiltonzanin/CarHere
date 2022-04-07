@@ -5,12 +5,12 @@ import styles from "./styles";
 import { RectButton } from "react-native-gesture-handler";
 import { Feather } from "@expo/vector-icons";
 import { ButtonMenu, ButtonPadrao } from '../../../components/buttons';
+import colors from "../../../Styles/colors";
 
 function AjudaFeedback({ navigation }: any) {
-  const { navigate } = useNavigation();
 
   function handleNavigateToEntrarEmContato() {
-    navigate("EntrarEmContato");
+    navigation.navigate("EntrarEmContato");
   }
 
   return (
@@ -32,7 +32,7 @@ function AjudaFeedback({ navigation }: any) {
         <Text style={styles.text}>Feedback</Text>
         <View style={styles.bottomSection}>
           <RectButton style={styles.buttonAvaliar}>
-            <Feather name="star" size={20} color="#F0EFF4" />
+            <Feather name="star" size={20} color={colors.grayLight} />
             <Text style={styles.buttonText}>Nos avalie na Google Play!</Text>
           </RectButton>
         </View>

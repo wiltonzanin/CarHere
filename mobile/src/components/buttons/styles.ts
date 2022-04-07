@@ -1,8 +1,9 @@
 import { StyleSheet } from "react-native";
+import colors from '../../Styles/colors'
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: "#8F1622",
+    backgroundColor: colors.button,
     height: 60,
     borderRadius: 8,
     alignItems: "center",
@@ -10,13 +11,13 @@ const styles = StyleSheet.create({
   },
 
   text: {
-    color: "#F0EFF4",
+    color: colors.grayLight,
     fontSize: 20,
     fontWeight: "bold",
   },
 
   buttonAdicionar: {
-    backgroundColor: "#8F1622",
+    backgroundColor: colors.button,
     height: 50,
     borderRadius: 8,
     alignItems: "center",
@@ -24,7 +25,7 @@ const styles = StyleSheet.create({
   },
 
   textAdicionar: {
-    color: "#F0EFF4",
+    color: colors.grayLight,
     fontSize: 18,
     padding: 10,
     textAlign: "center",
@@ -44,7 +45,7 @@ const styles = StyleSheet.create({
   },
 
   textAjuda: {
-    color: "#F0EFF4",
+    color: colors.grayLight,
     paddingLeft: 5,
   },
 });

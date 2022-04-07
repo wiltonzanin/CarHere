@@ -1,10 +1,11 @@
 import { StyleSheet } from "react-native";
+import colors from '../../../../Styles/colors'
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#252525",
-    padding: 20,
+    backgroundColor: colors.background,
+    padding: 20
   },
 
   header: {
@@ -15,32 +16,18 @@ const styles = StyleSheet.create({
   },
 
   headerTitle: {
-    color: "#F0EFF4",
+    color: colors.grayLight,
     fontSize: 20
   },
 
   instructions: {
-    color: "#F0EFF4",
+    color: colors.grayLight,
     fontSize: 16,
     textAlign: "auto",
   },
 
   formContent: {
     paddingTop: 20,
-  },
-
-  button: {
-    backgroundColor: "#8F1622",
-    height: 60,
-    borderRadius: 5,
-    padding: 24,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-
-  buttonText: {
-    color: "#F0EFF4",
-    fontSize: 18,
   },
 });
 

@@ -1,9 +1,10 @@
 import { StyleSheet } from "react-native";
+import colors from '../../../Styles/colors'
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#252525",
+    backgroundColor: colors.background,
     padding: 20,
     justifyContent: "space-between",
   },
@@ -19,37 +20,37 @@ const styles = StyleSheet.create({
   },
 
   headerTitle: {
-    color: "#F0EFF4",
+    color: colors.grayLight,
     fontSize: 20,
   },
 
   content: {
-    color: "#F0EFF4",
+    color: colors.grayLight,
     justifyContent: "flex-start",
     height: "85%",
   },
 
   text: {
-    color: "#F0EFF4",
+    color: colors.grayLight,
     fontSize: 20,
     paddingTop: 20,
     paddingBottom: 20
   },
 
   top: {
-    backgroundColor: "#333333",
+    backgroundColor: colors.grayDark,
     borderRadius: 5,
-    borderColor: '#525252',
+    borderColor: colors.grayMedium,
     borderWidth: 1,
   },
 
   meio: {
     borderBottomWidth: 1,
-    borderColor: '#525252',
+    borderColor: colors.grayMedium,
   },
 
   buttonText: {
-    color: "#F0EFF4",
+    color: colors.grayLight,
     paddingLeft: 5
   },
 
@@ -59,14 +60,14 @@ const styles = StyleSheet.create({
 
   buttonAvaliar: {
     height: 60,
-    backgroundColor: '#8F1622',
+    backgroundColor: colors.button,
     alignItems: "center",
     paddingTop: 10,
     borderRadius: 5
   },
 
   bottomtext: {
-    color: "#F0EFF4",
+    color: colors.grayLight,
     fontSize: 18,
     alignSelf: 'center',
   }
