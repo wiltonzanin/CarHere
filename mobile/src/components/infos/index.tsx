@@ -29,7 +29,6 @@ interface InfoPropsService {
   datafor: string;
   ValorServico: number;
   descricao: string;
-  carro: string;
 }
 
 interface Servicos {
@@ -93,7 +92,6 @@ export function InfosService({
   datafor,
   ValorServico,
   descricao,
-  carro,
   ...rest
 }: InfoPropsService){
   return (
@@ -103,8 +101,6 @@ export function InfosService({
         <Text style={styles.textInfoCampo}>{nome}</Text>
         <Text style={styles.textInfoService}>Local</Text>
         <Text style={styles.textInfoCampo}>{local}</Text>
-        <Text style={styles.textInfoService}>Veiculo</Text>
-        <Text style={styles.textInfoCampo}>{carro}</Text>
         <Text style={styles.textInfoService}>Quilometragem</Text>
         <Text style={styles.textInfoCampo}>{quilometragem}</Text>
         <Text style={styles.textInfoService}>Data</Text>

@@ -24,25 +24,30 @@ interface Servico {
   datafor: string;
   ValorServico: number;
   descricao: string;
+  statusServico: number;
   carro: Array<{
     id_carro: number;
     marca: string;
     modelo: string;
     motorizacao: string;
     ano: number;
-    combustivel: string;    
+    combustivel: string;
   }>;
 }
+
+
+//const [isSelected, setIsSelected] = useState(false);
+//const status : number = parseInt(servico.statusServico);
 
 function VisualizarServicos({ navigation }: any) {
 
   const route = useRoute();
   const params = route.params as DetalhesServicoRouteParams;
   const [isSelected, setIsSelected] = useState(false);
-
   const [modalDecisionVisible, setModalDecisionVisible] = useState(false);
-
   const [servico, setServico] = useState<Servico>();
+  const [status, setStatus] = useState(0);
+
 
   useEffect(() => {
     api
@@ -50,15 +55,8 @@ function VisualizarServicos({ navigation }: any) {
       .then((response) => setServico(response.data));
   }, [params.id]);
 
-/*
-useEffect(() => {
-  api
-    .delete(`/servico/delete/${params.id}`)
-    .then((response) => setServico(response.data));
-}, [params.id]);
-*/
 
-  function deteleServico(){
+  function deteleServico() {
     setModalDecisionVisible(true);
   }
 
@@ -71,13 +69,20 @@ useEffect(() => {
     navigation.navigate("Servico");
   }
 
-  console.log(servico)
- 
   //Adicionar tratamento
   if (!servico) {
     return (
       <Text>Erro</Text>
     );
+  }
+
+  function StatusServico(){
+    if (servico?.statusServico == 1) {
+      return true;
+    };
+    if (servico?.statusServico == 0) {
+      return false;
+    }
   }
 
   return (
@@ -90,25 +95,22 @@ useEffect(() => {
       <View style={styles.container}>
         <View style={styles.header}>
           <BackButton />
-          <Text style={styles.title}>{servico.nome}</Text>
+          <Text style={styles.title}>Informações</Text>
           <RectButton onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
             <Feather name="edit" size={25} color="#F0EFF4" />
           </RectButton>
         </View>
         <View>
           <View style={styles.card}>
-            <Text style={styles.cardTitle}>Informações</Text>
             <InfosService
-              nome={servico.nome}
-              local={servico.local}
-              veiculo={servico.veiculo}
-              quilometragem={servico.quilometragem}
-              datafor={servico.datafor}
-              ValorServico={servico.ValorServico}
-              descricao={servico.descricao}
-              carro={servico.carro}
+              nome={servico.nome || "-----"}
+              local={servico.local || "-----"}
+              veiculo={servico.veiculo || "-----"}
+              quilometragem={servico.quilometragem || "-----"}
+              datafor={servico.datafor || "-----"}
+              ValorServico={servico.ValorServico || "-----"}
+              descricao={servico.descricao|| "-----"}
             />
-            
           </View>
           <View style={styles.checkbox}>
             <CheckBox
@@ -116,8 +118,8 @@ useEffect(() => {
               checkedIcon='check-square-o'
               checkedColor='#8F1622'
               size={25}
-              checked={isSelected}
-              onPress={() => setIsSelected(!isSelected)} 
+              checked={StatusServico()}
+              onPress={() => setIsSelected(!isSelected)}
             />
             <View style={styles.buttoncheckbox}>
               <Text style={styles.textcheckbox}>Serviço foi realizado</Text>

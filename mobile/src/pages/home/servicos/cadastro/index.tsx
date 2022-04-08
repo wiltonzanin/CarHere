@@ -1,20 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { useNavigation } from "@react-navigation/native";
-import { Text, View, ScrollView, TextInput, TouchableOpacity, Platform } from "react-native";
+import { Text, View, ScrollView, TextInput, Platform } from "react-native";
+import DropDownPicker from "react-native-dropdown-picker";
+import { CheckBox } from 'react-native-elements';
 
 import api from "../../../../services/api";
 import styles from "./styles";
 import TextField from "../../../../components/textField";
 import BackScreen from "../../../../components/backScreen";
 import { Button } from "../../../../components/buttons";
-import { Feather } from "@expo/vector-icons";
 import DateTimePicker from '@react-native-community/datetimepicker';
 import LoadingScreen from "../../../../components/loadingScreen";
 import { SuccessModal, FeedbackModal } from "../../../../components/feedbackModal";
-import DropDownPicker from "react-native-dropdown-picker";
-import { color } from "react-native-reanimated";
-import { red100 } from "react-native-paper/lib/typescript/styles/colors";
-import { CheckBox } from 'react-native-elements';
 
 interface Carros {
   id: number;
@@ -28,22 +24,23 @@ function CadastroServicos({navigation} : any) {
   const [carregando, setCarregando] = useState(false);
   const [modalMensage, setModalMensage] = useState("");
   const [isSelected, setIsSelected] = useState(false);
-
   const [carros, setCarros] = useState<Carros[]>([]);
   const [id_carro, setCarro] = useState("");
-
   const [name, setName] = useState("")
   const [local, setLocal] = useState("")
-
   const [ValorServico, setValorServico] = useState("")
   const [Quilometragem, setQuilometragem] = useState("")
-  var [ServicoStatus, setServicoStatus] = useState("")
   const [descricao, setDescricao] = useState("")
-  const [datafor, setdata] = useState("")
+  var [ServicoStatus, setServicoStatus] = useState("")
 
   const [date, setDate] = useState(new Date()); //validação data
   const [show, setShow] = useState(false); //validação datapicker
   const [mode, setMode] = useState('date'); //validação datapicker
+      
+  const [ValidacaoNome, setValidacaoNome] = useState("")
+  const [ValidacaoVeiculo, setValidacaoVeiculo] = useState("")
+  const [ValidacaoQuilometragem, setValidacaoQuilometragem] = useState("")
+  const [ValidacaoValorServico, setValidacaoValorServico] = useState("")
 
   const onChange = (event: any, selectedDate: any) => {
     const currentDate = selectedDate || date;
@@ -66,31 +63,62 @@ function CadastroServicos({navigation} : any) {
         setCarros(response.data);
     })
 }, [])
-/*
-  console.log("--------------------------------------")
-  console.log("Nome:" + name)
-  console.log("Local:" + local)
-  //console.log("Data:" + datafor)
-  console.log("Valor:" + ValorServico)
-  console.log("Descrição:" + descricao)
-  console.log("teste id carro: " + id_carro)
-*/
-  var dataformatada = date.getDate().toString().padStart(2, '0') + "/";
-  dataformatada += (date.getMonth() + 1).toString().padStart(2, '0') + "/";
-  dataformatada += date.getFullYear().toString();
 
-  if (isSelected == true){
+var dataformatada = date.getDate().toString().padStart(2, '0') + "/";
+dataformatada += (date.getMonth() + 1).toString().padStart(2, '0') + "/";
+dataformatada += date.getFullYear().toString();
+
+  if(isSelected == true){
     ServicoStatus = "1"
   }
-  else {
+  else{
     ServicoStatus = "0"
   }
 
+function validacao(){
+    // Nome
+    if (!name) {
+      setValidacaoNome('Nome não informado') 
+    }
+    else {
+      setValidacaoNome('')
+    }
+
+    // Veiculo
+    if (!id_carro) {
+      setValidacaoVeiculo('Veiculo não informado') 
+      alert("Insira um veiculo")
+    }
+    else {
+      setValidacaoVeiculo('')
+    }
+
+    // Quilometragem  
+    if (((!isNaN(parseFloat(Quilometragem)) && isFinite(Quilometragem)) || !Quilometragem) === false) {
+      setValidacaoQuilometragem('Somente numeros!')
+    }
+    else {
+      setValidacaoQuilometragem('')
+    }
+
+    // ValorServico
+    if (((!isNaN(parseFloat(ValorServico)) && isFinite(ValorServico)) || !ValorServico ) === false) {
+      setValidacaoValorServico('Somente numeros!')
+    }
+    else {
+      setValidacaoValorServico('')
+    }
+
+    //após validação 
+    if(( ((!isNaN(ValorServico)) && isFinite(ValorServico)) === true && !id_carro === false && ((!isNaN(Quilometragem)) && isFinite(Quilometragem)) === true  && !name === false)){
+      CadastrarBanco();
+      console.log("Cadastrou no banco");
+    }
+}
 
   async function CadastrarBanco() {
 
     const dataserv = (dataformatada.toString())
-
     const data = new FormData();
 
     data.append("nome", name);
@@ -101,20 +129,12 @@ function CadastroServicos({navigation} : any) {
     data.append("descricao", descricao);
     data.append("statusServico", ServicoStatus);
     data.append("id_carro", id_carro);
-/*
-    console.log("nome :"+ name);
-    console.log("local :"+ local);
-    console.log("quilometragem :"+ Quilometragem);
-    console.log("datafor :"+ dataserv);
-    console.log("ValorServico :"+ ValorServico);
-    console.log("descricao :"+ descricao);
-    console.log("ServicoStatus :"+ ServicoStatus);
-    console.log("id_carro :"+ id_carro);
-*/
+
     try{
       setCarregando(true)
       await api.post("/servico", data);
-    } catch (error) {
+    } 
+    catch (error) {
       setCarregando(false);
       setModalMensage("");
       setModalWarning(true);
@@ -122,13 +142,12 @@ function CadastroServicos({navigation} : any) {
     }
     setModalMensage("Serviço cadastrado com sucesso!");
     setModalVisible(true);
-
   }
 
-  function handleNavigateToVeiculos() {
+  function handleNavigateToServico() {
     setModalVisible(!modalVisible);
     setCarregando(false);
-    if (modalWarning == false) {
+    if (modalWarning == false){
       navigation.navigate("Servico");
     }
   }
@@ -143,7 +162,7 @@ function CadastroServicos({navigation} : any) {
       <LoadingScreen carregando={carregando} />
       <SuccessModal
         modalVisible={modalVisible}
-        funcaoOnRequestClose={handleNavigateToVeiculos}
+        funcaoOnRequestClose={handleNavigateToServico}
         mensage={modalMensage} />
       <FeedbackModal
         modalVisible={modalWarning}
@@ -157,28 +176,30 @@ function CadastroServicos({navigation} : any) {
         </View>
         <View>
           <TextField
-            labelName="Nome"
+            labelName="Nome *"
             onChangeText={setName}
             value={name}
+            mensagemErro = {ValidacaoNome}
           />
-          <TextField
+          <TextField 
             labelName="Local que foi realizado o serviço"
             onChangeText={setLocal}
             value={local}
           />
           <View style={styles.inputGroup}>
             <View style={styles.inputGroupSecondColumn}>
-              <Text style={styles.text}>Veículo</Text>
+              <Text style={styles.text}>Veículo *</Text>
               <DropDownPicker
                   dropDownStyle={styles.dropdownList}
                   labelStyle={styles.dropdownText}
                   arrowColor={"#F0EFF4"}
+                  placeholder="Selecionar..."
                   items={carros.map(carro => ({ label: carro.modelo, value: carro.id }))}
                   style={styles.dropdown}
                   onChangeItem={(item) => {
+                      
                       setCarro(item.value);
-                  
-                  }}>
+              }}>
               </DropDownPicker>
             </View>
             <View style={styles.inputGroupColumn}>
@@ -187,6 +208,7 @@ function CadastroServicos({navigation} : any) {
                 tipoTeclado={"numeric"}
                 onChangeText={setQuilometragem}
                 value={Quilometragem}
+                mensagemErro = {ValidacaoQuilometragem}
               />
             </View>
           </View>
@@ -217,6 +239,7 @@ function CadastroServicos({navigation} : any) {
                 tipoTeclado={"numeric"}
                 onChangeText={setValorServico}
                 value={ValorServico}
+                mensagemErro = {ValidacaoValorServico}
               />
             </View>
           </View>
@@ -243,7 +266,7 @@ function CadastroServicos({navigation} : any) {
             </View>
           </View>
         </View>
-        <Button title="Concluir" onPress={CadastrarBanco} />
+        <Button title="Concluir" onPress={validacao} />
       </View>
     </ScrollView>
   );

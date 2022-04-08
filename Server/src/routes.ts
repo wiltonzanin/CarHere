@@ -18,7 +18,6 @@ routes.post('/usuarios', upload.array('usuarios'), UsuariosController.create)
 
 routes.post('/carros', upload.array('images'), CarrosController.create)
 routes.get('/carros/:id', CarrosController.show)
-//routes.get('carros/servico/:id', CarrosController.showService)
 routes.get('/carros/detalhes/:id', CarrosController.showListagem)
 routes.delete('/carros/delete/:id', CarrosController.delete)
 

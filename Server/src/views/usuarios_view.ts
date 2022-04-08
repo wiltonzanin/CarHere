@@ -13,5 +13,5 @@ export default {
             // data_nascimento: usuarios.data_nascimento,
             // genero: usuarios.genero
         };
-    }
+    },
 };

@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     labelErro: {
         color: '#f83a53',
         fontSize: 12,
-        paddingTop: 5
+        paddingTop: 5,
     },
 
     inputGroup:{

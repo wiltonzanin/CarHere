@@ -5,6 +5,8 @@ import * as Yup from 'yup';
 import Usuarios from '../models/usuarios';
 import Servico from '../models/servico';
 import servicoview from '../views/servico_view';
+import Carro from '../models/carro';
+import carros_view from '../views/carros_view';
 
 
 export default {
@@ -22,11 +24,10 @@ export default {
         const { id } = request.params;
 
         const servicoRepositorio = getRepository(Servico).createQueryBuilder('servico')
+        .leftJoinAndSelect("servico.carros","carro.id_carro")
         .where('servico.id_usuario = :id', { id });
 
         const servico = await servicoRepositorio.getMany();
-
-        console.log(servico)
 
         return response.json(servicoview.renderMany(servico));
     },
@@ -41,8 +42,6 @@ export default {
 
         const servico = await servicoRepositorio.getMany();
 
-        console.log(servico)
-
         return response.json(servicoview.renderMany(servico));
     },
 
@@ -53,8 +52,6 @@ export default {
         const servicoRepositorio = getRepository(Servico)
 
         const servico = await servicoRepositorio.findOneOrFail(id)
-
-        console.log(servico)
 
         return response.json(servicoview.render(servico));
     },
@@ -67,8 +64,6 @@ export default {
         .where('servico.id_servico = :id', { id });
 
         const servicos = await servicosRepositorio.getMany();
-
-        console.log(servicos)
 
         return response.json(servicoview.renderMany(servicos));
 
@@ -117,9 +112,8 @@ export default {
             statusServico,
             id_carro,
             id_usuario,
+            
         };
-
-        console.log(data)
 
         const schema = Yup.object().shape({
             nome: Yup.string().required(),

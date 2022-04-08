@@ -100,6 +100,9 @@ function VisualizarVeiculo({ navigation }: any) {
       <Text>Erro</Text>
     );
   }
+  
+  console.log("servico "+!servico);
+  console.log("autonomia " +!autonomia);
 
   return (
     <ScrollView>
@@ -164,7 +167,7 @@ function VisualizarVeiculo({ navigation }: any) {
                     <RectButton style={styles.buttonServico} onPress={() => handleNavigateToVisualizarServicos(servico.id)}>
                       <View style={styles.buttonGroupTextServico}>
                         <Text style={styles.buttonServicoText}>{servico.nome}</Text>
-                        <Text style={styles.textInfo2}>{servico.local}</Text>
+                        <Text style={styles.textInfo2}>{servico.local || "-----"}</Text>
                         <Text style={styles.textInfo2}>{servico.datafor}</Text>
                       </View>
                     </RectButton>
@@ -187,7 +190,7 @@ function VisualizarVeiculo({ navigation }: any) {
               :
               <View style={[carro.combustivel.includes("flex") ? styles.infoGroup : styles.info]}>
                 <View>
-                  <Text style={styles.titleInfo}>{autonomia.tipoCombustivel}</Text>
+                  <Text style={styles.buttonServicoText}>{autonomia.tipoCombustivel}</Text>
                   <Text style={styles.textInfo2}>{autonomia.percurso}</Text>
                   <Text style={styles.textInfo2}>{autonomia.mediaConsumo} Km/L</Text>
                 </View>

@@ -1,5 +1,7 @@
+import CarrosController from '../controllers/CarrosController';
 import Servico from '../models/servico';
 import carros_view from './carros_view';
+import carrosview from './carros_view';
 
 export default {
     render(servico: Servico){
@@ -13,10 +15,9 @@ export default {
             descricao: servico.descricao,
             statusServico: servico.statusServico,
             id_usuario: servico.usuario,
-            carros: carros_view.renderMany(servico.carros),
+            carro: servico.carros,
         };
     },
-    
 
     renderMany(servico: Servico[]){
         return servico.map(servico => this.render(servico));

@@ -23,15 +23,12 @@ interface servico {
   quilometragem: number,
   datafor: string;
   ValorServico: number;
- 
+  carro: Array<{
+    marca: string;
+    modelo: string;
+  }>;
   id_usuario: number;
 }
-
-interface carro {
-  id: number;
-  modelo: string;
-}
-
 
 function Servicos({ navigation }: any) {
 
@@ -40,7 +37,7 @@ function Servicos({ navigation }: any) {
   const [carregando, setCarregando] = useState(false);
   const [erroCarregar, setErroCarregar] = useState(false);
   const [servico, setServico] = useState<servico[]>([]);
-  const [carro, setCarros] = useState<carro[]>([]); 
+  
   const route = useRoute();
   /* const params = route.params as DetalhesServicoRouteParams; */
 
@@ -55,11 +52,10 @@ function Servicos({ navigation }: any) {
   }
 
 /*
-  useEffect(() => {
-
-    api.get(`carros/servico/${params.id}`).then(response => {
-        setCarros(response.data);
-    })
+useEffect(() => {
+  api.get(`carros/servico/${params.id}`).then(response => {
+    setCarros(response.data);
+  })
 }, [params.id])
 */
 
@@ -93,9 +89,10 @@ function Servicos({ navigation }: any) {
   if (servico.length > 0) {
     listaVazia = false
   }
+  console.log(servico)
+  //console.log("teste " + servico.carro[0].modelo)
 
   return (
-
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <LoadingScreen carregando={carregando} />
       <View style={styles.container}>
@@ -128,9 +125,10 @@ function Servicos({ navigation }: any) {
                     <RectButton style={styles.buttonServico} onPress={() => handleNavigateToVisualizarServicos(servico.id)}>
                       <View style={styles.buttonGroupTextServico}>
                         <Text style={styles.buttonServicoText}>{servico.nome}</Text>
-                        <Text style={styles.textInfo3}>{servico.local}</Text>
+                        <Text style={styles.textInfo3}>{servico.local || "-----"}</Text>
                         <Text style={styles.textInfo3}>{servico.datafor}</Text>
                       </View>
+                      
                     </RectButton>
                   </View>
                 );

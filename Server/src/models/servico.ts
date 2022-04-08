@@ -38,7 +38,7 @@ export default class Servico {
 
 //////////////////////////////////////////////////////////////////////////////
 
-    @OneToMany(() => Carro, carro => carro.servico, {
+    @ManyToOne(() => Carro, carro => carro.servico, {
         cascade: ['insert', 'update']
     })
     @JoinColumn({ name: 'id_carro' })
@@ -50,7 +50,7 @@ export default class Servico {
         cascade: ['insert', 'update']
     })
     @JoinColumn({ name: 'id_usuario' })
-    usuario: Usuario[]
+    usuario: Usuario;
 
 //////////////////////////////////////////////////////////////////////////////
  
