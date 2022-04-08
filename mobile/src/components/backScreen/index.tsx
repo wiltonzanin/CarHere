@@ -3,6 +3,7 @@ import { BorderlessButton } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import { Feather } from '@expo/vector-icons';
 import styles from './styles';
+import colors from '../../Styles/colors'
 
 /**
  * Componente para retonar a tela anterior.
@@ -14,7 +15,7 @@ function backScreen() {
 
     return (
         <BorderlessButton onPress={navigation.goBack} style={styles.backButtonStyle}>
-            <Feather name="arrow-left" size={24} color='#F0EFF4' />
+            <Feather name="arrow-left" size={24} color={colors.grayLight} />
         </BorderlessButton>
     );
 }

@@ -1,8 +1,9 @@
 import { StyleSheet } from "react-native";
+import colors from '../../Styles/colors'
 
 const styles = StyleSheet.create({
   text: {
-    color: "#F0EFF4",
+    color: colors.grayLight,
     fontSize: 18,
     paddingBottom: 10,
     paddingTop: 10,

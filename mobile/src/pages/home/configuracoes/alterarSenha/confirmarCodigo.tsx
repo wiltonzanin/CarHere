@@ -4,6 +4,7 @@ import { Text, View, ScrollView } from "react-native";
 import styles from "./codigoStyles";
 import TextField from "../../../../components/textField";
 import BackScreen from "../../../../components/backScreen";
+import { Button } from "../../../../components/buttons";
 
 function CodigoConfirmacao() {
   return (
@@ -19,11 +20,7 @@ function CodigoConfirmacao() {
             <TextField labelName="Código" tipoTeclado={"email-address"} />
           </View>
         </View>
-        <View style={styles.buttonStyle}>
-          <RectButton style={styles.button}>
-            <Text style={styles.buttonText}>Enviar</Text>
-          </RectButton>
-        </View>
+          <Button title="Enviar"/>
       </View>
     </ScrollView>
   );

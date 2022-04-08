@@ -2,6 +2,7 @@ import React from "react";
 import { Text, View, Modal, ActivityIndicator } from "react-native";
 
 import styles from './styles';
+import colors from '../../Styles/colors'
 
 interface loadingScreenProps {
     carregando?: boolean
@@ -25,7 +26,7 @@ const loadingScreen: React.FC<loadingScreenProps> = ({ carregando = false }) => 
             <View style={styles.containerModalLoading}>
                 <ActivityIndicator
                     animating={carregando}
-                    color='#F0EFF4'
+                    color={colors.grayLight}
                     size="large" />
                 <Text style={styles.modalLoadingText}>Por favor, aguarde!</Text>
             </View>

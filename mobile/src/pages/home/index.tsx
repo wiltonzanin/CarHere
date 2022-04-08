@@ -56,7 +56,7 @@ function Home({ navigation }: any) {
           <Image source={require('../../assets/images/impreza.jpg')} style={styles.imgVeiculo} />
         </ScrollView>
         <View style={styles.cardImg}>
-          <Text>Impreza GC8</Text>
+          <Text style={styles.servicesText}>Impreza GC8</Text>
         </View>
         <View style={styles.card}>
           <View style={styles.cardHeader}>

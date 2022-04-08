@@ -17,15 +17,16 @@ export default function Subscription({ navigation }: any) {
         Libere hoje mesmo {"\n"} o modo premium!✨
       </Text>
       </View>
-      <View>
+      <View style={styles.centeredView}>
         <Text style={styles.text}>
-          Possibilidade de cadastrar mais de 5 veículos
+          Possibilidade de cadastrar mais de 5 veículos. E o melhor, sem mais anúncios atrapalhando 😉
         </Text>
+
         <Text style={styles.text}>
-          E o melhor, sem mais anúncios atrapalhando 😉
+          Por apenas R$5,50
         </Text>
       </View>
-      <Button title="Assinar" onPress={handleNavigateToPaymentScreen} />
+      <Button title="Inscrever-se" onPress={handleNavigateToPaymentScreen} />
     </View>
   );
 }

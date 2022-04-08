@@ -1,9 +1,10 @@
 import { StyleSheet, Dimensions } from "react-native";
+import colors from "../../../Styles/colors";
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#252525",
+    backgroundColor: colors.background,
     padding: 20,
   },
 
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
   },
 
   headerText: {
-    color: "#F0EFF4",
+    color: colors.grayLight,
     fontSize: 20,
   },
 
@@ -38,7 +39,7 @@ const styles = StyleSheet.create({
   },
 
   title: {
-      color: "#F0EFF4",
+      color: colors.grayLight,
       fontSize: 20,
   },
 
@@ -52,25 +53,25 @@ const styles = StyleSheet.create({
   },
 
   cardStyle: {
-    backgroundColor: '#333333',
+    backgroundColor: colors.grayDark,
     padding: 20,
     borderRadius: 10
   },
 
   text: {
-    color: "#F0EFF4",
+    color: colors.grayLight,
     fontSize: 20,
   },
 
   cardTitle: {
-    color: "#F0EFF4",
+    color: colors.grayLight,
     fontSize: 22,
     fontWeight: 'bold',
     marginBottom: 20
   },
 
   imagesContainer: {
-    backgroundColor: '#333333',
+    backgroundColor: colors.grayDark,
     marginLeft: -20,
     marginRight: -20,
     marginBottom: -30,
@@ -84,22 +85,22 @@ const styles = StyleSheet.create({
   },
 
   textStatusOk: {
-    color: "#5CB85C",
+    color: colors.green,
     fontSize: 14,
   },
 
   textStatusWarning: {
-    color: "#F0AD4E",
+    color: colors.yellow,
     fontSize: 14,
   },
 
   textStatusError: {
-    color: "#D9534F",
+    color: colors.red,
     fontSize: 14,
   },
 
   cardServices: {
-    backgroundColor: '#F0EFF4',
+    backgroundColor: colors.grayLight,
     padding: 10,
     borderRadius: 5,
     marginBottom: 20
@@ -121,26 +122,26 @@ const styles = StyleSheet.create({
   },
 
   noInfo: {
-    backgroundColor: "#F0EFF4",
+    backgroundColor: colors.grayLight,
     padding: 10,
     borderRadius: 10,
     alignItems: 'center'
   },
 
   noInfoText: {
-    color: "#252525",
+    color: colors.background,
     fontSize: 18,
     textAlign: 'center'
   },
 
   info: {
-    backgroundColor: "#F0EFF4",
+    backgroundColor: colors.grayLight,
     padding: 10,
     borderRadius: 10,
   },
 
   infoGroup: {
-    backgroundColor: "#F0EFF4",
+    backgroundColor: colors.grayLight,
     width: 145,
     height: 140,
     padding: 10,
@@ -148,20 +149,20 @@ const styles = StyleSheet.create({
   },
 
   titleInfo: {
-    color: "#252525",
+    color: colors.grayLight,
     fontSize: 18,
     paddingBottom: 5,
   },
 
   card: {
-    backgroundColor: '#333333',
+    backgroundColor: colors.grayDark,
     padding: 20,
     borderRadius: 10,
     marginBottom: 20
   },
 
   textInfo2: {
-    color: "#252525",
+    color: colors.background,
     fontSize: 14,
   },
 
@@ -177,7 +178,7 @@ const styles = StyleSheet.create({
   },
 
   textcheckbox: {
-    color: '#F0EFF4',
+    color: colors.grayLight,
     fontSize: 15,
 
   },

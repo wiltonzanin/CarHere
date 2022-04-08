@@ -19,9 +19,7 @@ function RecuperarSenha() {
                         <TextField labelName="Email" tipoTeclado={"email-address"} />
                     </View>
                 </View>
-                <View style={styles.buttonStyle}>
-                    <Button title='Enviar instruções' />
-                </View>
+                <Button title='Enviar instruções'/>
             </View>
         </ScrollView>
     );

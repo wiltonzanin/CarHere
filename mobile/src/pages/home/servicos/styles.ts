@@ -1,9 +1,10 @@
 import { StyleSheet } from "react-native";
+import colors from "../../../Styles/colors";
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#252525",
+    backgroundColor: colors.background,
     padding: 20,
   },
 
@@ -18,7 +19,7 @@ const styles = StyleSheet.create({
   },
 
   headerText: {
-    color: '#F0EFF4',
+    color: colors.grayLight,
     fontSize: 20,
   },
 
@@ -42,7 +43,7 @@ const styles = StyleSheet.create({
   },
 
   buttonServiceTextGreen: {
-    color: "#5CB85C",
+    color: colors.green,
     fontSize: 16,
     padding: 35,
   },
@@ -58,7 +59,7 @@ const styles = StyleSheet.create({
   },
 
   buttonServico: {
-    backgroundColor: "#F0EFF4",
+    backgroundColor: colors.grayLight,
     height: 100,
     flexDirection: "row",
     justifyContent: "space-between",
@@ -72,22 +73,22 @@ const styles = StyleSheet.create({
   },
 
   buttonServicoText: {
-    color: '#252525',
+    color: colors.background,
     fontSize: 18,
     fontWeight: 'bold',
   },
 
   buttonServicoTextManutencaoGreen: {
-    color: '#5CB85C',
+    color: colors.green,
     fontSize: 16
   },
 
   buttonServicoTextManutencaoRed: {
-    color: "#D9534F",
+    color: colors.red,
     fontSize: 16,
   },
   textInfo3: {
-    color: "#252525",
+    color: colors.background,
     fontSize: 14,
   },
 

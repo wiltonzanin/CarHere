@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import colors from '../../Styles/colors';
 
 const styles = StyleSheet.create({
 
@@ -9,7 +10,7 @@ const styles = StyleSheet.create({
     },
 
     formLabel: {
-        color: '#F0EFF4',
+        color: colors.grayLight,
         fontSize: 18,
         marginBottom: 10
     },
@@ -34,12 +35,12 @@ const styles = StyleSheet.create({
     input: {
         height: 40,
         padding: 10,
-        backgroundColor: '#333333',
-        borderColor: '#525252',
+        backgroundColor: colors.grayDark,
+        borderColor: colors.grayMedium,
         borderStyle: 'solid',
         borderWidth: 1,
         borderRadius: 4,
-        color: '#F0EFF4',
+        color: colors.grayLight,
         fontSize: 16,   
     }
 });

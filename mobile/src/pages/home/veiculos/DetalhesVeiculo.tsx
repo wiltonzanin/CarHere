@@ -81,8 +81,14 @@ function VisualizarVeiculo({ navigation }: any) {
     navigation.navigate("Servico");
   }
 
-  function deteleVeiculo(){
+  async function deteleVeiculo() {
     setModalDecisionVisible(true);
+    try {
+      setCarregando(true)
+      await api.delete(`/carros/delete/${params.id}`);
+    } catch (error) {
+      return;
+    }
   }
 
   function fecharModal() {
@@ -148,11 +154,11 @@ function VisualizarVeiculo({ navigation }: any) {
             />
           </View>
           <View style={styles.card}>
-          <RectButton onPress={handleNavigateToServicos}>
-            <View style={styles.cardHeader}>
-              <Text style={styles.cardTitle}>Serviços</Text>
-              <Feather name="chevron-right" size={24} color="#F0EFF4" />
-            </View>
+            <RectButton onPress={handleNavigateToServicos}>
+              <View style={styles.cardHeader}>
+                <Text style={styles.cardTitle}>Serviços</Text>
+                <Feather name="chevron-right" size={24} color="#F0EFF4" />
+              </View>
             </RectButton>
             {!servico
               ?

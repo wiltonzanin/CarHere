@@ -4,6 +4,7 @@ import { RectButton } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
 import { Feather } from "@expo/vector-icons";
 import styles from "./styles";
+import colors from '../../Styles/colors'
 
 interface InfoProps {
   info1: string;
@@ -114,11 +115,10 @@ export function InfosService({
   );
 }
 
-export function Servico({ nome, data, ...rest }: Servicos) {
-  const { navigate } = useNavigation();
+export function Servico({ nome, data, ...rest }: Servicos , {navigation}: any) {
 
   function handleNavigateToVisualizarServicos() {
-    navigate("VisualizarServicos");
+    navigation.navigate("VisualizarServicos");
   }
   return (
     <View style={styles.servicos}>
@@ -131,7 +131,7 @@ export function Servico({ nome, data, ...rest }: Servicos) {
           <Text> {data} </Text>
         </View>
         <Text style={styles.buttonServiceTextGreen}>
-          <Feather name="check-circle" size={16} color="#5CB85C" /> Tudo certo
+          <Feather name="check-circle" size={16} color={colors.green} /> Tudo certo
         </Text>
       </RectButton>
     </View>

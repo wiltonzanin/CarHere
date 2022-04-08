@@ -1,9 +1,10 @@
 import { StyleSheet } from "react-native";
+import colors from '../../../../../Styles/colors'
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#252525",
+    backgroundColor: colors.background,
     padding: 20,
     justifyContent: "space-between",
   },
@@ -15,7 +16,7 @@ const styles = StyleSheet.create({
   },
 
   headerTitle: {
-    color: "#F0EFF4",
+    color: colors.grayLight,
     fontSize: 20,
   },
 
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
   },
 
   text: {
-    color: "#F0EFF4",
+    color: colors.grayLight,
     fontSize: 18,
     paddingBottom: 20,
     paddingTop: 20
@@ -33,24 +34,24 @@ const styles = StyleSheet.create({
 
   textInputOutro: {
     padding: 10,
-    backgroundColor: '#333333',
-    borderColor: '#525252',
+    backgroundColor: colors.grayDark,
+    borderColor: colors.grayMedium,
     borderStyle: 'solid',
     borderRadius: 5,
     borderWidth: 1,
     fontSize: 16,
-    color: '#F0EFF4',
+    color: colors.grayLight,
   },
 
   textInput: {
     padding: 10,
-    backgroundColor: '#333333',
-    borderColor: '#525252',
+    backgroundColor: colors.grayDark,
+    borderColor: colors.grayMedium,
     borderStyle: 'solid',
     borderRadius: 5,
     borderWidth: 1,
     fontSize: 16,
-    color: '#F0EFF4',
+    color: colors.grayLight,
     flex: 1
   },
 });

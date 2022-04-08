@@ -1,9 +1,12 @@
 import { StyleSheet, Dimensions } from "react-native";
+import { colorsDark } from "react-native-elements/dist/config";
+import fonts from "../../Styles/fonts";
+import colors from '../../Styles/colors';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#252525",
+    backgroundColor: colors.background,
     padding: 20,
   },
 
@@ -14,8 +17,9 @@ const styles = StyleSheet.create({
 },
 
   title: {
-    color: '#F0EFF4',
+    color: colors.grayLight,
     fontSize: 20,
+    fontFamily: fonts.title
   },
 
   buttonsHeader: {
@@ -24,8 +28,9 @@ const styles = StyleSheet.create({
   },
 
   text: {
-    color: "#F0EFF4",
+    color: colors.grayLight,
     fontSize: 20,
+    fontFamily: fonts.text
   },
 
   content: {
@@ -41,18 +46,18 @@ const styles = StyleSheet.create({
   },
 
   cardImg: {
-    backgroundColor: '#F0EFF4',
+    backgroundColor: colors.grayLight,
     padding: 20,
     borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10
+    borderBottomRightRadius: 10,
   },
 
   card: {
     marginTop: 20,
-    backgroundColor: '#333333',
+    backgroundColor: colors.grayDark,
     padding: 20,
     borderRadius: 10,
-    marginBottom: 20
+    marginBottom: 20,
   },
 
   cardHeader: {
@@ -61,29 +66,32 @@ const styles = StyleSheet.create({
   },
 
   cardTitle: {
-    color: "#F0EFF4",
+    fontFamily: fonts.title,
+    color: colors.grayLight,
     fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 20
+    marginBottom: 20,
   },
 
   textStatusOk: {
-    color: "#5CB85C",
+    color: colors.green,
     fontSize: 14,
+    fontFamily: fonts.text
   },
 
   textStatusWarning: {
-    color: "#F0AD4E",
+    color: colors.yellow,
     fontSize: 14,
+    fontFamily: fonts.text
   },
 
   textStatusError: {
-    color: "#D9534F",
+    color: colors.red,
     fontSize: 14,
+    fontFamily: fonts.text
   },
 
   cardServices: {
-    backgroundColor: '#F0EFF4',
+    backgroundColor: colors.grayLight,
     padding: 10,
     borderRadius: 5,
     marginBottom: 20
@@ -96,26 +104,28 @@ const styles = StyleSheet.create({
   },
 
   servicesTitle: {
-    fontWeight: "bold",
-    fontSize: 18
+    fontSize: 18,
+    fontFamily: fonts.title
   },
 
   servicesText: {
-    fontSize: 18
+    fontSize: 18,
+    fontFamily: fonts.text
   },
 
   cardStyle: {
-    backgroundColor: '#333333',
+    backgroundColor: colors.grayDark,
     padding: 20,
     borderRadius: 10
   },
 
   drawer: {
-    backgroundColor: "#252525",
+    backgroundColor: colors.background,
   },
 
   drawerText: {
-    color: "#F0EFF4",
+    color: colors.grayLight,
+    fontFamily: fonts.text
   },
 });
 

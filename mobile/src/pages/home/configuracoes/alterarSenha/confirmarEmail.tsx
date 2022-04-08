@@ -7,11 +7,10 @@ import BackScreen from "../../../../components/backScreen";
 import { Button } from '../../../../components/buttons';
 import { useNavigation } from "@react-navigation/native";
 
-function AlterarSenha() {
-  const { navigate } = useNavigation();
+function AlterarSenha({navigation}: any) {
 
   function handleNavigateToCodigoConfirmacao() {
-    navigate("CodigoConfirmacao");
+    navigation.navigate("CodigoConfirmacao");
   }
 
   return (

@@ -1,11 +1,12 @@
 import { StyleSheet } from 'react-native';
+import colors from '../../../Styles/colors'
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 20,
         justifyContent: 'space-between',
-        backgroundColor: "#252525"
+        backgroundColor: colors.background
     },
 
     header: {
@@ -15,7 +16,7 @@ const styles = StyleSheet.create({
     },
 
     title: {
-        color: '#F0EFF4',
+        color: colors.grayLight,
         fontSize: 20,
     },
 
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
     },
 
     text: {
-        color: '#F0EFF4',
+        color: colors.grayLight,
         fontSize: 18,
         marginBottom: 10
     },
@@ -46,19 +47,19 @@ const styles = StyleSheet.create({
     },
 
     dropdown: {
-        backgroundColor: "#333333",
-        borderColor: "#525252",
+        backgroundColor: colors.grayDark,
+        borderColor: colors.grayMedium,
         height: 40,
     },
 
     dropdownList: {
-        backgroundColor: "#333333",
-        borderColor: "#525252",
+        backgroundColor: colors.grayDark,
+        borderColor: colors.grayMedium,
     },
 
     dropdownText: {
         fontSize: 16,
-        color: "#F0EFF4",
+        color: colors.grayLight,
     },
 
     consumoMedio: {
@@ -68,10 +69,10 @@ const styles = StyleSheet.create({
     textResultado: {
         marginTop: 20,
         padding: 10,
-        color: '#F0EFF4',
+        color: colors.grayLight,
         fontSize: 32,
         alignSelf: 'center',
-        borderColor: '#F0EFF4',
+        borderColor: colors.grayLight,
         borderWidth: 1,
         borderStyle: 'solid'
     },

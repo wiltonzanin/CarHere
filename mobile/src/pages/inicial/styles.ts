@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import colors from '../../Styles/colors';
 
 const styles = StyleSheet.create({
     container: {
@@ -6,7 +7,7 @@ const styles = StyleSheet.create({
     },
 
     header: {
-        backgroundColor: '#F0EFF4',
+        backgroundColor: colors.grayLight,
         height: '30%',
         justifyContent: 'space-between'
     },
@@ -17,13 +18,13 @@ const styles = StyleSheet.create({
     },
 
     title: {
-        color: "#252525",
+        color: colors.background,
         fontSize: 35,
         fontWeight: 'bold',
     },
 
     subtitle: {
-        color: "#252525",
+        color: colors.background,
         fontSize: 18,
         paddingTop: 5
     },
@@ -51,7 +52,7 @@ const styles = StyleSheet.create({
     },
 
     forgotPassword: {
-        color: '#F0EFF4',
+        color: colors.grayLight,
         fontSize: 14,
         fontWeight: 'bold',
         alignSelf: 'flex-end'
@@ -68,12 +69,12 @@ const styles = StyleSheet.create({
     },
 
     registerText: {
-        color: '#F0EFF4',
+        color: colors.grayLight,
         fontSize: 18,
     },
 
     registerTextBold: {
-        color: '#F0EFF4',
+        color: colors.grayLight,
         fontSize: 18,
         fontWeight: 'bold',
     },

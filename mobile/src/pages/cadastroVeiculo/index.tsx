@@ -13,6 +13,8 @@ import LoadingScreen from "../../components/loadingScreen";
 import { SuccessModal, FeedbackModal } from "../../components/feedbackModal";
 import { Feather } from "@expo/vector-icons";
 
+import colors from '../../Styles/colors'
+
 function CadastroVeiculo({ navigation }: any) {
 
   const [modalVisible, setModalVisible] = useState(false);
@@ -28,6 +30,10 @@ function CadastroVeiculo({ navigation }: any) {
   const [images, setImages] = useState<string[]>([]);
 
   const [modalMensage, setModalMensage] = useState("");
+
+  function handleDeletePhotos(){
+    setImages([]);
+  }
 
   async function handleSelecionarFoto() {
     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -118,7 +124,7 @@ function CadastroVeiculo({ navigation }: any) {
           <Text style={styles.title}>Cadastre seu veículo</Text>
           <View />
         </View>
-        <View>
+        <View style={{paddingBottom: 20}}>
           <TextField labelName="Marca" onChangeText={setMarca} />
           <TextField labelName="Modelo" onChangeText={setModelo} />
           <Text style={styles.text}>Combustível</Text>
@@ -126,7 +132,7 @@ function CadastroVeiculo({ navigation }: any) {
             placeholder="Selecione um item"
             dropDownStyle={styles.dropdownList}
             labelStyle={styles.dropdownText}
-            arrowColor={"#F0EFF4"}
+            arrowColor={colors.grayLight}
             items={[
               { label: "Gasolina", value: "Gasolina" },
               { label: "Alcool", value: "Alcool" },
@@ -148,7 +154,7 @@ function CadastroVeiculo({ navigation }: any) {
                 placeholder=""
                 dropDownStyle={styles.dropdownList}
                 labelStyle={styles.dropdownText}
-                arrowColor={"#F0EFF4"}
+                arrowColor={colors.grayLight}
                 items={[
                   { label: "2022", value: "2022" },
                   { label: "2021", value: "2021" },
@@ -231,8 +237,13 @@ function CadastroVeiculo({ navigation }: any) {
               )
             })}
             <TouchableOpacity onPress={handleSelecionarFoto} disabled={disableButton} style={disableButton ? { display: "none" } : styles.imageSelector}>
-              <Feather name="plus" size={50} color="#F0EFF4" />
+              <Feather name="plus" size={40} color={colors.grayLight} />
             </TouchableOpacity>
+            {images.length > 0 &&
+              <TouchableOpacity onPress={handleDeletePhotos} style={styles.buttonDelete}>
+                <Feather name="trash" size={30} color={colors.button} />
+              </TouchableOpacity>
+            }
           </ScrollView>
         </View>
         <Button title="Concluir" onPress={handleCreateVeiculo} />

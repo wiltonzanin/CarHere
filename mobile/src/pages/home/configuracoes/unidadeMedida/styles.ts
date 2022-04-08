@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import colors from '../../../../Styles/colors'
 
 const styles = StyleSheet.create({
   container: {
@@ -13,20 +14,20 @@ const styles = StyleSheet.create({
   },
 
   headerTitle: {
-    color: "#F0EFF4",
+    color: colors.grayLight,
     fontSize: 20,
   },
 
   title: {
-    color: "#F0EFF4",
+    color: colors.grayLight,
     fontSize: 18,
     marginTop: 20,
     marginBottom: 20
   },
 
   dropdown: {
-    backgroundColor: "#333333",
-    borderColor: "#525252",
+    backgroundColor: colors.grayDark,
+    borderColor: colors.grayMedium,
   },
 });
 

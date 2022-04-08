@@ -1,9 +1,10 @@
 import { StyleSheet } from "react-native";
+import colors from "../../../../Styles/colors";
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#252525",
+    backgroundColor: colors.background,
     padding: 20,
     justifyContent: "space-between",
   },
@@ -15,7 +16,7 @@ const styles = StyleSheet.create({
   },
 
   headerTitle: {
-    color: "#F0EFF4",
+    color: colors.grayLight,
     fontSize: 20
   }
 });

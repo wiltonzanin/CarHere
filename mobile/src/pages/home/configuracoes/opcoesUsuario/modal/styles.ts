@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import colors from "../../../../../Styles/colors";
 
 const styles = StyleSheet.create({
   container: {
@@ -11,7 +12,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     position: 'absolute',
     height: '30%',
-    backgroundColor: '#333333',
+    backgroundColor: colors.grayDark,
     width: '100%',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
@@ -49,7 +50,7 @@ const styles = StyleSheet.create({
   },
 
   imgVeiculo: {
-    backgroundColor: '#333333',
+    backgroundColor: colors.grayDark,
     borderTopRightRadius: 5,
     borderBottomRightRadius: 5,
     alignSelf: 'center'

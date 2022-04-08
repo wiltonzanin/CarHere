@@ -1,8 +1,9 @@
 import { StyleSheet } from "react-native";
+import colors from '../../Styles/colors'
 
 const styles = StyleSheet.create({
   autonomia: {
-    backgroundColor: "#F0EFF4",
+    backgroundColor: colors.grayLight,
     width: 145,
     height: 140,
     padding: 10,
@@ -10,36 +11,36 @@ const styles = StyleSheet.create({
   },
 
   textInfo1: {
-    color: "#252525",
+    color: colors.background,
     fontSize: 18,
     paddingBottom: 5,
   },
 
   textInfo2: {
-    color: "#252525",
+    color: colors.background,
     fontSize: 14,
   },
 
   textInfo: {
-    color: "#F0EFF4",
+    color: colors.grayLight,
     fontSize: 18,
   },
 
   textInfoService: {
-    color: "#F0EFF4",
+    color: colors.grayLight,
     fontSize: 18,
     fontWeight: 'bold',
   },
 
 
   textInfoCampo: {
-    color: "#F0EFF4",
+    color: colors.grayLight,
     fontSize: 16,
     paddingBottom: 20,
   },
 
   textInfoCampo1: {
-    color: "#F0EFF4",
+    color: colors.grayLight,
     fontSize: 16,
     paddingBottom: 20,
     paddingHorizontal: 10
@@ -60,7 +61,7 @@ const styles = StyleSheet.create({
   },
 
   buttonServico: {
-    backgroundColor: "#F0EFF4",
+    backgroundColor: colors.grayLight,
     height: 100,
     flexDirection: "row",
     justifyContent: "space-between",
@@ -77,13 +78,13 @@ const styles = StyleSheet.create({
   },
 
   buttonServiceTextGreen: {
-    color: "#5CB85C",
+    color: colors.green,
     fontSize: 16,
     padding: 35,
   },
 
   buttonVeiculoTextManutencaoRed: {
-    color: "#D9534F",
+    color: colors.red,
     fontSize: 16,
     padding: 35,
   },

@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import colors from '../../Styles/colors'
 
 const styles = StyleSheet.create({
     container: {
@@ -15,7 +16,7 @@ const styles = StyleSheet.create({
     },
 
     title: {
-        color: '#F0EFF4',
+        color: colors.grayLight,
         fontSize: 20,
     },
 
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
     },
 
     textTermosECondicoes: {
-        color: '#F0EFF4',
+        color: colors.grayLight,
         fontSize: 15,
         textDecorationLine: 'underline'
     },
@@ -43,7 +44,7 @@ const styles = StyleSheet.create({
 
     modalLoadingText: {
         marginTop: 20,
-        color: '#F0EFF4',
+        color: colors.grayLight,
         fontSize: 15,
     }
 });

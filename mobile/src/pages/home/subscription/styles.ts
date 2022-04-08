@@ -1,11 +1,12 @@
 import { StyleSheet } from 'react-native';
+import colors from '../../../Styles/colors';
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 20,
         justifyContent: 'space-between',
-        backgroundColor: "#252525"
+        backgroundColor: colors.background
     },
 
     header: {
@@ -15,18 +16,23 @@ const styles = StyleSheet.create({
     },
 
     title: {
-        color: '#F0EFF4',
+        color: colors.grayLight,
         fontSize: 20,
         // marginTop: 20,
         marginLeft:"auto",
         marginRight:"auto"
     },
 
+    centeredView:{
+        alignContent: 'center',
+    },
+
     text: {
-        color: '#F0EFF4',
+        color: colors.grayLight,
         fontSize: 18,
         marginBottom: 10,
         marginTop: 10,
+        alignSelf: "center",
     },
 
 });
