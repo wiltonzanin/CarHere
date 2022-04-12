@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import colors from '../../Styles/colors'
+import fonts from '../../Styles/fonts'
 
 const styles = StyleSheet.create({
   button: {
@@ -13,7 +14,7 @@ const styles = StyleSheet.create({
   text: {
     color: colors.grayLight,
     fontSize: 20,
-    fontWeight: "bold",
+    fontFamily: fonts.title
   },
 
   buttonAdicionar: {
@@ -29,6 +30,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     padding: 10,
     textAlign: "center",
+    fontFamily: fonts.text
   },
 
   buttonMenu: {
@@ -47,6 +49,7 @@ const styles = StyleSheet.create({
   textAjuda: {
     color: colors.grayLight,
     paddingLeft: 5,
+    fontFamily: fonts.text
   },
 });
 

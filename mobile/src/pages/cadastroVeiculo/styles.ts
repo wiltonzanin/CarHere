@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import colors from '../../Styles/colors'
+import fonts from '../../Styles/fonts'
 
 const styles = StyleSheet.create({
     container: {
@@ -18,6 +19,7 @@ const styles = StyleSheet.create({
     title: {
         color: colors.grayLight,
         fontSize: 20,
+    fontFamily: fonts.title
     },
 
     labelGroup: {
@@ -28,14 +30,16 @@ const styles = StyleSheet.create({
     text: {
         color: colors.grayLight,
         fontSize: 18,
-        marginBottom: 10
+        marginBottom: 10,
+    fontFamily: fonts.text
     },
 
     labelOpcional:{
         color: 'rgba(240, 239, 244, 0.5)',
         fontSize: 10,
         paddingLeft: 10,
-        paddingTop: 8
+        paddingTop: 8,
+    fontFamily: fonts.text
     },
 
     inputGroup: {
@@ -67,6 +71,7 @@ const styles = StyleSheet.create({
     dropdownText: {
         fontSize: 16,
         color: colors.grayLight,
+    fontFamily: fonts.text
     },
 
     imageSelector: {

@@ -52,10 +52,10 @@ function Configuracoes({ navigation }: any) {
                 onPress={handleNavigateToUnidadeMedida}
               />
             </View>
-            <View style={styles.buttonsGroupContent}>
+            {/* <View style={styles.buttonsGroupContent}>
               <ButtonPadrao title="Acessibilidade"
                 onPress={handleNavigateToAcessibilidade} />
-            </View>
+            </View> */}
             <View style={styles.buttonsGroupContent}>
               <ButtonPadrao 
               title="Manual Do Usuario" 

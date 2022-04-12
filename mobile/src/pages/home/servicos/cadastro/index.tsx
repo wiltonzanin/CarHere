@@ -11,6 +11,10 @@ import { Button } from "../../../../components/buttons";
 import DateTimePicker from '@react-native-community/datetimepicker';
 import LoadingScreen from "../../../../components/loadingScreen";
 import { SuccessModal, FeedbackModal } from "../../../../components/feedbackModal";
+import { color } from "react-native-reanimated";
+import { red100 } from "react-native-paper/lib/typescript/styles/colors";
+import colors from "../../../../Styles/colors";
+import fonts from "../../../../Styles/fonts";
 
 interface Carros {
   id: number;
@@ -192,7 +196,7 @@ function validacao(){
               <DropDownPicker
                   dropDownStyle={styles.dropdownList}
                   labelStyle={styles.dropdownText}
-                  arrowColor={"#F0EFF4"}
+                  arrowColor={colors.grayLight}
                   placeholder="Selecionar..."
                   items={carros.map(carro => ({ label: carro.modelo, value: carro.id }))}
                   style={styles.dropdown}
@@ -254,9 +258,9 @@ function validacao(){
           />
             <View style={styles.checkbox}>
             <CheckBox
-              containerStyle={{ backgroundColor: '#252525', borderColor: '#252525', padding: 0, margin: 0, marginLeft: 0 }}
+              containerStyle={{ backgroundColor: colors.background, borderColor: colors.background, padding: 0, margin: 0, marginLeft: 0 }}
               checkedIcon='check-square-o'
-              checkedColor='#8F1622'
+              checkedColor={colors.button}
               size={25}
               checked={isSelected}
               onPress={() => setIsSelected(!isSelected)} 

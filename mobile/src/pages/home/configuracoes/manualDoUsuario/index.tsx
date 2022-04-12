@@ -5,6 +5,8 @@ import BackScreen from "../../../../components/backScreen";
 import { List } from 'react-native-paper';
 import { Feather } from "@expo/vector-icons";
 import { Image } from "react-native-svg";
+import colors from '../../../../Styles/colors'
+import { color } from "react-native-reanimated";
 
 
 function ManualDoUsuario() {
@@ -24,7 +26,7 @@ function ManualDoUsuario() {
               title="1. CADASTRAR VEÍCULO"
               titleStyle={styles.accordionTitle}
               style={styles.accordion}
-              theme={{ colors: { text: '#FFF' } }}>
+              theme={{ colors: { text: colors.grayLight } }}>
               <View style={styles.textBody}>
                 <Text style={styles.text}>                 
                   {"\t"}{"\t"} Para realizar o cadastro de um novo veículo, acesse a tela seguindo os passos abaixo:{"\n"}{"\n"}
@@ -45,7 +47,7 @@ function ManualDoUsuario() {
               title="2. VEÍCULOS CADASTRADOS"
               titleStyle={styles.accordionTitle}
               style={styles.accordion}
-              theme={{ colors: { text: '#FFF' } }}>
+              theme={{ colors: { text: colors.grayLight } }}>
                 <Text style={styles.text}>
                 {"\t"}{"\t"}Caso deseje visualizar o veículos que foram cadastrados no aplicativo, acesse a funcionalidade Veículos cadastrados, seguindos os passos abaixo:{"\n"}{"\n"}
                 1-Arraste a tela da esquerda para direita ou toque no ícone <Feather name="align-justify" size={15} color={"#F0EFF4"}/> para abrir o menu lateral.{"\n"}
@@ -65,7 +67,7 @@ function ManualDoUsuario() {
               title="3. SERVIÇOS"
               titleStyle={styles.accordionTitle}
               style={styles.accordion}
-              theme={{ colors: { text: '#FFF' } }}>
+              theme={{ colors: { text: colors.grayLight } }}>
                 <Text style={styles.text}>
                 {"\t"}{"\t"}Para acessar a funcionalidade serviços siga os seguintes passos: {"\n"}{"\n"}
                 1-Arraste a tela da esquerda para direita ou toque no ícone <Feather name="align-justify" size={15} color={"#F0EFF4"}/> para abrir o menu lateral.{"\n"}
@@ -86,7 +88,7 @@ function ManualDoUsuario() {
                 title="4. CADASTRAR SERVIÇO"
                 titleStyle={styles.accordionTitle}
                style={styles.accordion}
-                theme={{ colors: { text: '#FFF' } }}>
+                theme={{ colors: { text: colors.grayLight } }}>
                   <Text style={styles.text}>
                 {"\t"}{"\t"}Para realizar o cadastro de um serviço, acesse a tela seguindo os passos abaixo:{"\n"}{"\n"}
                 1-Arraste a tela da esquerda para direita ou toque no ícone <Feather name="align-justify" size={15} color={"#F0EFF4"}/> para abrir o menu lateral.{"\n"}
@@ -106,7 +108,7 @@ function ManualDoUsuario() {
                 title="5. CONFIGURAÇÕES"
                 titleStyle={styles.accordionTitle}
                style={styles.accordion}
-                theme={{ colors: { text: '#FFF' } }}>
+                theme={{ colors: { text: colors.grayLight } }}>
                   <Text style={styles.text}>
                 {"\t"}{"\t"}Para acessar as preferências do aplicativo, opções de usuário e os termos do serviço, acesso o menu Configurações seguindo os passo abaixo:{"\n"}{"\n"}
                 1-Arraste a tela da esquerda para direita ou toque no ícone <Feather name="align-justify" size={15} color={"#F0EFF4"}/> para abrir o menu lateral.{"\n"}
@@ -198,7 +200,7 @@ function ManualDoUsuario() {
                 title="6. AJUDA E FEEDBACK"
                 titleStyle={styles.accordionTitle}
                 style={styles.accordion}
-                theme={{ colors: { text: '#FFF' } }}>
+                theme={{ colors: { text: colors.grayLight } }}>
                 <Text style={styles.text}>
                 {"\t"}{"\t"}Caso precise de ajuda para solucionar um problema, ou queira enviar um feedback para a nossa equipe, acesse a tela, Ajuda e feedback seguindo os passos abaixo:{"\n"}{"\n"}
                 1-Arraste a tela da esquerda para direita ou toque no ícone   para abrir o menu lateral.{"\n"}
@@ -211,7 +213,7 @@ function ManualDoUsuario() {
                 <Feather
               name="align-justify"
               size={15}
-              color={"#F0EFF4"}
+              color={colors.grayLight}
                 />
                 </Text>                                                                                              
                 </List.Accordion> 

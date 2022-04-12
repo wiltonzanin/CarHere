@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import colors from '../../Styles/colors'
+import fonts from '../../Styles/fonts'
 
 const styles = StyleSheet.create({
     container: {
@@ -18,6 +19,7 @@ const styles = StyleSheet.create({
     title: {
         color: colors.grayLight,
         fontSize: 20,
+        fontFamily: fonts.title
     },
 
     termosECondicoes: {
@@ -32,7 +34,8 @@ const styles = StyleSheet.create({
     textTermosECondicoes: {
         color: colors.grayLight,
         fontSize: 15,
-        textDecorationLine: 'underline'
+        textDecorationLine: 'underline',
+        fontFamily: fonts.text
     },
 
     containerModalLoading: {
@@ -46,6 +49,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
         color: colors.grayLight,
         fontSize: 15,
+        fontFamily: fonts.text
     }
 });
 

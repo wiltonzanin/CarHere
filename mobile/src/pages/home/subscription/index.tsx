@@ -14,7 +14,7 @@ export default function Subscription({ navigation }: any) {
 
       <BackScreen />
       <Text style={styles.title}>
-        Libere hoje mesmo {"\n"} o modo premium!✨
+        Modo premium!✨
       </Text>
       </View>
       <View style={styles.centeredView}>

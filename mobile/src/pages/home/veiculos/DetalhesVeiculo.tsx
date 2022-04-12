@@ -4,6 +4,7 @@ import { DrawerActions, useRoute } from "@react-navigation/native";
 import styles from "./DetalhesVeiculoStyle";
 import { RectButton } from "react-native-gesture-handler";
 import { Feather } from "@expo/vector-icons";
+import colors from '../../../Styles/colors'
 
 import BackButton from "../../../components/backScreen";
 import { Infos } from "../../../components/infos";
@@ -122,7 +123,7 @@ function VisualizarVeiculo({ navigation }: any) {
           <BackButton />
           <Text style={styles.text}>{carro.modelo}</Text>
           <RectButton onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
-            <Feather name="edit" size={25} color="#F0EFF4" />
+            <Feather name="edit" size={25} color={colors.grayLight} />
           </RectButton>
         </View>
         <View>
@@ -157,13 +158,13 @@ function VisualizarVeiculo({ navigation }: any) {
             <RectButton onPress={handleNavigateToServicos}>
               <View style={styles.cardHeader}>
                 <Text style={styles.cardTitle}>Serviços</Text>
-                <Feather name="chevron-right" size={24} color="#F0EFF4" />
+                <Feather name="chevron-right" size={24} color={colors.grayLight} />
               </View>
             </RectButton>
             {!servico
               ?
               <View style={styles.noInfo}>
-                <Feather name="alert-circle" size={25} color="#eca400" />
+                <Feather name="alert-circle" size={25} color={colors.yellow} />
                 <Text style={styles.noInfoText}>Você ainda não possui uma serviço cadastrado!</Text>
               </View>
               :
@@ -185,12 +186,12 @@ function VisualizarVeiculo({ navigation }: any) {
           <View style={styles.cardStyle}>
             <View style={styles.cardHeader}>
               <Text style={styles.cardTitle}>Autonomia</Text>
-              <Feather name="chevron-right" size={24} color="#F0EFF4" />
+              <Feather name="chevron-right" size={24} color={colors.grayLight} />
             </View>
             {!autonomia
               ?
               <View style={styles.noInfo}>
-                <Feather name="alert-circle" size={25} color="#eca400" />
+                <Feather name="alert-circle" size={25} color={colors.yellow} />
                 <Text style={styles.noInfoText}>Você ainda não possui uma autonomia cadastrada!</Text>
               </View>
               :

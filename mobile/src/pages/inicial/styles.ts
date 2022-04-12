@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import colors from '../../Styles/colors';
+import fonts from '../../Styles/fonts'
 
 const styles = StyleSheet.create({
     container: {
@@ -20,13 +21,14 @@ const styles = StyleSheet.create({
     title: {
         color: colors.background,
         fontSize: 35,
-        fontWeight: 'bold',
+        fontFamily: fonts.title
     },
 
     subtitle: {
         color: colors.background,
         fontSize: 18,
-        paddingTop: 5
+        paddingTop: 5,
+        fontFamily: fonts.text
     },
 
     svgFlag: {
@@ -48,14 +50,14 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-end',
         justifyContent: 'center',
         paddingTop: 15,
-        paddingLeft: 15
+        paddingLeft: 15,
     },
 
     forgotPassword: {
         color: colors.grayLight,
         fontSize: 14,
-        fontWeight: 'bold',
-        alignSelf: 'flex-end'
+        alignSelf: 'flex-end',
+        fontFamily: fonts.title
     },
 
     buttonsSection: {
@@ -65,18 +67,19 @@ const styles = StyleSheet.create({
 
     textButton: {
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
 
     registerText: {
         color: colors.grayLight,
         fontSize: 18,
+        fontFamily: fonts.text
     },
 
     registerTextBold: {
         color: colors.grayLight,
         fontSize: 18,
-        fontWeight: 'bold',
+        fontFamily: fonts.title
     },
 });
 

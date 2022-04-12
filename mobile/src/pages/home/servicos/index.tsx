@@ -10,7 +10,8 @@ import { Servico } from "../../../components/infos";
 import api from "../../../services/api";
 import LoadingScreen from "../../../components/loadingScreen";
 import SearchBar from "../../../components/searchBar";
-
+import colors from '../../../Styles/colors'
+import fonts from '../../../Styles/fonts'
 
 interface DetalhesServicoRouteParams {
   id: number;
@@ -108,14 +109,14 @@ useEffect(() => {
           {erroCarregar
             ?
             <View style={styles.listagemErroServico}>
-              <Feather name='cloud-off' size={50} color={'#F0EFF4'} />
-              <Text style={{ color: 'white', fontSize: 20, paddingTop: 20 }}>Não foi possível carregar os dados!</Text>
+              <Feather name='cloud-off' size={50} color={colors.grayLight} />
+              <Text style={{ color: colors.grayLight, fontSize: 20, paddingTop: 20, fontFamily: fonts.text }}>Não foi possível carregar os dados!</Text>
             </View>
             :
             listaVazia
               ?
               <View style={styles.listagemErroServico}>
-                <Feather name='archive' size={50} color={'#F0EFF4'} />
+                <Feather name='archive' size={50} color={colors.grayLight} />
                 <Text style={{ color: 'white', fontSize: 20, paddingTop: 20 }}>Ops, você não tem Serviços cadastrados!</Text>
               </View>
               :

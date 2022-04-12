@@ -6,10 +6,9 @@ import { ButtonPadrao } from '../../../../components/buttons';
 import BackScreen from "../../../../components/backScreen";
 
 function EntreEmContato({ navigation }: any) {
-  const { navigate } = useNavigation();
 
   function handleNavigateTosolicitacao() {
-    navigate("Solicitacao");
+    navigation.navigate("Solicitacao");
   }
 
   return (

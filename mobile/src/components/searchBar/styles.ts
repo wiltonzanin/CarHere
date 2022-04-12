@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import colors from "../../Styles/colors";
+import fonts from "../../Styles/fonts";
 
 const styles = StyleSheet.create({
 
@@ -15,6 +16,7 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         color: "#999",
         backgroundColor: colors.grayDark,
+        fontFamily: fonts.text
     },
 
     boxButtonSearch: {

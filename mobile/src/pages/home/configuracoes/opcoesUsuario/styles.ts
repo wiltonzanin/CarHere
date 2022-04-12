@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import colors from '../../../../Styles/colors'
+import fonts from '../../../../Styles/fonts'
 
 const styles = StyleSheet.create({
   container: {
@@ -18,6 +19,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     color: colors.grayLight,
     fontSize: 20,
+    fontFamily: fonts.title
   },
 
   content: {
@@ -42,7 +44,8 @@ alignSelf:'center'
     fontSize: 20,
     paddingTop: 20,
     paddingBottom: 20,
-    alignSelf:'center'
+    alignSelf:'center',
+    fontFamily: fonts.text
   },
 
   top: {
@@ -58,24 +61,6 @@ alignSelf:'center'
     borderColor: colors.grayMedium,
   },
 
-  buttonContent: {
-    height: 60,
-    padding: 5,
-    alignItems: "center",
-    justifyContent: "space-between",
-    flexDirection: "row",
-  },
-
-  buttonText: {
-    color: colors.grayLight,
-    justifyContent: "center",
-    paddingLeft: 5,
-  },
-
-  buttonsSection: {
-    width: "100%",
-    height: "100%",
-  },
 });
 
 export default styles;

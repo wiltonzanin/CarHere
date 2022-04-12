@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import colors from '../../../../Styles/colors';
+import fonts from '../../../../Styles/fonts';
 
 const styles = StyleSheet.create({
   container: {
@@ -18,17 +19,19 @@ const styles = StyleSheet.create({
   title: {
     color: colors.grayLight,
     fontSize: 20,
+    fontFamily: fonts.title
   },
 
   text: {
     color: colors.grayLight,
     fontSize: 18,
-    marginBottom: 10
+    marginBottom: 10,
+    fontFamily: fonts.text
   },
 
   inputGroup: {
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
 
   inputGroupColumn: {
@@ -44,7 +47,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.grayDark,
     borderColor: colors.grayMedium,
     height: 40,
-    marginBottom: 20
+    marginBottom: 20,
   },
 
   dropdownList: {
@@ -55,6 +58,7 @@ const styles = StyleSheet.create({
   dropdownText: {
     fontSize: 16,
     color: colors.grayLight,
+    fontFamily: fonts.text,
   },
 
   textInput: {
@@ -69,7 +73,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: colors.grayLight,
     flex: 1,
-    marginBottom: 20  
+    marginBottom: 20,
+    fontFamily: fonts.text
   },
 
   /*: {
@@ -99,7 +104,7 @@ buttoncheckbox: {
 textcheckbox: {
   color: colors.grayLight,
   fontSize: 15,
-
+  fontFamily: fonts.text
 },
 
 });

@@ -1,5 +1,6 @@
 import { StyleSheet, Dimensions } from "react-native";
 import colors from "../../../Styles/colors";
+import fonts from "../../../Styles/fonts";
 
 const styles = StyleSheet.create({
   container: {
@@ -36,12 +37,13 @@ const styles = StyleSheet.create({
   text: {
     color: colors.grayLight,
     fontSize: 20,
+    fontFamily: fonts.title
   },
 
   cardTitle: {
     color: colors.grayLight,
     fontSize: 20,
-    fontWeight: 'bold',
+    fontFamily: fonts.title,
     marginBottom: 20
   },
 
@@ -62,16 +64,19 @@ const styles = StyleSheet.create({
   textStatusOk: {
     color: colors.green,
     fontSize: 14,
+    fontFamily: fonts.text
   },
 
   textStatusWarning: {
     color: colors.yellow,
     fontSize: 14,
+    fontFamily: fonts.text
   },
 
   textStatusError: {
     color: colors.red,
     fontSize: 14,
+    fontFamily: fonts.text
   },
 
   servicos: {
@@ -97,17 +102,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
     justifyContent: "space-between",
-  },
-
-  servicesHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingBottom: 20
-  },
-
-  servicesTitle: {
-    fontWeight: "bold",
-    fontSize: 18
+    fontFamily: fonts.text
   },
 
   buttonServicoText: {
@@ -116,27 +111,26 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 
-  servicesText: {
-    fontSize: 18
-  },
-
   noInfo: {
     backgroundColor: colors.grayLight,
     padding: 10,
     borderRadius: 10,
-    alignItems: 'center'
+    alignItems: 'center',
+    fontFamily: fonts.text
   },
 
   noInfoText: {
     color: "#252525",
     fontSize: 18,
-    textAlign: 'center'
+    textAlign: 'center',
+    fontFamily: fonts.text
   },
 
   info: {
     backgroundColor: colors.grayLight,
     padding: 10,
     borderRadius: 10,
+    fontFamily: fonts.text
   },
 
   infoGroup: {
@@ -144,18 +138,21 @@ const styles = StyleSheet.create({
     width: 145,
     height: 140,
     padding: 10,
-    borderRadius: 10
+    borderRadius: 10,
+    fontFamily: fonts.text
   },
 
   titleInfo: {
     color: colors.background,
     fontSize: 18,
     paddingBottom: 5,
+    fontFamily: fonts.title
   },
 
   textInfo2: {
     color: colors.background,
     fontSize: 14,
+    fontFamily: fonts.text
   },
 
   deleteButton: {
