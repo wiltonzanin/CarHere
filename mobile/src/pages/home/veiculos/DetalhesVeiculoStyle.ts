@@ -136,7 +136,8 @@ const styles = StyleSheet.create({
   info: {
     backgroundColor: colors.grayLight,
     padding: 10,
-    borderRadius: 10,
+    height: 100,
+    borderRadius: 5,
   },
 
   infoGroup: {

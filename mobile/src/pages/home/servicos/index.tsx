@@ -128,7 +128,6 @@ useEffect(() => {
                         <Text style={styles.textInfo3}>{servico.local || "-----"}</Text>
                         <Text style={styles.textInfo3}>{servico.datafor}</Text>
                       </View>
-                      
                     </RectButton>
                   </View>
                 );

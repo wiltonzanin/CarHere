@@ -19,9 +19,14 @@ import Servicos from "./servicos";
 import { ButtonMenu } from '../../components/buttons';
 import { ButtonAdicionar } from '../../components/buttons';
 import Subscription from '../home/subscription'
+import { RectButton } from "react-native-gesture-handler";
 
 function Home({ navigation }: any) {
   const { navigate } = useNavigation();
+  
+  function handleNavigateToServicos() {
+    navigation.navigate("Servico");
+  }
 
   useFocusEffect(() => {
     const backAction = () => {
@@ -59,10 +64,12 @@ function Home({ navigation }: any) {
           <Text style={styles.servicesText}>Impreza GC8</Text>
         </View>
         <View style={styles.card}>
+        <RectButton onPress={handleNavigateToServicos}>
           <View style={styles.cardHeader}>
             <Text style={styles.cardTitle}>Serviços</Text>
             <Feather name="chevron-right" size={24} color="#F0EFF4" />
           </View>
+          </RectButton>
           <TouchableOpacity style={styles.cardServices}>
             <View style={styles.servicesHeader}>
               <Text style={styles.servicesTitle}>Monza</Text>

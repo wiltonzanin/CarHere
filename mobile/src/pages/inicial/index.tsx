@@ -48,8 +48,16 @@ function Inicial({navigation}: any) {
                 </View>
                 <View style={styles.content}>
                     <View>
-                        <TextField labelName="E-mail" tipoTeclado={"email-address"} onChangeText={setEmail}/>
-                        <TextField labelName="Senha" onChangeText={setSenha} secureTextEntry={true} />
+                        <TextField 
+                        labelName="E-mail" 
+                        tipoTeclado={"email-address"} 
+                        onChangeText={setEmail}
+                        />
+                        <TextField 
+                        labelName="Senha" 
+                        onChangeText={setSenha} 
+                        secureTextEntry={true} 
+                        />
                         <RectButton onPress={handleNavigateToAlterarSenhaPage} style={styles.forgotPasswordTextButton} rippleColor='#1C00ff00'>
                             <Text style={styles.forgotPassword}>Esqueceu a senha?</Text>
                         </RectButton>
@@ -57,10 +65,7 @@ function Inicial({navigation}: any) {
                     <View style={styles.buttonsSection}>
                         <Button title="Entrar" onPress={handleSignIn} />
                         <RectButton onPress={handleNavigateToCadastroUsarioPage} style={styles.textButton}>
-                            <Text style={styles.registerText}>
-                                Não tem uma conta!
-                                <Text style={styles.registerTextBold}> Cadastre-se</Text>
-                            </Text>
+                            <Text style={styles.registerText}>Não tem uma conta!<Text style={styles.registerTextBold}> Cadastre-se</Text></Text>
                         </RectButton>
                     </View>
                 </View>

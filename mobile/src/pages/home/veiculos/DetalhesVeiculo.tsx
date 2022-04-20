@@ -185,7 +185,7 @@ function VisualizarVeiculo({ navigation }: any) {
           <View style={styles.cardStyle}>
             <View style={styles.cardHeader}>
               <Text style={styles.cardTitle}>Autonomia</Text>
-              <Feather name="chevron-right" size={24} color="#F0EFF4" />
+              <Feather name="chevron-right" size={24} color="#F0EFF4"/>
             </View>
             {!autonomia
               ?
