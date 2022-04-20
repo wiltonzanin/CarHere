@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import colors from '../../Styles/colors';
+import fonts from '../../Styles/fonts';
 
 const styles = StyleSheet.create({
 
@@ -12,7 +13,8 @@ const styles = StyleSheet.create({
     formLabel: {
         color: colors.grayLight,
         fontSize: 18,
-        marginBottom: 10
+        marginBottom: 10,
+        fontFamily: fonts.text
     },
 
     labelOpcional:{
@@ -42,6 +44,7 @@ const styles = StyleSheet.create({
         borderRadius: 4,
         color: colors.grayLight,
         fontSize: 16,   
+        fontFamily: fonts.text
     }
 });
 

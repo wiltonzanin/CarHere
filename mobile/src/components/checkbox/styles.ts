@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import colors from '../../Styles/colors'
+import fonts from '../../Styles/fonts'
 
 const styles = StyleSheet.create({
   text: {
@@ -7,6 +8,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     paddingBottom: 10,
     paddingTop: 10,
+    fontFamily: fonts.text
   },
 
   checkbox: {

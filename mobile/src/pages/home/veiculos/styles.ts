@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import colors from "../../../Styles/colors";
+import fonts from "../../../Styles/fonts";
 
 const styles = StyleSheet.create({
   container: {
@@ -26,6 +27,7 @@ const styles = StyleSheet.create({
   headerText: {
     color: colors.grayLight,
     fontSize: 20,
+    fontFamily: fonts.title
   },
 
   content: {
@@ -53,23 +55,26 @@ const styles = StyleSheet.create({
   buttonGroupText: {
     flex: 1,
     padding: 10,
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    fontFamily: fonts.text
   },
 
   buttonVeiculoText: {
     color: '#252525',
     fontSize: 18,
-    fontWeight: 'bold',
+    fontFamily: fonts.title
   },
 
   buttonVeiculoTextManutencaoGreen: {
     color: colors.green,
-    fontSize: 16
+    fontSize: 16,
+    fontFamily: fonts.text
   },
 
   buttonVeiculoTextManutencaoRed: {
     color: colors.red,
-    fontSize: 16
+    fontSize: 16,
+    fontFamily: fonts.text
   },
 
   imgVeiculo: {

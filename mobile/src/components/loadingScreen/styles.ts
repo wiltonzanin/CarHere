@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import colors from '../../Styles/colors';
+import fonts from '../../Styles/fonts';
 
 const styles = StyleSheet.create({
 
@@ -14,6 +15,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
         color: colors.grayLight,
         fontSize: 15,
+        fontFamily: fonts.text
     }
 });
 

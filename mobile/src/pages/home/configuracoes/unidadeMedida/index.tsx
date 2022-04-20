@@ -3,6 +3,8 @@ import { Text, View, ScrollView } from "react-native";
 import styles from "./styles";
 import DropDownPicker from "react-native-dropdown-picker";
 import { Feather } from '@expo/vector-icons';
+import colors from '../../../../Styles/colors'
+import fonts from '../../../../Styles/fonts'
 
 import BackScreen from "../../../../components/backScreen";
 
@@ -13,21 +15,15 @@ function UnidadeMedida() {
         <View style={styles.header}>
           <BackScreen />
           <Text style={styles.headerTitle}>Unidades de medida</Text>
-          <Feather name="save" size={24} color='#F0EFF4' />
+          <Feather name="save" size={24} color={colors.grayLight} />
         </View>
         <View>
           <Text style={styles.title}>Tipo de métrica</Text>
           <DropDownPicker
             placeholder="Selecione um item"
-            dropDownStyle={{
-              backgroundColor: "#333333",
-              borderColor: "#525252",
-            }}
-            labelStyle={{
-              fontSize: 16,
-              color: "#F0EFF4",
-            }}
-            arrowColor={"#F0EFF4"}
+            dropDownStyle={styles.dropdown}
+            labelStyle={styles.dropdownText}
+            arrowColor={colors.grayLight}
             items={[
               { label: "Quilômetros", value: "Quilometros" },
               { label: "Milhas", value: "Milhas" },
@@ -37,15 +33,9 @@ function UnidadeMedida() {
           <Text style={styles.title}>Unidade de medida de volume</Text>
           <DropDownPicker
             placeholder="Selecione um item"
-            dropDownStyle={{
-              backgroundColor: "#333333",
-              borderColor: "#525252",
-            }}
-            labelStyle={{
-              fontSize: 16,
-              color: "#F0EFF4",
-            }}
-            arrowColor={"#F0EFF4"}
+            dropDownStyle={styles.dropdown}
+            labelStyle={styles.dropdownText}
+            arrowColor={colors.grayLight}
             items={[
               { label: "Litros", value: "Litros" },
               { label: "Galões", value: "galoes" },

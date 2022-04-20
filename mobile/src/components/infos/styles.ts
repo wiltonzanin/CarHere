@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import colors from '../../Styles/colors'
+import fonts from '../../Styles/fonts'
 
 const styles = StyleSheet.create({
   autonomia: {
@@ -14,22 +15,25 @@ const styles = StyleSheet.create({
     color: colors.background,
     fontSize: 18,
     paddingBottom: 5,
+    fontFamily: fonts.text
   },
 
   textInfo2: {
     color: colors.background,
     fontSize: 14,
+    fontFamily: fonts.text
   },
 
   textInfo: {
     color: colors.grayLight,
     fontSize: 18,
+    fontFamily: fonts.text
   },
 
   textInfoService: {
     color: colors.grayLight,
     fontSize: 18,
-    fontWeight: 'bold',
+    fontFamily: fonts.title
   },
 
 
@@ -37,13 +41,15 @@ const styles = StyleSheet.create({
     color: colors.grayLight,
     fontSize: 16,
     paddingBottom: 20,
+    fontFamily: fonts.text
   },
 
   textInfoCampo1: {
     color: colors.grayLight,
     fontSize: 16,
     paddingBottom: 20,
-    paddingHorizontal: 10
+    paddingHorizontal: 10,
+    fontFamily: fonts.text
   },
 
   card: {
@@ -71,22 +77,26 @@ const styles = StyleSheet.create({
   ButtonText: {
     flexDirection: "column",
     padding: 10,
+    fontFamily: fonts.text
   },
 
   buttonGroupText: {
     justifyContent: "space-between",
+    fontFamily: fonts.text
   },
 
   buttonServiceTextGreen: {
     color: colors.green,
     fontSize: 16,
     padding: 35,
+    fontFamily: fonts.text
   },
 
   buttonVeiculoTextManutencaoRed: {
     color: colors.red,
     fontSize: 16,
     padding: 35,
+    fontFamily: fonts.text
   },
 });
 

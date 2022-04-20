@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import colors from "../../../Styles/colors";
+import fonts from "../../../Styles/fonts";
 
 const styles = StyleSheet.create({
   container: {
@@ -21,6 +22,7 @@ const styles = StyleSheet.create({
   headerText: {
     color: colors.grayLight,
     fontSize: 20,
+    fontFamily: fonts.title
   },
 
   search: {
@@ -35,6 +37,7 @@ const styles = StyleSheet.create({
   ButtonText: {
     flexDirection: "column",
     padding: 10,
+    fontFamily: fonts.text
   },
 
   headerGroup: {
@@ -46,6 +49,7 @@ const styles = StyleSheet.create({
     color: colors.green,
     fontSize: 16,
     padding: 35,
+    fontFamily: fonts.text
   },
 
   listagemErroServico: {
@@ -70,26 +74,30 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
     justifyContent: "space-between",
+    fontFamily: fonts.text
   },
 
   buttonServicoText: {
     color: colors.background,
     fontSize: 18,
-    fontWeight: 'bold',
+    fontFamily: fonts.title
   },
 
   buttonServicoTextManutencaoGreen: {
     color: colors.green,
-    fontSize: 16
+    fontSize: 16,
+    fontFamily: fonts.text
   },
 
   buttonServicoTextManutencaoRed: {
     color: colors.red,
     fontSize: 16,
+    fontFamily: fonts.text
   },
   textInfo3: {
     color: colors.background,
     fontSize: 14,
+    fontFamily: fonts.text
   },
 
 });

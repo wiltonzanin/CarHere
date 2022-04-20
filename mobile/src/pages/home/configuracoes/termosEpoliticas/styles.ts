@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import colors from '../../../../Styles/colors'
+import fonts from '../../../../Styles/fonts'
 
 const styles = StyleSheet.create({
   container: {
@@ -15,7 +16,8 @@ const styles = StyleSheet.create({
 
   headerTitle: {
     color: colors.grayLight,
-    fontSize: 20
+    fontSize: 20,
+    fontFamily: fonts.title
   },
 
   accordion: {
@@ -25,25 +27,27 @@ const styles = StyleSheet.create({
   accordionTitle: {
     color: colors.grayLight,
     fontSize: 18,
+    fontFamily: fonts.title
   },
 
   textBody: {
     borderColor: colors.grayMedium,
     padding: 20,
     borderRadius: 5,
-    marginBottom: 20
+    marginBottom: 20,
   },
 
   title: {
     color: colors.grayLight,
     fontSize: 16,
-    fontWeight: 'bold'
+    fontFamily: fonts.title
   },
 
   text: {
     color: colors.grayLight,
     textAlign: 'justify',
-    fontSize: 14
+    fontSize: 14,
+    fontFamily: fonts.text
   },
 });
 
