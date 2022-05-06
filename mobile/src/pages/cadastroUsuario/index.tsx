@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { RectButton } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
 import { Text, View, ScrollView } from "react-native";
@@ -10,10 +10,11 @@ import api from "../../services/api";
 import { Button } from "../../components/buttons";
 import { CheckBox } from 'react-native-elements';
 import { SuccessModal, FeedbackModal } from "../../components/feedbackModal";
+import UsuarioService from '../../database/services/usuarioService'
 
 import LoadingScreen from "../../components/loadingScreen";
 
-function CadastroUsuario({navigation}:any) {
+function CadastroUsuario({ navigation }: any) {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
@@ -24,27 +25,31 @@ function CadastroUsuario({navigation}:any) {
 
   const [carregando, setCarregando] = useState(false);
 
-  async function handleCreateUsuario() {
-    const data = new FormData();
-
-    data.append("nome", nome);
-    data.append("email", email);
-    data.append("senha", senha);
-
-    //envia os dados do usuário para a api
-    await api.post('/usuarios', data)
-    .then(function (response) {
-      navigation.navigate("Inicial");
-      console.log(response);
-    })
-    //caso ocorra algum erro
-    .catch(function (error) {
-      setCarregando(false)
-      // setModalVisible(true);
-      setModalWarning(true);
-    });
-  
+  function handleCreateUsuario() {
+    UsuarioService.addUser(nome, email, senha); //Exemplo, falta melhorias nos métodos
   }
+
+  // async function handleCreateUsuario() {
+  //   const data = new FormData();
+
+  //   data.append("nome", nome);
+  //   data.append("email", email);
+  //   data.append("senha", senha);
+
+  //   //envia os dados do usuário para a api
+  //   await api.post('/usuarios', data)
+  //   .then(function (response) {
+  //     navigation.navigate("Inicial");
+  //     console.log(response);
+  //   })
+  //   //caso ocorra algum erro
+  //   .catch(function (error) {
+  //     setCarregando(false)
+  //     // setModalVisible(true);
+  //     setModalWarning(true);
+  //   });
+
+  // }
 
   function handleNavigateToTermos() {
     navigation.navigate("Termos");
@@ -105,7 +110,7 @@ function CadastroUsuario({navigation}:any) {
               <Text style={styles.textTermosECondicoes}>Aceito os termos e condições de uso de dados</Text>
             </RectButton>
           </View>
-          <Button title="Concluir" onPress={() => handleCreateUsuario()} />
+          <Button title="Concluir" onPress={handleCreateUsuario} />
         </View>
       </View>
     </ScrollView >
