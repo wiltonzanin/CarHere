@@ -13,6 +13,9 @@ export default class DatabaseInit {
     }
     private InitDb() {
         var sql = [
+            //`DROP TABLE IF EXISTS carros;`,
+            //`DROP TABLE IF EXISTS usuarios;`,
+
             `create table if not exists "usuarios" (
                 "id_usuario" integer primary key autoincrement,
                 "nome" TEXT,
@@ -23,10 +26,10 @@ export default class DatabaseInit {
             `create table if not exists "carros" (
                 "id_carro" integer primary key autoincrement,
                 "modelo" TEXT,
-                "marca"	TEXT
-                "ano" INTENGER
+                "marca"	TEXT,
+                "ano" INTENGER,
                 "combustivel" TEXT,
-                "Motorizacao" TEXT,
+                "motorizacao" TEXT,
                 id_usuario INTENGER,
                 FOREIGN KEY(id_usuario) REFERENCES usuarios(id_usuario)
             )`,
@@ -41,8 +44,8 @@ export default class DatabaseInit {
             `create table if not exists "servicos" (
                 "id_servicos" integer primary key autoincrement,
                 "nome" TEXT,
-                "local"	TEXT
-                "quilometragem"	INTENGER
+                "local"	TEXT,
+                "quilometragem"	INTENGER,
                 "data" TEXT,
                 "valor_servico" INTENGER,
                 "descricao" TEXT,
