@@ -12,9 +12,10 @@ import SearchBar from "../../../components/searchBar";
 import { ButtonAdicionar } from '../../../components/buttons';
 import { ButtonMenu } from '../../../components/buttons';
 import api from "../../../services/api";
+import CarroService from "../../../database/services/carroService";
 
 interface Carros {
-  id: number;
+  id_carro: number;
   marca: string;
   modelo: string;
   images: Array<{
@@ -40,30 +41,39 @@ function Veiculos({ navigation }: any) {
   }
 
   useEffect(() => {
-    setCarregando(true);
-    api.get('carros/1').then(response => {
-      setCarros(response.data);
-      setCarregando(false);
-    }).catch(() => {
-      setCarregando(false);
-      setErroCarregar(true);
-    })
-  }, [])
-
-  useFocusEffect(() => {
-    const backAction = () => {
-      const pushAction = StackActions.push('Home');
-      navigation.dispatch(pushAction);
-      return true;
-    };
-
-    const backHandler = BackHandler.addEventListener(
-      "hardwareBackPress",
-      backAction
-    );
-
-    return () => backHandler.remove();
+    CarroService.findAll()
+      .then((response: any) => {
+        setCarros(response._array)
+      }), (error: any) => {
+        console.log(error);
+      }
   });
+
+  // useEffect(() => {
+  //   setCarregando(true);
+  //   api.get('carros/1').then(response => {
+  //     setCarros(response.data);
+  //     setCarregando(false);
+  //   }).catch(() => {
+  //     setCarregando(false);
+  //     setErroCarregar(true);
+  //   })
+  // }, [])
+
+  // useFocusEffect(() => {
+  //   const backAction = () => {
+  //     const pushAction = StackActions.push('Home');
+  //     navigation.dispatch(pushAction);
+  //     return true;
+  //   };
+
+  //   const backHandler = BackHandler.addEventListener(
+  //     "hardwareBackPress",
+  //     backAction
+  //   );
+
+  //   return () => backHandler.remove();
+  // });
 
   if (carros.length > 0) {
     listaVazia = false
@@ -98,20 +108,20 @@ function Veiculos({ navigation }: any) {
               :
               carros.map(carro => {
                 return (
-                  <View key={carro.id} style={styles.veiculos}>
-                    <RectButton style={styles.buttonVeiculo} onPress={() => handleNavigateToVisualizarVeiculo(carro.id)}>
+                  <View key={carro.id_carro} style={styles.veiculos}>
+                    <RectButton style={styles.buttonVeiculo} onPress={() => handleNavigateToVisualizarVeiculo(carro.id_carro)}>
                       <View style={styles.buttonGroupText}>
                         <Text numberOfLines={1} style={styles.buttonVeiculoText}>{carro.modelo}</Text>
                         <Text style={styles.buttonVeiculoTextManutencaoGreen}><Feather name="check-circle" size={16} color={colors.green} /> Manutenção em dia</Text>
                       </View>
-                      {carro.images.length > 0
+                      {/* {carro.images.length > 0
                         ?
                         <Image key={carro.images[0].url} source={{ uri: carro.images[0].url }} style={styles.imgVeiculo} />
                         :
                         <View style={styles.imgVeiculo}>
                           <Feather name="image" size={50} color='white' />
                         </View>
-                      }
+                      } */}
                     </RectButton>
                   </View>
                 );

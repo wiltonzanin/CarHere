@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { Text, View, ScrollView, TouchableOpacity, Image } from "react-native";
+import { Feather } from "@expo/vector-icons";
 import * as ImagePicker from 'expo-image-picker';
-
-import api from "../../services/api";
 import styles from "./styles";
+
 import TextField from "../../components/textField";
 import DropDownPicker from "react-native-dropdown-picker";
 import BackScreen from "../../components/backScreen";
 import { Button } from "../../components/buttons";
 import LoadingScreen from "../../components/loadingScreen";
 import { SuccessModal, FeedbackModal } from "../../components/feedbackModal";
-import { Feather } from "@expo/vector-icons";
-
 import colors from '../../Styles/colors'
+import api from "../../services/api";
+import CarroService from "../../database/services/carroService";
 
 function CadastroVeiculo({ navigation }: any) {
 
@@ -31,7 +31,7 @@ function CadastroVeiculo({ navigation }: any) {
 
   const [modalMensage, setModalMensage] = useState("");
 
-  function handleDeletePhotos(){
+  function handleDeletePhotos() {
     setImages([]);
   }
 
@@ -63,36 +63,47 @@ function CadastroVeiculo({ navigation }: any) {
     setImages([...images, uri])
   }
 
-  async function handleCreateVeiculo() {
-    const data = new FormData();
-
-    data.append("marca", marca);
-    data.append("modelo", modelo);
-    data.append("motorizacao", motorizacao);
-    data.append("ano", ano);
-    data.append("combustivel", combustivel);
-
-    images.forEach((image, index) => {
-      data.append("images", {
-        name: `image_${index}.jpg`,
-        type: "image/jpg",
-        uri: image,
-      } as any);
-    });
-
+  function handleCreateVeiculo() {
     try {
-      setCarregando(true)
-      await api.post("/carros", data);
+      CarroService.addCarro(modelo, marca, Number(ano), combustivel, motorizacao);
+      setModalMensage("Veículo cadastrado com sucesso!");
+      setModalVisible(true);
     } catch (error) {
-      setCarregando(false);
-      setModalMensage("");
+      setModalMensage("Ops, tivemos um problema!"); //Não chega no catch
       setModalWarning(true);
-      return;
     }
-
-    setModalMensage("Veículo cadastrado com sucesso!");
-    setModalVisible(true);
   }
+
+  // async function handleCreateVeiculo() {
+  //   const data = new FormData();
+
+  //   data.append("marca", marca);
+  //   data.append("modelo", modelo);
+  //   data.append("motorizacao", motorizacao);
+  //   data.append("ano", ano);
+  //   data.append("combustivel", combustivel);
+
+  //   images.forEach((image, index) => {
+  //     data.append("images", {
+  //       name: `image_${index}.jpg`,
+  //       type: "image/jpg",
+  //       uri: image,
+  //     } as any);
+  //   });
+
+  //   try {
+  //     setCarregando(true)
+  //     await api.post("/carros", data);
+  //   } catch (error) {
+  //     setCarregando(false);
+  //     setModalMensage("");
+  //     setModalWarning(true);
+  //     return;
+  //   }
+
+  //   setModalMensage("Veículo cadastrado com sucesso!");
+  //   setModalVisible(true);
+  // }
 
   function handleNavigateToVeiculos() {
     setModalVisible(!modalVisible);
@@ -124,7 +135,7 @@ function CadastroVeiculo({ navigation }: any) {
           <Text style={styles.title}>Cadastre seu veículo</Text>
           <View />
         </View>
-        <View style={{paddingBottom: 20}}>
+        <View style={{ paddingBottom: 20 }}>
           <TextField labelName="Marca" onChangeText={setMarca} />
           <TextField labelName="Modelo" onChangeText={setModelo} />
           <Text style={styles.text}>Combustível</Text>
