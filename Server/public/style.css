@@ -3,8 +3,7 @@ body {
   justify-content: center;
   align-items: center;
   background: #252525;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-  'Helvetica Neue', 'Ubuntu', sans-serif;
+  font-family: 'Rajdhani';
   height: 100vh;
   margin: 0;
   -webkit-font-smoothing: antialiased;
@@ -17,6 +16,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  font-family: 'Rajdhani';
 }
 p {
   font-style: normal;
@@ -32,6 +32,7 @@ p {
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
+  font-family: 'Rajdhani';
 }
 img {
   border-radius: 6px;
@@ -48,9 +49,11 @@ h5 {
   letter-spacing: -0.154px;
   color: #242d60;
   margin: 0;
+  font-family: 'Rajdhani';
 }
 h5 {
   opacity: 0.5;
+  font-family: 'Rajdhani';
 }
 button {
   height: 36px;
@@ -65,6 +68,7 @@ button {
   border-radius: 0 0 6px 6px;
   transition: all 0.2s ease;
   box-shadow: 0px 4px 5.5px 0px rgba(0, 0, 0, 0.07);
+  font-family: 'Rajdhani';
 }
 button:hover {
   opacity: 0.8;

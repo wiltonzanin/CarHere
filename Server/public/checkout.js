@@ -3,7 +3,6 @@
 
       // The items the customer wants to buy
       const items = [{ id: "prod_LFlXKzKr517h1f" }];
-      
       let elements;
       
       initialize();
@@ -15,8 +14,8 @@
       
       // Fetches a payment intent and captures the client secret
       async function initialize() {
-        // const response = await fetch("http://192.168.254.13:4242/create-payment-intent", { // MUDAR URL antes de gerar''''''''''''''''''''''''''''
-        const response = await fetch("http://10.30.56.189:4242/create-payment-intent", { // MUDAR URL antes de gerar''''''''''''''''''''''''''''
+        const response = await fetch("http://192.168.254.3:4242/create-payment-intent", { // MUDAR URL antes de gerar''''''''''''''''''''''''''''
+        // const response = await fetch("http://10.30.56.5:4242/create-payment-intent", { // MUDAR URL antes de gerar''''''''''''''''''''''''''''
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ items }),
@@ -41,8 +40,8 @@
           elements,
           confirmParams: {
             // Make sure to change this to your payment completion page
-            // return_url: "http://192.168.254.13:4242/checkout.html", // MUDAR URL '''''''''''''''''''''''''''''''''''''''
-            return_url: "http://10.30.56.189:4242/success.html", // MUDAR URL '''''''''''''''''''''''''''''''''''''''
+            return_url: "http://192.168.254.3:4242/success.html", // MUDAR URL '''''''''''''''''''''''''''''''''''''''
+            // return_url: "http://10.30.56.5:4242/success.html", // MUDAR URL '''''''''''''''''''''''''''''''''''''''
             receipt_email: document.getElementById("email").value,
           },
         });

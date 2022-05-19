@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.grayDark,
     borderColor: colors.grayMedium,
     height: 40,
+    
   },
 
   dropdownList: {

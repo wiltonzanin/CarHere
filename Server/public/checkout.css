@@ -1,10 +1,11 @@
 /* Variables */
 * {
   box-sizing: border-box;
+  font-family: 'Rajdhani';
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Rajdhani';
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   display: flex;
@@ -25,6 +26,7 @@ form {
   border-radius: 7px;
   padding: 40px;
   color: rgb(105, 115, 134);
+  font-family: 'Rajdhani';
 }
 
 .hidden {
@@ -41,6 +43,7 @@ form {
   width: 100%;
   background: white;
   box-sizing: border-box;
+  font-family: 'Rajdhani';
 }
 
 #payment-message {
@@ -49,16 +52,17 @@ form {
   line-height: 20px;
   padding-top: 12px;
   text-align: center;
+  font-family: 'Rajdhani';
 }
 
 #payment-element {
   margin-bottom: 24px;
+  font-family: 'Rajdhani';
 }
 
 /* Buttons and links */
 button {
   background: #8F1622;
-  font-family: Arial, sans-serif;
   color: #ffffff;
   border-radius: 4px;
   border: 0;
@@ -70,6 +74,7 @@ button {
   transition: all 0.2s ease;
   box-shadow: 0px 4px 5.5px 0px rgba(0, 0, 0, 0.07);
   width: 100%;
+  font-family: 'Rajdhani';
 }
 button:hover {
   filter: contrast(115%);

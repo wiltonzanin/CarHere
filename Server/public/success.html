@@ -9,6 +9,14 @@
     <p>
       Obrigado por se inscrever 😁
     </p>
+    <!-- função que serviria para redirecionar o usuário automaticamente para a 
+    página home -->
+    <!-- ajustar para redirecionar de volta para o react native e não para webview -->
+    <script>
+      setTimeout(function() {
+          window.location.ReactNativeWebView.render = "Home";
+      }, 3000);
+  </script>
   </section>
 </body>
 </html>
