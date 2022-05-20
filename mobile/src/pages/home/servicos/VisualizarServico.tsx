@@ -5,39 +5,33 @@ import styles from "./stylesDetalhes";
 import { RectButton } from "react-native-gesture-handler";
 import { Feather } from "@expo/vector-icons";
 import BackButton from "../../../components/backScreen";
-import api from "../../../services/api";
 import { CheckBox } from 'react-native-elements';
-
 import { InfosService } from "../../../components/infos";
 import { DecisionModal } from "../../../components/feedbackModal";
 import { ButtonDeletar } from '../../../components/buttons';
+import ServicoService from "../../../database/services/ServicoService";
 
 interface DetalhesServicoRouteParams {
   id: number;
 };
 
 interface Servico {
-  nome: string;
-  local: string;
-  veiculo: string;
-  quilometragem: number;
-  datafor: string;
-  ValorServico: number;
+  data: string;
   descricao: string;
-  statusServico: number;
-  carro: Array<{
-    id_carro: number;
-    marca: string;
-    modelo: string;
-    motorizacao: string;
-    ano: number;
-    combustivel: string;
-  }>;
+  id_carro: number;
+  veiculo: string;
+  id_servicos: number;
+  local: string;
+  nome: string;
+  quilometragem: string;
+  status_servico: number;
+  valor_servico: string;
+
+  marca: string;
+  modelo: string;
+  motorizacao: string;
+  ano: number;  
 }
-
-
-//const [isSelected, setIsSelected] = useState(false);
-//const status : number = parseInt(servico.statusServico);
 
 function VisualizarServicos({ navigation }: any) {
 
@@ -45,19 +39,28 @@ function VisualizarServicos({ navigation }: any) {
   const params = route.params as DetalhesServicoRouteParams;
   const [isSelected, setIsSelected] = useState(false);
   const [modalDecisionVisible, setModalDecisionVisible] = useState(false);
-  const [servico, setServico] = useState<Servico>();
+  const [servico, setServico] = useState<Servico[]>([]);
   const [status, setStatus] = useState(0);
-
+  const [del, setDel] = useState(0)
 
   useEffect(() => {
-    api
-      .get(`/servico/detalhes/${params.id}`)
-      .then((response) => setServico(response.data));
-  }, [params.id]);
+    servico.map(ServicoExt => {
+      setStatus(ServicoExt.status_servico)
+      setDel(ServicoExt.id_servicos)
+    })
+  });
 
+  useEffect(() => {
+    ServicoService.detailserv(params.id)
+      .then((response: any) => {
+        setServico(response._array);
+      }).catch(() => {
+      })
+  });
 
   function deteleServico() {
     setModalDecisionVisible(true);
+    ServicoService.delsrv(del)
   }
 
   function fecharModal() {
@@ -76,15 +79,16 @@ function VisualizarServicos({ navigation }: any) {
     );
   }
 
-  function StatusServico(){
-    if (servico?.statusServico == 1) {
+  function StatusServico() {
+    if (status == 1) {
       return true;
     };
-    if (servico?.statusServico == 0) {
+    if (status == 0) {
       return false;
     }
-  }
 
+  }
+  
   return (
     <ScrollView>
       <DecisionModal
@@ -102,15 +106,21 @@ function VisualizarServicos({ navigation }: any) {
         </View>
         <View>
           <View style={styles.card}>
-            <InfosService
-              nome={servico.nome || "-----"}
-              local={servico.local || "-----"}
-              veiculo={servico.veiculo || "-----"}
-              quilometragem={servico.quilometragem || "-----"}
-              datafor={servico.datafor || "-----"}
-              ValorServico={servico.ValorServico || "-----"}
-              descricao={servico.descricao|| "-----"}
-            />
+            {servico.map(servico => {
+              return (
+                <InfosService
+                  key={servico.id_servicos}
+                  nome={servico.nome || "-----"}
+                  local={servico.local || "-----"}
+                  veiculo={servico.marca + " " + servico.modelo + " " + servico.motorizacao + " " + servico.ano|| "-----"}
+                  quilometragem={servico.quilometragem || "-----"}
+                  datafor={servico.data || "-----"}
+                  ValorServico={"R$ "+servico.valor_servico || "-----"}
+                  descricao={servico.descricao || "-----"}
+                />
+              );
+            })
+            }
           </View>
           <View style={styles.checkbox}>
             <CheckBox

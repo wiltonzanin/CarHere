@@ -6,29 +6,17 @@ import { RectButton } from "react-native-gesture-handler";
 import { Feather } from "@expo/vector-icons";
 import { ButtonAdicionar } from "../../../components/buttons";
 import { ButtonMenu } from "../../../components/buttons";
-import { Servico } from "../../../components/infos";
-import api from "../../../services/api";
 import LoadingScreen from "../../../components/loadingScreen";
 import SearchBar from "../../../components/searchBar";
 import colors from '../../../Styles/colors'
 import fonts from '../../../Styles/fonts'
-
-interface DetalhesServicoRouteParams {
-  id: number;
-};
+import ServicoService from "../../../database/services/ServicoService";
 
 interface servico {
-  id: number;
+  id_servicos: number;
   nome: string;
   local: string;
-  quilometragem: number,
-  datafor: string;
-  ValorServico: number;
-  carro: Array<{
-    marca: string;
-    modelo: string;
-  }>;
-  id_usuario: number;
+  data: string;
 }
 
 function Servicos({ navigation }: any) {
@@ -40,7 +28,6 @@ function Servicos({ navigation }: any) {
   const [servico, setServico] = useState<servico[]>([]);
   
   const route = useRoute();
-  /* const params = route.params as DetalhesServicoRouteParams; */
 
   const { navigate } = useNavigation();
 
@@ -52,26 +39,18 @@ function Servicos({ navigation }: any) {
     navigation.navigate("CadastroServicos");
   }
 
-/*
-useEffect(() => {
-  api.get(`carros/servico/${params.id}`).then(response => {
-    setCarros(response.data);
-  })
-}, [params.id])
-*/
-
   useEffect(() => {
     setCarregando(true);
-    api.get('servico/1').then(response => {
-      setServico(response.data);
-      setCarregando(false);
-      //console.log(response.data)
-    }).catch(() => {
-      setCarregando(false);
-      setErroCarregar(true);
-    })
-  }, [])
- 
+    ServicoService.findAll()
+      .then((response: any) => {
+        setServico(response._array);
+        setCarregando(false);
+      }).catch(() => {
+        setCarregando(false);
+        setErroCarregar(true);
+      })
+  }, []);
+
   useFocusEffect(() => {
     const backAction = () => {
       const pushAction = StackActions.push('Home');
@@ -90,9 +69,7 @@ useEffect(() => {
   if (servico.length > 0) {
     listaVazia = false
   }
-  console.log(servico)
-  //console.log("teste " + servico.carro[0].modelo)
-
+  
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <LoadingScreen carregando={carregando} />
@@ -122,12 +99,12 @@ useEffect(() => {
               :
               servico.map(servico => {
                 return (
-                  <View key={servico.id} style={styles.servicos}>
-                    <RectButton style={styles.buttonServico} onPress={() => handleNavigateToVisualizarServicos(servico.id)}>
+                  <View key={servico.id_servicos} style={styles.servicos}>
+                    <RectButton style={styles.buttonServico} onPress={() => handleNavigateToVisualizarServicos(servico.id_servicos)}>
                       <View style={styles.buttonGroupTextServico}>
                         <Text style={styles.buttonServicoText}>{servico.nome}</Text>
                         <Text style={styles.textInfo3}>{servico.local || "-----"}</Text>
-                        <Text style={styles.textInfo3}>{servico.datafor}</Text>
+                        <Text style={styles.textInfo3}>{servico.data}</Text>
                       </View>
                     </RectButton>
                   </View>
