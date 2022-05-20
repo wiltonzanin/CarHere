@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
 
   inputGroupColumn: {
     flex: 1,
-    marginLeft: 15
+    marginLeft: 15,
   },
 
   inputGroupSecondColumn: {

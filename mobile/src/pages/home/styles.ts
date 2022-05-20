@@ -10,10 +10,16 @@ const styles = StyleSheet.create({
     padding: 20,
   },
 
+  activityIndicatorStyle: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingTop: 20,
+    
 },
 
   title: {

@@ -20,12 +20,15 @@ import { ButtonMenu } from '../../components/buttons';
 import { ButtonAdicionar } from '../../components/buttons';
 import Subscription from '../home/subscription'
 import { RectButton } from "react-native-gesture-handler";
+import colors from '../../Styles/colors'
 
 function Home({ navigation }: any) {
-  const { navigate } = useNavigation();
   
   function handleNavigateToServicos() {
     navigation.navigate("Servico");
+  }
+  function handleNavigateToCadastroServico() {
+    navigation.navigate("CadastroServicos");
   }
 
   useFocusEffect(() => {
@@ -50,12 +53,13 @@ function Home({ navigation }: any) {
   });
 
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.header}>
+    <View style={styles.container}>
+    <View style={styles.header}>
         <ButtonMenu title="" onPress={() => navigation.dispatch(DrawerActions.openDrawer())} />
         <Text style={styles.title}>Início</Text>
         <View />
       </View>
+        <ScrollView >
       <View style={styles.content}>
         <ScrollView horizontal pagingEnabled>
           <Image source={require('../../assets/images/impreza.jpg')} style={styles.imgVeiculo} />
@@ -67,7 +71,7 @@ function Home({ navigation }: any) {
         <RectButton onPress={handleNavigateToServicos}>
           <View style={styles.cardHeader}>
             <Text style={styles.cardTitle}>Serviços</Text>
-            <Feather name="chevron-right" size={24} color="#F0EFF4" />
+            <Feather name="chevron-right" size={24} color={colors.grayLight} />
           </View>
           </RectButton>
           <TouchableOpacity style={styles.cardServices}>
@@ -76,7 +80,7 @@ function Home({ navigation }: any) {
               <Text style={styles.servicesText}>24/08/2021</Text>
             </View>
             <Text style={styles.textStatusOk}>
-              <Feather name="check-circle" size={14} color="#5CB85C" />{" "}
+              <Feather name="check-circle" size={14} color={colors.green} />{" "}
               Tudo certo!
             </Text>
           </TouchableOpacity>
@@ -86,14 +90,16 @@ function Home({ navigation }: any) {
               <Text style={styles.servicesText}>24/08/2021</Text>
             </View>
             <Text style={styles.textStatusWarning}>
-              <Feather name="alert-circle" size={14} color="#F0AD4E" />{" "}
+              <Feather name="alert-circle" size={14} color={colors.yellow} />{" "}
               Requer ação!
             </Text>
           </TouchableOpacity>
-          <ButtonAdicionar title="Adicionar serviço"></ButtonAdicionar>
+          <ButtonAdicionar title="Adicionar serviço" onPress={handleNavigateToCadastroServico}></ButtonAdicionar>
         </View>
       </View>
     </ScrollView>
+    </View>
+
   );
 }
 
@@ -103,7 +109,7 @@ const Drawer = createDrawerNavigator();
 function MyDrawer() {
   return (
     <Drawer.Navigator
-      drawerContentOptions={{ activeBackgroundColor: "#8F1622" }}
+      drawerContentOptions={{ activeBackgroundColor: colors.button }}
       drawerContent={(props: DrawerContentComponentProps) => (
         <CustomDrawerContent {...props} style={styles.drawer} />
       )}
@@ -116,7 +122,7 @@ function MyDrawer() {
             <Feather
               name="home"
               size={size}
-              color={focused ? "#F0EFF4" : "#F0EFF4"}
+              color={focused ? colors.grayLight : colors.grayLight}
             />
           ),
         }}
@@ -129,7 +135,7 @@ function MyDrawer() {
             <Feather
               name="plus"
               size={size}
-              color={focused ? "#F0EFF4" : "#F0EFF4"}
+              color={focused ? colors.grayLight : colors.grayLight}
             />
           ),
         }}
@@ -143,7 +149,7 @@ function MyDrawer() {
             <Feather
               name="list"
               size={size}
-              color={focused ? "#F0EFF4" : "#F0EFF4"}
+              color={focused ? colors.grayLight : colors.grayLight}
             />
           ),
         }}
@@ -157,7 +163,7 @@ function MyDrawer() {
             <Feather
               name="bar-chart-2"
               size={size}
-              color={focused ? "#F0EFF4" : "#F0EFF4"}
+              color={focused ? colors.grayLight : colors.grayLight}
             />
           ),
         }}
@@ -170,7 +176,7 @@ function MyDrawer() {
             <Feather
               name="tool"
               size={size}
-              color={focused ? "#F0EFF4" : "#F0EFF4"}
+              color={focused ? colors.grayLight : colors.grayLight}
             />
           ),
         }}
@@ -183,7 +189,7 @@ function MyDrawer() {
             <MaterialCommunityIcons
               name="crown-outline"
               size={size}
-              color={focused ? "#F0EFF4" : "#F0EFF4"}
+              color={focused ? colors.grayLight : colors.grayLight}
             />
           ),
         }}
@@ -196,7 +202,7 @@ function MyDrawer() {
             <Feather
               name="settings"
               size={size}
-              color={focused ? "#F0EFF4" : "#F0EFF4"}
+              color={focused ? colors.grayLight : colors.grayLight}
             />
           ),
         }}
@@ -209,7 +215,7 @@ function MyDrawer() {
             <Feather
               name="help-circle"
               size={size}
-              color={focused ? "#F0EFF4" : "#F0EFF4"}
+              color={focused ? colors.grayLight : colors.grayLight}
             />
           ),
         }}

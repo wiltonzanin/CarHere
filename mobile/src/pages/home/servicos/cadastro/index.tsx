@@ -265,6 +265,7 @@ function validacao(){
                 onChangeText={setValorServico}
                 value={ValorServico}
                 mensagemErro = {ValidacaoValorServico}
+                placeholderTextColor = {colors.grayLight}
               />
             </View>
           </View>

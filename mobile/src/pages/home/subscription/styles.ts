@@ -26,10 +26,6 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
 
-  centeredView: {
-    alignContent: "center",
-  },
-
   text: {
     color: colors.grayLight,
     fontSize: 18,
@@ -38,6 +34,12 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     fontFamily: fonts.text,
   },
+  image:{
+    width: 199,
+    height: 87,
+    alignSelf: "center",
+    marginBottom:20
+  }
 });
 
 export default styles;
