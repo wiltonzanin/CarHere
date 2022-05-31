@@ -26,9 +26,9 @@ interface InfoPropsService {
   nome: string;
   local: string;
   veiculo: string;
-  quilometragem: number;
+  quilometragem: string;
   datafor: string;
-  ValorServico: number;
+  ValorServico: string;
   descricao: string;
 }
 
@@ -102,6 +102,8 @@ export function InfosService({
         <Text style={styles.textInfoCampo}>{nome}</Text>
         <Text style={styles.textInfoService}>Local</Text>
         <Text style={styles.textInfoCampo}>{local}</Text>
+        <Text style={styles.textInfoService}>Veiculo</Text>
+        <Text style={styles.textInfoCampo}>{veiculo}</Text>
         <Text style={styles.textInfoService}>Quilometragem</Text>
         <Text style={styles.textInfoCampo}>{quilometragem}</Text>
         <Text style={styles.textInfoService}>Data</Text>

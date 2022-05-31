@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Text, View, ScrollView, TextInput, Platform } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
 import { CheckBox } from 'react-native-elements';
-
-import api from "../../../../services/api";
 import styles from "./styles";
 import TextField from "../../../../components/textField";
 import BackScreen from "../../../../components/backScreen";
@@ -15,10 +13,15 @@ import { color } from "react-native-reanimated";
 import { red100 } from "react-native-paper/lib/typescript/styles/colors";
 import colors from "../../../../Styles/colors";
 import fonts from "../../../../Styles/fonts";
+import ServicoService from "../../../../database/services/ServicoService";
+import CarroService from "../../../../database/services/carroService";
+import { Servico } from "@components/infos";
 
 interface Carros {
-  id: number;
+  id_carro: number;
   modelo: string;
+  motorizacao: string;
+  ano: number;
 }
 
 function CadastroServicos({navigation} : any) {
@@ -30,6 +33,7 @@ function CadastroServicos({navigation} : any) {
   const [isSelected, setIsSelected] = useState(false);
   const [carros, setCarros] = useState<Carros[]>([]);
   const [id_carro, setCarro] = useState("");
+  const [CarFind, setCarFind] = useState<Carros[]>([]);
   const [name, setName] = useState("")
   const [local, setLocal] = useState("")
   const [ValorServico, setValorServico] = useState("")
@@ -46,6 +50,7 @@ function CadastroServicos({navigation} : any) {
   const [ValidacaoQuilometragem, setValidacaoQuilometragem] = useState("")
   const [ValidacaoValorServico, setValidacaoValorServico] = useState("")
 
+ 
   const onChange = (event: any, selectedDate: any) => {
     const currentDate = selectedDate || date;
     setShow(Platform.OS === 'ios');
@@ -62,11 +67,13 @@ function CadastroServicos({navigation} : any) {
   };
 
   useEffect(() => {
-
-    api.get('carros/1').then(response => {
-        setCarros(response.data);
-    })
-}, [])
+    CarroService.findAll() //User ID
+      .then((response: any) => {
+        setCarros(response._array);
+        console.log("procurou todos os carros")
+      }).catch(() => {
+      })
+  }, []);
 
 var dataformatada = date.getDate().toString().padStart(2, '0') + "/";
 dataformatada += (date.getMonth() + 1).toString().padStart(2, '0') + "/";
@@ -120,7 +127,7 @@ function validacao(){
     }
 }
 
-  async function CadastrarBanco() {
+  /*async function CadastrarBanco() {
 
     const dataserv = (dataformatada.toString())
     const data = new FormData();
@@ -146,6 +153,21 @@ function validacao(){
     }
     setModalMensage("Serviço cadastrado com sucesso!");
     setModalVisible(true);
+  }
+  */
+
+  function CadastrarBanco() {
+    try {
+      const dataserv = (dataformatada.toString())
+      const data = new FormData();
+      ServicoService.addservico(name, local, Number(Quilometragem), dataserv, Number(ValorServico), descricao, Number(ServicoStatus), Number(id_carro));
+      setModalMensage("Serviço cadastrado com sucesso!");
+      setModalVisible(true);
+      console.log("Cadastrou no banco1");
+    } catch (error) {
+      setModalMensage("Ops, tivemos um problema!"); //Não chega no catch
+      setModalWarning(true);
+    }
   }
 
   function handleNavigateToServico() {
@@ -198,10 +220,9 @@ function validacao(){
                   labelStyle={styles.dropdownText}
                   arrowColor={colors.grayLight}
                   placeholder="Selecionar..."
-                  items={carros.map(carro => ({ label: carro.modelo, value: carro.id }))}
+                  items={carros.map(carro => ({ label: carro.modelo + " " + carro.motorizacao + " " + carro.ano, value: carro.id_carro }))}
                   style={styles.dropdown}
                   onChangeItem={(item) => {
-                      
                       setCarro(item.value);
               }}>
               </DropDownPicker>
@@ -244,6 +265,7 @@ function validacao(){
                 onChangeText={setValorServico}
                 value={ValorServico}
                 mensagemErro = {ValidacaoValorServico}
+                placeholderTextColor = {colors.grayLight}
               />
             </View>
           </View>

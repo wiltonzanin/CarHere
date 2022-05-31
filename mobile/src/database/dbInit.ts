@@ -21,7 +21,8 @@ export default class DatabaseInit {
                 "id_usuario" integer primary key autoincrement,
                 "nome" TEXT,
                 "email"	TEXT,
-                "senha"	TEXT
+                "senha"	TEXT,
+                "data_criacao" TEXT
             )`,
 
             `create table if not exists "carros" (
@@ -68,7 +69,7 @@ export default class DatabaseInit {
                 FOREIGN KEY(id_carro) REFERENCES carros(id_carro)
             )`,
 
-            //`insert into usuarios(nome, email, senha) values('Usuario', 'teste@email.com', '123');`
+            `insert into usuarios(nome, email, senha) values('Usuario', 'teste@email.com', '123');`
         ];
 
         db?.transaction(
