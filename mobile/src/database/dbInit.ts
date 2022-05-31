@@ -7,12 +7,13 @@ export default class DatabaseInit {
     constructor() {
         db = dbConnection.getConnection()
         db.exec([{ sql: 'PRAGMA foreign_keys = ON;', args: [] }], false, () =>
-        console.log('Foreign keys turned on')
-    );
+            console.log('Foreign keys turned on')
+        );
         this.InitDb()
     }
     private InitDb() {
         var sql = [
+            //`DROP TABLE IF EXISTS imagens_carro;`,
             //`DROP TABLE IF EXISTS carros;`,
             //`DROP TABLE IF EXISTS usuarios;`,
 
@@ -30,15 +31,15 @@ export default class DatabaseInit {
                 "ano" INTENGER,
                 "combustivel" TEXT,
                 "motorizacao" TEXT,
-                id_usuario INTENGER,
+                "id_usuario" INTENGER,
                 FOREIGN KEY(id_usuario) REFERENCES usuarios(id_usuario)
             )`,
 
             `create table if not exists "imagens_carro" (
                 "id_imagem" integer primary key autoincrement,
                 "path" TEXT,
-                "id_carro" TEXT,
-                FOREIGN KEY(id_carro) REFERENCES carros(id_carro)
+                "id_carro" INTENGER,
+                FOREIGN KEY(id_carro) REFERENCES carros(id_carro) on delete cascade
             )`,
 
             `create table if not exists "servicos" (
@@ -53,7 +54,7 @@ export default class DatabaseInit {
                 "id_carro" INTEGER,
                 FOREIGN KEY(id_carro) REFERENCES carros(id_carro)
             )`,
-            
+
             `create table if not exists "autonomias" (
                 "id_autonomia" integer primary key autoincrement,
                 "km_inicial" INTENGER,

@@ -18,10 +18,8 @@ interface Carros {
   id_carro: number;
   marca: string;
   modelo: string;
-  images: Array<{
-    id: number;
-    url: string;
-  }>;
+  id_imagem: number;
+  path: string;
 }
 
 function Veiculos({ navigation }: any) {
@@ -41,12 +39,14 @@ function Veiculos({ navigation }: any) {
   }
 
   useEffect(() => {
-    CarroService.findAll()
+    let isMounted = true;
+    CarroService.findAllWithImage()
       .then((response: any) => {
-        setCarros(response._array)
+        if (isMounted) setCarros(response._array)
       }), (error: any) => {
         console.log(error);
       }
+    return () => { isMounted = false };
   });
 
   // useEffect(() => {
@@ -114,14 +114,14 @@ function Veiculos({ navigation }: any) {
                         <Text numberOfLines={1} style={styles.buttonVeiculoText}>{carro.modelo}</Text>
                         <Text style={styles.buttonVeiculoTextManutencaoGreen}><Feather name="check-circle" size={16} color={colors.green} /> Manutenção em dia</Text>
                       </View>
-                      {/* {carro.images.length > 0
+                      {carro.id_imagem != null
                         ?
-                        <Image key={carro.images[0].url} source={{ uri: carro.images[0].url }} style={styles.imgVeiculo} />
+                        <Image key={carro.id_imagem} source={{ uri: carro.path }} style={styles.imgVeiculo} />
                         :
                         <View style={styles.imgVeiculo}>
                           <Feather name="image" size={50} color='white' />
                         </View>
-                      } */}
+                      }
                     </RectButton>
                   </View>
                 );

@@ -4,6 +4,7 @@ import { Text, View, ScrollView, TouchableOpacity, Image } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import * as ImagePicker from 'expo-image-picker';
 import styles from "./styles";
+import * as FileSystem from 'expo-file-system';
 
 import TextField from "../../components/textField";
 import DropDownPicker from "react-native-dropdown-picker";
@@ -28,6 +29,8 @@ function CadastroVeiculo({ navigation }: any) {
   const [ano, setAno] = useState("");
   const [combustivel, setCombustivel] = useState("");
   const [images, setImages] = useState<string[]>([]);
+  const [imageUri, setImageUri] = useState<string[]>([]);
+  
 
   const [modalMensage, setModalMensage] = useState("");
 
@@ -36,6 +39,13 @@ function CadastroVeiculo({ navigation }: any) {
   }
 
   async function handleSelecionarFoto() {
+
+    const CAR_PHOTO_DIR = FileSystem.documentDirectory + 'carPhotos';
+    const folderInfo = await FileSystem.getInfoAsync(CAR_PHOTO_DIR);
+    if (!folderInfo.exists) {
+      await FileSystem.makeDirectoryAsync(CAR_PHOTO_DIR);
+    }
+
     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
     if (status !== "granted") {
       setModalMensage("Opa, precisamos da permissão de acesso a galeria para que possamos salvar as imagens :)");
@@ -56,16 +66,29 @@ function CadastroVeiculo({ navigation }: any) {
 
     const { uri } = result;
 
+    setImages([...images, uri])
+
     if (images.length >= 4) {
       setDisableButton(true);
     }
 
-    setImages([...images, uri])
+    const imageName = `${Date.now()}.jpg`;
+    const NEW_PHOTO_URI = `${CAR_PHOTO_DIR}/${imageName}`;
+
+    await FileSystem.copyAsync({
+      from: uri,
+      to: NEW_PHOTO_URI
+    })
+      .then(() => {
+        //console.log(`File ${uri} was saved as ${NEW_PHOTO_URI}`)
+        setImageUri([...imageUri, NEW_PHOTO_URI]);
+      })
+      .catch(error => { console.error(error) })
   }
 
   function handleCreateVeiculo() {
     try {
-      CarroService.addCarro(modelo, marca, Number(ano), combustivel, motorizacao);
+      CarroService.addCarro(modelo, marca, Number(ano), combustivel, motorizacao, imageUri);
       setModalMensage("Veículo cadastrado com sucesso!");
       setModalVisible(true);
     } catch (error) {
