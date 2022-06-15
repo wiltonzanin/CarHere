@@ -1,4 +1,5 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
+
 import { View, Text, BackHandler, Alert, ScrollView, Image, TouchableOpacity } from "react-native";
 import { DrawerActions, useNavigation, useFocusEffect } from "@react-navigation/native";
 import {
@@ -10,6 +11,8 @@ import {
 import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 
 import styles from "./styles";
+import fonts from '../../Styles/fonts';
+import SearchBar from "../../components/searchBar";
 import Configuracoes from "./configuracoes/telaPrincipal";
 import CadastroVeiculo from "../cadastroVeiculo";
 import Veiculos from "./veiculos/veiculos";
@@ -22,13 +25,31 @@ import Subscription from '../home/subscription'
 import { RectButton } from "react-native-gesture-handler";
 import colors from '../../Styles/colors'
 
+interface Carros {
+  id_carro: number;
+  marca: string;
+  modelo: string;
+  images: Array<{
+    id: number;
+    url: string;
+  }>;
+}
+
 function Home({ navigation }: any) {
-  
+
+  let listaVazia = true;
+  const [carregando, setCarregando] = useState(false);
+  const [erroCarregar, setErroCarregar] = useState(false);
+  const [carros, setCarros] = useState<Carros[]>([]);
+
   function handleNavigateToServicos() {
     navigation.navigate("Servico");
   }
   function handleNavigateToCadastroServico() {
     navigation.navigate("CadastroServicos");
+  }
+  function handleNavigateToCadastroVeiculo() {
+    navigation.navigate("CadastroVeiculo");
   }
 
   useFocusEffect(() => {
@@ -51,53 +72,70 @@ function Home({ navigation }: any) {
 
     return () => backHandler.remove();
   });
+  
 
+  if (carros.length > 0) {
+    listaVazia = false
+  }
   return (
     <View style={styles.container}>
-    <View style={styles.header}>
+      <View style={styles.header}>
         <ButtonMenu title="" onPress={() => navigation.dispatch(DrawerActions.openDrawer())} />
         <Text style={styles.title}>Início</Text>
         <View />
       </View>
-        <ScrollView >
-      <View style={styles.content}>
-        <ScrollView horizontal pagingEnabled>
-          <Image source={require('../../assets/images/impreza.jpg')} style={styles.imgVeiculo} />
-        </ScrollView>
-        <View style={styles.cardImg}>
-          <Text style={styles.servicesText}>Impreza GC8</Text>
-        </View>
-        <View style={styles.card}>
-        <RectButton onPress={handleNavigateToServicos}>
-          <View style={styles.cardHeader}>
-            <Text style={styles.cardTitle}>Serviços</Text>
-            <Feather name="chevron-right" size={24} color={colors.grayLight} />
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+        <View style={styles.content}>
+
+          {/* <View style={styles.listagemErro}>
+            <Feather name='cloud-off' size={50} color={colors.grayLight} />
+            <Text style={{ color: colors.grayLight, fontSize: 20, paddingTop: 20, fontFamily: fonts.text }}>Não foi possível carregar os dados!</Text>
+          </View> */}
+
+          <ButtonAdicionar title="Adicionar carro" onPress={handleNavigateToCadastroVeiculo}></ButtonAdicionar>
+          
+          <View style={styles.listagemErro}>
+            <Feather name='archive' size={50} color={colors.grayLight} />
+            <Text style={{ color: colors.grayLight, fontSize: 20, paddingTop: 20, fontFamily: fonts.text }}>Você não tem carros cadastrados!</Text>
           </View>
-          </RectButton>
-          <TouchableOpacity style={styles.cardServices}>
-            <View style={styles.servicesHeader}>
-              <Text style={styles.servicesTitle}>Monza</Text>
-              <Text style={styles.servicesText}>24/08/2021</Text>
-            </View>
-            <Text style={styles.textStatusOk}>
-              <Feather name="check-circle" size={14} color={colors.green} />{" "}
-              Tudo certo!
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.cardServices}>
-            <View style={styles.servicesHeader}>
-              <Text style={styles.servicesTitle}>Celta</Text>
-              <Text style={styles.servicesText}>24/08/2021</Text>
-            </View>
-            <Text style={styles.textStatusWarning}>
-              <Feather name="alert-circle" size={14} color={colors.yellow} />{" "}
-              Requer ação!
-            </Text>
-          </TouchableOpacity>
-          <ButtonAdicionar title="Adicionar serviço" onPress={handleNavigateToCadastroServico}></ButtonAdicionar>
+
+          {/* <ScrollView horizontal pagingEnabled>
+            <Image source={require('../../assets/images/impreza.jpg')} style={styles.imgVeiculo} />
+          </ScrollView>
+          <View style={styles.cardImg}>
+            <Text style={styles.servicesText}>Impreza GC8</Text>
+          </View>
+          <View style={styles.card}>
+            <RectButton onPress={handleNavigateToServicos}>
+              <View style={styles.cardHeader}>
+                <Text style={styles.cardTitle}>Serviços</Text>
+                <Feather name="chevron-right" size={24} color={colors.grayLight} />
+              </View>
+            </RectButton>
+            <TouchableOpacity style={styles.cardServices}>
+              <View style={styles.servicesHeader}>
+                <Text style={styles.servicesTitle}>Monza</Text>
+                <Text style={styles.servicesText}>24/08/2021</Text>
+              </View>
+              <Text style={styles.textStatusOk}>
+                <Feather name="check-circle" size={14} color={colors.green} />{" "}
+                Tudo certo!
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.cardServices}>
+              <View style={styles.servicesHeader}>
+                <Text style={styles.servicesTitle}>Celta</Text>
+                <Text style={styles.servicesText}>24/08/2021</Text>
+              </View>
+              <Text style={styles.textStatusWarning}>
+                <Feather name="alert-circle" size={14} color={colors.yellow} />{" "}
+                Requer ação!
+              </Text>
+            </TouchableOpacity>
+            <ButtonAdicionar title="Adicionar serviço" onPress={handleNavigateToCadastroServico}></ButtonAdicionar>
+          </View> */}
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
     </View>
 
   );

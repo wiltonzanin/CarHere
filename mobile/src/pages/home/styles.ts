@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingTop: 20,
+    marginBottom: 20
     
 },
 
@@ -32,7 +33,18 @@ const styles = StyleSheet.create({
     height: 30,
     width: 30,
   },
-
+  buttonAdicionar: {
+    backgroundColor: colors.grayLight,
+    height: 100,
+    flexDirection: 'row',
+    justifyContent: "space-between",
+    borderRadius: 5,
+  },
+  listagemErro: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
   text: {
     color: colors.grayLight,
     fontSize: 20,
@@ -40,7 +52,7 @@ const styles = StyleSheet.create({
   },
 
   content: {
-    paddingTop: 20
+    flexGrow: 1 
   },
 
   imgVeiculo: {
