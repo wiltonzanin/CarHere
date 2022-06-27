@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import colors from "../../../../Styles/colors";
+import {darkTheme} from "../../../../Styles/colors";
 import fonts from "../../../../Styles/fonts";
 
 const styles = StyleSheet.create({
@@ -15,13 +15,13 @@ const styles = StyleSheet.create({
   },
 
   headerTitle: {
-    color: colors.grayLight,
+    color: darkTheme.grayLight,
     fontSize: 20,
     fontFamily: fonts.title
   },
 
   title: {
-    color: colors.grayLight,
+    color: darkTheme.grayLight,
     fontSize: 18,
     marginTop: 20,
     marginBottom: 20,
@@ -29,14 +29,14 @@ const styles = StyleSheet.create({
   },
 
   dropdown: {
-    backgroundColor: colors.grayDark,
-    borderColor: colors.grayMedium,
+    backgroundColor: darkTheme.textField,
+    borderColor: darkTheme.grayMedium,
   },
   
   dropdownText: {
     fontFamily: fonts.text,
     fontSize: 16,
-    color: colors.grayLight,
+    color: darkTheme.grayLight,
   },
 });
 

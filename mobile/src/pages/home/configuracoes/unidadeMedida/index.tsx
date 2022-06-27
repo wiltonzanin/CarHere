@@ -3,7 +3,7 @@ import { Text, View, ScrollView } from "react-native";
 import styles from "./styles";
 import DropDownPicker from "react-native-dropdown-picker";
 import { Feather } from '@expo/vector-icons';
-import colors from '../../../../Styles/colors'
+import {darkTheme} from '../../../../Styles/colors'
 import fonts from '../../../../Styles/fonts'
 
 import BackScreen from "../../../../components/backScreen";
@@ -15,7 +15,7 @@ function UnidadeMedida() {
         <View style={styles.header}>
           <BackScreen />
           <Text style={styles.headerTitle}>Unidades de medida</Text>
-          <Feather name="save" size={24} color={colors.grayLight} />
+          <Feather name="save" size={24} color={darkTheme.grayLight} />
         </View>
         <View>
           <Text style={styles.title}>Tipo de métrica</Text>
@@ -23,7 +23,7 @@ function UnidadeMedida() {
             placeholder="Selecione um item"
             dropDownStyle={styles.dropdown}
             labelStyle={styles.dropdownText}
-            arrowColor={colors.grayLight}
+            arrowColor={darkTheme.grayLight}
             items={[
               { label: "Quilômetros", value: "Quilometros" },
               { label: "Milhas", value: "Milhas" },
@@ -35,7 +35,7 @@ function UnidadeMedida() {
             placeholder="Selecione um item"
             dropDownStyle={styles.dropdown}
             labelStyle={styles.dropdownText}
-            arrowColor={colors.grayLight}
+            arrowColor={darkTheme.grayLight}
             items={[
               { label: "Litros", value: "Litros" },
               { label: "Galões", value: "galoes" },

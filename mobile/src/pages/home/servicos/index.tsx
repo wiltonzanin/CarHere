@@ -8,7 +8,7 @@ import { ButtonAdicionar } from "../../../components/buttons";
 import { ButtonMenu } from "../../../components/buttons";
 import LoadingScreen from "../../../components/loadingScreen";
 import SearchBar from "../../../components/searchBar";
-import colors from '../../../Styles/colors'
+import {darkTheme} from '../../../Styles/colors'
 import fonts from '../../../Styles/fonts'
 import ServicoService from "../../../database/services/ServicoService";
 
@@ -86,14 +86,14 @@ function Servicos({ navigation }: any) {
           {erroCarregar
             ?
             <View style={styles.listagemErroServico}>
-              <Feather name='cloud-off' size={50} color={colors.grayLight} />
-              <Text style={{ color: colors.grayLight, fontSize: 20, paddingTop: 20, fontFamily: fonts.text }}>Não foi possível carregar os dados!</Text>
+              <Feather name='cloud-off' size={50} color={darkTheme.grayLight} />
+              <Text style={{ color: darkTheme.grayLight, fontSize: 20, paddingTop: 20, fontFamily: fonts.text }}>Não foi possível carregar os dados!</Text>
             </View>
             :
             listaVazia
               ?
               <View style={styles.listagemErroServico}>
-                <Feather name='archive' size={50} color={colors.grayLight} />
+                <Feather name='archive' size={50} color={darkTheme.grayLight} />
                 <Text style={{ color: 'white', fontSize: 20, paddingTop: 20 }}>Ops, você não tem Serviços cadastrados!</Text>
               </View>
               :

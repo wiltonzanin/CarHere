@@ -25,7 +25,7 @@ import Seguranca from '../pages/home/configuracoes/opcoesUsuario/seguranca';
 import Subscription from '../pages/home/subscription';
 import ManualDoUsuario from '../pages/home/configuracoes/manualDoUsuario';
 import PaymentScreen from '../pages/home/subscription/PaymentScreen';
-import colors from '../Styles/colors';
+import {darkTheme} from '../Styles/colors';
 import { NavigationContainer } from '@react-navigation/native';
 import { useFonts, Rajdhani_300Light,
     Rajdhani_400Regular,
@@ -51,7 +51,7 @@ function AppStack() {
       } else {
     return (
 
-        <Navigator initialRouteName="Home" screenOptions={{ headerShown: false, cardStyle: { backgroundColor: colors.background },  }} >
+        <Navigator initialRouteName="Home" screenOptions={{ headerShown: false, cardStyle: { backgroundColor: darkTheme.background },  }} >
             <Screen name="Home" component={Home} />
             <Screen name="CadastroVeiculo" component={CadastroVeiculo} />
             <Screen name="CodigoConfirmacao" component={CodigoConfirmacao} />

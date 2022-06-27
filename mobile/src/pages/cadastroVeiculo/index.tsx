@@ -13,7 +13,7 @@ import LoadingScreen from "../../components/loadingScreen";
 import { SuccessModal, FeedbackModal } from "../../components/feedbackModal";
 import { Feather } from "@expo/vector-icons";
 
-import colors from "../../Styles/colors";
+import {darkTheme} from "../../Styles/colors";
 import CarroService from "../../database/services/carroService";
 
 function CadastroVeiculo({ navigation }: any) {
@@ -176,7 +176,7 @@ function CadastroVeiculo({ navigation }: any) {
             placeholder="Selecione um item"
             dropDownStyle={styles.dropdownList}
             labelStyle={styles.dropdownText}
-            arrowColor={colors.grayLight}
+            arrowColor={darkTheme.grayLight}
             items={[
               { label: "Gasolina", value: "Gasolina" },
               { label: "Alcool", value: "Alcool" },
@@ -204,7 +204,7 @@ function CadastroVeiculo({ navigation }: any) {
                 placeholder=""
                 dropDownStyle={styles.dropdownList}
                 labelStyle={styles.dropdownText}
-                arrowColor={colors.grayLight}
+                arrowColor={darkTheme.grayLight}
                 items= {ano_value.map((option) =>({
                   label: option.label,
                   value: option.value, 
@@ -235,14 +235,14 @@ function CadastroVeiculo({ navigation }: any) {
               disabled={disableButton}
               style={disableButton ? { display: "none" } : styles.imageSelector}
             >
-              <Feather name="plus" size={40} color={colors.grayLight} />
+              <Feather name="plus" size={40} color={darkTheme.grayLight} />
             </TouchableOpacity>
             {images.length > 0 && (
               <TouchableOpacity
                 onPress={handleDeletePhotos}
                 style={styles.buttonDelete}
               >
-                <Feather name="trash" size={30} color={colors.button} />
+                <Feather name="trash" size={30} color={darkTheme.button} />
               </TouchableOpacity>
             )}
           </ScrollView>

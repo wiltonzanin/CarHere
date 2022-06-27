@@ -1,10 +1,10 @@
 import { StyleSheet } from "react-native";
-import colors from '../../../../Styles/colors'
+import {darkTheme} from '../../../../Styles/colors'
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.background,
+    backgroundColor: darkTheme.background,
     padding: 20
   },
 
@@ -15,32 +15,32 @@ const styles = StyleSheet.create({
   },
 
   headerTitle: {
-    color: colors.grayLight,
+    color: darkTheme.grayLight,
     fontSize: 20
   },
 
   sectionTitle: {
-    color: colors.grayLight,
+    color: darkTheme.grayLight,
     fontSize: 18,
     paddingTop: 20,
     paddingBottom: 20,
   },
 
   buttonsGroup: {
-    backgroundColor: colors.grayDark,
+    backgroundColor: darkTheme.textField,
     borderRadius: 10,
-    borderColor: colors.grayMedium,
+    borderColor: darkTheme.grayMedium,
     borderWidth: 1,
     borderBottomWidth: 1,
   },
 
   buttonsGroupContent: {
     borderBottomWidth: 1,
-    borderColor: colors.grayMedium,
+    borderColor: darkTheme.grayMedium,
   },
 
   buttonText: {
-    color: colors.grayLight,
+    color: darkTheme.grayLight,
     justifyContent: "center",
     paddingLeft: 5,
   }

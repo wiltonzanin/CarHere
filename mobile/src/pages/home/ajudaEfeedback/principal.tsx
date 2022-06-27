@@ -5,7 +5,7 @@ import styles from "./styles";
 import { RectButton } from "react-native-gesture-handler";
 import { Feather } from "@expo/vector-icons";
 import { ButtonMenu, ButtonPadrao } from '../../../components/buttons';
-import colors from "../../../Styles/colors";
+import {darkTheme} from "../../../Styles/colors";
 
 function AjudaFeedback({ navigation }: any) {
 
@@ -32,7 +32,7 @@ function AjudaFeedback({ navigation }: any) {
         <Text style={styles.text}>Feedback</Text>
         <View style={styles.bottomSection}>
           <RectButton style={styles.buttonAvaliar}>
-            <Feather name="star" size={20} color={colors.grayLight} />
+            <Feather name="star" size={20} color={darkTheme.grayLight} />
             <Text style={styles.buttonText}>Nos avalie na Google Play!</Text>
           </RectButton>
         </View>

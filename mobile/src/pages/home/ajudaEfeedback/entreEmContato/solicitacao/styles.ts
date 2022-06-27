@@ -1,11 +1,11 @@
 import { StyleSheet } from "react-native";
-import colors from '../../../../../Styles/colors'
+import {darkTheme} from '../../../../../Styles/colors'
 import fonts from '../../../../../Styles/fonts'
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.background,
+    backgroundColor: darkTheme.background,
     padding: 20,
     justifyContent: "space-between",
   },
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
   },
 
   headerTitle: {
-    color: colors.grayLight,
+    color: darkTheme.grayLight,
     fontSize: 20,
     fontFamily: fonts.title
   },
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
   },
 
   text: {
-    color: colors.grayLight,
+    color: darkTheme.grayLight,
     fontSize: 18,
     paddingBottom: 20,
     paddingTop: 20,
@@ -37,25 +37,25 @@ const styles = StyleSheet.create({
 
   textInputOutro: {
     padding: 10,
-    backgroundColor: colors.grayDark,
-    borderColor: colors.grayMedium,
+    backgroundColor: darkTheme.textField,
+    borderColor: darkTheme.grayMedium,
     borderStyle: 'solid',
     borderRadius: 5,
     borderWidth: 1,
     fontSize: 16,
-    color: colors.grayLight,
+    color: darkTheme.grayLight,
     fontFamily: fonts.text
   },
 
   textInput: {
     padding: 10,
-    backgroundColor: colors.grayDark,
-    borderColor: colors.grayMedium,
+    backgroundColor: darkTheme.textField,
+    borderColor: darkTheme.grayMedium,
     borderStyle: 'solid',
     borderRadius: 5,
     borderWidth: 1,
     fontSize: 16,
-    color: colors.grayLight,
+    color: darkTheme.grayLight,
     flex: 1,
     fontFamily: fonts.text
   },

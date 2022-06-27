@@ -1,18 +1,18 @@
 import { StyleSheet } from "react-native";
-import colors from "../../Styles/colors";
+import {darkTheme} from "../../Styles/colors";
 import fonts from "../../Styles/fonts";
 
 const styles = StyleSheet.create({
   centeredView: {
     flex: 1,
-    backgroundColor: colors.grayDark,
+    backgroundColor: darkTheme.textField,
     justifyContent: "center",
     alignItems: "center",
   },
 
   modalView: {
     width: 300,
-    backgroundColor: colors.background,
+    backgroundColor: darkTheme.background,
     borderRadius: 20,
     alignItems: "center",
     shadowColor: "#000",
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
   leftButton: {
     flex: 1,
     borderBottomLeftRadius: 20,
-    backgroundColor: colors.grayMedium,
+    backgroundColor: darkTheme.grayMedium,
     padding: 10,
   },
 
@@ -44,14 +44,14 @@ const styles = StyleSheet.create({
 
   button: {
     width: 300,
-    backgroundColor: colors.grayMedium,
+    backgroundColor: darkTheme.grayMedium,
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
     padding: 10,
   },
 
   textStyle: {
-    color: colors.grayLight,
+    color: darkTheme.grayLight,
     fontSize: 16,
     textAlign: "center",
     fontFamily: fonts.title,
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 20,
     textAlign: "center",
-    color: colors.grayLight,
+    color: darkTheme.grayLight,
     fontFamily: fonts.text,
   },
 });

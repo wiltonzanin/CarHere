@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import colors from '../../Styles/colors';
+import {darkTheme} from '../../Styles/colors';
 import fonts from '../../Styles/fonts';
 
 const styles = StyleSheet.create({
@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     },
 
     formLabel: {
-        color: colors.grayLight,
+        color: darkTheme.grayLight,
         fontSize: 18,
         marginBottom: 10,
         fontFamily: fonts.text
@@ -37,12 +37,12 @@ const styles = StyleSheet.create({
     input: {
         height: 40,
         padding: 10,
-        backgroundColor: colors.grayDark,
-        borderColor: colors.grayMedium,
+        backgroundColor: darkTheme.textField,
+        borderColor: darkTheme.grayMedium,
         borderStyle: 'solid',
         borderWidth: 1,
         borderRadius: 4,
-        color: colors.grayLight,
+        color: darkTheme.grayLight,
         fontSize: 16,   
         fontFamily: fonts.text
     }

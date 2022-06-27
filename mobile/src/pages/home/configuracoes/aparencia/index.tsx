@@ -4,7 +4,7 @@ import DropDownPicker from "react-native-dropdown-picker";
 import { Feather } from "@expo/vector-icons";
 
 import styles from "./styles";
-import colors from '../../../../Styles/colors'
+import {darkTheme} from '../../../../Styles/colors'
 import BackScreen from "../../../../components/backScreen";
 
 function Aparencia() {
@@ -14,14 +14,14 @@ function Aparencia() {
         <View style={styles.header}>
           <BackScreen />
           <Text style={styles.headerTitle}>Aparência</Text>
-          <Feather name="save" size={24} color={colors.grayLight} />
+          <Feather name="save" size={24} color={darkTheme.grayLight} />
         </View>
         <Text style={styles.title}>Tema</Text>
         <DropDownPicker
           placeholder="Selecione um item"
           dropDownStyle={styles.dropdown}
           labelStyle={styles.dropdownText}
-          arrowColor={colors.grayLight}
+          arrowColor={darkTheme.grayLight}
           items={[
             { label: "Claro", value: "Claro" },
             { label: "Escuro", value: "Escuro" },

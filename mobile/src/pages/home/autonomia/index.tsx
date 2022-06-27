@@ -11,7 +11,7 @@ import LoadingScreen from "../../../components/loadingScreen";
 import { Button } from "../../../components/buttons";
 import { SuccessModal, FeedbackModal } from "../../../components/feedbackModal";
 import api from "../../../services/api";
-import colors from '../../../Styles/colors'
+import {darkTheme} from '../../../Styles/colors'
 
 
 interface Carros {
@@ -110,7 +110,7 @@ function Autonomia({ navigation }: any) {
                         placeholder="Selecione um item"
                         dropDownStyle={styles.dropdownList}
                         labelStyle={styles.dropdownText}
-                        arrowColor={colors.grayLight}
+                        arrowColor={darkTheme.grayLight}
                         items={carros.map(carro => ({ label: carro.modelo, value: carro.id }))}
                         style={styles.dropdown}
                         onChangeItem={(item) => {
@@ -135,7 +135,7 @@ function Autonomia({ navigation }: any) {
                                 placeholder="Selecione"
                                 dropDownStyle={styles.dropdownList}
                                 labelStyle={styles.dropdownText}
-                                arrowColor={colors.grayLight}
+                                arrowColor={darkTheme.grayLight}
                                 items={[
                                     { label: "Rodoviário", value: "Rodoviário" },
                                     { label: "Urbano", value: "Urbano" },
@@ -151,7 +151,7 @@ function Autonomia({ navigation }: any) {
                         placeholder="Selecione um item"
                         dropDownStyle={styles.dropdownList}
                         labelStyle={styles.dropdownText}
-                        arrowColor={colors.grayLight}
+                        arrowColor={darkTheme.grayLight}
                         items={[
                             { label: "Gasolina", value: "Gasolina" },
                             { label: "Alcool", value: "Alcool" },

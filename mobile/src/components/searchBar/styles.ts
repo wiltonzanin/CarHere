@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import colors from "../../Styles/colors";
+import {darkTheme} from "../../Styles/colors";
 import fonts from "../../Styles/fonts";
 
 const styles = StyleSheet.create({
@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
         marginRight: 40,
         marginLeft: 10,
         color: "#999",
-        backgroundColor: colors.grayDark,
+        backgroundColor: darkTheme.textField,
         fontFamily: fonts.text
     },
 
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
         height: 30,
         position: "absolute",
         right: 0,
-        backgroundColor: colors.background,
+        backgroundColor: darkTheme.background,
     }
 });
 

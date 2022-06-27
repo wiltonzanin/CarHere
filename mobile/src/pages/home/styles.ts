@@ -1,12 +1,12 @@
 import { StyleSheet, Dimensions } from "react-native";
 import { colorsDark } from "react-native-elements/dist/config";
 import fonts from "../../Styles/fonts";
-import colors from '../../Styles/colors';
+import {darkTheme} from '../../Styles/colors';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.background,
+    backgroundColor: darkTheme.background,
     padding: 20,
   },
 
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
 },
 
   title: {
-    color: colors.grayLight,
+    color: darkTheme.grayLight,
     fontSize: 20,
     fontFamily: fonts.title
   },
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   text: {
-    color: colors.grayLight,
+    color: darkTheme.grayLight,
     fontSize: 20,
     fontFamily: fonts.text
   },
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   },
 
   cardImg: {
-    backgroundColor: colors.grayLight,
+    backgroundColor: darkTheme.grayLight,
     padding: 20,
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
 
   card: {
     marginTop: 20,
-    backgroundColor: colors.grayDark,
+    backgroundColor: darkTheme.textField,
     padding: 20,
     borderRadius: 10,
     marginBottom: 20,
@@ -85,31 +85,31 @@ const styles = StyleSheet.create({
 
   cardTitle: {
     fontFamily: fonts.title,
-    color: colors.grayLight,
+    color: darkTheme.grayLight,
     fontSize: 20,
     marginBottom: 20,
   },
 
   textStatusOk: {
-    color: colors.green,
+    color: darkTheme.green,
     fontSize: 14,
     fontFamily: fonts.text
   },
 
   textStatusWarning: {
-    color: colors.yellow,
+    color: darkTheme.yellow,
     fontSize: 14,
     fontFamily: fonts.text
   },
 
   textStatusError: {
-    color: colors.red,
+    color: darkTheme.red,
     fontSize: 14,
     fontFamily: fonts.text
   },
 
   cardServices: {
-    backgroundColor: colors.grayLight,
+    backgroundColor: darkTheme.grayLight,
     padding: 10,
     borderRadius: 5,
     marginBottom: 20
@@ -132,17 +132,17 @@ const styles = StyleSheet.create({
   },
 
   cardStyle: {
-    backgroundColor: colors.grayDark,
+    backgroundColor: darkTheme.textField,
     padding: 20,
     borderRadius: 10
   },
 
   drawer: {
-    backgroundColor: colors.background,
+    backgroundColor: darkTheme.background,
   },
 
   drawerText: {
-    color: colors.grayLight,
+    color: darkTheme.grayLight,
     fontFamily: fonts.text
   },
 });

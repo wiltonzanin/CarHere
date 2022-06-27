@@ -1,10 +1,10 @@
 import { StyleSheet } from "react-native";
-import colors from "../../../../Styles/colors";
+import {darkTheme} from "../../../../Styles/colors";
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.background,
+    backgroundColor: darkTheme.background,
     padding: 20,
     justifyContent: "space-between",
   },
@@ -15,14 +15,14 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    color: colors.grayLight,
+    color: darkTheme.grayLight,
     fontSize: 25,
     fontWeight: "bold",
     paddingBottom: 20,
   },
 
   instructions: {
-    color: colors.grayLight,
+    color: darkTheme.grayLight,
     fontSize: 16,
     textAlign: "auto",
   },

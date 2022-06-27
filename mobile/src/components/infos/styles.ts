@@ -1,10 +1,10 @@
 import { StyleSheet } from "react-native";
-import colors from '../../Styles/colors'
+import {darkTheme} from '../../Styles/colors'
 import fonts from '../../Styles/fonts'
 
 const styles = StyleSheet.create({
   autonomia: {
-    backgroundColor: colors.grayLight,
+    backgroundColor: darkTheme.grayLight,
     width: 145,
     height: 140,
     padding: 10,
@@ -12,40 +12,40 @@ const styles = StyleSheet.create({
   },
 
   textInfo1: {
-    color: colors.background,
+    color: darkTheme.background,
     fontSize: 18,
     paddingBottom: 5,
     fontFamily: fonts.text
   },
 
   textInfo2: {
-    color: colors.background,
+    color: darkTheme.background,
     fontSize: 14,
     fontFamily: fonts.text
   },
 
   textInfo: {
-    color: colors.grayLight,
+    color: darkTheme.grayLight,
     fontSize: 18,
     fontFamily: fonts.text
   },
 
   textInfoService: {
-    color: colors.grayLight,
+    color: darkTheme.grayLight,
     fontSize: 18,
     fontFamily: fonts.title
   },
 
 
   textInfoCampo: {
-    color: colors.grayLight,
+    color: darkTheme.grayLight,
     fontSize: 16,
     paddingBottom: 20,
     fontFamily: fonts.text
   },
 
   textInfoCampo1: {
-    color: colors.grayLight,
+    color: darkTheme.grayLight,
     fontSize: 16,
     paddingBottom: 20,
     paddingHorizontal: 10,
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
   },
 
   buttonServico: {
-    backgroundColor: colors.grayLight,
+    backgroundColor: darkTheme.grayLight,
     height: 100,
     flexDirection: "row",
     justifyContent: "space-between",
@@ -86,14 +86,14 @@ const styles = StyleSheet.create({
   },
 
   buttonServiceTextGreen: {
-    color: colors.green,
+    color: darkTheme.green,
     fontSize: 16,
     padding: 35,
     fontFamily: fonts.text
   },
 
   buttonVeiculoTextManutencaoRed: {
-    color: colors.red,
+    color: darkTheme.red,
     fontSize: 16,
     padding: 35,
     fontFamily: fonts.text
