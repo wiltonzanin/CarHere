@@ -6,7 +6,7 @@ import { Feather } from "@expo/vector-icons";
 
 import styles from "./styles";
 import fonts from '../../../Styles/fonts'
-import darkTheme from '../../../Styles/colors'
+import { darkTheme } from '../../../Styles/colors'
 import LoadingScreen from "../../../components/loadingScreen";
 import SearchBar from "../../../components/searchBar";
 import { ButtonAdicionar } from '../../../components/buttons';

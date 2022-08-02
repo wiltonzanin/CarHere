@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     width: 30,
   },
   buttonAdicionar: {
-    backgroundColor: colors.grayLight,
+    backgroundColor: darkTheme.grayLight,
     height: 100,
     flexDirection: 'row',
     justifyContent: "space-between",
