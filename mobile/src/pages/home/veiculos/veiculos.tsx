@@ -6,7 +6,7 @@ import { Feather } from "@expo/vector-icons";
 
 import styles from "./styles";
 import fonts from '../../../Styles/fonts'
-import colors from '../../../Styles/colors'
+import darkTheme from '../../../Styles/colors'
 import LoadingScreen from "../../../components/loadingScreen";
 import SearchBar from "../../../components/searchBar";
 import { ButtonAdicionar } from '../../../components/buttons';
@@ -95,15 +95,15 @@ function Veiculos({ navigation }: any) {
           {erroCarregar
             ?
             <View style={styles.listagemErro}>
-              <Feather name='cloud-off' size={50} color={colors.grayLight} />
-              <Text style={{ color: colors.grayLight, fontSize: 20, paddingTop: 20, fontFamily: fonts.text }}>Não foi possível carregar os dados!</Text>
+              <Feather name='cloud-off' size={50} color={darkTheme.grayLight} />
+              <Text style={{ color: darkTheme.grayLight, fontSize: 20, paddingTop: 20, fontFamily: fonts.text }}>Não foi possível carregar os dados!</Text>
             </View>
             :
             listaVazia
               ?
               <View style={styles.listagemErro}>
-                <Feather name='archive' size={50} color={colors.grayLight} />
-                <Text style={{ color: colors.grayLight, fontSize: 20, paddingTop: 20, fontFamily: fonts.text }}>Ops, você não tem carros cadastrados!</Text>
+                <Feather name='archive' size={50} color={darkTheme.grayLight} />
+                <Text style={{ color: darkTheme.grayLight, fontSize: 20, paddingTop: 20, fontFamily: fonts.text }}>Ops, você não tem carros cadastrados!</Text>
               </View>
               :
               carros.map(carro => {
@@ -112,7 +112,7 @@ function Veiculos({ navigation }: any) {
                     <RectButton style={styles.buttonVeiculo} onPress={() => handleNavigateToVisualizarVeiculo(carro.id_carro)}>
                       <View style={styles.buttonGroupText}>
                         <Text numberOfLines={1} style={styles.buttonVeiculoText}>{carro.modelo}</Text>
-                        <Text style={styles.buttonVeiculoTextManutencaoGreen}><Feather name="check-circle" size={16} color={colors.green} /> Manutenção em dia</Text>
+                        <Text style={styles.buttonVeiculoTextManutencaoGreen}><Feather name="check-circle" size={16} color={darkTheme.green} /> Manutenção em dia</Text>
                       </View>
                       {carro.id_imagem != null
                         ?

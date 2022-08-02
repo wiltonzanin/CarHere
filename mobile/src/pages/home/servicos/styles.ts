@@ -1,11 +1,11 @@
 import { StyleSheet } from "react-native";
-import colors from "../../../Styles/colors";
+import {darkTheme} from "../../../Styles/colors";
 import fonts from "../../../Styles/fonts";
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.background,
+    backgroundColor: darkTheme.background,
     padding: 20,
   },
 
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   },
 
   headerText: {
-    color: colors.grayLight,
+    color: darkTheme.grayLight,
     fontSize: 20,
     fontFamily: fonts.title
   },
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
   },
 
   buttonServiceTextGreen: {
-    color: colors.green,
+    color: darkTheme.green,
     fontSize: 16,
     padding: 35,
     fontFamily: fonts.text
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   },
 
   buttonServico: {
-    backgroundColor: colors.grayLight,
+    backgroundColor: darkTheme.grayLight,
     height: 100,
     flexDirection: "row",
     justifyContent: "space-between",
@@ -78,24 +78,24 @@ const styles = StyleSheet.create({
   },
 
   buttonServicoText: {
-    color: colors.background,
+    color: darkTheme.background,
     fontSize: 18,
     fontFamily: fonts.title
   },
 
   buttonServicoTextManutencaoGreen: {
-    color: colors.green,
+    color: darkTheme.green,
     fontSize: 16,
     fontFamily: fonts.text
   },
 
   buttonServicoTextManutencaoRed: {
-    color: colors.red,
+    color: darkTheme.red,
     fontSize: 16,
     fontFamily: fonts.text
   },
   textInfo3: {
-    color: colors.background,
+    color: darkTheme.background,
     fontSize: 14,
     fontFamily: fonts.text
   },

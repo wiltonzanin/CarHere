@@ -1,11 +1,11 @@
 import { StyleSheet } from "react-native";
-import colors from '../../../../Styles/colors'
+import {darkTheme} from '../../../../Styles/colors'
 import fonts from '../../../../Styles/fonts'
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.background,
+    backgroundColor: darkTheme.background,
     padding: 20,
     justifyContent: "space-between",
   },
@@ -17,14 +17,14 @@ const styles = StyleSheet.create({
   },
 
   headerTitle: {
-    color: colors.grayLight,
+    color: darkTheme.grayLight,
     fontSize: 20,
     fontFamily: fonts.title
   },
 
   content: {
     flex:1,
-    color: colors.grayLight,
+    color: darkTheme.grayLight,
     justifyContent: "flex-start",
     width: "100%",
     height: "85%",
@@ -40,7 +40,7 @@ alignSelf:'center'
   },
 
   text: {
-    color: colors.grayLight,
+    color: darkTheme.grayLight,
     fontSize: 20,
     paddingTop: 20,
     paddingBottom: 20,
@@ -49,16 +49,16 @@ alignSelf:'center'
   },
 
   top: {
-    backgroundColor: colors.grayDark,
+    backgroundColor: darkTheme.textField,
     borderRadius: 10,
-    borderColor: colors.grayMedium,
+    borderColor: darkTheme.grayMedium,
     borderWidth: 1,
     borderBottomWidth: 1,
   },
 
   meio: {
     borderBottomWidth: 1,
-    borderColor: colors.grayMedium,
+    borderColor: darkTheme.grayMedium,
   },
 
 });

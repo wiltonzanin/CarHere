@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import colors from '../../../../Styles/colors';
+import {darkTheme} from '../../../../Styles/colors';
 import fonts from '../../../../Styles/fonts';
 
 const styles = StyleSheet.create({
@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     justifyContent: 'space-between',
-    backgroundColor: colors.background
+    backgroundColor: darkTheme.background
   },
 
   header: {
@@ -17,13 +17,13 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    color: colors.grayLight,
+    color: darkTheme.grayLight,
     fontSize: 20,
     fontFamily: fonts.title
   },
 
   text: {
-    color: colors.grayLight,
+    color: darkTheme.grayLight,
     fontSize: 18,
     marginBottom: 10,
     fontFamily: fonts.text
@@ -44,20 +44,20 @@ const styles = StyleSheet.create({
   },
 
   dropdown: {
-    backgroundColor: colors.grayDark,
-    borderColor: colors.grayMedium,
+    backgroundColor: darkTheme.textField,
+    borderColor: darkTheme.grayMedium,
     height: 40,
     marginBottom: 20,
   },
 
   dropdownList: {
-    backgroundColor: colors.grayDark,
-    borderColor: colors.grayMedium,
+    backgroundColor: darkTheme.textField,
+    borderColor: darkTheme.grayMedium,
   },
 
   dropdownText: {
     fontSize: 16,
-    color: colors.grayLight,
+    color: darkTheme.grayLight,
     fontFamily: fonts.text,
   },
 
@@ -65,13 +65,13 @@ const styles = StyleSheet.create({
     padding: 10,
     //height: 40,
     minHeight: 85, 
-    backgroundColor: colors.grayDark,
-    borderColor: colors.grayMedium,
+    backgroundColor: darkTheme.textField,
+    borderColor: darkTheme.grayMedium,
     borderStyle: 'solid',
     borderWidth: 1,
     borderRadius: 4,
     fontSize: 16,
-    color: colors.grayLight,
+    color: darkTheme.grayLight,
     flex: 1,
     marginBottom: 20,
     fontFamily: fonts.text
@@ -102,7 +102,7 @@ buttoncheckbox: {
 },
 
 textcheckbox: {
-  color: colors.grayLight,
+  color: darkTheme.grayLight,
   fontSize: 15,
   fontFamily: fonts.text
 },

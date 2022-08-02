@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import colors from '../../Styles/colors'
+import {darkTheme} from '../../Styles/colors'
 import fonts from '../../Styles/fonts'
 
 const styles = StyleSheet.create({
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     },
 
     title: {
-        color: colors.grayLight,
+        color: darkTheme.grayLight,
         fontSize: 20,
         fontFamily: fonts.title
     },
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     },
 
     textTermosECondicoes: {
-        color: colors.grayLight,
+        color: darkTheme.grayLight,
         fontSize: 15,
         textDecorationLine: 'underline',
         fontFamily: fonts.text
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
 
     modalLoadingText: {
         marginTop: 20,
-        color: colors.grayLight,
+        color: darkTheme.grayLight,
         fontSize: 15,
         fontFamily: fonts.text
     }
