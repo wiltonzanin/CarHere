@@ -13,7 +13,7 @@ import styles from "./styles";
 import Configuracoes from "./configuracoes/telaPrincipal";
 import CadastroVeiculo from "../cadastroVeiculo";
 import Veiculos from "./veiculos/veiculos";
-import Autonomia from "./autonomia"
+import Autonomia from "./autonomia/cadastro"
 import Principal from "./ajudaEfeedback/principal";
 import Servicos from "./servicos";
 import { ButtonMenu } from '../../components/buttons';

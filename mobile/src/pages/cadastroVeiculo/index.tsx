@@ -29,16 +29,14 @@ function CadastroVeiculo({ navigation }: any) {
   const [combustivel, setCombustivel] = useState("");
   const [images, setImages] = useState<string[]>([]);
   const [imageUri, setImageUri] = useState<string[]>([]);
-  
 
   const [modalMensage, setModalMensage] = useState("");
 
-  const  ano_value = [];
-  for (var i=1960; i <= 2022; i++) {
-    ano_value.push({ label: ""+i, value: ""+i });
+  const ano_value = [];
+  for (var i = 1960; i <= 2022; i++) {
+    ano_value.push({ label: "" + i, value: "" + i });
     // console.log(ano_value);
   }
-
 
   function handleDeletePhotos() {
     setImages([]);
@@ -205,14 +203,15 @@ function CadastroVeiculo({ navigation }: any) {
                 dropDownStyle={styles.dropdownList}
                 labelStyle={styles.dropdownText}
                 arrowColor={colors.grayLight}
-                items= {ano_value.map((option) =>({
+                items={ano_value.map((option) => ({
                   label: option.label,
-                  value: option.value, 
-                 }))}
+                  value: option.value,
+                }))}
                 style={styles.dropdown}
-                onChangeItem={(item) => { setAno(item.value) 
+                onChangeItem={(item) => {
+                  setAno(item.value)
                 }}
-                
+
               />
             </View>
           </View>
