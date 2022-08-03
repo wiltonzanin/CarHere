@@ -27,9 +27,7 @@ function Configuracoes({ navigation }: any) {
   function handleNavigateToAcessibilidade() {
     navigation.navigate("Acessibilidade");
   }
-  function handleNavigateToManualDoUsuario() {
-    navigation.navigate("ManualDoUsuario");
-  }
+
 
 
   return (
@@ -56,12 +54,7 @@ function Configuracoes({ navigation }: any) {
               <ButtonPadrao title="Acessibilidade"
                 onPress={handleNavigateToAcessibilidade} />
             </View> */}
-            <View style={styles.buttonsGroupContent}>
-              <ButtonPadrao 
-              title="Manual Do Usuario" 
-              onPress={handleNavigateToManualDoUsuario}
-              />
-            </View>
+
             <View style={styles.buttonsGroupContent}>
               <ButtonPadrao
                 title="Aparência"

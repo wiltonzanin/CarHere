@@ -12,6 +12,9 @@ function AjudaFeedback({ navigation }: any) {
   function handleNavigateToEntrarEmContato() {
     navigation.navigate("EntrarEmContato");
   }
+  function handleNavigateToManualDoUsuario() {
+    navigation.navigate("ManualDoUsuario");
+  }
 
   return (
     <View style={styles.container}>
@@ -27,7 +30,8 @@ function AjudaFeedback({ navigation }: any) {
             <ButtonPadrao title="Entre em contato"
               onPress={handleNavigateToEntrarEmContato} />
           </View>
-          <ButtonPadrao title="Manual do usuário" />
+          <ButtonPadrao title="Manual do usuário" 
+          onPress={handleNavigateToManualDoUsuario} />
         </View>
         <Text style={styles.text}>Feedback</Text>
         <View style={styles.bottomSection}>
