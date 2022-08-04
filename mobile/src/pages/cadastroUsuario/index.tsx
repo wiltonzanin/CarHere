@@ -26,30 +26,8 @@ function CadastroUsuario({ navigation }: any) {
   const [carregando, setCarregando] = useState(false);
 
   function handleCreateUsuario() {
-    UsuarioService.addUser(nome, email, senha); //Exemplo, falta melhorias nos métodos
+    UsuarioService.addUser(nome, email, senha);
   }
-
-  // async function handleCreateUsuario() {
-  //   const data = new FormData();
-
-  //   data.append("nome", nome);
-  //   data.append("email", email);
-  //   data.append("senha", senha);
-
-  //   //envia os dados do usuário para a api
-  //   await api.post('/usuarios', data)
-  //   .then(function (response) {
-  //     navigation.navigate("Inicial");
-  //     console.log(response);
-  //   })
-  //   //caso ocorra algum erro
-  //   .catch(function (error) {
-  //     setCarregando(false)
-  //     // setModalVisible(true);
-  //     setModalWarning(true);
-  //   });
-
-  // }
 
   function handleNavigateToTermos() {
     navigation.navigate("Termos");

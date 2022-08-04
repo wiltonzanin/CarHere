@@ -22,7 +22,10 @@ export default class DatabaseInit {
                 "nome" TEXT,
                 "email"	TEXT,
                 "senha"	TEXT,
-                "data_criacao" TEXT
+                "data_criacao" TEXT,
+                "data_alteracao" TEXT,
+                "ID_FB" TEXT,
+                "URI" TEXT
             )`,
 
             `create table if not exists "carros" (

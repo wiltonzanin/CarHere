@@ -127,35 +127,6 @@ function validacao(){
     }
 }
 
-  /*async function CadastrarBanco() {
-
-    const dataserv = (dataformatada.toString())
-    const data = new FormData();
-
-    data.append("nome", name);
-    data.append("local", local);
-    data.append("quilometragem", Quilometragem);
-    data.append("datafor", dataserv);
-    data.append("ValorServico", ValorServico);
-    data.append("descricao", descricao);
-    data.append("statusServico", ServicoStatus);
-    data.append("id_carro", id_carro);
-
-    try{
-      setCarregando(true)
-      await api.post("/servico", data);
-    } 
-    catch (error) {
-      setCarregando(false);
-      setModalMensage("");
-      setModalWarning(true);
-      return;
-    }
-    setModalMensage("Serviço cadastrado com sucesso!");
-    setModalVisible(true);
-  }
-  */
-
   function CadastrarBanco() {
     try {
       const dataserv = (dataformatada.toString())

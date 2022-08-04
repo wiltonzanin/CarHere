@@ -4,6 +4,7 @@ import { Feather } from '@expo/vector-icons';
 
 import styles from './styles';
 import { TextInputProps } from 'react-native';
+import { Icon } from 'react-native-elements';
 
 interface TextFieldProps extends TextInputProps{
     labelName: string;

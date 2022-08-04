@@ -29,6 +29,8 @@ function Inicial({navigation}: any) {
         navigation.navigate('AlterarSenha');
     }
 
+console.log(email+senha);
+
     return (
         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
             <View style={styles.container}>
