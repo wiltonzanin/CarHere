@@ -56,11 +56,10 @@ function VisualizarServicos({ navigation }: any) {
         setServico(response._array);
       }).catch(() => {
       })
-  });
+    }, []);
 
   function deteleServico() {
     setModalDecisionVisible(true);
-    ServicoService.delsrv(del)
   }
 
   function fecharModal() {

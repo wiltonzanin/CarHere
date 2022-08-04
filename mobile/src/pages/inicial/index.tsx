@@ -7,6 +7,7 @@ import styles from './styles';
 import TextField from '../../components/textField';
 import { Button } from '../../components/buttons';
 import { useAuth } from '../../contexts/auth';
+import UsuarioService from '../../database/services/usuarioService';
 
 function Inicial({navigation}: any) {
 
@@ -17,6 +18,9 @@ function Inicial({navigation}: any) {
 
 
     function handleSignIn() {
+    //UsuarioService.checkemail(email); //Exemplo, falta melhorias nos métodos
+        
+
         console.log(email + senha)
         signIn();
     }
@@ -29,7 +33,6 @@ function Inicial({navigation}: any) {
         navigation.navigate('AlterarSenha');
     }
 
-console.log(email+senha);
 
     return (
         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>

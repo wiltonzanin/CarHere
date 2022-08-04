@@ -4,7 +4,7 @@ const table = "servicos"
 const tablecar = "carros"
 const db = dbConnection.getConnection()
 
-export default class CarroService {
+export default class ServicoService {
 
 static addservico(nome: string, local: string, quilometragem: number, data: string, valor_servico: number, descricao: string, status_servico: number, id_carro: number) { //Adicionar id_usuario
         return new Promise((resolve, reject) => db.transaction(tx => {
