@@ -5,12 +5,15 @@ import styles from "./styles";
 import { RectButton } from "react-native-gesture-handler";
 import { Feather } from "@expo/vector-icons";
 import { ButtonMenu, ButtonPadrao } from '../../../components/buttons';
-import colors from "../../../Styles/colors";
+import {darkTheme} from "../../../Styles/colors";
 
 function AjudaFeedback({ navigation }: any) {
 
   function handleNavigateToEntrarEmContato() {
     navigation.navigate("EntrarEmContato");
+  }
+  function handleNavigateToManualDoUsuario() {
+    navigation.navigate("ManualDoUsuario");
   }
 
   return (
@@ -27,12 +30,13 @@ function AjudaFeedback({ navigation }: any) {
             <ButtonPadrao title="Entre em contato"
               onPress={handleNavigateToEntrarEmContato} />
           </View>
-          <ButtonPadrao title="Manual do usuário" />
+          <ButtonPadrao title="Manual do usuário" 
+          onPress={handleNavigateToManualDoUsuario} />
         </View>
         <Text style={styles.text}>Feedback</Text>
         <View style={styles.bottomSection}>
           <RectButton style={styles.buttonAvaliar}>
-            <Feather name="star" size={20} color={colors.grayLight} />
+            <Feather name="star" size={20} color={darkTheme.grayLight} />
             <Text style={styles.buttonText}>Nos avalie na Google Play!</Text>
           </RectButton>
         </View>

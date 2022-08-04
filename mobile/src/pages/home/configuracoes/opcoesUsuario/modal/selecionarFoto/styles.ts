@@ -1,9 +1,10 @@
 import { StyleSheet } from "react-native";
+import {darkTheme} from '../../../../../../Styles/colors'
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#252525",
+    backgroundColor: darkTheme.background,
     padding: 20,
     justifyContent: "space-between",
   },
@@ -20,13 +21,13 @@ const styles = StyleSheet.create({
   },
 
   headerTitle: {
-    color: "#fff",
+    color: darkTheme.grayLight,
     fontSize: 20,
     paddingTop: 10,
   },
 
   content: {
-    color: "#fff",
+    color: darkTheme.grayLight,
     justifyContent: "flex-start",
     paddingTop: 20,
     width: "100%",
@@ -34,7 +35,7 @@ const styles = StyleSheet.create({
   },
 
   text: {
-    color: "#fff",
+    color: darkTheme.grayLight,
     fontSize: 20,
     paddingTop: 10,
     paddingBottom: 10,
@@ -42,16 +43,16 @@ const styles = StyleSheet.create({
   },
 
   top: {
-    backgroundColor: "#333333",
+    backgroundColor: darkTheme.textField,
     borderRadius: 10,
-    borderColor: "#525252",
+    borderColor: darkTheme.grayMedium,
     borderWidth: 1,
     borderBottomWidth: 1,
   },
 
   meio: {
     borderBottomWidth: 1,
-    borderColor: "#525252",
+    borderColor: darkTheme.grayMedium,
   },
 
   buttonContent: {
@@ -63,7 +64,7 @@ const styles = StyleSheet.create({
   },
 
   buttonText: {
-    color: "#fff",
+    color: darkTheme.grayLight,
     justifyContent: "center",
     paddingLeft: 5,
   },

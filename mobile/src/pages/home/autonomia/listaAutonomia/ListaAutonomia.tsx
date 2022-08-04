@@ -5,30 +5,27 @@ import { RectButton } from "react-native-gesture-handler";
 import { Feather } from "@expo/vector-icons";
 
 import styles from "./styles";
-import fonts from '../../../Styles/fonts'
-import { darkTheme } from '../../../Styles/colors'
-import LoadingScreen from "../../../components/loadingScreen";
-import SearchBar from "../../../components/searchBar";
-import { ButtonAdicionar } from '../../../components/buttons';
-import { ButtonMenu } from '../../../components/buttons';
-import api from "../../../services/api";
-import CarroService from "../../../database/services/carroService";
+import fonts from '../../../../Styles/fonts'
+import { darkTheme } from '../../../../Styles/colors'
+import LoadingScreen from "../../../../components/loadingScreen";
+import SearchBar from "../../../../components/searchBar";
+import { ButtonAdicionar } from '../../../../components/buttons';
+import { ButtonMenu } from '../../../../components/buttons';
+import AutonomiaService from "../../../../database/services/autonomiaService";
 
-interface Carros {
-  id_carro: number;
-  marca: string;
-  modelo: string;
-  id_imagem: number;
-  path: string;
+interface IAutonomia {
+  id_autonomia: number;
+  tipo_combustivel: string;
+  media_consumo: number;
 }
 
-function Veiculos({ navigation }: any) {
+function ListaAutonomia({ navigation }: any) {
 
   let listaVazia = true;
 
   const [carregando, setCarregando] = useState(false);
   const [erroCarregar, setErroCarregar] = useState(false);
-  const [carros, setCarros] = useState<Carros[]>([]);
+  const [autonomia, setAutonomia] = useState<IAutonomia[]>([]);
 
   function handleNavigateToVisualizarVeiculo(id: number) {
     navigation.navigate("VisualizarVeiculo", { id });
@@ -40,42 +37,16 @@ function Veiculos({ navigation }: any) {
 
   useEffect(() => {
     let isMounted = true;
-    CarroService.findAllWithImage()
+    AutonomiaService.findAll()
       .then((response: any) => {
-        if (isMounted) setCarros(response._array)
+        if (isMounted) setAutonomia(response._array)
       }), (error: any) => {
         console.log(error);
       }
     return () => { isMounted = false };
   });
 
-  // useEffect(() => {
-  //   setCarregando(true);
-  //   api.get('carros/1').then(response => {
-  //     setCarros(response.data);
-  //     setCarregando(false);
-  //   }).catch(() => {
-  //     setCarregando(false);
-  //     setErroCarregar(true);
-  //   })
-  // }, [])
-
-  // useFocusEffect(() => {
-  //   const backAction = () => {
-  //     const pushAction = StackActions.push('Home');
-  //     navigation.dispatch(pushAction);
-  //     return true;
-  //   };
-
-  //   const backHandler = BackHandler.addEventListener(
-  //     "hardwareBackPress",
-  //     backAction
-  //   );
-
-  //   return () => backHandler.remove();
-  // });
-
-  if (carros.length > 0) {
+  if (autonomia.length > 0) {
     listaVazia = false
   }
 
@@ -106,22 +77,14 @@ function Veiculos({ navigation }: any) {
                 <Text style={{ color: darkTheme.grayLight, fontSize: 20, paddingTop: 20, fontFamily: fonts.text }}>Ops, você não tem carros cadastrados!</Text>
               </View>
               :
-              carros.map(carro => {
+              autonomia.map(autonomia => {
                 return (
-                  <View key={carro.id_carro} style={styles.veiculos}>
-                    <RectButton style={styles.buttonVeiculo} onPress={() => handleNavigateToVisualizarVeiculo(carro.id_carro)}>
+                  <View key={autonomia.id_autonomia} style={styles.veiculos}>
+                    <RectButton style={styles.buttonVeiculo} onPress={() => {}}>
                       <View style={styles.buttonGroupText}>
-                        <Text numberOfLines={1} style={styles.buttonVeiculoText}>{carro.modelo}</Text>
+                        <Text numberOfLines={1} style={styles.buttonVeiculoText}>{autonomia.tipo_combustivel}</Text>
                         <Text style={styles.buttonVeiculoTextManutencaoGreen}><Feather name="check-circle" size={16} color={darkTheme.green} /> Manutenção em dia</Text>
                       </View>
-                      {carro.id_imagem != null
-                        ?
-                        <Image key={carro.id_imagem} source={{ uri: carro.path }} style={styles.imgVeiculo} />
-                        :
-                        <View style={styles.imgVeiculo}>
-                          <Feather name="image" size={50} color='white' />
-                        </View>
-                      }
                     </RectButton>
                   </View>
                 );
@@ -132,4 +95,4 @@ function Veiculos({ navigation }: any) {
     </ScrollView>
   );
 }
-export default Veiculos;
+export default ListaAutonomia;

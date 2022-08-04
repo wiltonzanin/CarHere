@@ -1,10 +1,10 @@
 import { StyleSheet, Dimensions } from "react-native";
-import colors from "../../../Styles/colors";
+import {darkTheme} from "../../../Styles/colors";
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.background,
+    backgroundColor: darkTheme.background,
     padding: 20,
   },
 
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   },
 
   headerText: {
-    color: colors.grayLight,
+    color: darkTheme.grayLight,
     fontSize: 20,
   },
 
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   },
 
   title: {
-      color: colors.grayLight,
+      color: darkTheme.grayLight,
       fontSize: 20,
   },
 
@@ -53,25 +53,25 @@ const styles = StyleSheet.create({
   },
 
   cardStyle: {
-    backgroundColor: colors.grayDark,
+    backgroundColor: darkTheme.textField,
     padding: 20,
     borderRadius: 10
   },
 
   text: {
-    color: colors.grayLight,
+    color: darkTheme.grayLight,
     fontSize: 20,
   },
 
   cardTitle: {
-    color: colors.grayLight,
+    color: darkTheme.grayLight,
     fontSize: 22,
     fontWeight: 'bold',
     marginBottom: 20
   },
 
   imagesContainer: {
-    backgroundColor: colors.grayDark,
+    backgroundColor: darkTheme.textField,
     marginLeft: -20,
     marginRight: -20,
     marginBottom: -30,
@@ -85,22 +85,22 @@ const styles = StyleSheet.create({
   },
 
   textStatusOk: {
-    color: colors.green,
+    color: darkTheme.green,
     fontSize: 14,
   },
 
   textStatusWarning: {
-    color: colors.yellow,
+    color: darkTheme.yellow,
     fontSize: 14,
   },
 
   textStatusError: {
-    color: colors.red,
+    color: darkTheme.red,
     fontSize: 14,
   },
 
   cardServices: {
-    backgroundColor: colors.grayLight,
+    backgroundColor: darkTheme.grayLight,
     padding: 10,
     borderRadius: 5,
     marginBottom: 20
@@ -122,26 +122,26 @@ const styles = StyleSheet.create({
   },
 
   noInfo: {
-    backgroundColor: colors.grayLight,
+    backgroundColor: darkTheme.grayLight,
     padding: 10,
     borderRadius: 10,
     alignItems: 'center'
   },
 
   noInfoText: {
-    color: colors.background,
+    color: darkTheme.background,
     fontSize: 18,
     textAlign: 'center'
   },
 
   info: {
-    backgroundColor: colors.grayLight,
+    backgroundColor: darkTheme.grayLight,
     padding: 10,
     borderRadius: 10,
   },
 
   infoGroup: {
-    backgroundColor: colors.grayLight,
+    backgroundColor: darkTheme.grayLight,
     width: 145,
     height: 140,
     padding: 10,
@@ -149,20 +149,20 @@ const styles = StyleSheet.create({
   },
 
   titleInfo: {
-    color: colors.grayLight,
+    color: darkTheme.grayLight,
     fontSize: 18,
     paddingBottom: 5,
   },
 
   card: {
-    backgroundColor: colors.grayDark,
+    backgroundColor: darkTheme.textField,
     padding: 20,
     borderRadius: 10,
     marginBottom: 20
   },
 
   textInfo2: {
-    color: colors.background,
+    color: darkTheme.background,
     fontSize: 14,
   },
 
@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
   },
 
   textcheckbox: {
-    color: colors.grayLight,
+    color: darkTheme.grayLight,
     fontSize: 15,
 
   },

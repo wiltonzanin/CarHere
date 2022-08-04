@@ -5,17 +5,18 @@ import styles from "./styles";
 import { Feather } from "@expo/vector-icons";
 import DropDownPicker from "react-native-dropdown-picker";
 
-import BackScreen from "../../../components/backScreen";
-import TextField from "../../../components/textField";
-import LoadingScreen from "../../../components/loadingScreen";
-import { Button } from "../../../components/buttons";
-import { SuccessModal, FeedbackModal } from "../../../components/feedbackModal";
-import api from "../../../services/api";
-import colors from '../../../Styles/colors'
-
+import BackScreen from "../../../../components/backScreen";
+import TextField from "../../../../components/textField";
+import LoadingScreen from "../../../../components/loadingScreen";
+import { Button } from "../../../../components/buttons";
+import { SuccessModal, FeedbackModal } from "../../../../components/feedbackModal";
+import api from "../../../../services/api";
+import { darkTheme } from '../../../../Styles/colors';
+import CarroService from "../../../../database/services/carroService";
+import AutonomiaService from "../../../../database/services/autonomiaService";
 
 interface Carros {
-    id: number;
+    id_carro: number;
     modelo: string;
 }
 
@@ -25,7 +26,6 @@ function Autonomia({ navigation }: any) {
     const [modalVisible, setModalVisible] = useState(false);
     const [modalWarning, setModalWarning] = useState(false);
     const [modalMensage, setModalMensage] = useState("");
-
 
     const [carros, setCarros] = useState<Carros[]>([]);
     const [carro, setCarro] = useState("");
@@ -43,36 +43,49 @@ function Autonomia({ navigation }: any) {
     }
 
     useEffect(() => {
+        CarroService.findAll()
+            .then((response: any) => {
+                setCarros(response._array);
+                //console.log()
+            }), (error: any) => {
+                console.log(error);
+            }
+    }, []);
 
-        api.get('carros/1').then(response => {
-            setCarros(response.data);
-        })
-    }, [])
-
-    async function handleCreateAutonomia() {
-        const data = new FormData();
-
-        data.append("kmInicial", kmInicial);
-        data.append("kmFinal", kmFinal);
-        data.append("litroAbastecidos", litrosAbastecidos);
-        data.append("tipoCombustivel", combustivel);
-        data.append("percurso", percurso);
-        data.append("mediaConsumo", mediaConsumo.toString());
-        data.append("carro", carro);
-
-        try {
-            setCarregando(true)
-            await api.post("/autonomia", data);
-        } catch (error) {
-            setCarregando(false);
-            setModalMensage("");
-            setModalWarning(true);
-            return;
-        }
-
-        setModalMensage("Autonomia do veículo cadastrada com sucesso!");
-        setModalVisible(true);
+    function handleCreateAutonomia() {
+        AutonomiaService.addAutonomia(Number(kmInicial), Number(kmFinal), combustivel, Number(litrosAbastecidos), percurso, mediaConsumo, Number(carro));
     }
+
+    // useEffect(() => {
+    //     api.get('carros/1').then(response => {
+    //         setCarros(response.data);
+    //     })
+    // }, [])
+
+    // async function handleCreateAutonomia() {
+    //     const data = new FormData();
+
+    //     data.append("kmInicial", kmInicial);
+    //     data.append("kmFinal", kmFinal);
+    //     data.append("litroAbastecidos", litrosAbastecidos);
+    //     data.append("tipoCombustivel", combustivel);
+    //     data.append("percurso", percurso);
+    //     data.append("mediaConsumo", mediaConsumo.toString());
+    //     data.append("carro", carro);
+
+    //     try {
+    //         setCarregando(true)
+    //         await api.post("/autonomia", data);
+    //     } catch (error) {
+    //         setCarregando(false);
+    //         setModalMensage("");
+    //         setModalWarning(true);
+    //         return;
+    //     }
+
+    //     setModalMensage("Autonomia do veículo cadastrada com sucesso!");
+    //     setModalVisible(true);
+    // }
 
     function handleNavigateToVeiculos() {
         setModalVisible(!modalVisible);
@@ -86,6 +99,8 @@ function Autonomia({ navigation }: any) {
         setModalWarning(false);
         setCarregando(false);
     }
+
+    //console.log(carros)
 
     return (
         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
@@ -110,8 +125,8 @@ function Autonomia({ navigation }: any) {
                         placeholder="Selecione um item"
                         dropDownStyle={styles.dropdownList}
                         labelStyle={styles.dropdownText}
-                        arrowColor={colors.grayLight}
-                        items={carros.map(carro => ({ label: carro.modelo, value: carro.id }))}
+                        arrowColor={darkTheme.grayLight}
+                        items={carros.map(carro => ({ label: carro.modelo, value: carro.id_carro }))}
                         style={styles.dropdown}
                         onChangeItem={(item) => {
                             setCarro(item.value);
@@ -135,7 +150,7 @@ function Autonomia({ navigation }: any) {
                                 placeholder="Selecione"
                                 dropDownStyle={styles.dropdownList}
                                 labelStyle={styles.dropdownText}
-                                arrowColor={colors.grayLight}
+                                arrowColor={darkTheme.grayLight}
                                 items={[
                                     { label: "Rodoviário", value: "Rodoviário" },
                                     { label: "Urbano", value: "Urbano" },
@@ -151,7 +166,7 @@ function Autonomia({ navigation }: any) {
                         placeholder="Selecione um item"
                         dropDownStyle={styles.dropdownList}
                         labelStyle={styles.dropdownText}
-                        arrowColor={colors.grayLight}
+                        arrowColor={darkTheme.grayLight}
                         items={[
                             { label: "Gasolina", value: "Gasolina" },
                             { label: "Alcool", value: "Alcool" },
@@ -167,7 +182,7 @@ function Autonomia({ navigation }: any) {
                 </View>
                 <Button title="Salvar" onPress={handleCreateAutonomia} />
             </View>
-        </ScrollView>
+        </ScrollView >
     );
 }
 

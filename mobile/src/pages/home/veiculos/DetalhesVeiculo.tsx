@@ -12,6 +12,7 @@ import { ButtonAdicionar, ButtonDeletar } from '../../../components/buttons';
 import api from "../../../services/api";
 import CarroService from "../../../database/services/carroService";
 import ImagensCarroService from "../../../database/services/imagensCarroService";
+import AutonomiaService from "../../../database/services/autonomiaService";
 
 interface DetalhesCarroRouteParams {
   id: number;
@@ -33,9 +34,9 @@ interface ImagensCarro {
 
 interface Autonomia {
   id: number;
-  tipoCombustivel: string;
+  tipo_combustivel: string;
   percurso: string;
-  mediaConsumo: number;
+  media_consumo: number;
 }
 
 interface servico {
@@ -88,6 +89,15 @@ function VisualizarVeiculo({ navigation }: any) {
   //     .then((response) => setAutonomia(response.data));
   // }, [params.id]);
 
+  useEffect(() => {
+    AutonomiaService.findLastOne(params.id)
+      .then((response: any) => {
+        setAutonomia(response);
+        console.log(response);
+      }), (error: any) => {
+        console.log(error);
+      }
+  }, []);
 
   // useEffect(() => {
   //   api
@@ -220,9 +230,9 @@ function VisualizarVeiculo({ navigation }: any) {
               :
               <View style={[carros.combustivel.includes("flex") ? styles.infoGroup : styles.info]}>
                 <View>
-                  <Text style={styles.buttonServicoText}>{autonomia.tipoCombustivel}</Text>
+                  <Text style={styles.buttonServicoText}>{autonomia.tipo_combustivel}</Text>
                   <Text style={styles.textInfo2}>{autonomia.percurso}</Text>
-                  <Text style={styles.textInfo2}>{autonomia.mediaConsumo} Km/L</Text>
+                  <Text style={styles.textInfo2}>{autonomia.media_consumo} Km/L</Text>
                 </View>
               </View>
             }

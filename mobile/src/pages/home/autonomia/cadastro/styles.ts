@@ -1,13 +1,13 @@
 import { StyleSheet } from "react-native";
-import colors from "../../../Styles/colors";
-import fonts from "../../../Styles/fonts";
+import { darkTheme } from "../../../../Styles/colors";
+import fonts from "../../../../Styles/fonts";
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
     justifyContent: "space-between",
-    backgroundColor: colors.background,
+    backgroundColor: darkTheme.background,
   },
 
   header: {
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    color: colors.grayLight,
+    color: darkTheme.grayLight,
     fontSize: 20,
     fontFamily: fonts.title,
   },
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
   },
 
   text: {
-    color: colors.grayLight,
+    color: darkTheme.grayLight,
     fontSize: 18,
     marginBottom: 10,
     fontFamily: fonts.text,
@@ -50,20 +50,20 @@ const styles = StyleSheet.create({
   },
 
   dropdown: {
-    backgroundColor: colors.grayDark,
-    borderColor: colors.grayMedium,
+    backgroundColor: darkTheme.textField,
+    borderColor: darkTheme.grayMedium,
     height: 40,
-    
+
   },
 
   dropdownList: {
-    backgroundColor: colors.grayDark,
-    borderColor: colors.grayMedium,
+    backgroundColor: darkTheme.textField,
+    borderColor: darkTheme.grayMedium,
   },
 
   dropdownText: {
     fontSize: 16,
-    color: colors.grayLight,
+    color: darkTheme.grayLight,
     fontFamily: fonts.text,
   },
 
@@ -75,10 +75,10 @@ const styles = StyleSheet.create({
   textResultado: {
     marginTop: 20,
     padding: 10,
-    color: colors.grayLight,
+    color: darkTheme.grayLight,
     fontSize: 32,
     alignSelf: "center",
-    borderColor: colors.grayLight,
+    borderColor: darkTheme.grayLight,
     borderWidth: 1,
     borderStyle: "solid",
     fontFamily: fonts.text,

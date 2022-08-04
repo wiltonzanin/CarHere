@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import colors from '../../Styles/colors';
+import {darkTheme} from '../../Styles/colors';
 import fonts from '../../Styles/fonts'
 
 const styles = StyleSheet.create({
@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     },
 
     header: {
-        backgroundColor: colors.grayLight,
+        backgroundColor: darkTheme.grayLight,
         height: '30%',
         justifyContent: 'space-between'
     },
@@ -19,13 +19,13 @@ const styles = StyleSheet.create({
     },
 
     title: {
-        color: colors.background,
+        color: darkTheme.background,
         fontSize: 35,
         fontFamily: fonts.title
     },
 
     subtitle: {
-        color: colors.background,
+        color: darkTheme.background,
         fontSize: 18,
         paddingTop: 5,
         fontFamily: fonts.text
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     },
 
     forgotPassword: {
-        color: colors.grayLight,
+        color: darkTheme.grayLight,
         fontSize: 14,
         alignSelf: 'flex-end',
         fontFamily: fonts.title
@@ -71,13 +71,13 @@ const styles = StyleSheet.create({
     },
 
     registerText: {
-        color: colors.grayLight,
+        color: darkTheme.grayLight,
         fontSize: 18,
         fontFamily: fonts.text
     },
 
     registerTextBold: {
-        color: colors.grayLight,
+        color: darkTheme.grayLight,
         fontSize: 18,
         fontFamily: fonts.title
     },

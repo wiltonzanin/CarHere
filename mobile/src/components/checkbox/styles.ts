@@ -1,10 +1,10 @@
 import { StyleSheet } from "react-native";
-import colors from '../../Styles/colors'
+import {darkTheme} from '../../Styles/colors'
 import fonts from '../../Styles/fonts'
 
 const styles = StyleSheet.create({
   text: {
-    color: colors.grayLight,
+    color: darkTheme.grayLight,
     fontSize: 18,
     paddingBottom: 10,
     paddingTop: 10,

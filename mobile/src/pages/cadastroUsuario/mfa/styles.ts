@@ -1,4 +1,6 @@
 import { StyleSheet } from 'react-native';
+import { colors } from 'react-native-elements';
+import {darkTheme} from '../../../Styles/colors'
 
 const styles = StyleSheet.create({
     container: {
@@ -14,25 +16,25 @@ const styles = StyleSheet.create({
     },
 
     title: {
-        color: '#F0EFF4',
+        color: darkTheme.grayLight,
         fontSize: 20,
     },
 
     subtitle: {
         fontStyle: 'italic',
-        color: '#F0EFF4',
+        color: darkTheme.grayLight,
         paddingBottom: 20
     },
 
     dropdownLabel: {
-        color: '#F0EFF4',
+        color: darkTheme.grayLight,
         fontSize: 18,
         paddingBottom: 20
     },
 
     dropdown: {
-        backgroundColor: '#333333',
-        borderColor: '#525252',
+        backgroundColor: darkTheme.textField,
+        borderColor: darkTheme.grayMedium,
     }
 });
 

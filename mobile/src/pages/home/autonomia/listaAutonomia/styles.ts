@@ -1,11 +1,11 @@
 import { StyleSheet } from "react-native";
-import { darkTheme } from "../../../Styles/colors";
+import colors from "../../../Styles/colors";
 import fonts from "../../../Styles/fonts";
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: darkTheme.background,
+    backgroundColor: colors.background,
     padding: 20,
   },
 
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   },
 
   headerText: {
-    color: darkTheme.grayLight,
+    color: colors.grayLight,
     fontSize: 20,
     fontFamily: fonts.title
   },
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   },
 
   buttonVeiculo: {
-    backgroundColor: darkTheme.grayLight,
+    backgroundColor: colors.grayLight,
     height: 100,
     flexDirection: 'row',
     justifyContent: "space-between",
@@ -66,13 +66,13 @@ const styles = StyleSheet.create({
   },
 
   buttonVeiculoTextManutencaoGreen: {
-    color: darkTheme.green,
+    color: colors.green,
     fontSize: 16,
     fontFamily: fonts.text
   },
 
   buttonVeiculoTextManutencaoRed: {
-    color: darkTheme.red,
+    color: colors.red,
     fontSize: 16,
     fontFamily: fonts.text
   },
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     height: 100,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: darkTheme.textField,
+    backgroundColor: colors.grayDark,
     borderTopRightRadius: 5,
     borderBottomRightRadius: 5,
   }

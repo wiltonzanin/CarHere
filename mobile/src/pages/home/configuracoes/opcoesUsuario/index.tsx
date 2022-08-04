@@ -4,7 +4,7 @@ import * as ImagePicker from 'expo-image-picker';
 import { useNavigation } from "@react-navigation/native";
 
 import styles from "./styles";
-import colors from '../../../../Styles/colors'
+import {darkTheme} from '../../../../Styles/colors'
 import { ButtonPadrao } from "../../../../components/buttons";
 import { Feather } from "@expo/vector-icons";
 import BackScreen from "../../../../components/backScreen";
@@ -67,7 +67,7 @@ function OpcoesUsuario({navigation}: any) {
             </TouchableOpacity>
           </View>
           <Text style={styles.text}>
-            Fulana da Silva <Feather name="edit" color={colors.grayLight} size={18} />{" "}
+            Fulana da Silva <Feather name="edit" color={darkTheme.grayLight} size={18} />{" "}
           </Text>
           <View style={styles.top}>
             <View style={styles.meio}>

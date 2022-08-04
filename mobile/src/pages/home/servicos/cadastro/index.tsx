@@ -11,7 +11,7 @@ import LoadingScreen from "../../../../components/loadingScreen";
 import { SuccessModal, FeedbackModal } from "../../../../components/feedbackModal";
 import { color } from "react-native-reanimated";
 import { red100 } from "react-native-paper/lib/typescript/styles/colors";
-import colors from "../../../../Styles/colors";
+import {darkTheme} from "../../../../Styles/colors";
 import fonts from "../../../../Styles/fonts";
 import ServicoService from "../../../../database/services/ServicoService";
 import CarroService from "../../../../database/services/carroService";
@@ -189,7 +189,7 @@ function validacao(){
               <DropDownPicker
                   dropDownStyle={styles.dropdownList}
                   labelStyle={styles.dropdownText}
-                  arrowColor={colors.grayLight}
+                  arrowColor={darkTheme.grayLight}
                   placeholder="Selecionar..."
                   items={carros.map(carro => ({ label: carro.modelo + " " + carro.motorizacao + " " + carro.ano, value: carro.id_carro }))}
                   style={styles.dropdown}
@@ -236,7 +236,7 @@ function validacao(){
                 onChangeText={setValorServico}
                 value={ValorServico}
                 mensagemErro = {ValidacaoValorServico}
-                placeholderTextColor = {colors.grayLight}
+                placeholderTextColor = {darkTheme.grayLight}
               />
             </View>
           </View>
@@ -251,9 +251,9 @@ function validacao(){
           />
             <View style={styles.checkbox}>
             <CheckBox
-              containerStyle={{ backgroundColor: colors.background, borderColor: colors.background, padding: 0, margin: 0, marginLeft: 0 }}
+              containerStyle={{ backgroundColor: darkTheme.background, borderColor: darkTheme.background, padding: 0, margin: 0, marginLeft: 0 }}
               checkedIcon='check-square-o'
-              checkedColor={colors.button}
+              checkedColor={darkTheme.button}
               size={25}
               checked={isSelected}
               onPress={() => setIsSelected(!isSelected)} 

@@ -1,10 +1,10 @@
 import { StyleSheet } from "react-native";
-import colors from '../../Styles/colors'
+import {darkTheme} from '../../Styles/colors'
 import fonts from '../../Styles/fonts'
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: colors.button,
+    backgroundColor: darkTheme.button,
     height: 60,
     borderRadius: 8,
     alignItems: "center",
@@ -12,13 +12,13 @@ const styles = StyleSheet.create({
   },
 
   text: {
-    color: colors.grayLight,
+    color: darkTheme.grayLight,
     fontSize: 20,
     fontFamily: fonts.title
   },
 
   buttonAdicionar: {
-    backgroundColor: colors.button,
+    backgroundColor: darkTheme.button,
     height: 50,
     borderRadius: 8,
     alignItems: "center",
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   },
 
   textAdicionar: {
-    color: colors.grayLight,
+    color: darkTheme.grayLight,
     fontSize: 18,
     padding: 10,
     textAlign: "center",
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
   },
 
   textAjuda: {
-    color: colors.grayLight,
+    color: darkTheme.grayLight,
     paddingLeft: 5,
     fontFamily: fonts.text
   },

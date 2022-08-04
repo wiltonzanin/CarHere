@@ -16,14 +16,14 @@ import SearchBar from "../../components/searchBar";
 import Configuracoes from "./configuracoes/telaPrincipal";
 import CadastroVeiculo from "../cadastroVeiculo";
 import Veiculos from "./veiculos/veiculos";
-import Autonomia from "./autonomia"
+import Autonomia from "./autonomia/cadastro"
 import Principal from "./ajudaEfeedback/principal";
 import Servicos from "./servicos";
 import { ButtonMenu } from '../../components/buttons';
 import { ButtonAdicionar } from '../../components/buttons';
 import Subscription from '../home/subscription'
 import { RectButton } from "react-native-gesture-handler";
-import colors from '../../Styles/colors'
+import {darkTheme} from '../../Styles/colors'
 
 interface Carros {
   id_carro: number;
@@ -95,8 +95,8 @@ function Home({ navigation }: any) {
           <ButtonAdicionar title="Adicionar carro" onPress={handleNavigateToCadastroVeiculo}></ButtonAdicionar>
           
           <View style={styles.listagemErro}>
-            <Feather name='archive' size={50} color={colors.grayLight} />
-            <Text style={{ color: colors.grayLight, fontSize: 20, paddingTop: 20, fontFamily: fonts.text }}>Você não tem carros cadastrados!</Text>
+            <Feather name='archive' size={50} color={darkTheme.grayLight} />
+            <Text style={{ color: darkTheme.grayLight, fontSize: 20, paddingTop: 20, fontFamily: fonts.text }}>Você não tem carros cadastrados!</Text>
           </View>
 
           {/* <ScrollView horizontal pagingEnabled>
@@ -147,7 +147,7 @@ const Drawer = createDrawerNavigator();
 function MyDrawer() {
   return (
     <Drawer.Navigator
-      drawerContentOptions={{ activeBackgroundColor: colors.button }}
+      drawerContentOptions={{ activeBackgroundColor: darkTheme.button }}
       drawerContent={(props: DrawerContentComponentProps) => (
         <CustomDrawerContent {...props} style={styles.drawer} />
       )}
@@ -160,7 +160,7 @@ function MyDrawer() {
             <Feather
               name="home"
               size={size}
-              color={focused ? colors.grayLight : colors.grayLight}
+              color={focused ? darkTheme.grayLight : darkTheme.grayLight}
             />
           ),
         }}
@@ -173,7 +173,7 @@ function MyDrawer() {
             <Feather
               name="plus"
               size={size}
-              color={focused ? colors.grayLight : colors.grayLight}
+              color={focused ? darkTheme.grayLight : darkTheme.grayLight}
             />
           ),
         }}
@@ -187,7 +187,7 @@ function MyDrawer() {
             <Feather
               name="list"
               size={size}
-              color={focused ? colors.grayLight : colors.grayLight}
+              color={focused ? darkTheme.grayLight : darkTheme.grayLight}
             />
           ),
         }}
@@ -201,7 +201,7 @@ function MyDrawer() {
             <Feather
               name="bar-chart-2"
               size={size}
-              color={focused ? colors.grayLight : colors.grayLight}
+              color={focused ? darkTheme.grayLight : darkTheme.grayLight}
             />
           ),
         }}
@@ -214,7 +214,7 @@ function MyDrawer() {
             <Feather
               name="tool"
               size={size}
-              color={focused ? colors.grayLight : colors.grayLight}
+              color={focused ? darkTheme.grayLight : darkTheme.grayLight}
             />
           ),
         }}
@@ -227,7 +227,7 @@ function MyDrawer() {
             <MaterialCommunityIcons
               name="crown-outline"
               size={size}
-              color={focused ? colors.grayLight : colors.grayLight}
+              color={focused ? darkTheme.grayLight : darkTheme.grayLight}
             />
           ),
         }}
@@ -240,7 +240,7 @@ function MyDrawer() {
             <Feather
               name="settings"
               size={size}
-              color={focused ? colors.grayLight : colors.grayLight}
+              color={focused ? darkTheme.grayLight : darkTheme.grayLight}
             />
           ),
         }}
@@ -253,7 +253,7 @@ function MyDrawer() {
             <Feather
               name="help-circle"
               size={size}
-              color={focused ? colors.grayLight : colors.grayLight}
+              color={focused ? darkTheme.grayLight : darkTheme.grayLight}
             />
           ),
         }}
