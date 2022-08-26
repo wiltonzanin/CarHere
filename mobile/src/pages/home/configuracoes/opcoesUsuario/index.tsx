@@ -10,6 +10,16 @@ import { Feather } from "@expo/vector-icons";
 import BackScreen from "../../../../components/backScreen";
 import { useAuth } from '../../../../contexts/auth';
 
+//import { FirebaseInit } from '../../database/dbInit';
+import { getAuth } from "firebase/auth";
+
+const auth = getAuth();
+const user = auth.currentUser;
+
+console.log("Antes ===============")
+console.log(user?.email)
+
+
 function OpcoesUsuario({navigation}: any) {
   const { navigate } = useNavigation();
 
@@ -40,7 +50,18 @@ function OpcoesUsuario({navigation}: any) {
   }
 
   function handleSignOut() {
-    signOut();
+    auth.signOut().then(() => {
+      // Sign-out successful.
+      signOut();
+      console.log("Depois ======")
+      console.log(user?.email)
+      console.log(user?.uid)
+    }).catch((error) => {
+      // An error happened.
+      console.log(error)
+      console.log("erro")
+    });
+    
   }
 
   function handleNavigateToAlterarSenhaPage() {

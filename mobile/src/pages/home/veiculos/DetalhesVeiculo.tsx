@@ -9,7 +9,6 @@ import BackButton from "../../../components/backScreen";
 import { Infos } from "../../../components/infos";
 import { DecisionModal } from "../../../components/feedbackModal";
 import { ButtonAdicionar, ButtonDeletar } from '../../../components/buttons';
-import api from "../../../services/api";
 import CarroService from "../../../database/services/carroService";
 import ImagensCarroService from "../../../database/services/imagensCarroService";
 import AutonomiaService from "../../../database/services/autonomiaService";
@@ -58,6 +57,15 @@ function VisualizarVeiculo({ navigation }: any) {
   const [imgCarro, setImgCarro] = useState<ImagensCarro[]>([]);
   const [autonomia, setAutonomia] = useState<Autonomia>();
   const [servico, setServico] = useState<servico[]>([]);
+
+  useEffect(() => {
+    CarroService.findCarById(params.id)
+      .then((response: any) => {
+        setCarros(response)
+      }), (error: any) => {
+        console.log(error);
+      }
+  }, []);
 
   useEffect(() => {
     CarroService.findCarById(params.id)
@@ -143,6 +151,7 @@ function VisualizarVeiculo({ navigation }: any) {
       <Text>Erro</Text>
     );
   }
+  console.log(!servico)
 
   return (
     <ScrollView>
@@ -194,7 +203,7 @@ function VisualizarVeiculo({ navigation }: any) {
                 <Feather name="chevron-right" size={24} color="#F0EFF4" />
               </View>
             </RectButton>
-            {!servico
+            {servico.length == 0 
               ?
               <View style={styles.noInfo}>
                 <Feather name="alert-circle" size={25} color="#eca400" />
@@ -202,6 +211,7 @@ function VisualizarVeiculo({ navigation }: any) {
               </View>
               :
               servico.map(servico => {
+                console.log("servico id = "+servico.id)
                 return (
                   <View key={servico.id} style={styles.servicos}>
                     <RectButton style={styles.buttonServico} onPress={() => handleNavigateToVisualizarServicos(servico.id)}>

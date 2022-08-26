@@ -19,6 +19,30 @@ static addservico(nome: string, local: string, quilometragem: number, data: stri
         }))
     }
 
+    static findAllCarService() {
+        return new Promise((resolve, reject) => db.transaction(tx => {
+            tx.executeSql(`select * from ${table}`, [], (_, { rows }) => {
+                resolve(rows)
+            }), (sqlError: any) => {
+                console.log(sqlError);
+            }
+        }, (txError) => {
+            console.log(txError);
+        }))
+    }
+
+    static findCarService() {
+        return new Promise((resolve, reject) => db.transaction(tx => {
+            tx.executeSql(`select * from ${table}`, [], (_, { rows }) => {
+                resolve(rows)
+            }), (sqlError: any) => {
+                console.log(sqlError);
+            }
+        }, (txError) => {
+            console.log(txError);
+        }))
+    }
+
     static findAll() {
         return new Promise((resolve, reject) => db.transaction(tx => {
             tx.executeSql(`select * from ${table}`, [], (_, { rows }) => {

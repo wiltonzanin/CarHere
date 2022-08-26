@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { RectButton } from "react-native-gesture-handler";
 import { Text, View, ScrollView } from "react-native";
+import NetInfo from "@react-native-community/netinfo";
 
 import styles from "./styles";
 import TextField from "../../components/textField";
@@ -8,9 +9,14 @@ import BackScreen from "../../components/backScreen";
 import { SuccessModal, FeedbackModal, ErrorModal } from "../../components/feedbackModal";
 import { Button } from "../../components/buttons";
 import { CheckBox } from 'react-native-elements';
-import UsuarioService from '../../database/services/usuarioService'
+
+import { getAuth, createUserWithEmailAndPassword, sendEmailVerification, updateProfile} from "firebase/auth";
+import { FirebaseInit } from '../../database/dbInit';
 
 import LoadingScreen from "../../components/loadingScreen";
+
+FirebaseInit();
+const auth = getAuth();
 
 function CadastroUsuario({ navigation }: any) {
   const [nome, setNome] = useState("");
@@ -29,102 +35,121 @@ function CadastroUsuario({ navigation }: any) {
   const [senhavalmsg, setvalSenhas] = useState("")
   const [senhacheck, setSenhaCheck] = useState(false)
 
-  const [emailQuery, setEmailQuery] = useState([])
-
   const [carregando, setCarregando] = useState(false);
 
-  useEffect(() => {
-    let isApiSubscribed = true;
-    UsuarioService.checkemail(email)
-      .then((response: any) => {
-        setEmailQuery(response._array);
-      }).catch(() => {
-      })
-      return function cleanup() {
-        isApiSubscribed = false;
-    }
-  });
+  function StatusNet() {
+    var teste
+    NetInfo.addEventListener(state => {
+      teste = state.isConnected;
+    });
+    return teste
+  } 
+  
+  function handleCreateUsuario() {
 
-function handleCreateUsuario() {
- // Validação Nome
- if (!nome === false){
-  setValnome("")
-  setnomeCheck(true)
-}
-else{
-  setValnome("Nome é nescessario!")
-}
-// Validação E-mail
-if(!email === true){
-  setValEmail("E-mail é nescessario!")
-}
-else {
-  if(validateEmail(email) === false){
-    setValEmail("E-mail está incorreto")
-  }
-  else {
-    if(emailQuery.length > 0){
-      setValEmail("E-mail ja cadastrado !")
+    //Valicação conexão internet
+    if (StatusNet() === false){
+      setModalMensage("Necessario estar conectado a internet para continuar!");
+      setModalWarning(true);
     }
-    else{
-    setValEmail("")
-    setEmailCheck(true)
-    }
-    
-  }
-}
-if((!senha) === false && (!senhaconf) === false){
-  if(senha.length >= 6){
-    if(senha === senhaconf){
-      setvalSenhas("")
-      setSenhaCheck(true)
+    // Validação Nome
+    if (!nome === false) {
+      setValnome("")
+      setnomeCheck(true)
     }
     else {
-      setvalSenhas("Senhas não coincidem!")
+      setValnome("Nome é nescessario!")
+    }
+    // Validação E-mail
+    if (!email === true) {
+      setValEmail("E-mail é nescessario!")
+    }
+    else {
+      if (validateEmail(email) === false) {
+        setValEmail("E-mail está incorreto")
+      }
+      else {
+        setValEmail("")
+        setEmailCheck(true)
+      }
+    }
+    if ((!senha) === false && (!senhaconf) === false) {
+      if (senha.length >= 6) {
+        if (senha === senhaconf) {
+          setvalSenhas("")
+          setSenhaCheck(true)
+        }
+        else {
+          setvalSenhas("Senhas não coincidem!")
+        }
+      }
+      else {
+        setvalSenhas("A senha tem que ter mais de 6 caracteres!")
+      }
+    }
+    else {
+      setvalSenhas("Senha é nescessario");
+    }
+
+    // Validação Geral // Checkbox
+    if (isSelected === false) {
+      setModalMensage("Nescessario aceitar os termos e condições !");
+      setModalWarning(true);
+    }
+    else {
+      if (nomecheck === true && emailcheck === true && senhacheck === true) {
+        createUserWithEmailAndPassword(auth, email, senha)
+          .then((userCredential) => {
+            const user = userCredential.user;
+            sendEmailVerification(userCredential.user)
+            .then(() => {
+              alert("email enviado")
+                // Email verification sent!
+                // ...
+            });
+            updateProfile(userCredential.user, {
+                displayName: nome
+              }).then(() => {
+
+                console.log("Nome: " + user.displayName);
+                console.log("email: " + user.email);
+
+              }).catch((error) => {
+                // An error occurred
+                // ...
+              });
+            
+            setModalMensage("Usuario cadastrado com sucesso!");
+            setModalVisible(true);
+          })
+          .catch((error) => {
+            setModalMensage("E-mail ja cadastrado !");
+            setModalWarning(true);
+          });
+      }
     }
   }
-  else{
-    setvalSenhas("A senha tem que ter mais de 6 caracteres!")
+
+  function validateEmail(emailval: string) {
+    var re = /\S+@\S+\.\S+/;
+    return re.test(emailval);
   }
-}
-else{
-  setvalSenhas("Senha é nescessario");
-}
 
-// Validação Geral // Checkbox
-if (isSelected === false){
-  setModalMensage("Nescessario aceitar os termos e condições !");
-  setModalWarning(true)
-}
-else{
-  if (nomecheck === true && emailcheck === true && senhacheck === true ){
-    UsuarioService.addUser(nome, email, senha);
-    setModalMensage("Usuario cadastrado com sucesso!");
-    setModalVisible(true);
+
+  function handleNavigateToTermos() {
+    navigation.navigate("Termos");
   }
-}
-}
 
-function validateEmail(emailval: string) {
-var re = /\S+@\S+\.\S+/;
-return re.test(emailval);
-}
+  function handleNavigateToIncial() {
+    setModalVisible(!modalVisible);
+    setCarregando(false);
+    navigation.navigate("Inicial");
+  }
 
-
-function handleNavigateToTermos() {
-  navigation.navigate("Termos");
-}
-
-function handleNavigateToIncial() {
-  setModalVisible(!modalVisible);
-  setCarregando(false);
-  navigation.navigate("Inicial");
-}
-
-function closeModal() {
-  setModalWarning(false);
-  setCarregando(false);
-}
+  function closeModal() {
+    setModalWarning(false);
+    setCarregando(false);
+  }
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
@@ -133,7 +158,7 @@ function closeModal() {
         modalVisible={modalVisible}
         funcaoOnRequestClose={handleNavigateToIncial}
         mensage={modalMensage} />
-        <FeedbackModal
+      <FeedbackModal
         modalVisible={modalWarning}
         funcaoOnRequestClose={closeModal}
         mensage={modalMensage} />

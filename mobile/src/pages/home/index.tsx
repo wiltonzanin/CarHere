@@ -24,6 +24,17 @@ import { ButtonAdicionar } from '../../components/buttons';
 import Subscription from '../home/subscription'
 import { RectButton } from "react-native-gesture-handler";
 import {darkTheme} from '../../Styles/colors'
+import { FirebaseInit } from '../../database/dbInit';
+import { getAuth } from "firebase/auth";
+
+FirebaseInit();
+
+const auth = getAuth();
+const user = auth.currentUser;
+console.log("======================")
+console.log(user?.email);
+console.log(user?.displayName);
+console.log(user?.uid);
 
 interface Carros {
   id_carro: number;

@@ -68,7 +68,8 @@ function VisualizarServicos({ navigation }: any) {
 
   function handleDeleteVehicle() {
     setModalDecisionVisible(!modalDecisionVisible);
-    navigation.navigate("Servico");
+    ServicoService.delsrv(del)
+    navigation.navigate("Servico");  
   }
 
   //Adicionar tratamento
