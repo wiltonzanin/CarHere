@@ -1,28 +1,43 @@
 import React, { useState } from 'react';
 import { RectButton } from 'react-native-gesture-handler';
-import { useNavigation } from '@react-navigation/native';
 import { Text, View, ScrollView } from 'react-native';
 import { Svg, Path } from 'react-native-svg';
 import styles from './styles';
 import TextField from '../../components/textField';
 import { Button } from '../../components/buttons';
 import { useAuth } from '../../contexts/auth';
-import UsuarioService from '../../database/services/usuarioService';
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { FeedbackModal } from "../../components/feedbackModal";
+import LoadingScreen from "../../components/loadingScreen";
 
-function Inicial({navigation}: any) {
+const auth = getAuth();
+
+function Inicial({ navigation }: any) {
 
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
+    const [modalMensage, setModalMensage] = useState("");
+    const [modalWarning, setModalWarning] = useState(false);
+    const [carregando, setCarregando] = useState(false);
 
-    const { signed, user, signIn } = useAuth();
-
+    const { signIn } = useAuth();
 
     function handleSignIn() {
-    //UsuarioService.checkemail(email); //Exemplo, falta melhorias nos métodos
-        
-
-        console.log(email + senha)
-        signIn();
+        signInWithEmailAndPassword(auth, email, senha)
+            .then(() => {
+                signIn();
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                if (errorCode == "auth/too-many-requests") {
+                    setModalMensage("Usuario bloqueado temporariamente devido a varias tentativas de login. Tente novamente mais tarde!");
+                    setModalWarning(true);
+                }
+                else {
+                    setModalMensage("E-mail ou Senha incorretos");
+                    setModalWarning(true);
+                }
+            });
     }
 
     function handleNavigateToCadastroUsarioPage() {
@@ -30,12 +45,23 @@ function Inicial({navigation}: any) {
     }
 
     function handleNavigateToAlterarSenhaPage() {
-        navigation.navigate('AlterarSenha');
+
+        navigation.navigate('RecuperarSenha');
+
     }
 
+    function closeModal() {
+        setModalWarning(false);
+        setCarregando(false);
+    }
 
     return (
         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+            <LoadingScreen carregando={carregando} />
+            <FeedbackModal
+                modalVisible={modalWarning}
+                funcaoOnRequestClose={closeModal}
+                mensage={modalMensage} />
             <View style={styles.container}>
                 <View style={styles.header}>
                     <View style={styles.textHeaderAlign}>
@@ -53,15 +79,15 @@ function Inicial({navigation}: any) {
                 </View>
                 <View style={styles.content}>
                     <View>
-                        <TextField 
-                        labelName="E-mail" 
-                        tipoTeclado={"email-address"} 
-                        onChangeText={setEmail}
+                        <TextField
+                            labelName="E-mail"
+                            tipoTeclado={"email-address"}
+                            onChangeText={setEmail}
                         />
-                        <TextField 
-                        labelName="Senha" 
-                        onChangeText={setSenha} 
-                        secureTextEntry={true} 
+                        <TextField
+                            labelName="Senha"
+                            onChangeText={setSenha}
+                            secureTextEntry={true}
                         />
                         <RectButton onPress={handleNavigateToAlterarSenhaPage} style={styles.forgotPasswordTextButton} rippleColor='#1C00ff00'>
                             <Text style={styles.forgotPassword}>Esqueceu a senha?</Text>

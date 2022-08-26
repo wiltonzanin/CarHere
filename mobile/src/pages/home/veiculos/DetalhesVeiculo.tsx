@@ -69,6 +69,15 @@ function VisualizarVeiculo({ navigation }: any) {
   }, []);
 
   useEffect(() => {
+    CarroService.findCarById(params.id)
+      .then((response: any) => {
+        setCarros(response)
+      }), (error: any) => {
+        console.log(error);
+      }
+  }, []);
+
+  useEffect(() => {
     ImagensCarroService.findAll(params.id)
       .then((response: any) => {
         setImgCarro(response._array)
@@ -147,6 +156,7 @@ function VisualizarVeiculo({ navigation }: any) {
       <Text>Erro</Text>
     );
   }
+  console.log(!servico)
 
   return (
     <ScrollView>
@@ -198,7 +208,7 @@ function VisualizarVeiculo({ navigation }: any) {
                 <Feather name="chevron-right" size={24} color="#F0EFF4" />
               </View>
             </RectButton>
-            {!servico
+            {servico.length == 0 
               ?
               <View style={styles.noInfo}>
                 <Feather name="alert-circle" size={25} color="#eca400" />
@@ -206,6 +216,7 @@ function VisualizarVeiculo({ navigation }: any) {
               </View>
               :
               servico.map(servico => {
+                console.log("servico id = "+servico.id)
                 return (
                   <View key={servico.id} style={styles.servicos}>
                     <RectButton style={styles.buttonServico} onPress={() => handleNavigateToVisualizarServicos(servico.id)}>
