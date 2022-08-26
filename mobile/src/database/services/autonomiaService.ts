@@ -1,7 +1,6 @@
 import { dbConnection } from '../dbConnection'
 
 const table = "autonomias";
-const carroTable = "carros";
 const db = dbConnection.getConnection();
 
 export default class AutonomiaService {
@@ -35,6 +34,20 @@ export default class AutonomiaService {
         }))
     }
 
+    static findAutonomiaById(id: number) {
+        return new Promise((resolve, reject) => db.transaction(tx => {
+            tx.executeSql(`select * from ${table}
+            where id_autonomia = ?`,
+                [id], (_, { rows }) => {
+                    resolve(rows.item(0));
+                }), (sqlError: any) => {
+                    console.log(sqlError);
+                }
+        }, (txError) => {
+            console.log(txError);
+        }))
+    }
+
     static findLastOne(id: number) { //Adicionar id_usuario
 
         return new Promise((resolve, reject) => db.transaction(tx => {
@@ -44,6 +57,21 @@ export default class AutonomiaService {
             limit 1`,
                 [id], (_, { rows }) => {
                     resolve(rows.item(0));
+                }), (sqlError: any) => {
+                    console.log(sqlError);
+                }
+        }, (txError) => {
+            console.log(txError);
+        }))
+    }
+
+    static deleteAutonomiaById(id_autonomia: number) {
+        return new Promise((resolve, reject) => db.transaction(tx => {
+            tx.executeSql(
+                `delete from ${table}
+                where id_autonomia = ?`
+                , [id_autonomia], (_, { rowsAffected }) => {
+                    resolve(rowsAffected)
                 }), (sqlError: any) => {
                     console.log(sqlError);
                 }

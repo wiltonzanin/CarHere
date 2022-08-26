@@ -195,6 +195,7 @@ function MyDrawer() {
       <Drawer.Screen
         name="Autonomia"
         component={Autonomia}
+        initialParams={{ id_autonomia: 0 }}
         options={{
           unmountOnBlur: true,
           drawerIcon: ({ focused, size }) => (

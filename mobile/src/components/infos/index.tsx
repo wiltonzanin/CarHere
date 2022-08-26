@@ -32,6 +32,16 @@ interface InfoPropsService {
   descricao: string;
 }
 
+interface IAutonomia {
+  km_inicial: number;
+  km_final: number;
+  tipo_combustivel: string;
+  litros_abastecidos: number;
+  percurso: string;
+  data_criacao: string;
+  media_consumo: number;
+}
+
 interface Servicos {
   nome: string;
   data: string;
@@ -112,6 +122,36 @@ export function InfosService({
         <Text style={styles.textInfoCampo}>{ValorServico}</Text>
         <Text style={styles.textInfoService}>Descrição</Text>
         <Text style={styles.textInfoCampo}>{descricao}</Text>
+      </View>
+    </View>
+  );
+}
+
+export function InfosAutonomia({
+  km_inicial,
+  km_final,
+  tipo_combustivel,
+  litros_abastecidos,
+  percurso,
+  data_criacao,
+  media_consumo,
+  ...rest
+}: IAutonomia){
+  return (
+    <View style={styles.infos}>
+      <View>
+        <Text style={styles.textInfoService}>Quilometragem incial</Text>
+        <Text style={styles.textInfoCampo}>{km_inicial} Km</Text>
+        <Text style={styles.textInfoService}>Quilometragem final</Text>
+        <Text style={styles.textInfoCampo}>{km_final} Km</Text>
+        <Text style={styles.textInfoService}>Tipo de combustivel</Text>
+        <Text style={styles.textInfoCampo}>{tipo_combustivel}</Text>
+        <Text style={styles.textInfoService}>Percurso</Text>
+        <Text style={styles.textInfoCampo}>{percurso}</Text>
+        <Text style={styles.textInfoService}>Data</Text>
+        <Text style={styles.textInfoCampo}>{data_criacao}</Text>
+        <Text style={styles.textInfoService}>Media de consumo</Text>
+        <Text style={styles.textInfoCampo}>{media_consumo} Km/h</Text>
       </View>
     </View>
   );

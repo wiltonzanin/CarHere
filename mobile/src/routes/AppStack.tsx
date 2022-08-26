@@ -8,6 +8,8 @@ import AlterarSenha from '../pages/home/configuracoes/alterarSenha/confirmarEmai
 import VeiculosCadastrados from '../pages/home/veiculos/veiculos';
 import VisualizarVeiculo from '../pages/home/veiculos/DetalhesVeiculo';
 import Autonomia from '../pages/home/autonomia/cadastro';
+import ListaAutonomia from '../pages/home/autonomia/listaAutonomia/ListaAutonomia';
+import AutonomiaDetails from '../pages/home/autonomia/listaAutonomia/autonomiaDetails';
 import UnidadeMedida from '../pages/home/configuracoes/unidadeMedida';
 import Servico from '../pages/home/servicos/';
 import CadastroServicos from '../pages/home/servicos/cadastro';
@@ -60,7 +62,9 @@ function AppStack() {
         <Screen name="AlterarSenha" component={AlterarSenha} />
         <Screen name="VeiculosCadastrados" component={VeiculosCadastrados} />
         <Screen name="VisualizarVeiculo" component={VisualizarVeiculo} />
-        <Screen name="Autonomia" component={Autonomia} />
+        <Screen name="Autonomia" component={Autonomia} initialParams={{ id_autonomia: 0 }} />
+        <Screen name="ListaAutonomia" component={ListaAutonomia} />
+        <Screen name="AutonomiaDetails" component={AutonomiaDetails} />
         <Screen name="UnidadeMedida" component={UnidadeMedida} />
         <Screen name="Servico" component={Servico} />
         <Screen name="CadastroServicos" component={CadastroServicos} />
