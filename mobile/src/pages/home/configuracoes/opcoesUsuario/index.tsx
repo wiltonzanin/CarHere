@@ -10,8 +10,9 @@ import { Feather } from "@expo/vector-icons";
 import BackScreen from "../../../../components/backScreen";
 import { useAuth } from '../../../../contexts/auth';
 
-//import { FirebaseInit } from '../../database/dbInit';
+//import { FirebaseInit } from '../../../../database/dbInit';
 import { getAuth } from "firebase/auth";
+
 
 const auth = getAuth();
 const user = auth.currentUser;

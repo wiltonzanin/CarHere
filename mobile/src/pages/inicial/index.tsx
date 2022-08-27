@@ -9,7 +9,9 @@ import { useAuth } from '../../contexts/auth';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { FeedbackModal } from "../../components/feedbackModal";
 import LoadingScreen from "../../components/loadingScreen";
+import { FirebaseInit } from "../../database/dbInit";
 
+FirebaseInit();
 const auth = getAuth();
 
 function Inicial({ navigation }: any) {
