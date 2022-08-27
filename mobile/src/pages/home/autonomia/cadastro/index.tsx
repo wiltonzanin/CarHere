@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, ScrollView, Image, TouchableOpacity } from "react-native";
-import { DrawerActions, useRoute } from "@react-navigation/native";
+import { useRoute } from "@react-navigation/native";
 import styles from "./styles";
-import { Feather } from "@expo/vector-icons";
 import DropDownPicker from "react-native-dropdown-picker";
 
 import BackScreen from "../../../../components/backScreen";
@@ -10,10 +9,22 @@ import TextField from "../../../../components/textField";
 import LoadingScreen from "../../../../components/loadingScreen";
 import { Button } from "../../../../components/buttons";
 import { SuccessModal, FeedbackModal } from "../../../../components/feedbackModal";
-import api from "../../../../services/api";
 import { darkTheme } from '../../../../Styles/colors';
 import CarroService from "../../../../database/services/carroService";
 import AutonomiaService from "../../../../database/services/autonomiaService";
+
+interface AutonomiaRouteParams {
+    id_autonomia: number;
+};
+
+interface IAutonomia {
+    km_inicial: number;
+    km_final: number;
+    tipo_combustivel: string;
+    litros_abastecidos: number;
+    percurso: string;
+    media_consumo: number;
+}
 
 interface Carros {
     id_carro: number;
@@ -22,10 +33,15 @@ interface Carros {
 
 function Autonomia({ navigation }: any) {
 
+    const route = useRoute();
+    const params = route.params as AutonomiaRouteParams;
+
     const [carregando, setCarregando] = useState(false);
     const [modalVisible, setModalVisible] = useState(false);
     const [modalWarning, setModalWarning] = useState(false);
     const [modalMensage, setModalMensage] = useState("");
+
+    const [autonomia, setAutonomia] = useState<IAutonomia>();
 
     const [carros, setCarros] = useState<Carros[]>([]);
     const [carro, setCarro] = useState("");
@@ -34,58 +50,42 @@ function Autonomia({ navigation }: any) {
     const [litrosAbastecidos, setLitrosAbastecidos] = useState("");
     const [combustivel, setCombustivel] = useState("");
     const [percurso, setPercurso] = useState("");
-
-    const kmRodados = Number(kmFinal) - Number(kmInicial);
     var mediaConsumo = 0;
-    if (kmRodados > 0 && Number(litrosAbastecidos) > 0) {
-        mediaConsumo = kmRodados / Number(litrosAbastecidos);
-        mediaConsumo = Number(mediaConsumo.toFixed(2))
-    }
 
     useEffect(() => {
         CarroService.findAll()
             .then((response: any) => {
                 setCarros(response._array);
-                //console.log()
             }), (error: any) => {
                 console.log(error);
             }
     }, []);
 
+    useEffect(() => {
+        if (params.id_autonomia !== 0) {
+            AutonomiaService.findAutonomiaById(params.id_autonomia)
+                .then((response: any) => {
+                    response as IAutonomia
+                    setkmInicial(response.km_inicial)
+                    setkmFinal(response.km_final)
+                    setLitrosAbastecidos(response.litros_abastecidos)
+                })
+        }
+    }, []);
+
+    if (autonomia !== undefined) {
+        console.log(autonomia.media_consumo)
+        mediaConsumo = autonomia.media_consumo;
+    }
+    const kmRodados = Number(kmFinal) - Number(kmInicial);
+    if (kmRodados > 0 && Number(litrosAbastecidos) > 0) {
+        mediaConsumo = kmRodados / Number(litrosAbastecidos);
+        mediaConsumo = Number(mediaConsumo.toFixed(2))
+    }
+
     function handleCreateAutonomia() {
         AutonomiaService.addAutonomia(Number(kmInicial), Number(kmFinal), combustivel, Number(litrosAbastecidos), percurso, mediaConsumo, Number(carro));
     }
-
-    // useEffect(() => {
-    //     api.get('carros/1').then(response => {
-    //         setCarros(response.data);
-    //     })
-    // }, [])
-
-    // async function handleCreateAutonomia() {
-    //     const data = new FormData();
-
-    //     data.append("kmInicial", kmInicial);
-    //     data.append("kmFinal", kmFinal);
-    //     data.append("litroAbastecidos", litrosAbastecidos);
-    //     data.append("tipoCombustivel", combustivel);
-    //     data.append("percurso", percurso);
-    //     data.append("mediaConsumo", mediaConsumo.toString());
-    //     data.append("carro", carro);
-
-    //     try {
-    //         setCarregando(true)
-    //         await api.post("/autonomia", data);
-    //     } catch (error) {
-    //         setCarregando(false);
-    //         setModalMensage("");
-    //         setModalWarning(true);
-    //         return;
-    //     }
-
-    //     setModalMensage("Autonomia do veículo cadastrada com sucesso!");
-    //     setModalVisible(true);
-    // }
 
     function handleNavigateToVeiculos() {
         setModalVisible(!modalVisible);
@@ -99,8 +99,6 @@ function Autonomia({ navigation }: any) {
         setModalWarning(false);
         setCarregando(false);
     }
-
-    //console.log(carros)
 
     return (
         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
@@ -134,15 +132,15 @@ function Autonomia({ navigation }: any) {
                     ></DropDownPicker>
                     <View style={styles.inputGroup}>
                         <View style={styles.inputGroupColumn}>
-                            <TextField labelName="Km incial" onChangeText={setkmInicial} />
+                            <TextField labelName="Km incial" onChangeText={setkmInicial} value={kmInicial.toString()} />
                         </View>
                         <View style={styles.inputGroupSecondColumn}>
-                            <TextField labelName="Km final" onChangeText={setkmFinal} />
+                            <TextField labelName="Km final" onChangeText={setkmFinal} value={kmFinal.toString()} />
                         </View>
                     </View>
                     <View style={styles.inputGroup}>
                         <View style={styles.inputGroupColumn}>
-                            <TextField labelName="Litros abastecidos" onChangeText={setLitrosAbastecidos} />
+                            <TextField labelName="Litros abastecidos" onChangeText={setLitrosAbastecidos} value={litrosAbastecidos.toString()} />
                         </View>
                         <View style={styles.inputGroupSecondColumn}>
                             <Text style={styles.text}>Percurso</Text>

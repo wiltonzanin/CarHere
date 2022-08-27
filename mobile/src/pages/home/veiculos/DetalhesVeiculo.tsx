@@ -8,7 +8,8 @@ import { Feather } from "@expo/vector-icons";
 import BackButton from "../../../components/backScreen";
 import { Infos } from "../../../components/infos";
 import { DecisionModal } from "../../../components/feedbackModal";
-import { ButtonAdicionar, ButtonDeletar } from '../../../components/buttons';
+import { ButtonDeletar } from '../../../components/buttons';
+import api from "../../../services/api";
 import CarroService from "../../../database/services/carroService";
 import ImagensCarroService from "../../../database/services/imagensCarroService";
 import AutonomiaService from "../../../database/services/autonomiaService";
@@ -121,6 +122,10 @@ function VisualizarVeiculo({ navigation }: any) {
     navigation.navigate("Servico");
   }
 
+  function handleListaAutonomia() {
+    navigation.navigate("ListaAutonomia");
+  }
+
   async function deteleVeiculo() {
     setModalDecisionVisible(true);
     await CarroService.deleteCarById(params.id)
@@ -227,10 +232,10 @@ function VisualizarVeiculo({ navigation }: any) {
             }
           </View>
           <View style={styles.cardStyle}>
-            <View style={styles.cardHeader}>
+            <TouchableOpacity style={styles.cardHeader} onPress={!autonomia ? () => { } : handleListaAutonomia}>
               <Text style={styles.cardTitle}>Autonomia</Text>
               <Feather name="chevron-right" size={24} color="#F0EFF4" />
-            </View>
+            </TouchableOpacity>
             {!autonomia
               ?
               <View style={styles.noInfo}>
