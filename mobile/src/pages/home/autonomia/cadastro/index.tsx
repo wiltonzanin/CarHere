@@ -24,6 +24,7 @@ interface IAutonomia {
     litros_abastecidos: number;
     percurso: string;
     media_consumo: number;
+    id_carro: number;
 }
 
 interface Carros {
@@ -43,6 +44,7 @@ function Autonomia({ navigation }: any) {
 
     const [autonomia, setAutonomia] = useState<IAutonomia>();
 
+    const [carroId, setCarroId] = useState(0);
     const [carros, setCarros] = useState<Carros[]>([]);
     const [carro, setCarro] = useState("");
     const [kmInicial, setkmInicial] = useState("");
@@ -66,9 +68,13 @@ function Autonomia({ navigation }: any) {
             AutonomiaService.findAutonomiaById(params.id_autonomia)
                 .then((response: any) => {
                     response as IAutonomia
-                    setkmInicial(response.km_inicial)
-                    setkmFinal(response.km_final)
-                    setLitrosAbastecidos(response.litros_abastecidos)
+                    setkmInicial(response.km_inicial);
+                    setkmFinal(response.km_final);
+                    setLitrosAbastecidos(response.litros_abastecidos);
+                    setPercurso(response.percurso);
+                    setCombustivel(response.tipo_combustivel);
+                    setCarroId(response.id_carro);
+                    console.log("ID carro: ", response.id_carro)
                 })
         }
     }, []);
@@ -84,7 +90,25 @@ function Autonomia({ navigation }: any) {
     }
 
     function handleCreateAutonomia() {
-        AutonomiaService.addAutonomia(Number(kmInicial), Number(kmFinal), combustivel, Number(litrosAbastecidos), percurso, mediaConsumo, Number(carro));
+        try {
+            AutonomiaService.addAutonomia(Number(kmInicial), Number(kmFinal), combustivel, Number(litrosAbastecidos), percurso, mediaConsumo, Number(carro));
+            setModalMensage("Autonomia cadastrada com sucesso!");
+            setModalVisible(true);
+        } catch (error) {
+            setModalMensage("Ops, tivemos um problema!");
+            setModalWarning(true);
+        }
+    }
+
+    function handleEditAutonomia() {
+        try {
+            AutonomiaService.editAutonomia(Number(kmInicial), Number(kmFinal), combustivel, Number(litrosAbastecidos), percurso, mediaConsumo, params.id_autonomia);
+            setModalMensage("Autonomia autualizada com sucesso!");
+            setModalVisible(true);
+        } catch (error) {
+            setModalMensage("Ops, tivemos um problema!");
+            setModalWarning(true);
+        }
     }
 
     function handleNavigateToVeiculos() {
@@ -92,6 +116,14 @@ function Autonomia({ navigation }: any) {
         setCarregando(false);
         if (modalWarning == false) {
             navigation.navigate("VeiculosCadastrados");
+        }
+    }
+
+    function handleNavigateToAutonomia() {
+        setModalVisible(!modalVisible);
+        setCarregando(false);
+        if (modalWarning == false) {
+            navigation.navigate("ListaAutonomia", { id_carro: carroId });
         }
     }
 
@@ -105,7 +137,7 @@ function Autonomia({ navigation }: any) {
             <LoadingScreen carregando={carregando} />
             <SuccessModal
                 modalVisible={modalVisible}
-                funcaoOnRequestClose={handleNavigateToVeiculos}
+                funcaoOnRequestClose={params.id_autonomia !== 0 ? handleNavigateToAutonomia : handleNavigateToVeiculos}
                 mensage={modalMensage} />
             <FeedbackModal
                 modalVisible={modalWarning}
@@ -118,18 +150,28 @@ function Autonomia({ navigation }: any) {
                     <View />
                 </View>
                 <View>
-                    <Text style={styles.text}>Veículo</Text>
-                    <DropDownPicker
-                        placeholder="Selecione um item"
-                        dropDownStyle={styles.dropdownList}
-                        labelStyle={styles.dropdownText}
-                        arrowColor={darkTheme.grayLight}
-                        items={carros.map(carro => ({ label: carro.modelo, value: carro.id_carro }))}
-                        style={styles.dropdown}
-                        onChangeItem={(item) => {
-                            setCarro(item.value);
-                        }}
-                    ></DropDownPicker>
+                    <View>
+                        {params.id_autonomia !== 0
+                            ?
+                            <View />
+                            :
+                            <View>
+                                <Text style={styles.text}>Veículo</Text>
+                                <DropDownPicker
+                                    placeholder="Selecione um item"
+                                    dropDownStyle={styles.dropdownList}
+                                    labelStyle={styles.dropdownText}
+                                    arrowColor={darkTheme.grayLight}
+                                    items={carros.map(carro => ({ label: carro.modelo, value: carro.id_carro }))}
+                                    style={styles.dropdown}
+                                    onChangeItem={(item) => {
+                                        setCarro(item.value);
+                                    }}
+                                ></DropDownPicker>
+                            </View>
+                        }
+
+                    </View>
                     <View style={styles.inputGroup}>
                         <View style={styles.inputGroupColumn}>
                             <TextField labelName="Km incial" onChangeText={setkmInicial} value={kmInicial.toString()} />
@@ -149,6 +191,7 @@ function Autonomia({ navigation }: any) {
                                 dropDownStyle={styles.dropdownList}
                                 labelStyle={styles.dropdownText}
                                 arrowColor={darkTheme.grayLight}
+                                defaultValue={percurso}
                                 items={[
                                     { label: "Rodoviário", value: "Rodoviário" },
                                     { label: "Urbano", value: "Urbano" },
@@ -165,6 +208,7 @@ function Autonomia({ navigation }: any) {
                         dropDownStyle={styles.dropdownList}
                         labelStyle={styles.dropdownText}
                         arrowColor={darkTheme.grayLight}
+                        defaultValue={combustivel}
                         items={[
                             { label: "Gasolina", value: "Gasolina" },
                             { label: "Alcool", value: "Alcool" },
@@ -178,7 +222,13 @@ function Autonomia({ navigation }: any) {
                         <Text style={styles.textResultado}>{mediaConsumo} Km/L</Text>
                     </View>
                 </View>
-                <Button title="Salvar" onPress={handleCreateAutonomia} />
+                {params.id_autonomia !== 0
+                    ?
+                    <Button title="Atualizar" onPress={handleEditAutonomia} />
+                    :
+                    <Button title="Salvar" onPress={handleCreateAutonomia} />
+                }
+
             </View>
         </ScrollView >
     );

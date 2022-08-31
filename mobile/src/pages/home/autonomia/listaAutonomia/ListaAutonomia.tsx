@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, ScrollView } from "react-native";
+import { useRoute } from "@react-navigation/native";
 import { RectButton } from "react-native-gesture-handler";
 import { Feather } from "@expo/vector-icons";
 
@@ -7,6 +8,10 @@ import styles from "./styles";
 import { darkTheme } from '../../../../Styles/colors';
 import BackButton from "../../../../components/backScreen";
 import AutonomiaService from "../../../../database/services/autonomiaService";
+
+interface AutonomiaRouteParams {
+  id_carro: number;
+};
 
 interface IAutonomia {
   id_autonomia: number;
@@ -17,12 +22,15 @@ interface IAutonomia {
 
 function ListaAutonomia({ navigation }: any) {
 
+  const route = useRoute();
+  const params = route.params as AutonomiaRouteParams;
+
   //Criar lógica para caso o usuário exclua todas as autonomias
   const [autonomia, setAutonomia] = useState<IAutonomia[]>([]);
 
   useEffect(() => {
     let isMounted = true;
-    AutonomiaService.findAll()
+    AutonomiaService.findAllByIdCarro(params.id_carro)
       .then((response: any) => {
         if (isMounted) setAutonomia(response._array)
       }), (error: any) => {

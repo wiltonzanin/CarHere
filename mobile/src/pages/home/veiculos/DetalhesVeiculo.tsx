@@ -123,7 +123,7 @@ function VisualizarVeiculo({ navigation }: any) {
   }
 
   function handleListaAutonomia() {
-    navigation.navigate("ListaAutonomia");
+    navigation.navigate("ListaAutonomia", { id_carro: params.id });
   }
 
   async function deteleVeiculo() {
