@@ -38,16 +38,16 @@ function Veiculos({ navigation }: any) {
     navigation.navigate("CadastroVeiculo");
   }
 
-  useEffect(() => {
-    let isMounted = true;
-    CarroService.findAllWithImage()
-      .then((response: any) => {
-        if (isMounted) setCarros(response._array)
-      }), (error: any) => {
-        console.log(error);
-      }
-    return () => { isMounted = false };
-  });
+  React.useEffect(() => {
+    navigation.addListener('focus', () => {
+      CarroService.findAllWithImage()
+        .then((response: any) => {
+          setCarros(response._array)
+        }), (error: any) => {
+          console.log(error);
+        }
+    });
+  }, [navigation]);
 
   // useEffect(() => {
   //   setCarregando(true);
