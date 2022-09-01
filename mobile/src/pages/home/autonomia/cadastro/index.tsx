@@ -65,6 +65,7 @@ function Autonomia({ navigation }: any) {
 
     useEffect(() => {
         if (params.id_autonomia !== 0) {
+            setCarregando(true)
             AutonomiaService.findAutonomiaById(params.id_autonomia)
                 .then((response: any) => {
                     response as IAutonomia
@@ -74,15 +75,15 @@ function Autonomia({ navigation }: any) {
                     setPercurso(response.percurso);
                     setCombustivel(response.tipo_combustivel);
                     setCarroId(response.id_carro);
-                    console.log("ID carro: ", response.id_carro)
+                    setCarregando(false)
                 })
         }
     }, []);
 
     if (autonomia !== undefined) {
-        console.log(autonomia.media_consumo)
         mediaConsumo = autonomia.media_consumo;
     }
+
     const kmRodados = Number(kmFinal) - Number(kmInicial);
     if (kmRodados > 0 && Number(litrosAbastecidos) > 0) {
         mediaConsumo = kmRodados / Number(litrosAbastecidos);

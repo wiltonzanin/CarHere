@@ -98,15 +98,18 @@ function VisualizarVeiculo({ navigation }: any) {
   //     .then((response) => setAutonomia(response.data));
   // }, [params.id]);
 
-  useEffect(() => {
-    AutonomiaService.findLastOne(params.id)
-      .then((response: any) => {
-        setAutonomia(response);
-        console.log(response);
-      }), (error: any) => {
-        console.log(error);
-      }
-  }, []);
+  React.useEffect(() => {
+    navigation.addListener('focus', () => {
+      AutonomiaService.findLastOne(params.id)
+        .then((response: any) => {
+          setAutonomia(response);
+          console.log(response);
+        }), (error: any) => {
+          console.log(error);
+        }
+    });
+
+  }, [navigation]);
 
   // useEffect(() => {
   //   api
@@ -208,7 +211,7 @@ function VisualizarVeiculo({ navigation }: any) {
                 <Feather name="chevron-right" size={24} color="#F0EFF4" />
               </View>
             </RectButton>
-            {servico.length == 0 
+            {servico.length == 0
               ?
               <View style={styles.noInfo}>
                 <Feather name="alert-circle" size={25} color="#eca400" />
@@ -216,7 +219,7 @@ function VisualizarVeiculo({ navigation }: any) {
               </View>
               :
               servico.map(servico => {
-                console.log("servico id = "+servico.id)
+                console.log("servico id = " + servico.id)
                 return (
                   <View key={servico.id} style={styles.servicos}>
                     <RectButton style={styles.buttonServico} onPress={() => handleNavigateToVisualizarServicos(servico.id)}>
