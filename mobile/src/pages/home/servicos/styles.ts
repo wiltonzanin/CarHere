@@ -68,6 +68,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     borderRadius: 5,
+    marginTop: 20
   },
 
   buttonGroupTextServico: {

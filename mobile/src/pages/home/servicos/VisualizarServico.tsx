@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, ScrollView, TouchableOpacity } from "react-native";
-import { DrawerActions, useNavigation, useRoute } from "@react-navigation/native";
+import { useRoute } from "@react-navigation/native";
 import styles from "./stylesDetalhes";
 import { RectButton } from "react-native-gesture-handler";
 import { Feather } from "@expo/vector-icons";
@@ -16,47 +16,45 @@ interface DetalhesServicoRouteParams {
 };
 
 interface Servico {
-  data: string;
-  descricao: string;
-  id_carro: number;
-  veiculo: string;
   id_servicos: number;
-  local: string;
   nome: string;
+  local: string;
   quilometragem: string;
-  status_servico: number;
+  data: string;
   valor_servico: string;
+  descricao: string;
+  status_servico: number;
+  id_carro: number;
 
+  veiculo: string;
   marca: string;
   modelo: string;
   motorizacao: string;
-  ano: number;  
+  ano: number;
 }
 
 function VisualizarServicos({ navigation }: any) {
 
   const route = useRoute();
   const params = route.params as DetalhesServicoRouteParams;
+
   const [isSelected, setIsSelected] = useState(false);
   const [modalDecisionVisible, setModalDecisionVisible] = useState(false);
-  const [servico, setServico] = useState<Servico[]>([]);
+  const [servico, setServico] = useState<Servico>();
   const [status, setStatus] = useState(0);
   const [del, setDel] = useState(0)
 
-  useEffect(() => {
-    servico.map(ServicoExt => {
-      setStatus(ServicoExt.status_servico)
-      setDel(ServicoExt.id_servicos)
-    })
-  });
-
-  useEffect(() => {
-    ServicoService.detailserv(params.id)
-      .then((response: any) => {
-        setServico(response._array);
-      }).catch(() => {
-      })
-    }, []);
+  React.useEffect(() => {
+    navigation.addListener('focus', () => {
+      ServicoService.detailserv(params.id)
+        .then((response: any) => {
+          setServico(response);
+          setStatus(response.status_servico)
+          setDel(response.id_servicos)
+        }).catch(() => {
+        })
+    });
+  }, [navigation]);
 
   function deteleServico() {
     setModalDecisionVisible(true);
@@ -69,7 +67,11 @@ function VisualizarServicos({ navigation }: any) {
   function handleDeleteVehicle() {
     setModalDecisionVisible(!modalDecisionVisible);
     ServicoService.delsrv(del)
-    navigation.navigate("Servico");  
+    navigation.navigate("Servico");
+  }
+
+  function handleEditService(id: number, id_carro: number) {
+    navigation.navigate("CadastroServicos", { id, id_carro });
   }
 
   //Adicionar tratamento
@@ -86,9 +88,8 @@ function VisualizarServicos({ navigation }: any) {
     if (status == 0) {
       return false;
     }
-
   }
-  
+
   return (
     <ScrollView>
       <DecisionModal
@@ -100,27 +101,22 @@ function VisualizarServicos({ navigation }: any) {
         <View style={styles.header}>
           <BackButton />
           <Text style={styles.title}>Informações</Text>
-          <RectButton onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
+          <RectButton onPress={() => handleEditService(params.id, servico.id_carro)}>
             <Feather name="edit" size={25} color="#F0EFF4" />
           </RectButton>
         </View>
         <View>
           <View style={styles.card}>
-            {servico.map(servico => {
-              return (
-                <InfosService
-                  key={servico.id_servicos}
-                  nome={servico.nome || "-----"}
-                  local={servico.local || "-----"}
-                  veiculo={servico.marca + " " + servico.modelo + " " + servico.motorizacao + " " + servico.ano|| "-----"}
-                  quilometragem={servico.quilometragem || "-----"}
-                  datafor={servico.data || "-----"}
-                  ValorServico={"R$ "+servico.valor_servico || "-----"}
-                  descricao={servico.descricao || "-----"}
-                />
-              );
-            })
-            }
+            <InfosService
+              key={servico.id_servicos}
+              nome={servico.nome || "-----"}
+              local={servico.local || "-----"}
+              veiculo={servico.marca + " " + servico.modelo + " " + servico.motorizacao + " " + servico.ano || "-----"}
+              quilometragem={servico.quilometragem || "-----"}
+              datafor={servico.data || "-----"}
+              ValorServico={"R$ " + servico.valor_servico || "-----"}
+              descricao={servico.descricao || "-----"}
+            />
           </View>
           <View style={styles.checkbox}>
             <CheckBox

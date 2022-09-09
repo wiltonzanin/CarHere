@@ -1,21 +1,38 @@
 import React, { useEffect, useState } from "react";
 import { Text, View, ScrollView, TextInput, Platform } from "react-native";
+import DateTimePicker from '@react-native-community/datetimepicker';
 import DropDownPicker from "react-native-dropdown-picker";
+import { useRoute } from "@react-navigation/native";
 import { CheckBox } from 'react-native-elements';
+
 import styles from "./styles";
 import TextField from "../../../../components/textField";
 import BackScreen from "../../../../components/backScreen";
 import { Button } from "../../../../components/buttons";
-import DateTimePicker from '@react-native-community/datetimepicker';
 import LoadingScreen from "../../../../components/loadingScreen";
 import { SuccessModal, FeedbackModal } from "../../../../components/feedbackModal";
-import { color } from "react-native-reanimated";
-import { red100 } from "react-native-paper/lib/typescript/styles/colors";
-import {darkTheme} from "../../../../Styles/colors";
-import fonts from "../../../../Styles/fonts";
+
+import { darkTheme } from "../../../../Styles/colors";
 import ServicoService from "../../../../database/services/ServicoService";
 import CarroService from "../../../../database/services/carroService";
-import { Servico } from "@components/infos";
+import Veiculos from "@pages/home/veiculos/veiculos";
+
+interface EditServicoRouteParams {
+  id: number;
+  id_carro: number;
+};
+
+interface Servico {
+  nome: string;
+  local: string;
+  id_carro: number;
+  veiculo: string;
+  quilometragem: string;
+  data: string;
+  valor_servico: string;
+  descricao: string;
+  status_servico: number;
+}
 
 interface Carros {
   id_carro: number;
@@ -24,7 +41,10 @@ interface Carros {
   ano: number;
 }
 
-function CadastroServicos({navigation} : any) {
+function CadastroServicos({ navigation }: any) {
+
+  const route = useRoute();
+  const params = route.params as EditServicoRouteParams;
 
   const [modalVisible, setModalVisible] = useState(false);
   const [modalWarning, setModalWarning] = useState(false);
@@ -32,25 +52,23 @@ function CadastroServicos({navigation} : any) {
   const [modalMensage, setModalMensage] = useState("");
   const [isSelected, setIsSelected] = useState(false);
   const [carros, setCarros] = useState<Carros[]>([]);
-  const [id_carro, setCarro] = useState("");
-  const [CarFind, setCarFind] = useState<Carros[]>([]);
+  const [id_carro, setIdCarro] = useState('');
   const [name, setName] = useState("")
   const [local, setLocal] = useState("")
   const [ValorServico, setValorServico] = useState("")
   const [Quilometragem, setQuilometragem] = useState("")
   const [descricao, setDescricao] = useState("")
-  var [ServicoStatus, setServicoStatus] = useState("")
+  var ServicoStatus = "";
 
   const [date, setDate] = useState(new Date()); //validação data
   const [show, setShow] = useState(false); //validação datapicker
   const [mode, setMode] = useState('date'); //validação datapicker
-      
+
   const [ValidacaoNome, setValidacaoNome] = useState("")
   const [ValidacaoVeiculo, setValidacaoVeiculo] = useState("")
   const [ValidacaoQuilometragem, setValidacaoQuilometragem] = useState("")
   const [ValidacaoValorServico, setValidacaoValorServico] = useState("")
 
- 
   const onChange = (event: any, selectedDate: any) => {
     const currentDate = selectedDate || date;
     setShow(Platform.OS === 'ios');
@@ -66,30 +84,57 @@ function CadastroServicos({navigation} : any) {
     showMode('date');
   };
 
+  function FormataStringData(data: string) {
+    var dia = data.split("/")[0];
+    var mes = data.split("/")[1];
+    var ano = data.split("/")[2];
+
+    return ("0" + mes).slice(-2) + '/' + ("0" + dia).slice(-2) + '/' + ano;
+  }
+
+  useEffect(() => {
+    if (params.id !== 0) {
+      setCarregando(true);
+      ServicoService.findServiceById(params.id)
+        .then((response: any) => {
+          response as Servico;
+          setName(response.nome);
+          setLocal(response.local);
+          setQuilometragem(response.quilometragem.toString());
+          setValorServico(response.valor_servico.toString());
+          setDescricao(response.descricao);
+          setDate(new Date(FormataStringData(response.data)));
+          setIsSelected(response.status_servico)
+          setCarregando(false);
+        }).catch(() => {
+        })
+    }
+  }, []);
+
   useEffect(() => {
     CarroService.findAll() //User ID
       .then((response: any) => {
         setCarros(response._array);
-        console.log("procurou todos os carros")
+        setIdCarro(params.id_carro.toString())
       }).catch(() => {
       })
   }, []);
 
-var dataformatada = date.getDate().toString().padStart(2, '0') + "/";
-dataformatada += (date.getMonth() + 1).toString().padStart(2, '0') + "/";
-dataformatada += date.getFullYear().toString();
+  var dataformatada = date.getDate().toString().padStart(2, '0') + "/";
+  dataformatada += (date.getMonth() + 1).toString().padStart(2, '0') + "/";
+  dataformatada += date.getFullYear().toString();
 
-  if(isSelected == true){
+  if (isSelected == true) {
     ServicoStatus = "1"
   }
-  else{
+  else {
     ServicoStatus = "0"
   }
 
-function validacao(){
+  function validacao() {
     // Nome
     if (!name) {
-      setValidacaoNome('Nome não informado') 
+      setValidacaoNome('Nome não informado')
     }
     else {
       setValidacaoNome('')
@@ -97,7 +142,7 @@ function validacao(){
 
     // Veiculo
     if (!id_carro) {
-      setValidacaoVeiculo('Veiculo não informado') 
+      setValidacaoVeiculo('Veiculo não informado')
       alert("Insira um veiculo")
     }
     else {
@@ -113,7 +158,7 @@ function validacao(){
     }
 
     // ValorServico
-    if (((!isNaN(parseFloat(ValorServico)) && isFinite(ValorServico)) || !ValorServico ) === false) {
+    if (((!isNaN(parseFloat(ValorServico)) && isFinite(ValorServico)) || !ValorServico) === false) {
       setValidacaoValorServico('Somente numeros!')
     }
     else {
@@ -121,16 +166,14 @@ function validacao(){
     }
 
     //após validação 
-    if(( ((!isNaN(ValorServico)) && isFinite(ValorServico)) === true && !id_carro === false && ((!isNaN(Quilometragem)) && isFinite(Quilometragem)) === true  && !name === false)){
-      CadastrarBanco();
-      console.log("Cadastrou no banco");
+    if ((((!isNaN(ValorServico)) && isFinite(ValorServico)) === true && !id_carro === false && ((!isNaN(Quilometragem)) && isFinite(Quilometragem)) === true && !name === false)) {
+      params.id !== 0 ? handleUpdateServico() : CadastrarBanco();
     }
-}
+  }
 
   function CadastrarBanco() {
     try {
       const dataserv = (dataformatada.toString())
-      const data = new FormData();
       ServicoService.addservico(name, local, Number(Quilometragem), dataserv, Number(ValorServico), descricao, Number(ServicoStatus), Number(id_carro));
       setModalMensage("Serviço cadastrado com sucesso!");
       setModalVisible(true);
@@ -141,10 +184,16 @@ function validacao(){
     }
   }
 
+  function handleUpdateServico() {
+    ServicoService.updateServico(name, local, Number(Quilometragem), dataformatada.toString(), Number(ValorServico), descricao, Number(ServicoStatus), params.id);
+    setModalMensage("Serviço atualizado com sucesso!");
+    setModalVisible(true);
+  }
+
   function handleNavigateToServico() {
     setModalVisible(!modalVisible);
     setCarregando(false);
-    if (modalWarning == false){
+    if (modalWarning == false) {
       navigation.navigate("Servico");
     }
   }
@@ -168,7 +217,16 @@ function validacao(){
       <View style={styles.container}>
         <View style={styles.header}>
           <BackScreen />
-          <Text style={styles.title}>Cadastre o serviço</Text>
+          {params.id !== 0
+            ?
+            <Text style={styles.title}>
+              Atualizar serviço
+            </Text>
+            :
+            <Text style={styles.title}>
+              Cadastrar serviço
+            </Text>
+          }
           <View />
         </View>
         <View>
@@ -176,9 +234,9 @@ function validacao(){
             labelName="Nome *"
             onChangeText={setName}
             value={name}
-            mensagemErro = {ValidacaoNome}
+            mensagemErro={ValidacaoNome}
           />
-          <TextField 
+          <TextField
             labelName="Local que foi realizado o serviço"
             onChangeText={setLocal}
             value={local}
@@ -187,15 +245,15 @@ function validacao(){
             <View style={styles.inputGroupSecondColumn}>
               <Text style={styles.text}>Veículo *</Text>
               <DropDownPicker
-                  dropDownStyle={styles.dropdownList}
-                  labelStyle={styles.dropdownText}
-                  arrowColor={darkTheme.grayLight}
-                  placeholder="Selecionar..."
-                  items={carros.map(carro => ({ label: carro.modelo + " " + carro.motorizacao + " " + carro.ano, value: carro.id_carro }))}
-                  style={styles.dropdown}
-                  onChangeItem={(item) => {
-                      setCarro(item.value);
-              }}>
+                dropDownStyle={styles.dropdownList}
+                labelStyle={styles.dropdownText}
+                arrowColor={darkTheme.grayLight}
+                placeholder="Selecionar..."
+                items={carros.map(carro => ({ label: carro.modelo + " " + carro.motorizacao + " " + carro.ano, value: carro.id_carro }))}
+                style={styles.dropdown}
+                onChangeItem={(item) => {
+                  setIdCarro(item.value);
+                }}>
               </DropDownPicker>
             </View>
             <View style={styles.inputGroupColumn}>
@@ -204,7 +262,7 @@ function validacao(){
                 tipoTeclado={"numeric"}
                 onChangeText={setQuilometragem}
                 value={Quilometragem}
-                mensagemErro = {ValidacaoQuilometragem}
+                mensagemErro={ValidacaoQuilometragem}
               />
             </View>
           </View>
@@ -235,8 +293,8 @@ function validacao(){
                 tipoTeclado={"numeric"}
                 onChangeText={setValorServico}
                 value={ValorServico}
-                mensagemErro = {ValidacaoValorServico}
-                placeholderTextColor = {darkTheme.grayLight}
+                mensagemErro={ValidacaoValorServico}
+                placeholderTextColor={darkTheme.grayLight}
               />
             </View>
           </View>
@@ -249,14 +307,14 @@ function validacao(){
             value={descricao}
             maxLength={255}
           />
-            <View style={styles.checkbox}>
+          <View style={styles.checkbox}>
             <CheckBox
               containerStyle={{ backgroundColor: darkTheme.background, borderColor: darkTheme.background, padding: 0, margin: 0, marginLeft: 0 }}
               checkedIcon='check-square-o'
               checkedColor={darkTheme.button}
               size={25}
               checked={isSelected}
-              onPress={() => setIsSelected(!isSelected)} 
+              onPress={() => setIsSelected(!isSelected)}
             />
             <View style={styles.buttoncheckbox}>
               <Text style={styles.textcheckbox}>Serviço foi realizado</Text>

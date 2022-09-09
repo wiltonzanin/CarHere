@@ -70,7 +70,7 @@ function AppStack() {
         <Screen name="AutonomiaDetails" component={AutonomiaDetails} />
         <Screen name="UnidadeMedida" component={UnidadeMedida} />
         <Screen name="Servico" component={Servico} />
-        <Screen name="CadastroServicos" component={CadastroServicos} />
+        <Screen name="CadastroServicos" component={CadastroServicos} initialParams={{ id: 0 }} />
         <Screen name="VisualizarServicos" component={VisualizarServicos} />
  
         {/* <Screen name="Mapa" component={Mapa} /> */}
