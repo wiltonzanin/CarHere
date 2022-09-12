@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         paddingTop: 20,
+        marginBottom: 20
     },
 
     title: {
@@ -45,7 +46,6 @@ const styles = StyleSheet.create({
     inputGroup: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginTop: 20
     },
 
     inputGroupColumn: {
@@ -60,7 +60,8 @@ const styles = StyleSheet.create({
     dropdown: {
         backgroundColor: darkTheme.textField,
         borderColor: darkTheme.grayMedium,
-        height: 40
+        height: 40,
+        marginBottom: 20
     },
 
     dropdownList: {
