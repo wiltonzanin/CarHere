@@ -84,6 +84,22 @@ export default class ServicoService {
             console.log(txError);
         }))
     }
+    
+    static findLastOne(id: number) {
+        return new Promise((resolve, reject) => db.transaction(tx => {
+            tx.executeSql(`select * from ${table} as s
+            where s.id_carro = ?
+            order by id_servicos desc
+            limit 1`,
+                [id], (_, { rows }) => {
+                    resolve(rows);
+                }), (sqlError: any) => {
+                    console.log(sqlError);
+                }
+        }, (txError) => {
+            console.log(txError);
+        }))
+    }
 
     static detailserv(id: number) {
         return new Promise((resolve, reject) => db.transaction(tx => {
