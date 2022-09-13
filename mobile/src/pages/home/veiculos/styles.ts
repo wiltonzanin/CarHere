@@ -19,9 +19,16 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
 
-  searhButton: {
-    height: 30,
-    width: 30,
+  searchInput: {
+    marginTop: 20,
+    backgroundColor: darkTheme.textField,
+    borderColor: darkTheme.grayMedium,
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderRadius: 4,
+    color: darkTheme.grayLight,
+    fontSize: 16,
+    fontFamily: fonts.text
   },
 
   headerText: {

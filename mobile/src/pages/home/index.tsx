@@ -12,7 +12,6 @@ import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 
 import styles from "./styles";
 import fonts from '../../Styles/fonts';
-import SearchBar from "../../components/searchBar";
 import Configuracoes from "./configuracoes/telaPrincipal";
 import CadastroVeiculo from "../cadastroVeiculo";
 import Veiculos from "./veiculos/veiculos";

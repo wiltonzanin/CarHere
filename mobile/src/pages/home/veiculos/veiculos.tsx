@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { View, Text, Image, ScrollView, BackHandler } from "react-native";
-import { DrawerActions, useFocusEffect, StackActions } from "@react-navigation/native";
+import React, { useState } from "react";
+import { View, Text, Image, ScrollView } from "react-native";
+import { DrawerActions } from "@react-navigation/native";
 import { RectButton } from "react-native-gesture-handler";
 import { Feather } from "@expo/vector-icons";
+import { Searchbar } from 'react-native-paper';
 
 import styles from "./styles";
 import fonts from '../../../Styles/fonts'
 import { darkTheme } from '../../../Styles/colors'
 import LoadingScreen from "../../../components/loadingScreen";
-import SearchBar from "../../../components/searchBar";
 import { ButtonAdicionar } from '../../../components/buttons';
 import { ButtonMenu } from '../../../components/buttons';
-import api from "../../../services/api";
 import CarroService from "../../../database/services/carroService";
 
 interface Carros {
@@ -28,6 +27,8 @@ function Veiculos({ navigation }: any) {
 
   const [carregando, setCarregando] = useState(false);
   const [erroCarregar, setErroCarregar] = useState(false);
+  const [search, setSearch] = useState(false);
+  const [searchWord, setSearchWord] = useState('');
   const [carros, setCarros] = useState<Carros[]>([]);
 
   function handleNavigateToVisualizarVeiculo(id: number) {
@@ -87,10 +88,30 @@ function Veiculos({ navigation }: any) {
           <View style={styles.headerGroup}>
             <ButtonMenu title="" onPress={() => navigation.dispatch(DrawerActions.openDrawer())} />
             <Text style={styles.headerText}>Veículos</Text>
-            <SearchBar></SearchBar>
+            <Feather name="search" size={25} color={darkTheme.grayLight} onPress={() => { setSearch(!search) }} />
           </View>
+          {search ?
+            <View>
+              <Searchbar
+                placeholder="Pesquisar"
+                autoComplete={''}
+                onChangeText={setSearchWord}
+                value={searchWord}
+                placeholderTextColor={darkTheme.grayLight}
+                iconColor={darkTheme.grayLight}
+                inputStyle={{ color: darkTheme.grayLight }}
+                style={styles.searchInput}
+              />
+            </View>
+            :
+            <View />
+          }
         </View>
-        <ButtonAdicionar title="Adicionar veículo" onPress={handleNavigateToCadastroVeiculo} />
+        {search ?
+          <View />
+          :
+          <ButtonAdicionar title="Adicionar veículo" onPress={handleNavigateToCadastroVeiculo} />
+        }
         <View style={styles.content}>
           {erroCarregar
             ?
@@ -106,7 +127,13 @@ function Veiculos({ navigation }: any) {
                 <Text style={{ color: darkTheme.grayLight, fontSize: 20, paddingTop: 20, fontFamily: fonts.text }}>Ops, você não tem carros cadastrados!</Text>
               </View>
               :
-              carros.map(carro => {
+              carros.filter((val) => {
+                if (searchWord == '') {
+                  return val;
+                } else if (val.modelo.toLocaleLowerCase().includes(searchWord.toLocaleLowerCase())) {
+                  return val;
+                }
+              }).map(carro => {
                 return (
                   <View key={carro.id_carro} style={styles.veiculos}>
                     <RectButton style={styles.buttonVeiculo} onPress={() => handleNavigateToVisualizarVeiculo(carro.id_carro)}>

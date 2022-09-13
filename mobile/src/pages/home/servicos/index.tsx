@@ -7,10 +7,10 @@ import { Feather } from "@expo/vector-icons";
 import { ButtonAdicionar } from "../../../components/buttons";
 import { ButtonMenu } from "../../../components/buttons";
 import LoadingScreen from "../../../components/loadingScreen";
-import SearchBar from "../../../components/searchBar";
 import { darkTheme } from '../../../Styles/colors'
 import fonts from '../../../Styles/fonts'
 import ServicoService from "../../../database/services/ServicoService";
+import { Searchbar } from "react-native-paper";
 
 interface servico {
   id_servicos: number;
@@ -27,6 +27,8 @@ function Servicos({ navigation }: any) {
   const [carregando, setCarregando] = useState(false);
   const [erroCarregar, setErroCarregar] = useState(false);
   const [servico, setServico] = useState<servico[]>([]);
+  const [search, setSearch] = useState(false);
+  const [searchWord, setSearchWord] = useState('');
 
   const route = useRoute();
 
@@ -81,10 +83,31 @@ function Servicos({ navigation }: any) {
           <View style={styles.headerGroup}>
             <ButtonMenu title="" onPress={() => navigation.dispatch(DrawerActions.openDrawer())} />
             <Text style={styles.headerText}>Serviços</Text>
-            <SearchBar></SearchBar>
+            <Feather name="search" size={25} color={darkTheme.grayLight} onPress={() => { setSearch(!search) }} />
           </View>
+          {search ?
+            <View>
+              <Searchbar
+                placeholder="Pesquisar"
+                autoComplete={''}
+                onChangeText={setSearchWord}
+                value={searchWord}
+                placeholderTextColor={darkTheme.grayLight}
+                iconColor={darkTheme.grayLight}
+                inputStyle={{ color: darkTheme.grayLight }}
+                style={styles.searchInput}
+              />
+            </View>
+            :
+            <View />
+          }
         </View>
-        <ButtonAdicionar title="Adicionar Serviço" onPress={handleNavigateToCadastrarServicos} />
+        {search
+          ?
+          <View />
+          :
+          <ButtonAdicionar title="Adicionar Serviço" onPress={handleNavigateToCadastrarServicos} />
+        }
         <View style={styles.contentServico}>
           {erroCarregar
             ?
@@ -100,7 +123,13 @@ function Servicos({ navigation }: any) {
                 <Text style={{ color: 'white', fontSize: 20, paddingTop: 20 }}>Ops, você não tem Serviços cadastrados!</Text>
               </View>
               :
-              servico.map(servico => {
+              servico.filter((val) => {
+                if (searchWord == '') {
+                  return val;
+                } else if (val.nome.toLocaleLowerCase().includes(searchWord.toLocaleLowerCase())) {
+                  return val;
+                }
+              }).map(servico => {
                 return (
                   <RectButton key={servico.id_servicos} style={styles.buttonServico} onPress={() => handleNavigateToVisualizarServicos(servico.id_servicos)}>
                     <View style={styles.buttonGroupTextServico}>
