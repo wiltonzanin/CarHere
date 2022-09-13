@@ -50,8 +50,6 @@ function VisualizarVeiculo({ navigation }: any) {
 
   const route = useRoute();
   const params = route.params as DetalhesCarroRouteParams;
-  const [erroCarregar, setErroCarregar] = useState(false);
-  const [carregando, setCarregando] = useState(false);
 
   const [modalDecisionVisible, setModalDecisionVisible] = useState(false);
   const [carros, setCarros] = useState<Carro>();
@@ -82,7 +80,6 @@ function VisualizarVeiculo({ navigation }: any) {
       AutonomiaService.findLastOne(params.id)
         .then((response: any) => {
           setAutonomia(response);
-          console.log(response);
         }), (error: any) => {
           console.log(error);
         }
@@ -95,7 +92,6 @@ function VisualizarVeiculo({ navigation }: any) {
       ServicoService.findLastOne(params.id)
         .then((response: any) => {
           setServicos(response._array);
-          console.log(response);
         }), (error: any) => {
           console.log(error);
         }
@@ -135,7 +131,6 @@ function VisualizarVeiculo({ navigation }: any) {
       <Text>Erro</Text>
     );
   }
-  console.log(!servicos)
 
   return (
     <ScrollView>

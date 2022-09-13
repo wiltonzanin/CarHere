@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, ScrollView, Image, TouchableOpacity } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import { useRoute } from "@react-navigation/native";
 import styles from "./styles";
 import DropDownPicker from "react-native-dropdown-picker";

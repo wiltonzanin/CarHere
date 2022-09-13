@@ -1,7 +1,6 @@
 import { dbConnection } from '../dbConnection'
 
 const table = "imagens_carro";
-const tableCarro = "carros";
 const db = dbConnection.getConnection()
 
 export default class imagensCarroService {

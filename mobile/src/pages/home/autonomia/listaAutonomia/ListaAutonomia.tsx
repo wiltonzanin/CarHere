@@ -28,16 +28,16 @@ function ListaAutonomia({ navigation }: any) {
   //Criar lógica para caso o usuário exclua todas as autonomias
   const [autonomia, setAutonomia] = useState<IAutonomia[]>([]);
 
-  useEffect(() => {
-    let isMounted = true;
-    AutonomiaService.findAllByIdCarro(params.id_carro)
-      .then((response: any) => {
-        if (isMounted) setAutonomia(response._array)
-      }), (error: any) => {
-        console.log(error);
-      }
-    return () => { isMounted = false };
-  });
+  React.useEffect(() => {
+    navigation.addListener('focus', () => {
+      AutonomiaService.findAllByIdCarro(params.id_carro)
+        .then((response: any) => {
+          setAutonomia(response._array);
+        }), (error: any) => {
+          console.log(error);
+        }
+    });
+  }, [navigation]);
 
   function handleToAutonomiaDetails(id_autonomia: number) {
     navigation.navigate("AutonomiaDetails", { id_autonomia });
