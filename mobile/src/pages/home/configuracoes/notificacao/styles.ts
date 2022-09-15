@@ -6,12 +6,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: darkTheme.background,
-    padding: 20,
-    justifyContent: "space-between",
+    padding: 20
   },
 
   header: {
-    paddingTop: 20,
+    paddingVertical: 20,
     flexDirection: "row",
     justifyContent: "space-between",
   },
@@ -20,6 +19,17 @@ const styles = StyleSheet.create({
     color: darkTheme.grayLight,
     fontSize: 20,
     fontFamily: fonts.title
+  },
+
+  optionContainer:{
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center'
+  },
+
+  optionText:{
+    color: darkTheme.grayLight,
+    fontSize: 18,
   }
 });
 
