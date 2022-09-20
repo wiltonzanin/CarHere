@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     paddingTop: 20,
+    marginBottom: 20
   },
 
   title: {
@@ -37,7 +38,6 @@ const styles = StyleSheet.create({
   inputGroup: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginTop: 20,
   },
 
   inputGroupColumn: {
@@ -78,9 +78,6 @@ const styles = StyleSheet.create({
     color: darkTheme.grayLight,
     fontSize: 32,
     alignSelf: "center",
-    borderColor: darkTheme.grayLight,
-    borderWidth: 1,
-    borderStyle: "solid",
     fontFamily: fonts.text,
   },
 });
