@@ -2,13 +2,12 @@ import { dbConnection } from '../dbConnection'
 
 const table = "carros";
 const imageTable = "imagens_carro";
-const db = dbConnection.getConnection();
 
 export default class CarroService {
 
-    static addCarro(modelo: string, marca: string, ano: number, combustivel: string, motorizacao: string, imageUri: String[]) { //Adicionar id_usuario
-
-        return new Promise((resolve, reject) => db.transaction(tx => {
+    static async addCarro(modelo: string, marca: string, ano: number, combustivel: string, motorizacao: string, imageUri: String[]) { //Adicionar id_usuario
+        const db = await dbConnection();
+         new Promise((resolve, reject) => db.transaction(tx => {
             tx.executeSql(`insert into ${table} (modelo, marca, ano, combustivel, motorizacao, id_usuario) values (?, ?, ?, ?, ?, 1)`, //Id do usuário fixo por momento
                 [modelo, marca, ano, combustivel, motorizacao], (_, { insertId, rows }) => {
                     resolve(insertId);
@@ -28,7 +27,8 @@ export default class CarroService {
         }))
     }
 
-    static findAll() {
+    static async findAll() {
+        const db = await dbConnection();
         return new Promise((resolve, reject) => db.transaction(tx => {
             tx.executeSql(
                 `select * from ${table}`
@@ -42,7 +42,8 @@ export default class CarroService {
         }))
     }
 
-    static findAllWithImage() {
+    static async findAllWithImage() {
+        const db = await dbConnection();
         return new Promise((resolve, reject) => db.transaction(tx => {
             tx.executeSql(
                 `select *, (select I.id_imagem from ${imageTable} as I
@@ -60,7 +61,8 @@ export default class CarroService {
         }))
     }
 
-    static findCarById(id: number) {
+    static async findCarById(id: number) {
+        const db = await dbConnection();
         return new Promise((resolve, reject) => db.transaction(tx => {
             tx.executeSql(
                 `select * from ${table}
@@ -75,7 +77,8 @@ export default class CarroService {
         }))
     }
 
-    static deleteCarById(id: number) {
+    static async deleteCarById(id: number) {
+        const db = await dbConnection();
         return new Promise((resolve, reject) => db.transaction(tx => {
             tx.executeSql(
                 `delete from ${table}

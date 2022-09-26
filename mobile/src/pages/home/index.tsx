@@ -12,7 +12,6 @@ import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 
 import styles from "./styles";
 import fonts from '../../Styles/fonts';
-import SearchBar from "../../components/searchBar";
 import Configuracoes from "./configuracoes/telaPrincipal";
 import CadastroVeiculo from "../cadastroVeiculo";
 import Veiculos from "./veiculos/veiculos";
@@ -22,19 +21,12 @@ import Servicos from "./servicos";
 import { ButtonMenu } from '../../components/buttons';
 import { ButtonAdicionar } from '../../components/buttons';
 import Subscription from '../home/subscription'
-import { RectButton } from "react-native-gesture-handler";
 import {darkTheme} from '../../Styles/colors'
-import { FirebaseInit } from '../../database/dbInit';
-import { getAuth } from "firebase/auth";
+import { FirebaseInit } from '../../database/Firebase';
+import { dbConnection, UploadDB } from './../../database/dbConnection'
 
 FirebaseInit();
-
-const auth = getAuth();
-const user = auth.currentUser;
-console.log("======================")
-console.log(user?.email);
-console.log(user?.displayName);
-console.log(user?.uid);
+import usuarioService  from '../../database/services/usuarioService';
 
 interface Carros {
   id_carro: number;
@@ -49,6 +41,8 @@ interface Carros {
 function Home({ navigation }: any) {
 
   let listaVazia = true;
+  usuarioService.selectall()  
+
   const [carregando, setCarregando] = useState(false);
   const [erroCarregar, setErroCarregar] = useState(false);
   const [carros, setCarros] = useState<Carros[]>([]);
@@ -105,8 +99,10 @@ function Home({ navigation }: any) {
 
           <ButtonAdicionar title="Adicionar carro" onPress={handleNavigateToCadastroVeiculo}></ButtonAdicionar>
           
+          
           <View style={styles.listagemErro}>
             <Feather name='archive' size={50} color={darkTheme.grayLight} />
+            <ButtonAdicionar title="Adicionar carro" onPress={UploadDB}></ButtonAdicionar>
             <Text style={{ color: darkTheme.grayLight, fontSize: 20, paddingTop: 20, fontFamily: fonts.text }}>Você não tem carros cadastrados!</Text>
           </View>
 

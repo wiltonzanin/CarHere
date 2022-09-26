@@ -28,6 +28,7 @@
     "expo-location": "~14.0.1",
     "expo-sqlite": "~10.1.0",
     "expo-status-bar": "~1.2.0",
+    "expo-updates": "~0.11.7",
     "firebase": "^9.9.2",
     "formik": "^2.2.9",
     "lottie-ios": "3.2.3",

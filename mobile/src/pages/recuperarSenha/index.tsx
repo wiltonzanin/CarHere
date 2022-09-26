@@ -5,7 +5,7 @@ import TextField from '../../components/textField';
 import BackScreen from '../../components/backScreen';
 import { Button } from '../../components/buttons';
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
-import { FirebaseInit } from '../../database/dbInit';
+import { FirebaseInit } from '../../database/Firebase';
 import { SuccessModal, FeedbackModal } from "../../components/feedbackModal";
 import LoadingScreen from "../../components/loadingScreen";
 
@@ -23,8 +23,7 @@ function RecuperarSenha({ navigation }: any) {
     
     function handleRecuperarSenha() {
         sendPasswordResetEmail(auth, Email, undefined)
-          .then((userCredential) => {
-            //alert('Por favor verifique seu email...')
+          .then(() => {
             setModalMensage("E-mail enviado, por favor verificar a caixa de lixo eletronico");
             setModalVisible(true);
           }).catch((error) => {

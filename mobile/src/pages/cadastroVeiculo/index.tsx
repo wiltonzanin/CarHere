@@ -17,6 +17,11 @@ import { darkTheme } from "../../Styles/colors";
 import CarroService from "../../database/services/carroService";
 import api  from "../../services/api";
 
+import { getAuth } from "firebase/auth";
+import { FirebaseInit } from '../../database/Firebase';
+
+FirebaseInit();
+
 function CadastroVeiculo({ navigation }: any) {
   const [modalVisible, setModalVisible] = useState(false);
   const [modalWarning, setModalWarning] = useState(false);
@@ -119,7 +124,7 @@ function teste (url: string){
       .catch(error => { console.error(error) })
   }
 
-  function handleCreateVeiculo() {
+  async function handleCreateVeiculo() {
     try {
       CarroService.addCarro(modelo, marcas, Number(ano), combustivel, motorizacao, imageUri);
       setModalMensage("Veículo cadastrado com sucesso!");

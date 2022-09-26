@@ -1,12 +1,14 @@
 import { dbConnection } from '../dbConnection'
+import { FirebaseInit } from '../../database/Firebase';
+
+FirebaseInit();
 
 const table = "autonomias";
-const db = dbConnection.getConnection();
 
 export default class AutonomiaService {
 
-    static addAutonomia(km_inicial: number, km_final: number, tipo_combustivel: string, litros_abastecidos: number, percurso: string, media_consumo: number, id_carro: number) { //Adicionar id_usuario
-
+    static async addAutonomia(km_inicial: number, km_final: number, tipo_combustivel: string, litros_abastecidos: number, percurso: string, media_consumo: number, id_carro: number) { //Adicionar id_usuario
+        const db = await dbConnection();
         return new Promise((resolve, reject) => db.transaction(tx => {
             tx.executeSql(`insert into ${table} 
             (km_inicial, km_final, tipo_combustivel, litros_abastecidos, percurso, media_consumo, data_criacao, id_carro) 
@@ -21,7 +23,8 @@ export default class AutonomiaService {
         }))
     }
 
-    static findAll() {
+    static async findAll() {
+        const db = await dbConnection();
         return new Promise((resolve, reject) => db.transaction(tx => {
             tx.executeSql(`select * from ${table}`,
                 [], (_, { rows }) => {
@@ -34,7 +37,8 @@ export default class AutonomiaService {
         }))
     }
 
-    static findAutonomiaById(id: number) {
+    static async findAutonomiaById(id: number) {
+        const db = await dbConnection();
         return new Promise((resolve, reject) => db.transaction(tx => {
             tx.executeSql(`select * from ${table}
             where id_autonomia = ?`,
@@ -48,8 +52,8 @@ export default class AutonomiaService {
         }))
     }
 
-    static findLastOne(id: number) { //Adicionar id_usuario
-
+    static async findLastOne(id: number) { //Adicionar id_usuario
+        const db = await dbConnection();
         return new Promise((resolve, reject) => db.transaction(tx => {
             tx.executeSql(`select * from ${table} as a
             where a.id_carro = ?
@@ -65,7 +69,8 @@ export default class AutonomiaService {
         }))
     }
 
-    static deleteAutonomiaById(id_autonomia: number) {
+    static async deleteAutonomiaById(id_autonomia: number) {
+        const db = await dbConnection();
         return new Promise((resolve, reject) => db.transaction(tx => {
             tx.executeSql(
                 `delete from ${table}

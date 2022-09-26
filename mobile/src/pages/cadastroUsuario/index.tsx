@@ -11,7 +11,7 @@ import { Button } from "../../components/buttons";
 import { CheckBox } from 'react-native-elements';
 
 import { getAuth, createUserWithEmailAndPassword, sendEmailVerification, updateProfile} from "firebase/auth";
-import { FirebaseInit } from '../../database/dbInit';
+import { FirebaseInit } from '../../database/Firebase';
 
 import LoadingScreen from "../../components/loadingScreen";
 
@@ -110,10 +110,7 @@ function CadastroUsuario({ navigation }: any) {
             updateProfile(userCredential.user, {
                 displayName: nome
               }).then(() => {
-
-                console.log("Nome: " + user.displayName);
-                console.log("email: " + user.email);
-
+             
               }).catch((error) => {
                 // An error occurred
                 // ...

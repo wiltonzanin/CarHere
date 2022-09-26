@@ -9,9 +9,15 @@ import { useAuth } from '../../contexts/auth';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { FeedbackModal } from "../../components/feedbackModal";
 import LoadingScreen from "../../components/loadingScreen";
-import { FirebaseInit } from "../../database/dbInit";
+import { FirebaseInit } from "../../database/Firebase";
+import DatabaseInit from '../../../src/database/dbInit';
+import * as FileSystem from 'expo-file-system';
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { UploadDB } from '../../database/dbConnection';
 
 FirebaseInit();
+
+const storage = getStorage();
 const auth = getAuth();
 
 function Inicial({ navigation }: any) {
@@ -23,11 +29,56 @@ function Inicial({ navigation }: any) {
     const [carregando, setCarregando] = useState(false);
 
     const { signIn } = useAuth();
-
+    /*
+        if(!(async function(){return await getAuth().currentUser?.uid})){
+            signIn();
+        }
+    */
     function handleSignIn() {
         signInWithEmailAndPassword(auth, email, senha)
-            .then(() => {
-                signIn();
+            .then(async (user) => {
+                if (user.user.emailVerified) {
+                    
+                    const storageRef = ref(storage, "/user/" + user.user.uid + "/SQLite/" + user.user.uid + ".db");
+                    const folderInfo = await FileSystem.getInfoAsync(FileSystem.documentDirectory + "/SQLite/" + user.user.uid + ".db");
+                    const valArq = await getDownloadURL(storageRef).then(() => {
+                        return true
+                    }).catch(() => {
+                        return false
+                    });
+                    if (folderInfo.exists == false) { //se existe entra
+                        console.log("não existe arquivo local!");
+                        if (valArq == true) { //Existe arquivo no nuvem
+                            console.log("existe arquivo na nuvem")
+                            if (!(await FileSystem.getInfoAsync(FileSystem.documentDirectory + 
+                                'SQLite')).exists) {
+                                 await FileSystem.makeDirectoryAsync(FileSystem.documentDirectory + 'SQLite');
+                                 await FileSystem.downloadAsync(await getDownloadURL(storageRef), FileSystem.documentDirectory + '/SQLite/' + user.user.uid + '.db')
+                                 .then(({ uri }) => {
+                                     alert("Download " + uri)
+                                     console.log('Finished downloading to ', uri);
+                                     signIn();
+                                 })
+                                 .catch(error => {
+                                     console.log(error);
+                                 });
+                            }
+                        }
+                        else {
+                            DatabaseInit.InitDb();
+                            signIn();
+                            console.log("não existe arquivo na nuvem")
+                        }
+                    }
+                    else { //se existe entra
+                        console.log("existe db off")
+                        signIn();
+                        if (valArq == false) { //se não existe na nuvem faz upload
+                            console.log("não existe na nuvem")
+                            UploadDB()
+                        }
+                    }
+                }
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -47,9 +98,7 @@ function Inicial({ navigation }: any) {
     }
 
     function handleNavigateToAlterarSenhaPage() {
-
         navigation.navigate('RecuperarSenha');
-
     }
 
     function closeModal() {

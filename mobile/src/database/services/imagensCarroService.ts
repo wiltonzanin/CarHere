@@ -1,12 +1,19 @@
 import { dbConnection } from '../dbConnection'
+import { getAuth } from "firebase/auth";
+import { FirebaseInit } from '../../database/Firebase';
+
+FirebaseInit();
+
+const auth = getAuth() ;
+
 
 const table = "imagens_carro";
 const tableCarro = "carros";
-const db = dbConnection.getConnection()
 
 export default class imagensCarroService {
-
-    static findAll(id_carro: number) {
+    
+    static async findAll(id_carro: number) {
+        const db = await dbConnection();
         return new Promise((resolve, reject) => db.transaction(tx => {
             tx.executeSql(
                 `select * from ${table}

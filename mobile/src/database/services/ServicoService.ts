@@ -1,13 +1,19 @@
 import { dbConnection } from '../dbConnection'
+import * as SQLite from 'expo-sqlite';
+import { getAuth } from "firebase/auth";
+import { FirebaseInit } from '../../database/Firebase';
+FirebaseInit();
 
 const table = "servicos"
 const tablecar = "carros"
-const db = dbConnection.getConnection()
 
 export default class ServicoService {
 
-static addservico(nome: string, local: string, quilometragem: number, data: string, valor_servico: number, descricao: string, status_servico: number, id_carro: number) { //Adicionar id_usuario
-        return new Promise((resolve, reject) => db.transaction(tx => {
+static async addservico(nome: string, local: string, quilometragem: number, data: string, valor_servico: number, descricao: string, status_servico: number, id_carro: number) { //Adicionar id_usuario
+    const db = await dbConnection();
+    console.log("++++++++ Servico ++++++++")
+    console.log(db)
+    return new Promise((resolve, reject) => db.transaction(tx => {
             tx.executeSql(`insert into ${table} (nome, local, quilometragem, data, valor_servico, descricao, status_servico, id_carro) values (?, ?, ?, ?, ?, ?, ?, ?)`,
                 [nome, local, quilometragem, data, valor_servico, descricao, status_servico, id_carro], (_, { insertId, rows }) => {
                     resolve(insertId)
@@ -19,7 +25,8 @@ static addservico(nome: string, local: string, quilometragem: number, data: stri
         }))
     }
 
-    static findAllCarService() {
+    static async findAllCarService() {
+        const db = await dbConnection();
         return new Promise((resolve, reject) => db.transaction(tx => {
             tx.executeSql(`select * from ${table}`, [], (_, { rows }) => {
                 resolve(rows)
@@ -31,7 +38,8 @@ static addservico(nome: string, local: string, quilometragem: number, data: stri
         }))
     }
 
-    static findCarService() {
+    static async findCarService() {
+        const db = await dbConnection();
         return new Promise((resolve, reject) => db.transaction(tx => {
             tx.executeSql(`select * from ${table}`, [], (_, { rows }) => {
                 resolve(rows)
@@ -43,7 +51,10 @@ static addservico(nome: string, local: string, quilometragem: number, data: stri
         }))
     }
 
-    static findAll() {
+    static async findAll() {
+        const db = await dbConnection();
+        console.log("++++++++ Servico ++++++++")
+        console.log(db)
         return new Promise((resolve, reject) => db.transaction(tx => {
             tx.executeSql(`select * from ${table}`, [], (_, { rows }) => {
                 resolve(rows)
@@ -55,11 +66,14 @@ static addservico(nome: string, local: string, quilometragem: number, data: stri
         }))
     }
 
-    static detailserv(id: number) {
+    static async detailserv(id: number) {
+        const db = await dbConnection();
         return new Promise((resolve, reject) => db.transaction(tx => {   
             tx.executeSql(`select * from ${table} as S inner join ${tablecar} as C on C.id_carro = S.id_carro where S.id_servicos = ?`, [id], (_, { rows }) => {
                 resolve(rows)
                 console.log(rows)
+                console.log("++++++++ detail Servico ++++++++")
+                console.log(db)
             }), (sqlError: any) => {
                 console.log(sqlError);
             }
@@ -68,7 +82,8 @@ static addservico(nome: string, local: string, quilometragem: number, data: stri
         }))
     }
 
-    static delsrv(id: number) {
+    static async delsrv(id: number) {
+        const db = await dbConnection();
         return new Promise((resolve, reject) => db.transaction(tx => {   
             tx.executeSql(`delete from ${table} where id_servicos = ?`, [id], (_, { rows }) => {
                 resolve(rows)

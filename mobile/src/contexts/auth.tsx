@@ -37,12 +37,14 @@ export const AuthProvider: React.FC = ({ children }) => {
     async function signIn() {
         const response = await auth.signIn();
         setUser(response.user);
+        
 
         //Exemplo de implementação de Token
         api.defaults.headers['Authorization'] = `Bearer ${response.token}`;
 
         await AsyncStorage.setItem('@MeuPossante:user', JSON.stringify(response.user));
         await AsyncStorage.setItem('@MeuPossante:token', response.token);
+        
     };
 
     function signOut() {

@@ -1,31 +1,35 @@
 import React, { useState } from "react";
 import { View, Text, ScrollView, Image, TouchableOpacity } from "react-native";
 import * as ImagePicker from 'expo-image-picker';
-import { useNavigation } from "@react-navigation/native";
 
 import styles from "./styles";
-import {darkTheme} from '../../../../Styles/colors'
+import { darkTheme } from '../../../../Styles/colors'
 import { ButtonPadrao } from "../../../../components/buttons";
 import { Feather } from "@expo/vector-icons";
 import BackScreen from "../../../../components/backScreen";
 import { useAuth } from '../../../../contexts/auth';
+import { FeedbackModal, SuccessModal } from "../../../../components/feedbackModal";
+import LoadingScreen from "../../../../components/loadingScreen";
 
-//import { FirebaseInit } from '../../../../database/dbInit';
-import { getAuth } from "firebase/auth";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { FirebaseInit } from '../../../../database/Firebase';
+import { getAuth, sendPasswordResetEmail, updateProfile } from "firebase/auth";
 
+FirebaseInit();
 
-const auth = getAuth();
-const user = auth.currentUser;
+function OpcoesUsuario({ navigation }: any) {
 
-console.log("Antes ===============")
-console.log(user?.email)
-
-
-function OpcoesUsuario({navigation}: any) {
-  const { navigate } = useNavigation();
+  const auth = getAuth();
+  const user = auth.currentUser;
 
   const { signOut } = useAuth();
-  const [image, setImage] = useState<string>();
+  const [modalMensage, setModalMensage] = useState("");
+  const [modalWarning, setModalWarning] = useState(false);
+  const [carregando, setCarregando] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const storage = getStorage();
+  const storageRef = ref(storage, "/user/" + user?.uid + "/photo.jpg");
 
   async function handleSelecionarFoto() {
     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -37,7 +41,7 @@ function OpcoesUsuario({navigation}: any) {
     const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
-      aspect: [4, 3],
+      aspect: [4, 4],
       quality: 1,
     });
 
@@ -46,34 +50,75 @@ function OpcoesUsuario({navigation}: any) {
     }
 
     const { uri } = result;
-
-    setImage(uri)
+ 
+    const blob : Blob = await new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.onload = function () {
+        resolve(xhr.response);
+      };
+      xhr.onerror = function (e) {
+        console.log(e);
+        reject(new TypeError("Network request failed"));
+      };
+      xhr.responseType = "blob";
+      xhr.open("GET", uri, true);
+      xhr.send(null);
+    });
+  
+    //const result1 = await uploadBytes(fileRef, blob);
+    uploadBytes(storageRef, blob).then((snapshot) => {
+      getDownloadURL(storageRef)
+      .then((url) => {
+        updateProfile((user)!, {
+          photoURL: url
+        }).then(()=>{
+          //setImage(url)
+          console.log("Salvou fotoooooo")
+      })
+      })
+    });
   }
 
   function handleSignOut() {
     auth.signOut().then(() => {
       // Sign-out successful.
       signOut();
-      console.log("Depois ======")
-      console.log(user?.email)
-      console.log(user?.uid)
     }).catch((error) => {
       // An error happened.
       console.log(error)
       console.log("erro")
     });
-    
   }
 
   function handleNavigateToAlterarSenhaPage() {
-    navigation.navigate("AlterarSenha");
+    if (user?.uid != null) {
+      sendPasswordResetEmail(auth, user?.uid, undefined)
+        .then(() => {
+          setModalMensage("E-mail enviado, por favor verificar a caixa de lixo eletronico");
+          setModalVisible(true);
+        }).catch((error) => {
+          console.log("erro " + error.code)
+        })
+    }
   }
-  function handleNavigateToSeguranca() {
-    navigation.navigate("Seguranca");
+
+  function closeModal() {
+    setModalWarning(false);
+    setCarregando(false);
+    setModalVisible(false);
   }
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+      <LoadingScreen carregando={carregando} />
+      <SuccessModal
+        modalVisible={modalVisible}
+        funcaoOnRequestClose={closeModal}
+        mensage={modalMensage} />
+      <FeedbackModal
+        modalVisible={modalWarning}
+        funcaoOnRequestClose={closeModal}
+        mensage={modalMensage} />
       <View style={styles.container}>
         <View style={styles.header}>
           <BackScreen />
@@ -85,11 +130,11 @@ function OpcoesUsuario({navigation}: any) {
         <View style={styles.content}>
           <View style={styles.foto}>
             <TouchableOpacity onPress={handleSelecionarFoto}>
-              <Image source={{ uri: image }} style={styles.foto} />
+              <Image source={{ uri: user?.photoURL || "" }} style={styles.foto} />
             </TouchableOpacity>
           </View>
           <Text style={styles.text}>
-            Fulana da Silva <Feather name="edit" color={darkTheme.grayLight} size={18} />{" "}
+            {user?.displayName || "-----" + " "} <Feather name="edit" color={darkTheme.grayLight} size={18} />{" "}
           </Text>
           <View style={styles.top}>
             <View style={styles.meio}>

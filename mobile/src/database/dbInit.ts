@@ -1,46 +1,23 @@
 import { WebSQLDatabase } from 'expo-sqlite';
+import { FirebaseInit } from '../database/Firebase';
 import { dbConnection } from './dbConnection';
-import { initializeApp } from "firebase/app";
 
-const firebaseConfig = {
-    apiKey: "AIzaSyBUY-SBvuUnKQOofB-R8Rzj2SYPH3eu33Y",
-    authDomain: "carhere-fa688.firebaseapp.com",
-    projectId: "carhere-fa688",
-    storageBucket: "carhere-fa688.appspot.com",
-    messagingSenderId: "797369445435",
-    appId: "1:797369445435:web:9d83ffb197bc80211a801e",
-    measurementId: "G-ERNSB5NC3W"
-};
+FirebaseInit();
 
-export function FirebaseInit(){
-    const app = initializeApp(firebaseConfig);
-}
-
-var db: WebSQLDatabase | null = null
 export default class DatabaseInit {
-    
-    constructor() {
-        db = dbConnection.getConnection()
-        db.exec([{ sql: 'PRAGMA foreign_keys = ON;', args: [] }], false, () =>
-            console.log('Foreign keys turned on')
-        );
-        this.InitDb()
-    }
-    private InitDb() {
+
+    static async InitDb() {
+        const db = await dbConnection();
+        console.log("Rodou InitDB dentro")
         var sql = [
             //`DROP TABLE IF EXISTS imagens_carro;`,
             //`DROP TABLE IF EXISTS carros;`,
             //`DROP TABLE IF EXISTS usuarios;`,
+            'PRAGMA foreign_keys = ON;',
 
             `create table if not exists "usuarios" (
-                "id_usuario" integer primary key autoincrement,
-                "nome" TEXT,
-                "email"	TEXT,
-                "senha"	TEXT,
-                "data_criacao" TEXT,
-                "data_alteracao" TEXT,
-                "ID_FB" TEXT,
-                "URI" TEXT
+                "UID" TEXT primary key,
+                "nome" TEXT
             )`,
 
             `create table if not exists "carros" (
@@ -50,8 +27,8 @@ export default class DatabaseInit {
                 "ano" INTENGER,
                 "combustivel" TEXT,
                 "motorizacao" TEXT,
-                "id_usuario" INTENGER,
-                FOREIGN KEY(id_usuario) REFERENCES usuarios(id_usuario)
+                "id_usuario" TEXT,
+                FOREIGN KEY(id_usuario) REFERENCES usuarios(UID)
             )`,
 
             `create table if not exists "imagens_carro" (
@@ -86,10 +63,11 @@ export default class DatabaseInit {
                 "id_carro" INTENGER,
                 FOREIGN KEY(id_carro) REFERENCES carros(id_carro)
             )`,
-
-            `insert into usuarios(nome, email, senha) values('Usuario', 'teste@email.com', '123');`
+            `insert into usuarios(UID, nome) values('1', 'teste');`,
+            //'insert into carros (modelo, marca, ano, combustivel, motorizacao, id_usuario) values ("teste", "teste", 2011, "flex", "2.0", 1)',
         ];
-
+        console.log("rodou dbinit dentro");
+        console.log(db)        
         db?.transaction(
             tx => {
                 for (var i = 0; i < sql.length; i++) {
@@ -104,4 +82,6 @@ export default class DatabaseInit {
             }
         );
     }
+    
 }
+
