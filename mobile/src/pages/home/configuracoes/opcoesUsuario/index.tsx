@@ -50,7 +50,6 @@ function OpcoesUsuario({ navigation }: any) {
     }
 
     const { uri } = result;
- 
     const blob : Blob = await new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
       xhr.onload = function () {

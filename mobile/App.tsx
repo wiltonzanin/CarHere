@@ -5,13 +5,8 @@ import Index from '../mobile/src/routes/index'
 import { AuthProvider } from './src/contexts/auth';
 
 console.log("rodou app.tsx");
-//import DatabaseInit from './src/database/dbInit';
-
-
 
 export default function App() {
-
-  //new DatabaseInit();
 
   return (
     <NavigationContainer>

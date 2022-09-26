@@ -1,6 +1,4 @@
 import { dbConnection } from '../dbConnection'
-import * as SQLite from 'expo-sqlite';
-import { getAuth } from "firebase/auth";
 import { FirebaseInit } from '../../database/Firebase';
 FirebaseInit();
 
@@ -24,7 +22,8 @@ static async addservico(nome: string, local: string, quilometragem: number, data
         }))
     }
 
-    static updateServico(nome: string, local: string, quilometragem: number, data: string, valor_servico: number, descricao: string, status_servico: number, id_servicos: number) { //Adicionar id_carro quando for possivel editar
+    static async updateServico(nome: string, local: string, quilometragem: number, data: string, valor_servico: number, descricao: string, status_servico: number, id_servicos: number) { //Adicionar id_carro quando for possivel editar
+        const db = await dbConnection();
         return new Promise((resolve, reject) => db.transaction(tx => {
             tx.executeSql(`update ${table} 
             set nome = ?, local = ?, quilometragem = ?, data = ?, valor_servico = ?, descricao = ?, status_servico = ?
@@ -52,7 +51,8 @@ static async addservico(nome: string, local: string, quilometragem: number, data
         }))
     }
 
-    static findServiceById(id: number) {
+    static async findServiceById(id: number) {
+        const db = await dbConnection();
         return new Promise((resolve, reject) => db.transaction(tx => {
             tx.executeSql(`select * from ${table}
             where id_servicos = ?`, [id], (_, { rows }) => {
@@ -80,8 +80,6 @@ static async addservico(nome: string, local: string, quilometragem: number, data
 
     static async findAll() {
         const db = await dbConnection();
-        console.log("++++++++ Servico ++++++++")
-        console.log(db)
         return new Promise((resolve, reject) => db.transaction(tx => {
             tx.executeSql(`select * from ${table} as s
             inner join carros as c
@@ -95,7 +93,8 @@ static async addservico(nome: string, local: string, quilometragem: number, data
         }))
     }
     
-    static findLastOne(id: number) {
+    static async findLastOne(id: number) {
+        const db = await dbConnection();
         return new Promise((resolve, reject) => db.transaction(tx => {
             tx.executeSql(`select * from ${table} as s
             where s.id_carro = ?

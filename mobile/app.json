@@ -4,9 +4,9 @@
     "slug": "CarHere",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./src/assets/images/Logo-CarHere.png",
     "splash": {
-      "image": "./src/assets/images/Monza-Icone.png",
+      "image": "./src/assets/images/Logo-CarHere.png",
       "resizeMode": "contain",
       "backgroundColor": "#252525"
     },
