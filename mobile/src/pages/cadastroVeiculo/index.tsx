@@ -1,4 +1,4 @@
-import React, {useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { Text, View, ScrollView, TouchableOpacity, Image } from "react-native";
 import * as ImagePicker from 'expo-image-picker';
@@ -15,7 +15,7 @@ import { Feather } from "@expo/vector-icons";
 
 import { darkTheme } from "../../Styles/colors";
 import CarroService from "../../database/services/carroService";
-import api  from "../../services/api";
+import api from "../../services/api";
 
 import { getAuth } from "firebase/auth";
 import { FirebaseInit } from '../../database/Firebase';
@@ -39,35 +39,34 @@ function CadastroVeiculo({ navigation }: any) {
   const [marcasapi, setMarcasapi] = useState([]);
   const [modelosapi, setModelosapi] = useState([]);
   const [urlapi, seturlapi] = useState("");
-  
 
-useEffect(() => {       
+
+  useEffect(() => {
     api.get("marcas")
-   .then((response) => {
-    setMarcasapi(response.data) 
-    console.log(modelosapi)
-  })  
-    .catch((err) => {
-      console.error("ops! ocorreu um erro : " + err);
-    });
-},[]);
-
-function teste (url: string){
-  useEffect(() => {       
-      api.get(url)
-     .then((response) => {
-      setModelosapi(response.data.modelos) 
-      console.log(modelosapi)
-    })  
+      .then((response) => {
+        setMarcasapi(response.data)
+        console.log(modelosapi)
+      })
       .catch((err) => {
         console.error("ops! ocorreu um erro : " + err);
       });
-  },[]);
-}
+  }, []);
+
+  function teste(url: string) {
+    useEffect(() => {
+      api.get(url)
+        .then((response) => {
+          setModelosapi(response.data.modelos)
+          console.log(modelosapi)
+        })
+        .catch((err) => {
+          console.error("ops! ocorreu um erro : " + err);
+        });
+    }, []);
+  }
   const ano_value = [];
-  for (var i = 1960; i <= 2022; i++) {
+  for (var i = 1960; i <= 2024; i++) {
     ano_value.push({ label: "" + i, value: "" + i });
-    // console.log(ano_value);
   }
 
   function handleDeletePhotos() {
@@ -181,9 +180,9 @@ function teste (url: string){
     setCarregando(false);
   }
 
-    
+
   console.log(urlapi)
-  return (   
+  return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <LoadingScreen carregando={carregando} />
       <SuccessModal
@@ -203,42 +202,41 @@ function teste (url: string){
           <View />
         </View>
         <View style={{ paddingBottom: 20 }}>
-        <Text style={styles.text}>Marca</Text>
-        <DropDownPicker
-                placeholder=""
-                dropDownStyle={styles.dropdownList}
-                labelStyle={styles.dropdownText}
-                arrowColor={darkTheme.grayLight}                               
-                items={marcasapi.map(marcasapi => ({
-                  label: marcasapi.nome,
-                  value: marcasapi.codigo,                  
-                }))}
-                
-                style={styles.dropdown}
-                onChangeItem={(item) => {
-                  setMarcas(item.value)
-                  seturlapi("/"+item.value+"/modelos")
-                                            
-                }}
-              /> 
+          <Text style={styles.text}>Marca</Text>
+          <DropDownPicker
+            placeholder=""
+            dropDownStyle={styles.dropdownList}
+            labelStyle={styles.dropdownText}
+            arrowColor={darkTheme.grayLight}
+            items={marcasapi.map(marcasapi => ({
+              label: marcasapi.nome,
+              value: marcasapi.codigo,
+            }))}
+
+            style={styles.dropdown}
+            onChangeItem={(item) => {
+              setMarcas(item.value)
+              seturlapi("/" + item.value + "/modelos")
+
+            }}
+          />
           <Text style={styles.text}>Modelo</Text>
           <DropDownPicker
-                placeholder=""
-                dropDownStyle={styles.dropdownList}
-                labelStyle={styles.dropdownText}
-                arrowColor={darkTheme.grayLight}
-                items={modelosapi.map(modelosapi => ({
-                  label: modelosapi.nome,
-                  value: modelosapi.codigo,                  
-                }))}
-                
-                style={styles.dropdown}
-                onChangeItem={(item) => {
-                  setModelo(item.value)
-                  console.log(modelo);                
-                }}
-              /> 
-         
+            placeholder=""
+            dropDownStyle={styles.dropdownList}
+            labelStyle={styles.dropdownText}
+            arrowColor={darkTheme.grayLight}
+            items={modelosapi.map(modelosapi => ({
+              label: modelosapi.nome,
+              value: modelosapi.codigo,
+            }))}
+            style={styles.dropdown}
+            onChangeItem={(item) => {
+              setModelo(item.value)
+              console.log(modelo);
+            }}
+          />
+
           <Text style={styles.text}>Combustível</Text>
           <DropDownPicker
             placeholder="Selecione um item"
@@ -273,7 +271,7 @@ function teste (url: string){
                 dropDownStyle={styles.dropdownList}
                 labelStyle={styles.dropdownText}
                 arrowColor={darkTheme.grayLight}
-                items={ano_value.map((option) => ({
+                items={ano_value.reverse().map((option) => ({
                   label: option.label,
                   value: option.value,
                 }))}
@@ -281,7 +279,7 @@ function teste (url: string){
                 onChangeItem={(item) => {
                   setAno(item.value)
                 }}
-              />             
+              />
             </View>
           </View>
           <View style={styles.labelGroup}>

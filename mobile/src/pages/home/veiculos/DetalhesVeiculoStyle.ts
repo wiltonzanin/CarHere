@@ -74,10 +74,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
 
-  servicos: {
-    marginTop: 20,
-  },
-
   cardServices: {
     backgroundColor: darkTheme.grayLight,
     padding: 10,

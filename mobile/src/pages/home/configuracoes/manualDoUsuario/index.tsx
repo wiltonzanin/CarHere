@@ -4,10 +4,7 @@ import styles from "./styles";
 import BackScreen from "../../../../components/backScreen";
 import { List } from 'react-native-paper';
 import { Feather } from "@expo/vector-icons";
-import { Image } from "react-native-svg";
 import {darkTheme} from '../../../../Styles/colors'
-import { color } from "react-native-reanimated";
-
 
 function ManualDoUsuario() {
 

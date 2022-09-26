@@ -9,10 +9,10 @@ import BackButton from "../../../components/backScreen";
 import { Infos } from "../../../components/infos";
 import { DecisionModal } from "../../../components/feedbackModal";
 import { ButtonDeletar } from '../../../components/buttons';
-import api from "../../../services/api";
 import CarroService from "../../../database/services/carroService";
 import ImagensCarroService from "../../../database/services/imagensCarroService";
 import AutonomiaService from "../../../database/services/autonomiaService";
+import ServicoService from "../../../database/services/ServicoService";
 
 interface DetalhesCarroRouteParams {
   id: number;
@@ -40,7 +40,7 @@ interface Autonomia {
 }
 
 interface servico {
-  id: number;
+  id_servicos: number;
   nome: string;
   local: string;
   datafor: string;
@@ -50,23 +50,12 @@ function VisualizarVeiculo({ navigation }: any) {
 
   const route = useRoute();
   const params = route.params as DetalhesCarroRouteParams;
-  const [erroCarregar, setErroCarregar] = useState(false);
-  const [carregando, setCarregando] = useState(false);
 
   const [modalDecisionVisible, setModalDecisionVisible] = useState(false);
   const [carros, setCarros] = useState<Carro>();
   const [imgCarro, setImgCarro] = useState<ImagensCarro[]>([]);
   const [autonomia, setAutonomia] = useState<Autonomia>();
-  const [servico, setServico] = useState<servico[]>([]);
-
-  useEffect(() => {
-    CarroService.findCarById(params.id)
-      .then((response: any) => {
-        setCarros(response)
-      }), (error: any) => {
-        console.log(error);
-      }
-  }, []);
+  const [servicos, setServicos] = useState<servico[]>([]);
 
   useEffect(() => {
     CarroService.findCarById(params.id)
@@ -86,33 +75,29 @@ function VisualizarVeiculo({ navigation }: any) {
       }
   }, []);
 
-  // useEffect(() => {
-  //   api
-  //     .get(`carros/detalhes/${params.id}`)
-  //     .then((response) => setCarro(response.data));
-  // }, [params.id]);
+  React.useEffect(() => {
+    navigation.addListener('focus', () => {
+      AutonomiaService.findLastOne(params.id)
+        .then((response: any) => {
+          setAutonomia(response);
+        }), (error: any) => {
+          console.log(error);
+        }
+    });
 
-  // useEffect(() => {
-  //   api
-  //     .get(`autonomia/last/${params.id}`)
-  //     .then((response) => setAutonomia(response.data));
-  // }, [params.id]);
+  }, [navigation]);
 
-  useEffect(() => {
-    AutonomiaService.findLastOne(params.id)
-      .then((response: any) => {
-        setAutonomia(response);
-        console.log(response);
-      }), (error: any) => {
-        console.log(error);
-      }
-  }, []);
+  React.useEffect(() => {
+    navigation.addListener('focus', () => {
+      ServicoService.findLastOne(params.id)
+        .then((response: any) => {
+          setServicos(response._array);
+        }), (error: any) => {
+          console.log(error);
+        }
+    });
 
-  // useEffect(() => {
-  //   api
-  //     .get(`servico/last/${params.id}`)
-  //     .then((response) => setServico(response.data));
-  // }, [params.id]);
+  }, [navigation]);
 
   function handleNavigateToVisualizarServicos(id: number) {
     navigation.navigate("VisualizarServicos", { id });
@@ -123,23 +108,13 @@ function VisualizarVeiculo({ navigation }: any) {
   }
 
   function handleListaAutonomia() {
-    navigation.navigate("ListaAutonomia");
+    navigation.navigate("ListaAutonomia", { id_carro: params.id });
   }
 
   async function deteleVeiculo() {
     setModalDecisionVisible(true);
     await CarroService.deleteCarById(params.id)
   }
-
-  // async function deteleVeiculo() {
-  //   setModalDecisionVisible(true);
-  //   try {
-  //     setCarregando(true)
-  //     await api.delete(`/carros/delete/${params.id}`);
-  //   } catch (error) {
-  //     return;
-  //   }
-  // }
 
   function fecharModal() {
     setModalDecisionVisible(!modalDecisionVisible);
@@ -156,7 +131,6 @@ function VisualizarVeiculo({ navigation }: any) {
       <Text>Erro</Text>
     );
   }
-  console.log(!servico)
 
   return (
     <ScrollView>
@@ -208,18 +182,17 @@ function VisualizarVeiculo({ navigation }: any) {
                 <Feather name="chevron-right" size={24} color="#F0EFF4" />
               </View>
             </RectButton>
-            {servico.length == 0 
+            {servicos.length == 0
               ?
               <View style={styles.noInfo}>
                 <Feather name="alert-circle" size={25} color="#eca400" />
                 <Text style={styles.noInfoText}>Você ainda não possui uma serviço cadastrado!</Text>
               </View>
               :
-              servico.map(servico => {
-                console.log("servico id = "+servico.id)
+              servicos.map(servico => {
                 return (
-                  <View key={servico.id} style={styles.servicos}>
-                    <RectButton style={styles.buttonServico} onPress={() => handleNavigateToVisualizarServicos(servico.id)}>
+                  <View key={servico.id_servicos}>
+                    <RectButton style={styles.buttonServico} onPress={() => handleNavigateToVisualizarServicos(servico.id_servicos)}>
                       <View style={styles.buttonGroupTextServico}>
                         <Text style={styles.buttonServicoText}>{servico.nome}</Text>
                         <Text style={styles.textInfo2}>{servico.local || "-----"}</Text>

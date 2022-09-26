@@ -10,7 +10,6 @@ import AutonomiaDetails from '../pages/home/autonomia/listaAutonomia/autonomiaDe
 import Servico from '../pages/home/servicos/';
 import CadastroServicos from '../pages/home/servicos/cadastro';
 import VisualizarServicos from '../pages/home/servicos/VisualizarServico';
-// import Mapa from '../pages/home/mapa';
 import Termos from '../pages/home/configuracoes/termosEpoliticas';
 import OpcoesUsuario from '../pages/home/configuracoes/opcoesUsuario';
 import UnidadeMedida from '../pages/home/configuracoes/unidadeMedida';
@@ -25,10 +24,8 @@ import Mfa from '../pages/cadastroUsuario/mfa';
 import EntrarEmContato from '../pages/home/ajudaEfeedback/entreEmContato';
 import Solicitacao from '../pages/home/ajudaEfeedback/entreEmContato/solicitacao';
 
-// import SelecionaFoto from '../pages/home/configuracoes/opcoesUsuario/modal/selecionarFoto';
 import Subscription from '../pages/home/subscription';
 import PaymentScreen from '../pages/home/subscription/PaymentScreen';
-
 
 import { darkTheme } from '../Styles/colors';
 import { NavigationContainer } from '@react-navigation/native';
@@ -70,10 +67,8 @@ function AppStack() {
         <Screen name="AutonomiaDetails" component={AutonomiaDetails} />
         <Screen name="UnidadeMedida" component={UnidadeMedida} />
         <Screen name="Servico" component={Servico} />
-        <Screen name="CadastroServicos" component={CadastroServicos} />
+        <Screen name="CadastroServicos" component={CadastroServicos} initialParams={{ id: 0 }} />
         <Screen name="VisualizarServicos" component={VisualizarServicos} />
- 
-        {/* <Screen name="Mapa" component={Mapa} /> */}
         <Screen name="Termos" component={Termos} />
         <Screen name="ManualDoUsuario" component={ManualDoUsuario} />
         <Screen name="OpcoesUsuario" component={OpcoesUsuario} />
@@ -83,7 +78,6 @@ function AppStack() {
         <Screen name="Aparencia" component={Aparencia} />
         <Screen name="Acessibilidade" component={Acessibilidade} />
         <Screen name="Seguranca" component={Seguranca} />
-        {/* <Screen name="SelecionaFoto" component={SelecionaFoto} /> */}
         <Screen name="Subscription" component={Subscription} />
         <Screen name="PaymentScreen" component={PaymentScreen} />
       </Navigator>

@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "MeuPossante",
-    "slug": "MeuPossante",
+    "name": "CarHere",
+    "slug": "CarHere",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -24,7 +24,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#252525"
       },
-      "package": "com.mococa.meupossante",
+      "package": "com.mococa.carhere",
       "versionCode": 1
     },
     "web": {

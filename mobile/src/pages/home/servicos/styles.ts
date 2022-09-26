@@ -25,9 +25,16 @@ const styles = StyleSheet.create({
     fontFamily: fonts.title
   },
 
-  search: {
-    flexDirection: "row",
-    justifyContent: "space-between",
+  searchInput: {
+    marginTop: 20,
+    backgroundColor: darkTheme.textField,
+    borderColor: darkTheme.grayMedium,
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderRadius: 4,
+    color: darkTheme.grayLight,
+    fontSize: 16,
+    fontFamily: fonts.text
   },
 
   contentServico: {
@@ -68,6 +75,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     borderRadius: 5,
+    marginTop: 20
   },
 
   buttonGroupTextServico: {
