@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import {darkTheme} from '../../../../Styles/colors';
+import { darkTheme } from '../../../../Styles/colors';
 import fonts from '../../../../Styles/fonts';
 
 const styles = StyleSheet.create({
@@ -62,10 +62,16 @@ const styles = StyleSheet.create({
     fontFamily: fonts.text,
   },
 
+  labelErro: {
+    color: '#f83a53',
+    fontSize: 12,
+    marginTop: -10,
+    paddingBottom: 20
+  },
+
   textInput: {
     padding: 10,
-    //height: 40,
-    minHeight: 85, 
+    minHeight: 85,
     backgroundColor: darkTheme.textField,
     borderColor: darkTheme.grayMedium,
     borderStyle: 'solid',
@@ -90,23 +96,23 @@ const styles = StyleSheet.create({
     fontSize: 16,  
 }*/
 
-Icon: {
-  padding: 10,
-},
+  Icon: {
+    padding: 10,
+  },
 
-checkbox: {
-  flexDirection: 'row',
-  paddingBottom: 20
-},
-buttoncheckbox: {
-  alignSelf: 'center'
-},
+  checkbox: {
+    flexDirection: 'row',
+    paddingBottom: 20
+  },
+  buttoncheckbox: {
+    alignSelf: 'center'
+  },
 
-textcheckbox: {
-  color: darkTheme.grayLight,
-  fontSize: 15,
-  fontFamily: fonts.text
-},
+  textcheckbox: {
+    color: darkTheme.grayLight,
+    fontSize: 15,
+    fontFamily: fonts.text
+  },
 
 });
 
