@@ -15,7 +15,7 @@ import { SuccessModal, FeedbackModal } from "../../../../components/feedbackModa
 import { darkTheme } from "../../../../Styles/colors";
 import ServicoService from "../../../../database/services/ServicoService";
 import CarroService from "../../../../database/services/carroService";
-import Veiculos from "@pages/home/veiculos/veiculos";
+import { Feather } from "@expo/vector-icons";
 
 interface EditServicoRouteParams {
   id: number;
@@ -64,10 +64,8 @@ function CadastroServicos({ navigation }: any) {
   const [show, setShow] = useState(false); //validação datapicker
   const [mode, setMode] = useState('date'); //validação datapicker
 
-  const [ValidacaoNome, setValidacaoNome] = useState("")
-  const [ValidacaoVeiculo, setValidacaoVeiculo] = useState("")
-  const [ValidacaoQuilometragem, setValidacaoQuilometragem] = useState("")
-  const [ValidacaoValorServico, setValidacaoValorServico] = useState("")
+  const [ValidacaoNome, setValidacaoNome] = useState("");
+  const [ValidacaoVeiculo, setValidacaoVeiculo] = useState("");
 
   const onChange = (event: any, selectedDate: any) => {
     const currentDate = selectedDate || date;
@@ -133,40 +131,13 @@ function CadastroServicos({ navigation }: any) {
 
   function validacao() {
     // Nome
-    if (!name) {
-      setValidacaoNome('Nome não informado')
-    }
-    else {
-      setValidacaoNome('')
-    }
+    !name ? setValidacaoNome('Nome não informado') : setValidacaoNome('');
 
     // Veiculo
-    if (!id_carro) {
-      setValidacaoVeiculo('Veiculo não informado')
-      alert("Insira um veiculo")
-    }
-    else {
-      setValidacaoVeiculo('')
-    }
-
-    // Quilometragem  
-    if (((!isNaN(parseFloat(Quilometragem)) && isFinite(Quilometragem)) || !Quilometragem) === false) {
-      setValidacaoQuilometragem('Somente numeros!')
-    }
-    else {
-      setValidacaoQuilometragem('')
-    }
-
-    // ValorServico
-    if (((!isNaN(parseFloat(ValorServico)) && isFinite(ValorServico)) || !ValorServico) === false) {
-      setValidacaoValorServico('Somente numeros!')
-    }
-    else {
-      setValidacaoValorServico('')
-    }
+    !id_carro ? setValidacaoVeiculo('Veiculo não informado') : setValidacaoVeiculo('');
 
     //após validação 
-    if ((((!isNaN(ValorServico)) && isFinite(ValorServico)) === true && !id_carro === false && ((!isNaN(Quilometragem)) && isFinite(Quilometragem)) === true && !name === false)) {
+    if (!id_carro === false && !name === false) {
       params.id !== 0 ? handleUpdateServico() : CadastrarBanco();
     }
   }
@@ -255,14 +226,20 @@ function CadastroServicos({ navigation }: any) {
                   setIdCarro(item.value);
                 }}>
               </DropDownPicker>
+              {ValidacaoVeiculo === ''
+                ?
+                <View />
+                :
+                <Text style={styles.labelErro}><Feather name="alert-triangle" /> {ValidacaoVeiculo}</Text>
+              }
             </View>
             <View style={styles.inputGroupColumn}>
               <TextField labelName="Quilometragem"
                 maxLength={8}
                 tipoTeclado={"numeric"}
-                onChangeText={setQuilometragem}
+                onChangeText={(text) => { setQuilometragem(text.replace(/[^0-9]/g, '')) }}
                 value={Quilometragem}
-                mensagemErro={ValidacaoQuilometragem}
+                contextMenuHidden={true}
               />
             </View>
           </View>
@@ -290,11 +267,11 @@ function CadastroServicos({ navigation }: any) {
               <TextField labelName="Valor do serviço"
                 maxLength={6}
                 placeholder="R$ 0.000,00"
-                tipoTeclado={"numeric"}
-                onChangeText={setValorServico}
-                value={ValorServico}
-                mensagemErro={ValidacaoValorServico}
                 placeholderTextColor={darkTheme.grayLight}
+                tipoTeclado={"numeric"}
+                onChangeText={(text) => { setValorServico(text.replace(/[^0-9]/g, '')) }}
+                value={ValorServico}
+                contextMenuHidden={true}
               />
             </View>
           </View>

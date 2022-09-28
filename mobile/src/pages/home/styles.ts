@@ -2,6 +2,8 @@ import { StyleSheet, Dimensions } from "react-native";
 import { colorsDark } from "react-native-elements/dist/config";
 import fonts from "../../Styles/fonts";
 import {darkTheme} from '../../Styles/colors';
+import { black } from "react-native-paper/lib/typescript/styles/colors";
+
 
 const styles = StyleSheet.create({
   container: {
@@ -23,6 +25,37 @@ const styles = StyleSheet.create({
     
 },
 
+veiculos: {
+  marginTop: 20,
+},
+
+buttonVeiculo: {
+  backgroundColor: '#f00000',
+  height: 100,
+  width: Dimensions.get('window').width - 40,
+  borderRadius: 5,
+},
+
+buttonGroupText: {
+  flex: 1,
+  padding: 10,
+  justifyContent: 'space-between',
+  fontFamily: fonts.text
+},
+
+buttonVeiculoText: {
+  color: '#FFFFFF',
+  fontSize: 24,
+  fontFamily: fonts.title,
+  textAlign: 'center',
+},
+
+buttonVeiculoTextManutencaoGreen1: {
+  color: '#252525',
+  fontSize: 16,
+  fontFamily: fonts.text
+},
+
   title: {
     color: darkTheme.grayLight,
     fontSize: 20,
@@ -40,71 +73,23 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     borderRadius: 5,
   },
+  buttonAdicionarServico: {
+  backgroundColor: darkTheme.button,
+  height: 60,
+  borderRadius: 8,
+  alignItems: "center",
+  justifyContent: "center",
+  marginTop:20
+  },
   listagemErro: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
   },
-  text: {
-    color: darkTheme.grayLight,
-    fontSize: 20,
-    fontFamily: fonts.text
-  },
 
-  content: {
-    flexGrow: 1 
-  },
 
-  imgVeiculo: {
-    borderTopRightRadius: 10,
-    borderTopLeftRadius: 10,
-    width: Dimensions.get('window').width - 40,
-    height: 200,
-    resizeMode: 'cover',
-  },
-
-  cardImg: {
-    backgroundColor: darkTheme.grayLight,
-    padding: 20,
-    borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10,
-  },
-
-  card: {
-    marginTop: 20,
-    backgroundColor: darkTheme.textField,
-    padding: 20,
-    borderRadius: 10,
-    marginBottom: 20,
-  },
-
-  cardHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between'
-  },
-
-  cardTitle: {
-    fontFamily: fonts.title,
-    color: darkTheme.grayLight,
-    fontSize: 20,
-    marginBottom: 20,
-  },
-
-  textStatusOk: {
-    color: darkTheme.green,
-    fontSize: 14,
-    fontFamily: fonts.text
-  },
-
-  textStatusWarning: {
-    color: darkTheme.yellow,
-    fontSize: 14,
-    fontFamily: fonts.text
-  },
-
-  textStatusError: {
-    color: darkTheme.red,
-    fontSize: 14,
+  servicesText: {
+    fontSize: 18,
     fontFamily: fonts.text
   },
 
@@ -121,26 +106,80 @@ const styles = StyleSheet.create({
     paddingBottom: 20
   },
 
-  servicesTitle: {
-    fontSize: 18,
-    fontFamily: fonts.title
+  content: {
+    flexGrow: 1 
+  },
+  cardHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   },
 
-  servicesText: {
-    fontSize: 18,
-    fontFamily: fonts.text
+  cardTitle: {
+    fontFamily: fonts.title,
+    color: darkTheme.grayLight,
+    fontSize: 20,
+    marginBottom: 20,
   },
-
-  cardStyle: {
+  card: {  
+    marginTop:20,
     backgroundColor: darkTheme.textField,
     padding: 20,
-    borderRadius: 10
+    borderRadius: 10,
+    marginBottom: 180,
+  },
+  cardImg: { 
+    backgroundColor: darkTheme.textField,
+    padding: 20,
+    borderBottomLeftRadius:10,
+    borderBottomRightRadius:10,
+    marginTop: 1,
   },
 
+  imgVeiculo: {
+    borderTopRightRadius: 10,
+    borderTopLeftRadius: 10,
+    width: Dimensions.get('window').width - 40,
+    height: 200,
+    backgroundColor: darkTheme.textField,
+    resizeMode: 'cover',
+  },
+  buttonServicoText: {
+    color: darkTheme.background,
+    fontSize: 15,
+    fontWeight: 'bold',
+  },
+  servicos: {
+    marginTop: 20,
+  },
+
+  noInfoText: {
+    backgroundColor: darkTheme.grayLight,
+    fontSize: 16,
+    textAlign: 'center',
+  },
+
+  buttonGroupTextServico: {
+    flex: 1,
+    padding: 8,
+    justifyContent: "space-between",
+  },
+
+  buttonServico: {
+    backgroundColor: darkTheme.grayLight,
+    height: 100,
+    marginTop:10,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    borderRadius: 5,
+  },
+  
   drawer: {
     backgroundColor: darkTheme.background,
   },
-
+  textInfo2: {
+    color: darkTheme.background,
+    fontSize: 14,
+  },
   drawerText: {
     color: darkTheme.grayLight,
     fontFamily: fonts.text

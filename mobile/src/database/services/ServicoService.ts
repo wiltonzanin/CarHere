@@ -138,4 +138,18 @@ static async addservico(nome: string, local: string, quilometragem: number, data
         }))
     }
 
+    static async SevicesNoRealized() {
+        const db = await dbConnection();
+        return new Promise((resolve, reject) => db.transaction(tx => {   
+            tx.executeSql(`select * from ${table} where status_servico = 0`, [], (_, { rows }) => {    
+                resolve(rows);
+            }), (sqlError: any) => {
+                console.log(sqlError);
+            }
+        }, (txError) => {
+            console.log(txError);
+        }))
+    }
+
+
 }

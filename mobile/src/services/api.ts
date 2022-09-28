@@ -8,7 +8,6 @@ import axios from 'axios';
     //timeout: 15000,
 //});
 
-
 const api = axios.create({
  
     //utilizado o ip do computador/servidor que está sendo executado

@@ -1,9 +1,9 @@
 export const darkTheme = {
-  background: '#252525',
+  background: '#121212',
   textField: '#333333',
-  grayMedium: '#525252',
+  grayMedium: '#252525',
   grayLight: '#f0eff4',
-  button: '#8F1622',
+  button: '#A90818',
   green: '#5CB85C',
   yellow: '#F0AD4E',
   red:'#D9534F',

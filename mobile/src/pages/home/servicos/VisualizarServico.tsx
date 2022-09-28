@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { View, Text, ScrollView, TouchableOpacity } from "react-native";
+import React, { useState } from "react";
+import { View, Text, ScrollView } from "react-native";
 import { useRoute } from "@react-navigation/native";
-import styles from "./stylesDetalhes";
 import { RectButton } from "react-native-gesture-handler";
 import { Feather } from "@expo/vector-icons";
+
+import styles from "./stylesDetalhes";
 import BackButton from "../../../components/backScreen";
 import { CheckBox } from 'react-native-elements';
 import { InfosService } from "../../../components/infos";
 import { DecisionModal } from "../../../components/feedbackModal";
 import { ButtonDeletar } from '../../../components/buttons';
 import ServicoService from "../../../database/services/ServicoService";
+import { darkTheme } from "../../../Styles/colors";
 
 interface DetalhesServicoRouteParams {
   id: number;
@@ -38,19 +40,18 @@ function VisualizarServicos({ navigation }: any) {
   const route = useRoute();
   const params = route.params as DetalhesServicoRouteParams;
 
+  var msgNull = "-----";
   const [isSelected, setIsSelected] = useState(false);
   const [modalDecisionVisible, setModalDecisionVisible] = useState(false);
   const [servico, setServico] = useState<Servico>();
   const [status, setStatus] = useState(0);
-  const [del, setDel] = useState(0)
 
   React.useEffect(() => {
     navigation.addListener('focus', () => {
       ServicoService.detailserv(params.id)
         .then((response: any) => {
           setServico(response);
-          setStatus(response.status_servico)
-          setDel(response.id_servicos)
+          setStatus(response.status_servico);
         }).catch(() => {
         })
     });
@@ -66,7 +67,7 @@ function VisualizarServicos({ navigation }: any) {
 
   function handleDeleteVehicle() {
     setModalDecisionVisible(!modalDecisionVisible);
-    ServicoService.delsrv(del)
+    ServicoService.delsrv(params.id);
     navigation.navigate("Servico");
   }
 
@@ -79,15 +80,6 @@ function VisualizarServicos({ navigation }: any) {
     return (
       <Text>Erro</Text>
     );
-  }
-
-  function StatusServico() {
-    if (status == 1) {
-      return true;
-    };
-    if (status == 0) {
-      return false;
-    }
   }
 
   return (
@@ -105,35 +97,33 @@ function VisualizarServicos({ navigation }: any) {
             <Feather name="edit" size={25} color="#F0EFF4" />
           </RectButton>
         </View>
-        <View>
-          <View style={styles.card}>
-            <InfosService
-              key={servico.id_servicos}
-              nome={servico.nome || "-----"}
-              local={servico.local || "-----"}
-              veiculo={servico.marca + " " + servico.modelo + " " + servico.motorizacao + " " + servico.ano || "-----"}
-              quilometragem={servico.quilometragem || "-----"}
-              datafor={servico.data || "-----"}
-              ValorServico={"R$ " + servico.valor_servico || "-----"}
-              descricao={servico.descricao || "-----"}
-            />
+        <View style={styles.card}>
+          <InfosService
+            key={servico.id_servicos}
+            nome={servico.nome}
+            local={servico.local || msgNull}
+            veiculo={servico.marca + " " + servico.modelo + " " + servico.motorizacao + " " + servico.ano}
+            quilometragem={servico.quilometragem || msgNull}
+            datafor={servico.data || msgNull}
+            ValorServico={"R$ " + servico.valor_servico || msgNull}
+            descricao={servico.descricao || msgNull}
+          />
+        </View>
+        <View style={styles.checkbox}>
+          <CheckBox
+            containerStyle={{ backgroundColor: darkTheme.background, borderColor: '#252525', padding: 0, margin: 0, marginLeft: 0 }}
+            checkedIcon='check-square-o'
+            checkedColor='#8F1622'
+            size={25}
+            checked={status == 1 ? true : false}
+            onPress={() => setIsSelected(!isSelected)}
+          />
+          <View style={styles.buttoncheckbox}>
+            <Text style={styles.textcheckbox}>Serviço foi realizado</Text>
           </View>
-          <View style={styles.checkbox}>
-            <CheckBox
-              containerStyle={{ backgroundColor: '#252525', borderColor: '#252525', padding: 0, margin: 0, marginLeft: 0 }}
-              checkedIcon='check-square-o'
-              checkedColor='#8F1622'
-              size={25}
-              checked={StatusServico()}
-              onPress={() => setIsSelected(!isSelected)}
-            />
-            <View style={styles.buttoncheckbox}>
-              <Text style={styles.textcheckbox}>Serviço foi realizado</Text>
-            </View>
-          </View>
-          <View style={styles.deleteButton}>
-            <ButtonDeletar title="Deletar" onPress={deteleServico}></ButtonDeletar>
-          </View>
+        </View>
+        <View style={styles.deleteButton}>
+          <ButtonDeletar title="Deletar" onPress={deteleServico}></ButtonDeletar>
         </View>
       </View>
     </ScrollView>

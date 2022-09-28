@@ -1,15 +1,10 @@
 import * as React from "react";
-import { View, Text } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { View, Text, Linking } from "react-native";
 import styles from "./styles";
 import { ButtonPadrao } from '../../../../components/buttons';
 import BackScreen from "../../../../components/backScreen";
 
 function EntreEmContato({ navigation }: any) {
-
-  function handleNavigateTosolicitacao() {
-    navigation.navigate("Solicitacao");
-  }
 
   return (
     <View style={styles.container}>
@@ -19,12 +14,11 @@ function EntreEmContato({ navigation }: any) {
         <View />
       </View>
       <View>
-        <Text style={styles.text}>Escolha a melhor forma para entrar em contato</Text>
+        <Text style={styles.text}>
+          Escolha a melhor forma para entrar em contato
+        </Text>
         <View style={styles.top}>
-          <View style={styles.meio}>
-            <ButtonPadrao title="Enviar um email" />
-          </View>
-          <ButtonPadrao title="Enviar uma solicitação pelo App" onPress={handleNavigateTosolicitacao} />
+          <ButtonPadrao title="Enviar um email" onPress={() => Linking.openURL('mailto:CarHere.Suporte@gmail.com?subject=Envie sugestões ou descreva um problema&body=Descrição')} />
         </View>
       </View>
     </View >

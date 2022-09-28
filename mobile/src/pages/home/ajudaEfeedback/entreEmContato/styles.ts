@@ -35,11 +35,6 @@ const styles = StyleSheet.create({
     borderColor: darkTheme.grayMedium,
     borderWidth: 1,
   },
-
-  meio: {
-    borderBottomWidth: 1,
-    borderColor: darkTheme.grayMedium,
-  },
 });
 
 export default styles;
