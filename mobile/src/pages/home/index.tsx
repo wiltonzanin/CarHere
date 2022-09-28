@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 
 import { View, Text, BackHandler, Alert, ScrollView, Image, TouchableOpacity } from "react-native";
-import { DrawerActions, useNavigation, useFocusEffect } from "@react-navigation/native";
+import { DrawerActions, useRoute, useFocusEffect } from "@react-navigation/native";
 import {
   createDrawerNavigator,
   DrawerContentScrollView,
   DrawerItemList,
   DrawerContentComponentProps,
 } from "@react-navigation/drawer";
-import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
+import { Feather, MaterialCommunityIcons, SimpleLineIcons } from "@expo/vector-icons";
 
 import styles from "./styles";
 import fonts from '../../Styles/fonts';
@@ -21,32 +21,53 @@ import Servicos from "./servicos";
 import { ButtonMenu } from '../../components/buttons';
 import { ButtonAdicionar } from '../../components/buttons';
 import Subscription from '../home/subscription'
-import {darkTheme} from '../../Styles/colors'
+import { RectButton } from "react-native-gesture-handler";
+import { darkTheme } from '../../Styles/colors'
 import { FirebaseInit } from '../../database/Firebase';
-import { dbConnection, UploadDB } from './../../database/dbConnection'
+import { getAuth } from "firebase/auth";
+import LoadingScreen from "../../components/loadingScreen";
+import CarroService from "../../database/services/carroService";
+import ServicoService from "../../database/services/ServicoService";
+import usuarioService from '../../database/services/usuarioService';
+import { Servico } from "@components/infos";
 
 FirebaseInit();
-import usuarioService  from '../../database/services/usuarioService';
+
+const auth = getAuth();
+const user = auth.currentUser;
 
 interface Carros {
   id_carro: number;
   marca: string;
   modelo: string;
-  images: Array<{
-    id: number;
-    url: string;
-  }>;
+  ano: number;
+  combustivel: string;
+  motorizaçao: string;
+  id_imagem: number;
+  path: string;
+}
+
+
+interface servico {
+  id_servicos: number;
+  nome: string;
+  local: string;
+  data: string;
+  status_servico: number;
 }
 
 function Home({ navigation }: any) {
-
-  let listaVazia = true;
-  usuarioService.selectall()  
-
+  usuarioService.selectall()
   const [carregando, setCarregando] = useState(false);
-  const [erroCarregar, setErroCarregar] = useState(false);
-  const [carros, setCarros] = useState<Carros[]>([]);
-
+  const [carros, setCarros] = useState<Carros>();
+  const [servico, setServico] = useState<servico[]>([]);
+  const [isSelected, setIsSelected] = useState(2);
+  const [NoService, setNoService] = useState(false);
+  const [Verifica, setVerifica] = useState(false);
+  var ServicoStatus = "";
+  function handleNavigateToVisualizarServicos(id: number) {
+    navigation.navigate("VisualizarServicos", { id });
+  }
   function handleNavigateToServicos() {
     navigation.navigate("Servico");
   }
@@ -56,6 +77,39 @@ function Home({ navigation }: any) {
   function handleNavigateToCadastroVeiculo() {
     navigation.navigate("CadastroVeiculo");
   }
+  function handleNavigateToVisualizarVeiculo(id: number) {
+    navigation.navigate("VisualizarVeiculo", { id });
+  }
+
+  /* useEffect(() => {
+     let isMounted = true;
+     CarroService.findAllWithImage()
+       .then((response: any) => {
+         if (isMounted) setCarros(response._array)
+       }), (error: any) => {
+ 
+       }
+     return () => { isMounted = false };
+   }, []);*/
+
+  React.useEffect(() => {
+    navigation.addListener('focus', () => {
+      ServicoService.SevicesNoRealized()
+        .then((response: any) => {
+          setServico(response._array);
+          setIsSelected(response.status_servico);
+        });
+    });
+  }, [navigation]);
+
+  React.useEffect(() => {
+    navigation.addListener('focus', () => {
+      CarroService.findCarAsc()
+        .then((response: any) => {
+          setCarros(response)
+        })
+    });
+  }, [navigation]);
 
   useFocusEffect(() => {
     const backAction = () => {
@@ -77,76 +131,76 @@ function Home({ navigation }: any) {
 
     return () => backHandler.remove();
   });
-  
-
-  if (carros.length > 0) {
-    listaVazia = false
-  }
+  // console.log("Status serviço",isSelected)
+  console.log(servico)
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <ButtonMenu title="" onPress={() => navigation.dispatch(DrawerActions.openDrawer())} />
-        <Text style={styles.title}>Início</Text>
-        <View />
-      </View>
-      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-        <View style={styles.content}>
-
-          {/* <View style={styles.listagemErro}>
-            <Feather name='cloud-off' size={50} color={colors.grayLight} />
-            <Text style={{ color: colors.grayLight, fontSize: 20, paddingTop: 20, fontFamily: fonts.text }}>Não foi possível carregar os dados!</Text>
-          </View> */}
-
-          <ButtonAdicionar title="Adicionar carro" onPress={handleNavigateToCadastroVeiculo}></ButtonAdicionar>
-          
-          
-          <View style={styles.listagemErro}>
-            <Feather name='archive' size={50} color={darkTheme.grayLight} />
-            <ButtonAdicionar title="Adicionar carro" onPress={UploadDB}></ButtonAdicionar>
-            <Text style={{ color: darkTheme.grayLight, fontSize: 20, paddingTop: 20, fontFamily: fonts.text }}>Você não tem carros cadastrados!</Text>
-          </View>
-
-          {/* <ScrollView horizontal pagingEnabled>
-            <Image source={require('../../assets/images/impreza.jpg')} style={styles.imgVeiculo} />
-          </ScrollView>
-          <View style={styles.cardImg}>
-            <Text style={styles.servicesText}>Impreza GC8</Text>
-          </View>
-          <View style={styles.card}>
-            <RectButton onPress={handleNavigateToServicos}>
-              <View style={styles.cardHeader}>
-                <Text style={styles.cardTitle}>Serviços</Text>
-                <Feather name="chevron-right" size={24} color={colors.grayLight} />
-              </View>
-            </RectButton>
-            <TouchableOpacity style={styles.cardServices}>
-              <View style={styles.servicesHeader}>
-                <Text style={styles.servicesTitle}>Monza</Text>
-                <Text style={styles.servicesText}>24/08/2021</Text>
-              </View>
-              <Text style={styles.textStatusOk}>
-                <Feather name="check-circle" size={14} color={colors.green} />{" "}
-                Tudo certo!
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.cardServices}>
-              <View style={styles.servicesHeader}>
-                <Text style={styles.servicesTitle}>Celta</Text>
-                <Text style={styles.servicesText}>24/08/2021</Text>
-              </View>
-              <Text style={styles.textStatusWarning}>
-                <Feather name="alert-circle" size={14} color={colors.yellow} />{" "}
-                Requer ação!
-              </Text>
-            </TouchableOpacity>
-            <ButtonAdicionar title="Adicionar serviço" onPress={handleNavigateToCadastroServico}></ButtonAdicionar>
-          </View> */}
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+      <View style={styles.container}>
+        <LoadingScreen carregando={carregando} />
+        <View style={styles.header}>
+          <ButtonMenu title="" onPress={() => navigation.dispatch(DrawerActions.openDrawer())} />
+          <Text style={styles.title}>Início</Text>
+          <View />
         </View>
-      </ScrollView>
-    </View>
-
+        {!carros
+          ?
+          <View style={styles.content}>
+            <ButtonAdicionar title="Adicionar veiculo" onPress={handleNavigateToCadastroVeiculo}></ButtonAdicionar>
+            <View style={styles.listagemErro}>
+              <Feather name='archive' size={50} color={darkTheme.grayLight} />
+              <Text style={{ color: darkTheme.grayLight, fontSize: 20, paddingTop: 20, fontFamily: fonts.text }}>Ops, você não tem carros cadastrados!</Text>
+            </View>
+          </View>
+          :
+          <View>
+            <View style={styles.content}>
+              <RectButton onPress={() => handleNavigateToVisualizarVeiculo(carros.id_carro)}>
+                <Image key={carros.id_imagem} source={{ uri: carros.path }} style={styles.imgVeiculo} />
+                <View style={styles.cardImg}>
+                  <Text numberOfLines={1} style={styles.buttonVeiculoText}>{carros.modelo}</Text>
+                </View>
+              </RectButton>
+            </View>
+            <View style={styles.card}>
+              <View>
+                <RectButton onPress={handleNavigateToServicos}>
+                  <View style={styles.cardHeader}>
+                    <Text style={styles.cardTitle}>Serviços não realizados</Text>
+                    <Feather name="chevron-right" size={24} color="#F0EFF4" />
+                  </View>
+                </RectButton>
+                {servico.length == 0
+                  ?
+                  <View style={styles.buttonServico} >
+                    <View style={{ flex: 1, justifyContent: 'center' }}>
+                      <Feather name="alert-circle" size={25} color="#eca400" style={{ alignSelf: 'center' }} />
+                      <Text style={styles.noInfoText}>Você ainda não possui um serviço cadastrado!</Text>
+                    </View>
+                  </View>
+                  :
+                  servico.map(servico => {
+                    return (
+                      <RectButton key={servico.id_servicos} style={styles.buttonServico} onPress={() => handleNavigateToVisualizarServicos(servico.id_servicos)}>
+                        <View style={styles.buttonGroupTextServico}>
+                          <Text style={styles.buttonServicoText}>{carros.modelo}</Text>
+                          <Text style={styles.buttonServicoText}>{servico.nome}</Text>
+                          <Text style={styles.textInfo2}>{servico.data}</Text>
+                          <Text style={styles.textInfo2}>{"Serviço não realizado"}</Text>
+                        </View>
+                      </RectButton>
+                    );
+                  })
+                }
+              </View>
+              <ButtonAdicionar style={styles.buttonAdicionarServico} title="Adicionar serviço" onPress={handleNavigateToCadastroServico}></ButtonAdicionar>
+            </View>
+          </View>
+        }
+      </View >
+    </ScrollView >
   );
 }
+
 
 const Drawer = createDrawerNavigator();
 

@@ -48,7 +48,7 @@ export default class DatabaseInit {
                 "descricao" TEXT,
                 "status_servico" INTENGER,
                 "id_carro" INTEGER,
-                FOREIGN KEY(id_carro) REFERENCES carros(id_carro)
+                FOREIGN KEY(id_carro) REFERENCES carros(id_carro) on delete cascade
             )`,
 
             `create table if not exists "autonomias" (
@@ -61,7 +61,7 @@ export default class DatabaseInit {
                 "media_consumo" INTENGER,
                 "data_criacao" TEXT,
                 "id_carro" INTENGER,
-                FOREIGN KEY(id_carro) REFERENCES carros(id_carro)
+                FOREIGN KEY(id_carro) REFERENCES carros(id_carro) on delete cascade
             )`,
             `insert into usuarios(UID, nome) values('1', 'teste');`,
             //'insert into carros (modelo, marca, ano, combustivel, motorizacao, id_usuario) values ("teste", "teste", 2011, "flex", "2.0", 1)',

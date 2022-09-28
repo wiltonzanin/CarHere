@@ -92,4 +92,23 @@ export default class CarroService {
             console.log(txError);
         }))
     }
+
+    static async findCarAsc() {
+        const db = await dbConnection();
+        return new Promise((resolve, reject) => db.transaction(tx => {
+            tx.executeSql(
+                `select *, (select I.id_imagem from ${imageTable} as I
+                    join ${table} as C1 on I.id_carro = C.id_carro limit 1) as id_imagem,
+                    (select I.path from ${imageTable} as I 
+                        join ${table} as C1 on I.id_carro = C.id_carro limit 1)
+                    as path from ${table} as C limit 1`
+                , [], (_, { rows }) => {
+                    resolve(rows.item(0))
+                }), (sqlError: any) => {
+                    console.log(sqlError);
+                }
+        }, (txError) => {
+            console.log(txError);
+        }))
+    }
 }
