@@ -32,6 +32,14 @@ const styles = StyleSheet.create({
         color: darkTheme.grayLight,
         fontSize: 18,
         marginBottom: 10,
+        marginTop: 10,
+    fontFamily: fonts.text
+    },
+    text1: {
+        color: darkTheme.grayLight,
+        fontSize: 18,
+        marginBottom: 10,
+        
     fontFamily: fonts.text
     },
 

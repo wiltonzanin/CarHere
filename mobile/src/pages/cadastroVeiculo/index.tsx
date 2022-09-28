@@ -28,46 +28,70 @@ function CadastroVeiculo({ navigation }: any) {
   const [carregando, setCarregando] = useState(false);
   const [disableButton, setDisableButton] = useState(false);
 
-  const [marcas, setMarcas] = useState("");
-  const [modelo, setModelo] = useState("");
+
   const [motorizacao, setMotorizacao] = useState("");
-  const [ano, setAno] = useState("");
   const [combustivel, setCombustivel] = useState("");
   const [images, setImages] = useState<string[]>([]);
   const [imageUri, setImageUri] = useState<string[]>([]);
   const [modalMensage, setModalMensage] = useState("");
+  const [marcas, setMarcas] = useState("");
+  const [modelo, setModelo] = useState("");
+  const [ano, setAno] = useState("");
+  const [anoapi, setAnoapi] = useState([]);
   const [marcasapi, setMarcasapi] = useState([]);
   const [modelosapi, setModelosapi] = useState([]);
+  const [codigomarca, setcodigomarca] = useState("");
+  const [codigomodelo, setcodigomodelo] = useState("");
   const [urlapi, seturlapi] = useState("");
+  const [urlapiano, seturlapiano] = useState("");
+  const [urlapifip, seturlapifip] = useState("");
+  const [fipmodelo, setfipmodelo] = useState("");
+  const [teste, setteste] = useState([]);
 
+ 
 
-  useEffect(() => {
+useEffect(() => {  
     api.get("marcas")
-      .then((response) => {
-        setMarcasapi(response.data)
-        console.log(modelosapi)
-      })
-      .catch((err) => {
-        console.error("ops! ocorreu um erro : " + err);
-      });
-  }, []);
+    .then((response) => {
+     setMarcasapi(response.data) 
+     
+   })  
+     .catch((err) => {
+       console.error("ops! ocorreu um erro : " + err);
+   });
+},[navigation]); 
 
-  function teste(url: string) {
-    useEffect(() => {
-      api.get(url)
-        .then((response) => {
-          setModelosapi(response.data.modelos)
-          console.log(modelosapi)
-        })
-        .catch((err) => {
-          console.error("ops! ocorreu um erro : " + err);
-        });
-    }, []);
-  }
-  const ano_value = [];
-  for (var i = 1960; i <= 2024; i++) {
-    ano_value.push({ label: "" + i, value: "" + i });
-  }
+
+useEffect(() => { 
+    api.get(urlapi)
+  .then((response) => {
+   setModelosapi(response.data.modelos) 
+
+ })  
+},[marcas]);
+
+useEffect(() => {            
+  api.get(urlapiano)
+ .then((response) => {
+  setAnoapi(response.data)
+
+})  
+},[modelo]);
+
+
+useEffect(() => {            
+  api.get(urlapifip)
+ .then((response) => {
+  setfipmodelo(response.data)
+  
+})  
+},[ano]);
+
+  //const ano_value = [];
+  //for (var i = 1960; i <= 2022; i++) {
+   //ano_value.push({ label: "" + i, value: "" + i });
+    // console.log(ano_value);
+  //}
 
   function handleDeletePhotos() {
     setImages([]);
@@ -180,9 +204,9 @@ function CadastroVeiculo({ navigation }: any) {
     setCarregando(false);
   }
 
-
-  console.log(urlapi)
-  return (
+  
+  return ( 
+      
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <LoadingScreen carregando={carregando} />
       <SuccessModal
@@ -202,41 +226,43 @@ function CadastroVeiculo({ navigation }: any) {
           <View />
         </View>
         <View style={{ paddingBottom: 20 }}>
-          <Text style={styles.text}>Marca</Text>
+        <Text style={styles.text}>Marca</Text>
+        <DropDownPicker
+                placeholder=""
+                dropDownStyle={styles.dropdownList}
+                labelStyle={styles.dropdownText}
+                arrowColor={darkTheme.grayLight}                               
+                items={marcasapi.map(marcasapi => ({
+                  label: marcasapi.nome,
+                  value: marcasapi.codigo,                  
+                }))}
+                
+                style={styles.dropdown}
+                onChangeItem={(item) => {
+                  setMarcas(item.label)
+                  setcodigomarca(item.value) 
+                  seturlapi("marcas/"+item.value+"/modelos")           
+                }}
+              /> 
+          <Text style={styles.text}>Modelo</Text>          
           <DropDownPicker
-            placeholder=""
-            dropDownStyle={styles.dropdownList}
-            labelStyle={styles.dropdownText}
-            arrowColor={darkTheme.grayLight}
-            items={marcasapi.map(marcasapi => ({
-              label: marcasapi.nome,
-              value: marcasapi.codigo,
-            }))}
-
-            style={styles.dropdown}
-            onChangeItem={(item) => {
-              setMarcas(item.value)
-              seturlapi("/" + item.value + "/modelos")
-
-            }}
-          />
-          <Text style={styles.text}>Modelo</Text>
-          <DropDownPicker
-            placeholder=""
-            dropDownStyle={styles.dropdownList}
-            labelStyle={styles.dropdownText}
-            arrowColor={darkTheme.grayLight}
-            items={modelosapi.map(modelosapi => ({
-              label: modelosapi.nome,
-              value: modelosapi.codigo,
-            }))}
-            style={styles.dropdown}
-            onChangeItem={(item) => {
-              setModelo(item.value)
-              console.log(modelo);
-            }}
-          />
-
+                placeholder=""
+                dropDownStyle={styles.dropdownList}
+                labelStyle={styles.dropdownText}
+                arrowColor={darkTheme.grayLight}
+                items={modelosapi.map(modelosapi => ({
+                  label: modelosapi.nome,
+                  value: modelosapi.codigo,                  
+                }))}
+                
+                style={styles.dropdown}
+                onChangeItem={(item) => {
+                  setModelo(item.label)
+                  setcodigomodelo(item.value)
+                  seturlapiano("marcas/"+codigomarca+"/modelos/"+item.value+"/anos")            
+                }}
+              /> 
+         
           <Text style={styles.text}>Combustível</Text>
           <DropDownPicker
             placeholder="Selecione um item"
@@ -250,6 +276,7 @@ function CadastroVeiculo({ navigation }: any) {
               { label: "Flex", value: "Flex" },
               { label: "Hibrido", value: "Hibrido" },
               { label: "Elétrico", value: "Eletrico" },
+              { label: "GNV", value: "GNV" },
             ]}
             style={styles.dropdown}
             onChangeItem={(item) => {
@@ -265,25 +292,27 @@ function CadastroVeiculo({ navigation }: any) {
               />
             </View>
             <View style={styles.inputGroupSecondColumn}>
-              <Text style={styles.text}>Ano</Text>
+              <Text style={styles.text1}>Ano</Text>
               <DropDownPicker
                 placeholder=""
                 dropDownStyle={styles.dropdownList}
                 labelStyle={styles.dropdownText}
                 arrowColor={darkTheme.grayLight}
-                items={ano_value.reverse().map((option) => ({
-                  label: option.label,
-                  value: option.value,
+                items={anoapi.map(anoapi => ({
+                  label: anoapi.nome.substr(0, 4),
+                  value: anoapi.codigo.substr(0, 4),
+                                    
                 }))}
                 style={styles.dropdown}
                 onChangeItem={(item) => {
                   setAno(item.value)
+                  seturlapifip("marcas/"+codigomarca+"/modelos/"+codigomodelo+"/anos/"+item.value)
                 }}
               />
             </View>
           </View>
           <View style={styles.labelGroup}>
-            <Text style={styles.text}>Fotos</Text>
+            <Text style={styles.text}>Fotos</Text> 
             <Text style={styles.labelOpcional}>(Opcional)</Text>
           </View>
           <ScrollView horizontal>
