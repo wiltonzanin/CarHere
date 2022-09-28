@@ -4,8 +4,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import Index from '../mobile/src/routes/index'
 import { AuthProvider } from './src/contexts/auth';
 
-console.log("rodou app.tsx");
-
 export default function App() {
 
   return (

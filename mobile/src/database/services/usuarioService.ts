@@ -1,11 +1,6 @@
-import { dbConnection } from '../dbConnection';
-
-import * as SQLite from 'expo-sqlite';
-import { getAuth } from "firebase/auth";
+import { dbConnection , UploadDB} from '../dbConnection';
 import { FirebaseInit } from '../../database/Firebase';
 FirebaseInit();
-
-
 
 const table = "usuarios"
 export default class UsuarioService {
@@ -21,29 +16,6 @@ export default class UsuarioService {
                 SELECT UID FROM ${table} WHERE UID = '${UID}');`,
                 [], (_, { insertId, rows }) => {
                     resolve(insertId)
-                    console.log(insertId)
-                    console.log(rows)
-                }), (sqlError: any) => {
-                    console.log(sqlError);
-                }
-        }, (txError) => {
-            console.log(txError);
-        }))
-    }
- 
- 
-    static async selectall() {
-        const db = await dbConnection(); 
-        console.log()
-        console.log("++++++++ sqlite_master ++++++++")
-        console.log(db)
-        return new Promise((resolve, reject) => db.transaction(tx => {
-            tx.executeSql(`
-            SELECT * FROM sqlite_master`,
-                [], (_, { insertId, rows }) => {
-                    resolve(insertId)
-                    console.log(insertId)
-                    //console.log(rows)
                 }), (sqlError: any) => {
                     console.log(sqlError);
                 }

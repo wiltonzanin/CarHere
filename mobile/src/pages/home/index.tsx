@@ -23,10 +23,9 @@ import { ButtonAdicionar } from '../../components/buttons';
 import Subscription from '../home/subscription'
 import {darkTheme} from '../../Styles/colors'
 import { FirebaseInit } from '../../database/Firebase';
-import { dbConnection, UploadDB } from './../../database/dbConnection'
+import { UploadDB } from './../../database/dbConnection'
 
 FirebaseInit();
-import usuarioService  from '../../database/services/usuarioService';
 
 interface Carros {
   id_carro: number;
@@ -40,8 +39,7 @@ interface Carros {
 
 function Home({ navigation }: any) {
 
-  let listaVazia = true;
-  usuarioService.selectall()  
+  let listaVazia = true; 
 
   const [carregando, setCarregando] = useState(false);
   const [erroCarregar, setErroCarregar] = useState(false);
