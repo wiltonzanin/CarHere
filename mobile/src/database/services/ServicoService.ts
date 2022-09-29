@@ -141,7 +141,7 @@ static async addservico(nome: string, local: string, quilometragem: number, data
     static async SevicesNoRealized() {
         const db = await dbConnection();
         return new Promise((resolve, reject) => db.transaction(tx => {   
-            tx.executeSql(`select * from ${table} where status_servico = 0`, [], (_, { rows }) => {    
+            tx.executeSql(`select S.id_servicos, S.nome, S.local, S.data, S.status_servico, C.modelo, C.marca from ${table} as S inner join Carros as C on S.id_carro = C.id_carro where status_servico = 0 order by data desc limit 2`, [], (_, { rows }) => {    
                 resolve(rows);
             }), (sqlError: any) => {
                 console.log(sqlError);

@@ -149,6 +149,10 @@ function VisualizarVeiculo({ navigation }: any) {
     );
   }
 
+  var retorno = carros.modelo.split(" ");
+const modelo =  retorno[0] + " " + retorno[1]
+
+
   return (
     <ScrollView>
       <DecisionModal
@@ -159,7 +163,7 @@ function VisualizarVeiculo({ navigation }: any) {
       <View style={styles.container}>
         <View style={styles.header}>
           <BackButton />
-          <Text style={styles.text}>{carros.modelo}</Text>
+          <Text style={styles.text}>{modelo}</Text>
           <RectButton onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
             <Feather name="edit" size={25} color="#F0EFF4" />
           </RectButton>
@@ -188,7 +192,7 @@ function VisualizarVeiculo({ navigation }: any) {
               marca={carros.marca}
               ano={carros.ano}
               motorizacao={carros.motorizacao}
-              modelo={carros.modelo}
+              modelo={modelo}
               combustivel={carros.combustivel}
               quilometragem={quilometragem?.quilometragem || 0}
             />

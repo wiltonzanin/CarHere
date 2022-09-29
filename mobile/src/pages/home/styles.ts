@@ -143,6 +143,21 @@ buttonVeiculoTextManutencaoGreen1: {
     backgroundColor: darkTheme.textField,
     resizeMode: 'cover',
   },
+
+  noimg: {
+    borderTopRightRadius: 10,
+    borderTopLeftRadius: 10,
+    width: Dimensions.get('window').width - 40,
+    height: 200,
+    backgroundColor: darkTheme.textField,
+    alignSelf: 'center',
+    justifyContent: 'center'
+  },
+
+  icon:{
+    alignSelf: 'center',
+  },
+
   buttonServicoText: {
     color: darkTheme.background,
     fontSize: 15,
