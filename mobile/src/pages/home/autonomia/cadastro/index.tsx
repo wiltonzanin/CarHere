@@ -13,6 +13,7 @@ import { SuccessModal, FeedbackModal, ErrorModal } from "../../../../components/
 import { darkTheme } from '../../../../Styles/colors';
 import CarroService from "../../../../database/services/carroService";
 import AutonomiaService from "../../../../database/services/autonomiaService";
+import { async } from "@firebase/util";
 
 interface AutonomiaRouteParams {
     id_autonomia: number;
@@ -54,14 +55,20 @@ function Autonomia({ navigation }: any) {
     const [percurso, setPercurso] = useState("");
     var mediaConsumo = 0;
 
-    useEffect(() => {
-        CarroService.findAll()
-            .then((response: any) => {
-                setCarros(response._array);
-            }), (error: any) => {
-                console.log(error);
-            }
-    }, []);
+    React.useEffect(() => {
+        navigation.addListener('focus', () => {
+            CarroService.findAll()
+                .then((response: any) => {
+                    setCarros(response._array);
+                    if (response._array.length === 0) {
+                        setModalWarning(true);
+                        setModalMensage("Você deve cadastrar um veículo primeiro!");
+                    }
+                }), (error: any) => {
+                    console.log(error);
+                }
+        });
+    }, [navigation]);
 
     useEffect(() => {
         if (params.id_autonomia !== 0) {
@@ -132,6 +139,10 @@ function Autonomia({ navigation }: any) {
     }
 
     function closeModal() {
+        if (carros.length == 0) {
+            navigation.navigate("CadastroVeiculo");
+            return;
+        }
         setModalErro(false);
         setModalWarning(false);
         setCarregando(false);
@@ -165,23 +176,19 @@ function Autonomia({ navigation }: any) {
                             <View />
                             :
                             <View style={{ marginBottom: 20 }}>
-                                {carros.length === 0 ?
-                                    <TextField labelName="Veículo" value={"Você não possui veículos cadastrados"} editable={false} />
-                                    :
-                                    <View>
-                                        <Text style={styles.text}>Veículo</Text>
-                                        <DropDownPicker
-                                            placeholder="Selecione um item"
-                                            dropDownStyle={styles.dropdownList}
-                                            labelStyle={styles.dropdownText}
-                                            arrowColor={darkTheme.grayLight}
-                                            items={carros.map(carro => ({ label: carro.modelo, value: carro.id_carro }))}
-                                            style={styles.dropdown}
-                                            onChangeItem={(item) => {
-                                                setCarro(item.value);
-                                            }} />
-                                    </View>
-                                }
+                                <View>
+                                    <Text style={styles.text}>Veículo</Text>
+                                    <DropDownPicker
+                                        placeholder="Selecione um item"
+                                        dropDownStyle={styles.dropdownList}
+                                        labelStyle={styles.dropdownText}
+                                        arrowColor={darkTheme.grayLight}
+                                        items={carros.map(carro => ({ label: carro.modelo, value: carro.id_carro }))}
+                                        style={styles.dropdown}
+                                        onChangeItem={(item) => {
+                                            setCarro(item.value);
+                                        }} />
+                                </View>
                             </View>
                         }
 
