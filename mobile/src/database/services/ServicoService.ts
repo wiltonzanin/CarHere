@@ -1,4 +1,4 @@
-import { dbConnection } from '../dbConnection'
+import { dbConnection , UploadDB} from '../dbConnection'
 import { FirebaseInit } from '../../database/Firebase';
 FirebaseInit();
 
@@ -30,6 +30,7 @@ static async addservico(nome: string, local: string, quilometragem: number, data
             where id_servicos = ?`,
                 [nome, local, quilometragem, data, valor_servico, descricao, status_servico, id_servicos], (_, { insertId, rows }) => {
                     resolve(insertId);
+                    UploadDB()
                 }), (sqlError: any) => {
                     console.log(sqlError);
                 }
@@ -110,7 +111,6 @@ static async addservico(nome: string, local: string, quilometragem: number, data
         }))
     }
 
-
     static async detailserv(id: number) {
         const db = await dbConnection();
         return new Promise((resolve, reject) => db.transaction(tx => {   
@@ -124,12 +124,12 @@ static async addservico(nome: string, local: string, quilometragem: number, data
         }))
     }
 
-
     static async delsrv(id: number) {
         const db = await dbConnection();
         return new Promise((resolve, reject) => db.transaction(tx => {   
             tx.executeSql(`delete from ${table} where id_servicos = ?`, [id], (_, { rows }) => {
                 resolve(rows);
+                UploadDB()
             }), (sqlError: any) => {
                 console.log(sqlError);
             }
@@ -141,7 +141,7 @@ static async addservico(nome: string, local: string, quilometragem: number, data
     static async SevicesNoRealized() {
         const db = await dbConnection();
         return new Promise((resolve, reject) => db.transaction(tx => {   
-            tx.executeSql(`select * from ${table} where status_servico = 0`, [], (_, { rows }) => {    
+            tx.executeSql(`select S.id_servicos, S.nome, S.local, S.data, S.status_servico, C.modelo, C.marca from ${table} as S inner join Carros as C on S.id_carro = C.id_carro where status_servico = 0 order by data desc limit 2`, [], (_, { rows }) => {    
                 resolve(rows);
             }), (sqlError: any) => {
                 console.log(sqlError);

@@ -27,9 +27,14 @@ function OpcoesUsuario({ navigation }: any) {
   const [modalWarning, setModalWarning] = useState(false);
   const [carregando, setCarregando] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
+  const [ImgURL, setImgURL] = useState("");
 
   const storage = getStorage();
   const storageRef = ref(storage, "/user/" + user?.uid + "/photo.jpg");
+
+  React.useEffect(() => {
+    setImgURL((getAuth().currentUser?.photoURL)!)
+  }, [ImgURL]);
 
   async function handleSelecionarFoto() {
     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -50,7 +55,7 @@ function OpcoesUsuario({ navigation }: any) {
     }
 
     const { uri } = result;
-    const blob : Blob = await new Promise((resolve, reject) => {
+    const blob: Blob = await new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
       xhr.onload = function () {
         resolve(xhr.response);
@@ -63,18 +68,18 @@ function OpcoesUsuario({ navigation }: any) {
       xhr.open("GET", uri, true);
       xhr.send(null);
     });
-  
+
     //const result1 = await uploadBytes(fileRef, blob);
     uploadBytes(storageRef, blob).then((snapshot) => {
       getDownloadURL(storageRef)
-      .then((url) => {
-        updateProfile((user)!, {
-          photoURL: url
-        }).then(()=>{
-          //setImage(url)
-          console.log("Salvou fotoooooo")
-      })
-      })
+        .then((url) => {
+          updateProfile((user)!, {
+            photoURL: url
+          }).then(() => {
+            setImgURL(url);
+            //Salvou Foto no Firebase
+          })
+        })
     });
   }
 
@@ -107,6 +112,8 @@ function OpcoesUsuario({ navigation }: any) {
     setModalVisible(false);
   }
 
+
+
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <LoadingScreen carregando={carregando} />
@@ -129,7 +136,12 @@ function OpcoesUsuario({ navigation }: any) {
         <View style={styles.content}>
           <View style={styles.foto}>
             <TouchableOpacity onPress={handleSelecionarFoto}>
-              <Image source={{ uri: user?.photoURL || "" }} style={styles.foto} />
+              {ImgURL == ""
+                ?
+                <Feather name="image" color={darkTheme.grayLight} size={75} style={styles.foto1} />
+                :
+                <Image source={{ uri: ImgURL }} style={styles.foto} />
+              }
             </TouchableOpacity>
           </View>
           <Text style={styles.text}>

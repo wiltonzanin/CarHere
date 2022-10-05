@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import {darkTheme} from '../../../../Styles/colors'
+import { darkTheme } from '../../../../Styles/colors'
 import fonts from '../../../../Styles/fonts'
 
 const styles = StyleSheet.create({
@@ -23,20 +23,26 @@ const styles = StyleSheet.create({
   },
 
   content: {
-    flex:1,
+    flex: 1,
     color: darkTheme.grayLight,
     justifyContent: "flex-start",
     width: "100%",
     height: "85%",
-    paddingTop:20
+    paddingTop: 20
   },
 
-  foto:{
-borderRadius:100,
-height:150,
-width:150,
-backgroundColor:'black',
-alignSelf:'center'
+  foto: {
+    borderRadius: 100,
+    height: 150,
+    width: 150,
+    backgroundColor: 'black',
+    justifyContent: 'center',
+    alignSelf: 'center'
+  },
+
+  foto1: {
+    borderRadius: 100,
+    alignSelf: 'center'
   },
 
   text: {
@@ -44,7 +50,7 @@ alignSelf:'center'
     fontSize: 20,
     paddingTop: 20,
     paddingBottom: 20,
-    alignSelf:'center',
+    alignSelf: 'center',
     fontFamily: fonts.text
   },
 

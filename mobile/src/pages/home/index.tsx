@@ -23,17 +23,10 @@ import { ButtonAdicionar } from '../../components/buttons';
 import Subscription from '../home/subscription'
 import { RectButton } from "react-native-gesture-handler";
 import { darkTheme } from '../../Styles/colors'
-import { FirebaseInit } from '../../database/Firebase';
-import { getAuth } from "firebase/auth";
+
 import LoadingScreen from "../../components/loadingScreen";
 import CarroService from "../../database/services/carroService";
 import ServicoService from "../../database/services/ServicoService";
-import usuarioService from '../../database/services/usuarioService';
-
-FirebaseInit();
-
-const auth = getAuth();
-const user = auth.currentUser;
 
 interface Carros {
   id_carro: number;
@@ -52,10 +45,10 @@ interface servico {
   local: string;
   data: string;
   status_servico: number;
+  modelo: string;
 }
 
 function Home({ navigation }: any) {
-  usuarioService.selectall()
 
   const [carregando, setCarregando] = useState(false);
   const [carros, setCarros] = useState<Carros>();
@@ -75,18 +68,7 @@ function Home({ navigation }: any) {
   }
   function handleNavigateToVisualizarVeiculo(id: number) {
     navigation.navigate("VisualizarVeiculo", { id });
-  }
-
-  /* useEffect(() => {
-     let isMounted = true;
-     CarroService.findAllWithImage()
-       .then((response: any) => {
-         if (isMounted) setCarros(response._array)
-       }), (error: any) => {
- 
-       }
-     return () => { isMounted = false };
-   }, []);*/
+  }   
 
   React.useEffect(() => {
     navigation.addListener('focus', () => {
@@ -102,6 +84,7 @@ function Home({ navigation }: any) {
       CarroService.findCarAsc()
         .then((response: any) => {
           setCarros(response)
+          setCarregando(false)
         })
     });
   }, [navigation]);
@@ -126,8 +109,7 @@ function Home({ navigation }: any) {
 
     return () => backHandler.remove();
   });
-  // console.log("Status serviço",isSelected)
-  console.log(servico)
+
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View style={styles.container}>
@@ -150,12 +132,20 @@ function Home({ navigation }: any) {
           <View>
             <View style={styles.content}>
               <RectButton onPress={() => handleNavigateToVisualizarVeiculo(carros.id_carro)}>
-                <Image key={carros.id_imagem} source={{ uri: carros.path }} style={styles.imgVeiculo} />
+                {carros.id_imagem != null
+                  ?
+                  <Image key={carros.id_imagem} source={{ uri: carros.path }} style={styles.imgVeiculo} />
+                  :
+                  <View style={styles.noimg}>
+                    <Feather name="image" size={100} color='white' style={styles.icon} />
+                  </View>
+                }
                 <View style={styles.cardImg}>
                   <Text numberOfLines={1} style={styles.buttonVeiculoText}>{carros.modelo}</Text>
                 </View>
               </RectButton>
             </View>
+
             <View style={styles.card}>
               <View>
                 <RectButton onPress={handleNavigateToServicos}>
@@ -177,8 +167,8 @@ function Home({ navigation }: any) {
                     return (
                       <RectButton key={servico.id_servicos} style={styles.buttonServico} onPress={() => handleNavigateToVisualizarServicos(servico.id_servicos)}>
                         <View style={styles.buttonGroupTextServico}>
-                          <Text style={styles.buttonServicoText}>{carros.modelo}</Text>
                           <Text style={styles.buttonServicoText}>{servico.nome}</Text>
+                          <Text style={styles.buttonServicoText}>{servico.modelo}</Text>
                           <Text style={styles.textInfo2}>{servico.data}</Text>
                           <Text style={styles.textInfo2}>{"Serviço não realizado"}</Text>
                         </View>
@@ -189,9 +179,9 @@ function Home({ navigation }: any) {
               </View>
               <ButtonAdicionar style={styles.buttonAdicionarServico} title="Adicionar serviço" onPress={handleNavigateToCadastroServico}></ButtonAdicionar>
             </View>
-          </View>
+            </View>
         }
-      </View >
+          </View >
     </ScrollView >
   );
 }

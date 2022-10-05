@@ -19,6 +19,7 @@ interface Carros {
   modelo: string;
   id_imagem: number;
   path: string;
+  ano: string;
 }
 
 function Veiculos({ navigation }: any) {
@@ -139,7 +140,8 @@ function Veiculos({ navigation }: any) {
                     <RectButton style={styles.buttonVeiculo} onPress={() => handleNavigateToVisualizarVeiculo(carro.id_carro)}>
                       <View style={styles.buttonGroupText}>
                         <Text numberOfLines={1} style={styles.buttonVeiculoText}>{carro.modelo}</Text>
-                        <Text style={styles.buttonVeiculoTextManutencaoGreen}><Feather name="check-circle" size={16} color={darkTheme.green} /> Manutenção em dia</Text>
+                        <Text numberOfLines={1} style={styles.textInfo}>{carro.marca}</Text>
+                        <Text numberOfLines={1} style={styles.textInfo}>{carro.ano}</Text>
                       </View>
                       {carro.id_imagem != null
                         ?

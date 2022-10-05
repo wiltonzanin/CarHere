@@ -72,6 +72,12 @@ const styles = StyleSheet.create({
     fontFamily: fonts.title
   },
 
+  textInfo: {
+    color: darkTheme.background,
+    fontSize: 14,
+    fontFamily: fonts.text
+  },
+
   buttonVeiculoTextManutencaoGreen: {
     color: darkTheme.green,
     fontSize: 16,

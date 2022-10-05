@@ -13,6 +13,7 @@ import CarroService from "../../../database/services/carroService";
 import ImagensCarroService from "../../../database/services/imagensCarroService";
 import AutonomiaService from "../../../database/services/autonomiaService";
 import ServicoService from "../../../database/services/ServicoService";
+import QuilometragemService from "../../../database/services/QuilometragemService";
 
 interface DetalhesCarroRouteParams {
   id: number;
@@ -32,6 +33,11 @@ interface ImagensCarro {
   path: string;
 }
 
+interface Quilometragem {
+  MaxDate: string;
+  quilometragem: number;
+}
+
 interface Autonomia {
   id: number;
   tipo_combustivel: string;
@@ -43,7 +49,7 @@ interface servico {
   id_servicos: number;
   nome: string;
   local: string;
-  datafor: string;
+  data: string;
 }
 
 function VisualizarVeiculo({ navigation }: any) {
@@ -56,11 +62,19 @@ function VisualizarVeiculo({ navigation }: any) {
   const [imgCarro, setImgCarro] = useState<ImagensCarro[]>([]);
   const [autonomia, setAutonomia] = useState<Autonomia>();
   const [servicos, setServicos] = useState<servico[]>([]);
+  const [quilometragem, setQuilometragem] = useState<Quilometragem>();
+
 
   useEffect(() => {
     CarroService.findCarById(params.id)
       .then((response: any) => {
         setCarros(response)
+      }), (error: any) => {
+        console.log(error);
+      }
+    QuilometragemService.KMDat(params.id)
+      .then((response: any) => {
+        setQuilometragem(response)
       }), (error: any) => {
         console.log(error);
       }
@@ -96,8 +110,11 @@ function VisualizarVeiculo({ navigation }: any) {
           console.log(error);
         }
     });
-
   }, [navigation]);
+  console.log("=======================")
+  console.log(quilometragem?.quilometragem)
+  console.log(carros)
+  console.log("+++++++++++++++++++++++")
 
   function handleNavigateToVisualizarServicos(id: number) {
     navigation.navigate("VisualizarServicos", { id });
@@ -132,6 +149,10 @@ function VisualizarVeiculo({ navigation }: any) {
     );
   }
 
+  var retorno = carros.modelo.split(" ");
+const modelo =  retorno[0] + " " + retorno[1]
+
+
   return (
     <ScrollView>
       <DecisionModal
@@ -142,7 +163,7 @@ function VisualizarVeiculo({ navigation }: any) {
       <View style={styles.container}>
         <View style={styles.header}>
           <BackButton />
-          <Text style={styles.text}>{carros.modelo}</Text>
+          <Text style={styles.text}>{modelo}</Text>
           <RectButton onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
             <Feather name="edit" size={25} color="#F0EFF4" />
           </RectButton>
@@ -171,8 +192,9 @@ function VisualizarVeiculo({ navigation }: any) {
               marca={carros.marca}
               ano={carros.ano}
               motorizacao={carros.motorizacao}
-              modelo={carros.modelo}
+              modelo={modelo}
               combustivel={carros.combustivel}
+              quilometragem={quilometragem?.quilometragem || 0}
             />
           </View>
           <View style={styles.card}>
@@ -196,7 +218,7 @@ function VisualizarVeiculo({ navigation }: any) {
                       <View style={styles.buttonGroupTextServico}>
                         <Text style={styles.buttonServicoText}>{servico.nome}</Text>
                         <Text style={styles.textInfo2}>{servico.local || "-----"}</Text>
-                        <Text style={styles.textInfo2}>{servico.datafor}</Text>
+                        <Text style={styles.textInfo2}>{servico.data}</Text>
                       </View>
                     </RectButton>
                   </View>
