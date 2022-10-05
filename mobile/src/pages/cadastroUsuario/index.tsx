@@ -14,6 +14,7 @@ import { getAuth, createUserWithEmailAndPassword, sendEmailVerification, updateP
 import { FirebaseInit } from '../../database/Firebase';
 
 import LoadingScreen from "../../components/loadingScreen";
+import { darkTheme } from "../../Styles/colors";
 
 FirebaseInit();
 const auth = getAuth();
@@ -197,7 +198,7 @@ function CadastroUsuario({ navigation }: any) {
           {/* documentação: https://reactnativeelements.com/docs/checkbox/ */}
           <View style={styles.termosECondicoes}>
             <CheckBox
-              containerStyle={{ backgroundColor: '#252525', borderColor: '#252525', padding: 0, margin: 0, marginLeft: 0 }}
+              containerStyle={{ backgroundColor: darkTheme.background, borderColor: darkTheme.background, padding: 0, margin: 0, marginLeft: 0 }}
               checkedIcon='check-square-o'
               checkedColor='#8F1622'
               size={25}
