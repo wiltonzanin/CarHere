@@ -205,7 +205,7 @@ function VisualizarVeiculo({ navigation }: any) {
             }
           </View>
           <View style={styles.cardStyle}>
-            <TouchableOpacity style={styles.cardHeader} onPress={!autonomia ? () => { } : handleListaAutonomia}>
+            <TouchableOpacity style={styles.cardHeader} onPress={!autonomia ? () => { navigation.navigate("Autonomia"); } : handleListaAutonomia}>
               <Text style={styles.cardTitle}>Autonomia</Text>
               <Feather name="chevron-right" size={24} color="#F0EFF4" />
             </TouchableOpacity>
