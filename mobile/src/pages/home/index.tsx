@@ -29,7 +29,6 @@ import LoadingScreen from "../../components/loadingScreen";
 import CarroService from "../../database/services/carroService";
 import ServicoService from "../../database/services/ServicoService";
 import usuarioService from '../../database/services/usuarioService';
-import { Servico } from "@components/infos";
 
 FirebaseInit();
 
@@ -47,7 +46,6 @@ interface Carros {
   path: string;
 }
 
-
 interface servico {
   id_servicos: number;
   nome: string;
@@ -58,13 +56,11 @@ interface servico {
 
 function Home({ navigation }: any) {
   usuarioService.selectall()
+
   const [carregando, setCarregando] = useState(false);
   const [carros, setCarros] = useState<Carros>();
   const [servico, setServico] = useState<servico[]>([]);
-  const [isSelected, setIsSelected] = useState(2);
-  const [NoService, setNoService] = useState(false);
-  const [Verifica, setVerifica] = useState(false);
-  var ServicoStatus = "";
+
   function handleNavigateToVisualizarServicos(id: number) {
     navigation.navigate("VisualizarServicos", { id });
   }
@@ -97,7 +93,6 @@ function Home({ navigation }: any) {
       ServicoService.SevicesNoRealized()
         .then((response: any) => {
           setServico(response._array);
-          setIsSelected(response.status_servico);
         });
     });
   }, [navigation]);
