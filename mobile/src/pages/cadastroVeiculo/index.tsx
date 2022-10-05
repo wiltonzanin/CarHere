@@ -16,11 +16,19 @@ import { Feather } from "@expo/vector-icons";
 import { darkTheme } from "../../Styles/colors";
 import CarroService from "../../database/services/carroService";
 import api from "../../services/api";
-
+import NetInfo from "@react-native-community/netinfo";
 import { getAuth } from "firebase/auth";
 import { FirebaseInit } from '../../database/Firebase';
 
 FirebaseInit();
+
+function StatusNet() {
+  var teste
+  NetInfo.addEventListener(state => {
+    teste = state.isConnected;
+  });
+  return teste
+}
 
 function CadastroVeiculo({ navigation }: any) {
   const [modalVisible, setModalVisible] = useState(false);
@@ -37,6 +45,7 @@ function CadastroVeiculo({ navigation }: any) {
   const [marcas, setMarcas] = useState("");
   const [modelo, setModelo] = useState("");
   const [ano, setAno] = useState("");
+
   const [anoapi, setAnoapi] = useState([]);
   const [marcasapi, setMarcasapi] = useState([]);
   const [modelosapi, setModelosapi] = useState([]);
@@ -44,53 +53,100 @@ function CadastroVeiculo({ navigation }: any) {
   const [codigomodelo, setcodigomodelo] = useState("");
   const [urlapi, seturlapi] = useState("");
   const [urlapiano, seturlapiano] = useState("");
+
   const [urlapifip, seturlapifip] = useState("");
   const [fipmodelo, setfipmodelo] = useState("");
-  const [teste, setteste] = useState([]);
 
- 
+  const [valmarca, setvalmarca] = useState("");
+  const [valmodelo, setvalmodelo] = useState("");
+  const [valano, setvalano] = useState("");
+  const [valmotorizacao, setvalmotorizacao] = useState("");
+  const [valcombustivel, setvalcombustivel] = useState("");
+  const [CurrentYear, setCurrentYear] = useState(0);
+  const [date, setDate] = useState(new Date());
 
-useEffect(() => {  
+
+  if (StatusNet() === false) {
+    setModalMensage("Necessario estar conectado a internet para continuar!");
+    setModalVisible(true);
+  }
+
+  function Validacao() {
+    //Marca
+    !marcas ? setvalmarca("Marca é necessario") : setvalmarca('')
+    //Modelo
+    !modelo ? setvalmodelo("Modelo é necessario") : setvalmodelo('')
+    //Ano
+    if (ano == "") {
+      setvalano("Ano é necessario")
+    } else {
+      var limiteAno = (date.getFullYear() + 3)
+      parseInt(ano, CurrentYear);
+      if (CurrentYear > limiteAno && CurrentYear < 1920) {
+        setvalano("Ano do carro inconsistente")
+      } else {
+        setvalano('')
+      }
+    }
+    //Motorização
+    !motorizacao ? setvalmotorizacao("Motorizacao é necessario") : setvalmotorizacao('')
+    //Combustivel
+    !combustivel ? setvalcombustivel("Combustivel é necessario") : setvalcombustivel('')
+    //Valida todos os campos
+    if (!marcas === false && !modelo === false && !combustivel === false && !ano === false) {
+      handleCreateVeiculo()
+    } else {
+      setModalMensage("Algum campo obrigatório não foi preenchido!");
+      setModalWarning(true);
+    }
+  }
+
+
+  useEffect(() => {
     api.get("marcas")
-    .then((response) => {
-     setMarcasapi(response.data) 
-     
-   })  
-     .catch((err) => {
-       console.error("ops! ocorreu um erro : " + err);
-   });
-},[navigation]); 
+      .then((response) => {
+        setMarcasapi(response.data)
+      })
+      .catch((err) => {
+        console.error("ops! ocorreu um erro : " + err);
+      });
+  }, []);
 
 
-useEffect(() => { 
-    api.get(urlapi)
-  .then((response) => {
-   setModelosapi(response.data.modelos) 
+  useEffect(() => {
+    if (marcas !== "") {
+      api.get(urlapi)
+        .then((response) => {
+          setModelosapi(response.data.modelos)
+        })
+      setvalmarca('')
+    }
+  }, [marcas]);
 
- })  
-},[marcas]);
+  useEffect(() => {
+    if (modelo !== "") {
+      api.get(urlapiano)
+        .then((response) => {
+          setAnoapi(response.data)
+        })
+      setvalmodelo('')
+    }
+  }, [modelo]);
 
-useEffect(() => {            
-  api.get(urlapiano)
- .then((response) => {
-  setAnoapi(response.data)
+  /* useEffect(() => {
+     if(ano !== ""){
+       api.get(urlapifip)
+       .then((response) => {
+         setfipmodelo(response.data)
+       })
+     }
+   }, [ano]);*/
 
-})  
-},[modelo]);
-
-
-useEffect(() => {            
-  api.get(urlapifip)
- .then((response) => {
-  setfipmodelo(response.data)
-  
-})  
-},[ano]);
 
   //const ano_value = [];
   //for (var i = 1960; i <= 2022; i++) {
-   //ano_value.push({ label: "" + i, value: "" + i });
-    // console.log(ano_value);
+  //ano_value.push({ label: "" + i, value: "" + i });
+  // console.log(ano_value);
   //}
 
   function handleDeletePhotos() {
@@ -204,9 +260,9 @@ useEffect(() => {
     setCarregando(false);
   }
 
-  
-  return ( 
-      
+
+  return (
+
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <LoadingScreen carregando={carregando} />
       <SuccessModal
@@ -226,43 +282,54 @@ useEffect(() => {
           <View />
         </View>
         <View style={{ paddingBottom: 20 }}>
-        <Text style={styles.text}>Marca</Text>
-        <DropDownPicker
-                placeholder=""
-                dropDownStyle={styles.dropdownList}
-                labelStyle={styles.dropdownText}
-                arrowColor={darkTheme.grayLight}                               
-                items={marcasapi.map(marcasapi => ({
-                  label: marcasapi.nome,
-                  value: marcasapi.codigo,                  
-                }))}
-                
-                style={styles.dropdown}
-                onChangeItem={(item) => {
-                  setMarcas(item.label)
-                  setcodigomarca(item.value) 
-                  seturlapi("marcas/"+item.value+"/modelos")           
-                }}
-              /> 
-          <Text style={styles.text}>Modelo</Text>          
+          <Text style={styles.text}>Marca</Text>
           <DropDownPicker
-                placeholder=""
-                dropDownStyle={styles.dropdownList}
-                labelStyle={styles.dropdownText}
-                arrowColor={darkTheme.grayLight}
-                items={modelosapi.map(modelosapi => ({
-                  label: modelosapi.nome,
-                  value: modelosapi.codigo,                  
-                }))}
-                
-                style={styles.dropdown}
-                onChangeItem={(item) => {
-                  setModelo(item.label)
-                  setcodigomodelo(item.value)
-                  seturlapiano("marcas/"+codigomarca+"/modelos/"+item.value+"/anos")            
-                }}
-              /> 
-         
+            placeholder=""
+            dropDownStyle={styles.dropdownList}
+            labelStyle={styles.dropdownText}
+            arrowColor={darkTheme.grayLight}
+            items={marcasapi.map(marcasapi => ({
+              label: marcasapi.nome,
+              value: marcasapi.codigo,
+            }))}
+
+            style={styles.dropdown}
+            onChangeItem={(item) => {
+              setMarcas(item.label)
+              setcodigomarca(item.value)
+              seturlapi("marcas/" + item.value + "/modelos")
+            }}
+          />
+          {valmarca === ''
+            ?
+            <View />
+            :
+            <Text style={styles.labelErro}><Feather name="alert-triangle" /> {valmarca}</Text>
+          }
+          <Text style={styles.text}>Modelo</Text>
+          <DropDownPicker
+            placeholder=""
+            dropDownStyle={styles.dropdownList}
+            labelStyle={styles.dropdownText}
+            arrowColor={darkTheme.grayLight}
+            items={modelosapi.map(modelosapi => ({
+              label: modelosapi.nome,
+              value: modelosapi.codigo,
+            }))}
+
+            style={styles.dropdown}
+            onChangeItem={(item) => {
+              setModelo(item.label)
+              setcodigomodelo(item.value)
+              seturlapiano("marcas/" + codigomarca + "/modelos/" + item.value + "/anos")
+            }}
+          />
+          {valmodelo === ''
+            ?
+            <View />
+            :
+            <Text style={styles.labelErro}><Feather name="alert-triangle" /> {valmodelo}</Text>
+          }
           <Text style={styles.text}>Combustível</Text>
           <DropDownPicker
             placeholder="Selecione um item"
@@ -283,6 +350,12 @@ useEffect(() => {
               setCombustivel(item.value);
             }}
           ></DropDownPicker>
+          {valcombustivel === ''
+            ?
+            <View />
+            :
+            <Text style={styles.labelErro}><Feather name="alert-triangle" /> {valcombustivel}</Text>
+          }
           <View style={styles.inputGroup}>
             <View style={styles.inputGroupColumn}>
               <TextField
@@ -290,6 +363,12 @@ useEffect(() => {
                 tipoTeclado={"numeric"}
                 onChangeText={setMotorizacao}
               />
+              {valmotorizacao === ''
+                ?
+                <View />
+                :
+                <Text style={styles.labelErro}><Feather name="alert-triangle" /> {valmotorizacao}</Text>
+              }
             </View>
             <View style={styles.inputGroupSecondColumn}>
               <Text style={styles.text1}>Ano</Text>
@@ -301,18 +380,24 @@ useEffect(() => {
                 items={anoapi.map(anoapi => ({
                   label: anoapi.nome.substr(0, 4),
                   value: anoapi.codigo.substr(0, 4),
-                                    
+
                 }))}
                 style={styles.dropdown}
                 onChangeItem={(item) => {
                   setAno(item.value)
-                  seturlapifip("marcas/"+codigomarca+"/modelos/"+codigomodelo+"/anos/"+item.value)
+                  seturlapifip("marcas/" + codigomarca + "/modelos/" + codigomodelo + "/anos/" + item.value)
                 }}
               />
+              {valano === ''
+                ?
+                <View />
+                :
+                <Text style={styles.labelErro}><Feather name="alert-triangle" /> {valano}</Text>
+              }
             </View>
           </View>
           <View style={styles.labelGroup}>
-            <Text style={styles.text}>Fotos</Text> 
+            <Text style={styles.text}>Fotos</Text>
             <Text style={styles.labelOpcional}>(Opcional)</Text>
           </View>
           <ScrollView horizontal>
@@ -342,7 +427,7 @@ useEffect(() => {
             )}
           </ScrollView>
         </View>
-        <Button title="Concluir" onPress={handleCreateVeiculo} />
+        <Button title="Concluir" onPress={Validacao} />
       </View>
     </ScrollView>
   );
