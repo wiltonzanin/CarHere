@@ -111,4 +111,19 @@ export default class CarroService {
             console.log(txError);
         }))
     }
+    
+    static async countCars() {
+        const db = await dbConnection();
+        return new Promise((resolve, reject) => db.transaction(tx => {
+            tx.executeSql(
+                `SELECT COUNT(*) FROM ${table}`
+                , [], (_, { rows }) => {
+                    resolve(rows.item(0))
+                }), (sqlError: any) => {
+                    console.log(sqlError);
+                }
+        }, (txError) => {
+            console.log(txError);
+        }))
+    }
 }

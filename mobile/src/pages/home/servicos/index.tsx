@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { Searchbar } from "react-native-paper";
+import { RectButton } from "react-native-gesture-handler";
 import { View, Text, BackHandler, ScrollView } from "react-native";
 import { DrawerActions, useNavigation, useFocusEffect, StackActions, useRoute } from "@react-navigation/native";
+
 import styles from "./styles";
-import { RectButton } from "react-native-gesture-handler";
 import { Feather } from "@expo/vector-icons";
 import { ButtonAdicionar } from "../../../components/buttons";
 import { ButtonMenu } from "../../../components/buttons";
@@ -10,7 +12,8 @@ import LoadingScreen from "../../../components/loadingScreen";
 import { darkTheme } from '../../../Styles/colors'
 import fonts from '../../../Styles/fonts'
 import ServicoService from "../../../database/services/ServicoService";
-import { Searchbar } from "react-native-paper";
+import { FeedbackModal } from "../../../components/feedbackModal";
+import CarroService from "../../../database/services/carroService";
 
 interface servico {
   id_servicos: number;
@@ -29,6 +32,9 @@ function Servicos({ navigation }: any) {
   const [servico, setServico] = useState<servico[]>([]);
   const [search, setSearch] = useState(false);
   const [searchWord, setSearchWord] = useState('');
+  const [modalWarning, setModalWarning] = useState(false);
+  const [modalMensage, setModalMensage] = useState("");
+  const [carro, setCarro] = useState(0);
 
   const route = useRoute();
 
@@ -39,12 +45,20 @@ function Servicos({ navigation }: any) {
   }
 
   function handleNavigateToCadastrarServicos() {
+    if(carro == 0){
+      setModalMensage("Você deve cadastrar um veículo primeiro!");
+      setModalWarning(true);
+      return;
+    }
     navigation.navigate("CadastroServicos");
   }
 
   React.useEffect(() => {
     navigation.addListener('focus', () => {
       setCarregando(true);
+      CarroService.countCars().then((response: any) => {
+        setCarro(response["COUNT(*)"]);
+      })
       ServicoService.findAll()
         .then((response: any) => {
           setServico(response._array);
@@ -75,9 +89,18 @@ function Servicos({ navigation }: any) {
     listaVazia = false
   }
 
+  function closeModal() {
+    setModalWarning(false);
+    navigation.navigate("CadastroVeiculo");
+  }
+
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <LoadingScreen carregando={carregando} />
+      <FeedbackModal
+        modalVisible={modalWarning}
+        funcaoOnRequestClose={closeModal}
+        mensage={modalMensage} />
       <View style={styles.container}>
         <View style={styles.header}>
           <View style={styles.headerGroup}>
