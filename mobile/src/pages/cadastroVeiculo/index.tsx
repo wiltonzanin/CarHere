@@ -22,6 +22,11 @@ import { FirebaseInit } from '../../database/Firebase';
 
 FirebaseInit();
 
+interface IApi {
+  nome: string;
+  codigo: string;
+}
+
 function StatusNet() {
   var teste
   NetInfo.addEventListener(state => {
@@ -36,7 +41,6 @@ function CadastroVeiculo({ navigation }: any) {
   const [carregando, setCarregando] = useState(false);
   const [disableButton, setDisableButton] = useState(false);
 
-
   const [motorizacao, setMotorizacao] = useState("");
   const [combustivel, setCombustivel] = useState("");
   const [images, setImages] = useState<string[]>([]);
@@ -46,9 +50,9 @@ function CadastroVeiculo({ navigation }: any) {
   const [modelo, setModelo] = useState("");
   const [ano, setAno] = useState("");
 
-  const [anoapi, setAnoapi] = useState([]);
-  const [marcasapi, setMarcasapi] = useState([]);
-  const [modelosapi, setModelosapi] = useState([]);
+  const [anoapi, setAnoapi] = useState<IApi[]>([]);
+  const [marcasapi, setMarcasapi] = useState<IApi[]>([]);
+  const [modelosapi, setModelosapi] = useState<IApi[]>([]);
   const [codigomarca, setcodigomarca] = useState("");
   const [codigomodelo, setcodigomodelo] = useState("");
   const [urlapi, seturlapi] = useState("");
@@ -65,7 +69,6 @@ function CadastroVeiculo({ navigation }: any) {
   const [CurrentYear, setCurrentYear] = useState(0);
   const [date, setDate] = useState(new Date());
 
-
   if (StatusNet() === false) {
     setModalMensage("Necessario estar conectado a internet para continuar!");
     setModalVisible(true);
@@ -73,12 +76,12 @@ function CadastroVeiculo({ navigation }: any) {
 
   function Validacao() {
     //Marca
-    !marcas ? setvalmarca("Marca é necessario") : setvalmarca('')
+    !marcas ? setvalmarca("Marca não foi preenchido") : setvalmarca('')
     //Modelo
-    !modelo ? setvalmodelo("Modelo é necessario") : setvalmodelo('')
+    !modelo ? setvalmodelo("Modelo não foi preenchido") : setvalmodelo('')
     //Ano
     if (ano == "") {
-      setvalano("Ano é necessario")
+      setvalano("Ano não foi preenchido")
     } else {
       var limiteAno = (date.getFullYear() + 3)
       parseInt(ano, CurrentYear);
@@ -89,18 +92,17 @@ function CadastroVeiculo({ navigation }: any) {
       }
     }
     //Motorização
-    !motorizacao ? setvalmotorizacao("Motorizacao é necessario") : setvalmotorizacao('')
+    !motorizacao ? setvalmotorizacao("Motorização não foi preenchido") : setvalmotorizacao('')
     //Combustivel
-    !combustivel ? setvalcombustivel("Combustivel é necessario") : setvalcombustivel('')
+    !combustivel ? setvalcombustivel("Combustivel não foi preenchido") : setvalcombustivel('')
     //Valida todos os campos
     if (!marcas === false && !modelo === false && !combustivel === false && !ano === false) {
       handleCreateVeiculo()
     } else {
-      setModalMensage("Algum campo obrigatório não foi preenchido!");
+      setModalMensage("Preencha os campos obrigatórios!");
       setModalWarning(true);
     }
   }
-
 
   useEffect(() => {
     api.get("marcas")
@@ -111,7 +113,6 @@ function CadastroVeiculo({ navigation }: any) {
         console.error("ops! ocorreu um erro : " + err);
       });
   }, []);
-
 
   useEffect(() => {
     if (marcas !== "") {
@@ -214,39 +215,6 @@ function CadastroVeiculo({ navigation }: any) {
     }
   }
 
-
-  // async function handleCreateVeiculo() {
-  //   const data = new FormData();
-
-  //   data.append("marca", marca);
-  //   data.append("modelo", modelo);
-  //   data.append("motorizacao", motorizacao);
-  //   data.append("ano", ano);
-  //   data.append("combustivel", combustivel);
-
-  //   images.forEach((image, index) => {
-  //     data.append("images", {
-  //       name: `image_${index}.jpg`,
-  //       type: "image/jpg",
-  //       uri: image,
-  //     } as any);
-  //   });
-
-  //   try {
-  //     setCarregando(true)
-  //     await api.post("/carros", data);
-  //   } catch (error) {
-  //     setCarregando(false);
-  //     setModalMensage("");
-  //     setModalWarning(true);
-  //     return;
-  //   }
-
-  //   setModalMensage("Veículo cadastrado com sucesso!");
-  //   setModalVisible(true);
-  //onChangeText={setModelo} />
-  // onChangeText={setMarca} }
-
   function handleNavigateToVeiculos() {
     setModalVisible(!modalVisible);
     setCarregando(false);
@@ -260,9 +228,7 @@ function CadastroVeiculo({ navigation }: any) {
     setCarregando(false);
   }
 
-
   return (
-
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <LoadingScreen carregando={carregando} />
       <SuccessModal
@@ -361,7 +327,9 @@ function CadastroVeiculo({ navigation }: any) {
               <TextField
                 labelName="Motorização"
                 tipoTeclado={"numeric"}
-                onChangeText={setMotorizacao}
+                onChangeText={(text) => { setMotorizacao(text.replace(/[^.0-9]/g, '')) }}
+                value={motorizacao}
+                contextMenuHidden={true}
               />
               {valmotorizacao === ''
                 ?
