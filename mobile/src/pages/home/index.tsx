@@ -266,7 +266,7 @@ function MyDrawer() {
           ),
         }}
       />
-      <Drawer.Screen
+      {/* <Drawer.Screen
         name="Premium"
         component={Subscription}
         options={{
@@ -278,7 +278,7 @@ function MyDrawer() {
             />
           ),
         }}
-      />
+      /> */}
       <Drawer.Screen
         name="Configurações"
         component={Configuracoes}
