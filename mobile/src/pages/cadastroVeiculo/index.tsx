@@ -89,7 +89,7 @@ function CadastroVeiculo({ navigation }: any) {
       }
     }
     //Motorização
-    !motorizacao ? setvalmotorizacao("Motorizacao é necessario") : setvalmotorizacao('')
+    !motorizacao ? setvalmotorizacao("Motorizacão é necessario") : setvalmotorizacao('')
     //Combustivel
     !combustivel ? setvalcombustivel("Combustivel é necessario") : setvalcombustivel('')
     //Valida todos os campos
