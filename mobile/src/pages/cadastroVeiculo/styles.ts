@@ -117,6 +117,19 @@ const styles = StyleSheet.create({
     marginTop: -10,
     paddingBottom: 20
   },
+  textFieldMarca:{
+    height: 40,
+    padding: 10,
+    backgroundColor: darkTheme.textField,
+    borderColor: darkTheme.grayMedium,
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderRadius: 4,
+    marginTop: -35,
+    color: darkTheme.grayLight,
+    fontSize: 16,   
+    fontFamily: fonts.text
+  },
 });
 
 export default styles;

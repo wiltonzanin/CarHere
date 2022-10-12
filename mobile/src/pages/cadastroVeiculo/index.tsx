@@ -67,12 +67,15 @@ function CadastroVeiculo({ navigation }: any) {
   const [valmotorizacao, setvalmotorizacao] = useState("");
   const [valcombustivel, setvalcombustivel] = useState("");
   const [CurrentYear, setCurrentYear] = useState(0);
+  const [valNet, setvalNet] = useState("");
   const [date, setDate] = useState(new Date());
 
   if (StatusNet() === false) {
     setModalMensage("Necessario estar conectado a internet para continuar!");
     setModalVisible(true);
+    setvalNet('')
   }
+
 
   function Validacao() {
     //Marca
@@ -96,7 +99,7 @@ function CadastroVeiculo({ navigation }: any) {
     //Combustivel
     !combustivel ? setvalcombustivel("Combustivel não foi preenchido") : setvalcombustivel('')
     //Valida todos os campos
-    if (!marcas === false && !modelo === false && !combustivel === false && !ano === false) {
+    if (!marcas === false && !modelo === false && !combustivel === false && !ano === false && !motorizacao === false && valNet !== '') {
       handleCreateVeiculo()
     } else {
       setModalMensage("Preencha os campos obrigatórios!");
@@ -105,17 +108,19 @@ function CadastroVeiculo({ navigation }: any) {
   }
 
   useEffect(() => {
-    api.get("marcas")
-      .then((response) => {
-        setMarcasapi(response.data)
-      })
-      .catch((err) => {
-        console.error("ops! ocorreu um erro : " + err);
-      });
+    if (valNet !== '') {
+      api.get("marcas")
+        .then((response) => {
+          setMarcasapi(response.data)
+        })
+      //   .catch((err) => {
+      //   console.error("ops! ocorreu um erro : " + err);
+      //  });
+    }
   }, []);
 
   useEffect(() => {
-    if (marcas !== "") {
+    if (marcas !== "" && valNet !== '') {
       api.get(urlapi)
         .then((response) => {
           setModelosapi(response.data.modelos)
@@ -125,7 +130,7 @@ function CadastroVeiculo({ navigation }: any) {
   }, [marcas]);
 
   useEffect(() => {
-    if (modelo !== "") {
+    if (modelo !== "" && valNet !== '') {
       api.get(urlapiano)
         .then((response) => {
           setAnoapi(response.data)
@@ -144,11 +149,11 @@ function CadastroVeiculo({ navigation }: any) {
    }, [ano]);*/
 
 
-  //const ano_value = [];
-  //for (var i = 1960; i <= 2022; i++) {
-  //ano_value.push({ label: "" + i, value: "" + i });
-  // console.log(ano_value);
-  //}
+  const ano_value = [];
+  for (var i = 1960; i <= 2022; i++) {
+    ano_value.push({ label: "" + i, value: "" + i });
+    //console.log(ano_value);
+  }
 
   function handleDeletePhotos() {
     setImages([]);
@@ -165,7 +170,7 @@ function CadastroVeiculo({ navigation }: any) {
     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
     if (status !== "granted") {
       setModalMensage(
-        "Opa, precisamos da permissão de acesso a galeria para que possamos salvar as imagens :)"
+        "Opa, precisamos da permissão de acesso a galeria para que possamos salvar as imagens"
       );
       setModalWarning(true);
       return;
@@ -201,7 +206,7 @@ function CadastroVeiculo({ navigation }: any) {
         //console.log(`File ${uri} was saved as ${NEW_PHOTO_URI}`)
         setImageUri([...imageUri, NEW_PHOTO_URI]);
       })
-      .catch(error => { console.error(error) })
+    // .catch(error => { console.error(error) })
   }
 
   async function handleCreateVeiculo() {
@@ -249,23 +254,32 @@ function CadastroVeiculo({ navigation }: any) {
         </View>
         <View style={{ paddingBottom: 20 }}>
           <Text style={styles.text}>Marca</Text>
-          <DropDownPicker
-            placeholder=""
-            dropDownStyle={styles.dropdownList}
-            labelStyle={styles.dropdownText}
-            arrowColor={darkTheme.grayLight}
-            items={marcasapi.map(marcasapi => ({
-              label: marcasapi.nome,
-              value: marcasapi.codigo,
-            }))}
-
-            style={styles.dropdown}
-            onChangeItem={(item) => {
-              setMarcas(item.label)
-              setcodigomarca(item.value)
-              seturlapi("marcas/" + item.value + "/modelos")
-            }}
-          />
+          {valNet === ''
+            ?
+            <TextField
+              style={styles.textFieldMarca}
+              labelName=""
+              value={marcas}
+              onChangeText={setMarcas}>
+            </TextField>
+            :
+            <DropDownPicker
+              placeholder=""
+              dropDownStyle={styles.dropdownList}
+              labelStyle={styles.dropdownText}
+              arrowColor={darkTheme.grayLight}
+              items={marcasapi.map(marcasapi => ({
+                label: marcasapi.nome,
+                value: marcasapi.codigo,
+              }))}
+              style={styles.dropdown}
+              onChangeItem={(item) => {
+                setMarcas(item.label)
+                setcodigomarca(item.value)
+                seturlapi("marcas/" + item.value + "/modelos")
+              }}
+            />
+          }
           {valmarca === ''
             ?
             <View />
@@ -273,23 +287,33 @@ function CadastroVeiculo({ navigation }: any) {
             <Text style={styles.labelErro}><Feather name="alert-triangle" /> {valmarca}</Text>
           }
           <Text style={styles.text}>Modelo</Text>
-          <DropDownPicker
-            placeholder=""
-            dropDownStyle={styles.dropdownList}
-            labelStyle={styles.dropdownText}
-            arrowColor={darkTheme.grayLight}
-            items={modelosapi.map(modelosapi => ({
-              label: modelosapi.nome,
-              value: modelosapi.codigo,
-            }))}
+          {valNet === ''
+            ?
+            <TextField
+              style={styles.textFieldMarca}
+              labelName=""
+              value={modelo}
+              onChangeText={setModelo}>
+            </TextField>
+            :
+            <DropDownPicker
+              placeholder=""
+              dropDownStyle={styles.dropdownList}
+              labelStyle={styles.dropdownText}
+              arrowColor={darkTheme.grayLight}
+              items={modelosapi.map(modelosapi => ({
+                label: modelosapi.nome,
+                value: modelosapi.codigo,
+              }))}
 
-            style={styles.dropdown}
-            onChangeItem={(item) => {
-              setModelo(item.label)
-              setcodigomodelo(item.value)
-              seturlapiano("marcas/" + codigomarca + "/modelos/" + item.value + "/anos")
-            }}
-          />
+              style={styles.dropdown}
+              onChangeItem={(item) => {
+                setModelo(item.label)
+                setcodigomodelo(item.value)
+                seturlapiano("marcas/" + codigomarca + "/modelos/" + item.value + "/anos")
+              }}
+            />
+          }
           {valmodelo === ''
             ?
             <View />
@@ -340,22 +364,39 @@ function CadastroVeiculo({ navigation }: any) {
             </View>
             <View style={styles.inputGroupSecondColumn}>
               <Text style={styles.text1}>Ano</Text>
-              <DropDownPicker
-                placeholder=""
-                dropDownStyle={styles.dropdownList}
-                labelStyle={styles.dropdownText}
-                arrowColor={darkTheme.grayLight}
-                items={anoapi.map(anoapi => ({
-                  label: anoapi.nome.substr(0, 4),
-                  value: anoapi.codigo.substr(0, 4),
-
-                }))}
-                style={styles.dropdown}
-                onChangeItem={(item) => {
-                  setAno(item.value)
-                  seturlapifip("marcas/" + codigomarca + "/modelos/" + codigomodelo + "/anos/" + item.value)
-                }}
-              />
+              {valNet === ''
+                ?
+                <DropDownPicker
+                  placeholder=""
+                  dropDownStyle={styles.dropdownList}
+                  labelStyle={styles.dropdownText}
+                  arrowColor={darkTheme.grayLight}
+                  items={ano_value.map((option) => ({
+                    label: option.label,
+                    value: option.value,
+                  }))}
+                  style={styles.dropdown}
+                  onChangeItem={(item) => {
+                    setAno(item.value)
+                  }}
+                />
+                :
+                <DropDownPicker
+                  placeholder=""
+                  dropDownStyle={styles.dropdownList}
+                  labelStyle={styles.dropdownText}
+                  arrowColor={darkTheme.grayLight}
+                  items={anoapi.map(anoapi => ({
+                    label: anoapi.nome.substr(0, 4),
+                    value: anoapi.codigo.substr(0, 4),
+                  }))}
+                  style={styles.dropdown}
+                  onChangeItem={(item) => {
+                    setAno(item.value)
+                    seturlapifip("marcas/" + codigomarca + "/modelos/" + codigomodelo + "/anos/" + item.value)
+                  }}
+                />
+              }
               {valano === ''
                 ?
                 <View />
