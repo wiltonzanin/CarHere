@@ -2,6 +2,7 @@ import React, { createContext, useState, useEffect, useContext } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as auth from '../services/auth';
 import api from '../services/api';
+import { getAuth } from 'firebase/auth';
 
 interface AuthContextData {
     signed: boolean;
@@ -33,7 +34,6 @@ export const AuthProvider: React.FC = ({ children }) => {
 
         loadStorageData();
     }, []);
-
     async function signIn() {
         const response = await auth.signIn();
         setUser(response.user);

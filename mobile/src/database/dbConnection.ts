@@ -2,7 +2,7 @@ import * as SQLite from 'expo-sqlite';
 import { getAuth } from "firebase/auth";
 import { FirebaseInit } from '../database/Firebase';
 import * as FileSystem from 'expo-file-system';
-import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { getStorage, ref, uploadBytes } from "firebase/storage";
 
 FirebaseInit();
 

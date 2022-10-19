@@ -38,7 +38,6 @@ function Inicial({ navigation }: any) {
         signInWithEmailAndPassword(auth, email, senha)
             .then(async (user) => {
                 if (user.user.emailVerified) {
-                    
                     const storageRef = ref(storage, "/user/" + user.user.uid + "/SQLite/" + user.user.uid + ".db");
                     const folderInfo = await FileSystem.getInfoAsync(FileSystem.documentDirectory + "/SQLite/" + user.user.uid + ".db");
                     const valArq = await getDownloadURL(storageRef).then(() => {
@@ -50,31 +49,33 @@ function Inicial({ navigation }: any) {
                         console.log("não existe arquivo local!");
                         if (valArq == true) { //Existe arquivo no nuvem
                             console.log("existe arquivo na nuvem")
-                            if (!(await FileSystem.getInfoAsync(FileSystem.documentDirectory + 
+                            setCarregando(true)
+                            if (!(await FileSystem.getInfoAsync(FileSystem.documentDirectory +
                                 'SQLite')).exists) {
-                                 await FileSystem.makeDirectoryAsync(FileSystem.documentDirectory + 'SQLite');
-                                 await FileSystem.downloadAsync(await getDownloadURL(storageRef), FileSystem.documentDirectory + '/SQLite/' + user.user.uid + '.db')
-                                 .then(({ uri }) => {
-                                     alert("Download " + uri)
-                                     console.log('Finished downloading to ', uri);
-                                     signIn();
-                                 })
-                                 .catch(error => {
-                                     console.log(error);
-                                 });
+                                await FileSystem.makeDirectoryAsync(FileSystem.documentDirectory + 'SQLite');
+                                await FileSystem.downloadAsync(await getDownloadURL(storageRef), FileSystem.documentDirectory + '/SQLite/' + user.user.uid + '.db')
+                                    .then(({ uri }) => {
+                                        alert("Download " + uri)
+                                        //console.log('Finished downloading to ', uri);
+                                        setCarregando(false)
+                                        signIn();
+                                    })
+                                    .catch(error => {
+                                        console.log(error);
+                                    });
                             }
                         }
                         else {
                             DatabaseInit.InitDb();
                             signIn();
-                            console.log("não existe arquivo na nuvem")
+                            //console.log("não existe arquivo na nuvem")
                         }
                     }
                     else { //se existe entra
-                        console.log("existe db off")
+                        //console.log("existe db off")
                         signIn();
                         if (valArq == false) { //se não existe na nuvem faz upload
-                            console.log("não existe na nuvem")
+                            //console.log("não existe na nuvem")
                             UploadDB()
                         }
                     }

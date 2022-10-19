@@ -38,11 +38,11 @@ function CadastroUsuario({ navigation }: any) {
   const [carregando, setCarregando] = useState(false);
 
   function StatusNet() {
-    var teste
+    var Status
     NetInfo.addEventListener(state => {
-      teste = state.isConnected;
+      Status = state.isConnected;
     });
-    return teste
+    return Status
   } 
   
   function handleCreateUsuario() {
