@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
         color: 'rgba(240, 239, 244, 0.5)',
         fontSize: 10,
         paddingLeft: 10,
-        paddingTop: 8,
+        paddingTop: 16,
     fontFamily: fonts.text
     },
 
@@ -110,7 +110,26 @@ const styles = StyleSheet.create({
         height: 120,
         borderRadius: 10,
         marginRight: 10
-    }
+    },
+    labelErro: {
+    color: '#f83a53',
+    fontSize: 12,
+    marginTop: -10,
+    paddingBottom: 20
+  },
+  textFieldMarca:{
+    height: 40,
+    padding: 10,
+    backgroundColor: darkTheme.textField,
+    borderColor: darkTheme.grayMedium,
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderRadius: 4,
+    marginTop: -35,
+    color: darkTheme.grayLight,
+    fontSize: 16,   
+    fontFamily: fonts.text
+  },
 });
 
 export default styles;

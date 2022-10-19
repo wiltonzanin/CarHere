@@ -237,7 +237,7 @@ function CadastroServicos({ navigation }: any) {
               <TextField labelName="Quilometragem"
                 maxLength={8}
                 tipoTeclado={"numeric"}
-                onChangeText={(text) => { setQuilometragem(text.replace(/[^0-9]/g, '')) }}
+                onChangeText={(text) => { setQuilometragem(text.replace(/[^,.0-9]/g, '')) }}
                 value={Quilometragem}
                 contextMenuHidden={true}
               />

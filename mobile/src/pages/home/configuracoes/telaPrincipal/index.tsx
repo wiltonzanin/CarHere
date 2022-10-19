@@ -28,8 +28,6 @@ function Configuracoes({ navigation }: any) {
     navigation.navigate("Acessibilidade");
   }
 
-
-
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View style={styles.container}>
@@ -44,23 +42,22 @@ function Configuracoes({ navigation }: any) {
         <View>
           <Text style={styles.sectionTitle}>Preferências</Text>
           <View style={styles.buttonsGroup}>
-            <View style={styles.buttonsGroupContent}>
+            {/* <View style={styles.buttonsGroupContent}>
               <ButtonPadrao
                 title="Unidades de medida"
                 onPress={handleNavigateToUnidadeMedida}
               />
-            </View>
+            </View> */}
             {/* <View style={styles.buttonsGroupContent}>
               <ButtonPadrao title="Acessibilidade"
                 onPress={handleNavigateToAcessibilidade} />
             </View> */}
-
-            <View style={styles.buttonsGroupContent}>
+            {/* <View style={styles.buttonsGroupContent}>
               <ButtonPadrao
                 title="Aparência"
                 onPress={handleNavigateToAparencia}
               />
-            </View>
+            </View> */}
             <ButtonPadrao
               title="Notificações"
               onPress={handleNavigateToNotificacao}
@@ -73,7 +70,7 @@ function Configuracoes({ navigation }: any) {
               onPress={handleNavigateToOpcoesUsuario}
             />
           </View>
-          <Text style={styles.sectionTitle}>Preferências</Text>
+          <Text style={styles.sectionTitle}>Termos do aplicativo</Text>
           <View style={styles.buttonsGroup}>
             <ButtonPadrao
               title="Termos de Serviço"

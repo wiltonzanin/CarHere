@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { View, Text, Image, ScrollView } from "react-native";
-import { DrawerActions } from "@react-navigation/native";
+import { View, Text, Image, ScrollView, BackHandler } from "react-native";
+import { DrawerActions, StackActions, useFocusEffect } from "@react-navigation/native";
 import { RectButton } from "react-native-gesture-handler";
 import { Feather } from "@expo/vector-icons";
 import { Searchbar } from 'react-native-paper';
@@ -62,20 +62,20 @@ function Veiculos({ navigation }: any) {
   //   })
   // }, [])
 
-  // useFocusEffect(() => {
-  //   const backAction = () => {
-  //     const pushAction = StackActions.push('Home');
-  //     navigation.dispatch(pushAction);
-  //     return true;
-  //   };
+  useFocusEffect(() => {
+    const backAction = () => {
+      const pushAction = StackActions.push('Home');
+      navigation.dispatch(pushAction);
+      return true;
+    };
 
-  //   const backHandler = BackHandler.addEventListener(
-  //     "hardwareBackPress",
-  //     backAction
-  //   );
+    const backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      backAction
+    );
 
-  //   return () => backHandler.remove();
-  // });
+    return () => backHandler.remove();
+  });
 
   if (carros.length > 0) {
     listaVazia = false
