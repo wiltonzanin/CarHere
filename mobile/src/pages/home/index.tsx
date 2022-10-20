@@ -28,6 +28,7 @@ import { darkTheme } from '../../Styles/colors'
 import LoadingScreen from "../../components/loadingScreen";
 import CarroService from "../../database/services/carroService";
 import ServicoService from "../../database/services/ServicoService";
+import { getAuth } from "firebase/auth";
 
 interface Carros {
   id_carro: number;
@@ -48,6 +49,8 @@ interface servico {
   status_servico: number;
   modelo: string;
 }
+
+console.log(!getAuth().currentUser?.uid)
 
 function Home({ navigation }: any) {
 
