@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useNavigation } from "@react-navigation/native";
-import { Text, View, ScrollView, TouchableOpacity, Image } from "react-native";
+import { StackActions, useFocusEffect, useNavigation } from "@react-navigation/native";
+import { Text, View, ScrollView, TouchableOpacity, Image, BackHandler } from "react-native";
 import * as ImagePicker from 'expo-image-picker';
 import styles from "./styles";
 import * as FileSystem from 'expo-file-system';
@@ -76,6 +76,20 @@ function CadastroVeiculo({ navigation }: any) {
     setvalNet('')
   }
 
+  useFocusEffect(() => {
+    const backAction = () => {
+      const pushAction = StackActions.push('Home');
+      navigation.dispatch(pushAction);
+      return true;
+    };
+
+    const backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      backAction
+    );
+
+    return () => backHandler.remove();
+  });
 
   function Validacao() {
     //Marca
@@ -248,7 +262,7 @@ function CadastroVeiculo({ navigation }: any) {
       />
       <View style={styles.container}>
         <View style={styles.header}>
-          <BackScreen />
+          <BackScreen backToHome={true} />
           <Text style={styles.title}>Cadastre seu veículo</Text>
           <View />
         </View>

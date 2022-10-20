@@ -87,7 +87,7 @@ function Veiculos({ navigation }: any) {
       <View style={styles.container}>
         <View style={styles.header}>
           <View style={styles.headerGroup}>
-            <ButtonMenu title="" onPress={() => navigation.dispatch(DrawerActions.openDrawer())} />
+            <ButtonMenu />
             <Text style={styles.headerText}>Veículos</Text>
             <Feather name="search" size={25} color={darkTheme.grayLight} onPress={() => { setSearch(!search) }} />
           </View>

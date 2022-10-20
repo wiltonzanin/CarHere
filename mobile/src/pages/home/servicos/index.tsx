@@ -45,7 +45,7 @@ function Servicos({ navigation }: any) {
   }
 
   function handleNavigateToCadastrarServicos() {
-    if(carro == 0){
+    if (carro == 0) {
       setModalMensage("Você deve cadastrar um veículo primeiro!");
       setModalWarning(true);
       return;
@@ -104,7 +104,7 @@ function Servicos({ navigation }: any) {
       <View style={styles.container}>
         <View style={styles.header}>
           <View style={styles.headerGroup}>
-            <ButtonMenu title="" onPress={() => navigation.dispatch(DrawerActions.openDrawer())} />
+            <ButtonMenu />
             <Text style={styles.headerText}>Serviços</Text>
             <Feather name="search" size={25} color={darkTheme.grayLight} onPress={() => { setSearch(!search) }} />
           </View>

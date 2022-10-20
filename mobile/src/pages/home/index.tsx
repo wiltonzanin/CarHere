@@ -7,6 +7,7 @@ import {
   DrawerContentScrollView,
   DrawerItemList,
   DrawerContentComponentProps,
+  useIsDrawerOpen,
 } from "@react-navigation/drawer";
 import { Feather, MaterialCommunityIcons, SimpleLineIcons } from "@expo/vector-icons";
 
@@ -68,7 +69,7 @@ function Home({ navigation }: any) {
   }
   function handleNavigateToVisualizarVeiculo(id: number) {
     navigation.navigate("VisualizarVeiculo", { id });
-  }   
+  }
 
   React.useEffect(() => {
     navigation.addListener('focus', () => {
@@ -115,7 +116,7 @@ function Home({ navigation }: any) {
       <View style={styles.container}>
         <LoadingScreen carregando={carregando} />
         <View style={styles.header}>
-          <ButtonMenu title="" onPress={() => navigation.dispatch(DrawerActions.openDrawer())} />
+          <ButtonMenu />
           <Text style={styles.title}>Início</Text>
           <View />
         </View>
@@ -179,9 +180,9 @@ function Home({ navigation }: any) {
               </View>
               <ButtonAdicionar style={styles.buttonAdicionarServico} title="Adicionar serviço" onPress={handleNavigateToCadastroServico}></ButtonAdicionar>
             </View>
-            </View>
+          </View>
         }
-          </View >
+      </View >
     </ScrollView >
   );
 }

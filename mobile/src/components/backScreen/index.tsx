@@ -1,20 +1,32 @@
 import React from 'react';
 import { BorderlessButton } from 'react-native-gesture-handler';
-import { useNavigation } from '@react-navigation/native';
+import { StackActions, useNavigation } from '@react-navigation/native';
 import { Feather } from '@expo/vector-icons';
 import styles from './styles';
-import {darkTheme} from '../../Styles/colors'
+import { darkTheme } from '../../Styles/colors'
+
+interface backButtonProps {
+    backToHome?: boolean;
+}
 
 /**
  * Componente para retonar a tela anterior.
  * 
  */
-function backScreen() {
+function backScreen({ backToHome }: backButtonProps) {
 
     const navigation = useNavigation();
 
+    if (backToHome === undefined) {
+        backToHome = false;
+    }
+
+    function backHome() {
+        navigation.dispatch(StackActions.push('Home'))
+    }
+
     return (
-        <BorderlessButton onPress={navigation.goBack} style={styles.backButtonStyle}>
+        <BorderlessButton onPress={backToHome ? backHome : navigation.goBack} style={styles.backButtonStyle}>
             <Feather name="arrow-left" size={24} color={darkTheme.grayLight} />
         </BorderlessButton>
     );
