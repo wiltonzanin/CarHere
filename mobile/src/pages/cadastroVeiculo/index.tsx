@@ -53,27 +53,21 @@ function CadastroVeiculo({ navigation }: any) {
   const [anoapi, setAnoapi] = useState<IApi[]>([]);
   const [marcasapi, setMarcasapi] = useState<IApi[]>([]);
   const [modelosapi, setModelosapi] = useState<IApi[]>([]);
-  const [codigomarca, setcodigomarca] = useState("");
-  const [codigomodelo, setcodigomodelo] = useState("");
+ // const [codigomarca, setcodigomarca] = useState("");
+  //const [codigomodelo, setcodigomodelo] = useState("");
   const [urlapi, seturlapi] = useState("");
-  const [urlapiano, seturlapiano] = useState("");
 
-  const [urlapifip, seturlapifip] = useState("");
-  const [fipmodelo, setfipmodelo] = useState("");
+  //const [urlapiano, seturlapiano] = useState("");
+  //const [urlapifip, seturlapifip] = useState("");
+  //const [fipmodelo, setfipmodelo] = useState("");
 
-  const [valmarca, setvalmarca] = useState("");
-  const [valmodelo, setvalmodelo] = useState("");
-  const [valano, setvalano] = useState("");
-  const [valmotorizacao, setvalmotorizacao] = useState("");
-  const [valcombustivel, setvalcombustivel] = useState("");
   const [CurrentYear, setCurrentYear] = useState(0);
-  const [valNet, setvalNet] = useState("");
   const [date, setDate] = useState(new Date());
+  const [validacao, setValidacao] = useState(0);
 
   if (StatusNet() === false) {
     setModalMensage("Necessario estar conectado a internet para continuar!");
     setModalVisible(true);
-    setvalNet('')
   }
 
   useFocusEffect(() => {
@@ -92,37 +86,23 @@ function CadastroVeiculo({ navigation }: any) {
   });
 
   function Validacao() {
-    //Marca
-    !marcas ? setvalmarca("Marca não foi preenchido") : setvalmarca('')
-    //Modelo
-    !modelo ? setvalmodelo("Modelo não foi preenchido") : setvalmodelo('')
     //Ano
-    if (ano == "") {
-      setvalano("Ano não foi preenchido")
+    setValidacao(1)
+    parseInt(ano, CurrentYear);
+    if (CurrentYear > limiteAno && CurrentYear < 1920) {
+      setModalMensage("Ano do carro inconsistente")
     } else {
-      var limiteAno = (date.getFullYear() + 3)
-      parseInt(ano, CurrentYear);
-      if (CurrentYear > limiteAno && CurrentYear < 1920) {
-        setvalano("Ano do carro inconsistente")
+      if (!marcas === false && !modelo === false && !combustivel === false && !ano === false && !motorizacao === false) {
+        handleCreateVeiculo()
       } else {
-        setvalano('')
+        setModalMensage("Preencha os campos obrigatórios!");
+        setModalWarning(true);
       }
-    }
-    //Motorização
-    !motorizacao ? setvalmotorizacao("Motorização não foi preenchido") : setvalmotorizacao('')
-    //Combustivel
-    !combustivel ? setvalcombustivel("Combustivel não foi preenchido") : setvalcombustivel('')
-    //Valida todos os campos
-    if (!marcas === false && !modelo === false && !combustivel === false && !ano === false && !motorizacao === false && valNet !== '') {
-      handleCreateVeiculo()
-    } else {
-      setModalMensage("Preencha os campos obrigatórios!");
-      setModalWarning(true);
     }
   }
 
   useEffect(() => {
-    if (valNet !== '') {
+    if (StatusNet()) {
       api.get("marcas")
         .then((response) => {
           setMarcasapi(response.data)
@@ -131,19 +111,19 @@ function CadastroVeiculo({ navigation }: any) {
       //   console.error("ops! ocorreu um erro : " + err);
       //  });
     }
+
   }, []);
 
   useEffect(() => {
-    if (marcas !== "" && valNet !== '') {
+    if (marcas !== "" && StatusNet()) {
       api.get(urlapi)
         .then((response) => {
           setModelosapi(response.data.modelos)
         })
-      setvalmarca('')
     }
   }, [marcas]);
 
-  useEffect(() => {
+  /*useEffect(() => {
     if (modelo !== "" && valNet !== '') {
       api.get(urlapiano)
         .then((response) => {
@@ -151,7 +131,7 @@ function CadastroVeiculo({ navigation }: any) {
         })
       setvalmodelo('')
     }
-  }, [modelo]);
+  }, [modelo]);*/
 
   /* useEffect(() => {
      if(ano !== ""){
@@ -161,10 +141,25 @@ function CadastroVeiculo({ navigation }: any) {
        })
      }
    }, [ano]);*/
+  /* <DropDownPicker
+    placeholder=""
+    dropDownStyle={styles.dropdownList}
+     labelStyle={styles.dropdownText}
+     arrowColor={darkTheme.grayLight}
+     items={anoapi.map(anoapi => ({
+       label: anoapi.nome.substr(0, 4),
+       value: anoapi.codigo.substr(0, 4),
+     }))}
+     style={styles.dropdown}
+     onChangeItem={(item) => {
+   setAno(item.value)
+    /  seturlapifip("marcas/" + codigomarca + "/modelos/" + codigomodelo + "/anos/" + item.value)
+     }}
+   >*/
 
-
+  var limiteAno = (date.getFullYear() + 3)
   const ano_value = [];
-  for (var i = 1960; i <= 2022; i++) {
+  for (var i = limiteAno; i >= 1960; i--) {
     ano_value.push({ label: "" + i, value: "" + i });
     //console.log(ano_value);
   }
@@ -262,77 +257,86 @@ function CadastroVeiculo({ navigation }: any) {
       />
       <View style={styles.container}>
         <View style={styles.header}>
-          <BackScreen backToHome={true} />
+          <BackScreen backToHome={true}/>
           <Text style={styles.title}>Cadastre seu veículo</Text>
           <View />
         </View>
         <View style={{ paddingBottom: 20 }}>
           <Text style={styles.text}>Marca</Text>
-          {valNet === ''
+          <TextField
+            style={styles.textFieldMarca}
+            labelName=""
+            value={marcas}
+            onChangeText={setMarcas}>
+          </TextField>
+          {StatusNet() === false
             ?
-            <TextField
-              style={styles.textFieldMarca}
-              labelName=""
-              value={marcas}
-              onChangeText={setMarcas}>
-            </TextField>
+            <View>
+            </View>
             :
-            <DropDownPicker
-              placeholder=""
-              dropDownStyle={styles.dropdownList}
-              labelStyle={styles.dropdownText}
-              arrowColor={darkTheme.grayLight}
-              items={marcasapi.map(marcasapi => ({
-                label: marcasapi.nome,
-                value: marcasapi.codigo,
-              }))}
-              style={styles.dropdown}
-              onChangeItem={(item) => {
-                setMarcas(item.label)
-                setcodigomarca(item.value)
-                seturlapi("marcas/" + item.value + "/modelos")
-              }}
-            />
+            <View style={styles.ViewdropdownCount}>
+              <DropDownPicker
+                placeholder=""
+                containerStyle={styles.dropdownCount1}
+                dropDownStyle={styles.dropdownList1}
+                labelStyle={styles.dropdownText}
+                arrowColor={darkTheme.grayLight}
+                items={marcasapi.map(marcasapi => ({
+                  label: marcasapi.nome,
+                  value: marcasapi.codigo,
+                }))}
+                style={styles.dropdown}
+                onChangeItem={(item) => {
+                  setMarcas(item.label)
+                  //setcodigomarca(item.value)
+                  seturlapi("marcas/" + item.value + "/modelos")
+                }}
+              />
+            </View>
           }
-          {valmarca === ''
+          {!marcas && validacao === 1
             ?
-            <View />
+            <Text style={styles.labelErro}><Feather name="alert-triangle" /> {"Marca não foi preenchido"}</Text>
             :
-            <Text style={styles.labelErro}><Feather name="alert-triangle" /> {valmarca}</Text>
+            <View />
           }
           <Text style={styles.text}>Modelo</Text>
-          {valNet === ''
+          <TextField
+            style={styles.textFieldMarca}
+            labelName=""
+            value={modelo}
+            onChangeText={setModelo}>
+          </TextField>
+          {StatusNet() === false
             ?
-            <TextField
-              style={styles.textFieldMarca}
-              labelName=""
-              value={modelo}
-              onChangeText={setModelo}>
-            </TextField>
+            <View></View>
             :
-            <DropDownPicker
-              placeholder=""
-              dropDownStyle={styles.dropdownList}
-              labelStyle={styles.dropdownText}
-              arrowColor={darkTheme.grayLight}
-              items={modelosapi.map(modelosapi => ({
-                label: modelosapi.nome,
-                value: modelosapi.codigo,
-              }))}
+            <View style={styles.ViewdropdownCount}>
+              <DropDownPicker
+                placeholder=""
+                containerStyle={styles.dropdownCount1}
+                dropDownStyle={styles.dropdownList1}
+                labelStyle={styles.dropdownText}
+                arrowColor={darkTheme.grayLight}
+                items={modelosapi.map(modelosapi => ({
+                  label: modelosapi.nome,
+                  value: modelosapi.codigo,
+                }))}
 
-              style={styles.dropdown}
-              onChangeItem={(item) => {
-                setModelo(item.label)
-                setcodigomodelo(item.value)
-                seturlapiano("marcas/" + codigomarca + "/modelos/" + item.value + "/anos")
-              }}
-            />
+                style={styles.dropdown}
+                onChangeItem={(item) => {
+                  setModelo(item.label)
+                  //setcodigomodelo(item.value)
+                  //seturlapiano("marcas/" + codigomarca + "/modelos/" + item.value + "/anos")
+                }}
+              />
+            </View>
           }
-          {valmodelo === ''
+          {!modelo && validacao === 1
             ?
-            <View />
+            <Text style={styles.labelErro}><Feather name="alert-triangle" /> {"Modelo não foi preenchido"}</Text>
             :
-            <Text style={styles.labelErro}><Feather name="alert-triangle" /> {valmodelo}</Text>
+            <View />
           }
           <Text style={styles.text}>Combustível</Text>
           <DropDownPicker
@@ -354,11 +358,11 @@ function CadastroVeiculo({ navigation }: any) {
               setCombustivel(item.value);
             }}
           ></DropDownPicker>
-          {valcombustivel === ''
+          {!combustivel && validacao === 1
             ?
-            <View />
+            <Text style={styles.labelErro}><Feather name="alert-triangle" /> {"Combustivel não foi preenchido"}</Text>
             :
-            <Text style={styles.labelErro}><Feather name="alert-triangle" /> {valcombustivel}</Text>
+            <View />
           }
           <View style={styles.inputGroup}>
             <View style={styles.inputGroupColumn}>
@@ -369,53 +373,34 @@ function CadastroVeiculo({ navigation }: any) {
                 value={motorizacao}
                 contextMenuHidden={true}
               />
-              {valmotorizacao === ''
+              {!motorizacao && validacao === 1
                 ?
-                <View />
+                <Text style={styles.labelErro}><Feather name="alert-triangle" /> {"Motorização não foi preenchido"}</Text>
                 :
-                <Text style={styles.labelErro}><Feather name="alert-triangle" /> {valmotorizacao}</Text>
+                <View />
               }
             </View>
             <View style={styles.inputGroupSecondColumn}>
               <Text style={styles.text1}>Ano</Text>
-              {valNet === ''
+              <DropDownPicker
+                placeholder=""
+                dropDownStyle={styles.dropdownList}
+                labelStyle={styles.dropdownText}
+                arrowColor={darkTheme.grayLight}
+                items={ano_value.map((option) => ({
+                  label: option.label,
+                  value: option.value,
+                }))}
+                style={styles.dropdown}
+                onChangeItem={(item) => {
+                  setAno(item.value)
+                }}
+              />
+              {!ano && validacao === 1
                 ?
-                <DropDownPicker
-                  placeholder=""
-                  dropDownStyle={styles.dropdownList}
-                  labelStyle={styles.dropdownText}
-                  arrowColor={darkTheme.grayLight}
-                  items={ano_value.map((option) => ({
-                    label: option.label,
-                    value: option.value,
-                  }))}
-                  style={styles.dropdown}
-                  onChangeItem={(item) => {
-                    setAno(item.value)
-                  }}
-                />
+                <Text style={styles.labelErro}><Feather name="alert-triangle" /> {"Ano não foi preenchido"}</Text>
                 :
-                <DropDownPicker
-                  placeholder=""
-                  dropDownStyle={styles.dropdownList}
-                  labelStyle={styles.dropdownText}
-                  arrowColor={darkTheme.grayLight}
-                  items={anoapi.map(anoapi => ({
-                    label: anoapi.nome.substr(0, 4),
-                    value: anoapi.codigo.substr(0, 4),
-                  }))}
-                  style={styles.dropdown}
-                  onChangeItem={(item) => {
-                    setAno(item.value)
-                    seturlapifip("marcas/" + codigomarca + "/modelos/" + codigomodelo + "/anos/" + item.value)
-                  }}
-                />
-              }
-              {valano === ''
-                ?
                 <View />
-                :
-                <Text style={styles.labelErro}><Feather name="alert-triangle" /> {valano}</Text>
               }
             </View>
           </View>

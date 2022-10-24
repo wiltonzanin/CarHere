@@ -1,5 +1,8 @@
+import { Teko_500Medium } from '@expo-google-fonts/teko';
+import { CenterFocusStrong } from '@material-ui/icons';
 import { StyleSheet } from 'react-native';
-import {darkTheme} from '../../Styles/colors'
+import { transparent } from 'react-native-paper/lib/typescript/styles/colors';
+import { darkTheme } from '../../Styles/colors'
 import fonts from '../../Styles/fonts'
 
 const styles = StyleSheet.create({
@@ -20,7 +23,7 @@ const styles = StyleSheet.create({
     title: {
         color: darkTheme.grayLight,
         fontSize: 20,
-    fontFamily: fonts.title
+        fontFamily: fonts.title
     },
 
     labelGroup: {
@@ -33,22 +36,22 @@ const styles = StyleSheet.create({
         fontSize: 18,
         marginBottom: 10,
         marginTop: 10,
-    fontFamily: fonts.text
+        fontFamily: fonts.text
     },
     text1: {
         color: darkTheme.grayLight,
         fontSize: 18,
         marginBottom: 10,
-        
-    fontFamily: fonts.text
+
+        fontFamily: fonts.text
     },
 
-    labelOpcional:{
+    labelOpcional: {
         color: 'rgba(240, 239, 244, 0.5)',
         fontSize: 10,
         paddingLeft: 10,
         paddingTop: 16,
-    fontFamily: fonts.text
+        fontFamily: fonts.text
     },
 
     inputGroup: {
@@ -72,15 +75,28 @@ const styles = StyleSheet.create({
         marginBottom: 20
     },
 
+
     dropdownList: {
         backgroundColor: darkTheme.textField,
         borderColor: darkTheme.grayMedium,
     },
 
     dropdownText: {
-        fontSize: 16,
         color: darkTheme.grayLight,
-    fontFamily: fonts.text
+        fontFamily: fonts.text
+    },
+    ViewdropdownCount: {
+        marginTop:-60,
+        alignItems: 'flex-end',
+    },
+    dropdownList1: {
+        backgroundColor: darkTheme.textField,
+        borderColor: darkTheme.grayMedium,
+        width:370,
+        marginLeft:-330.5,
+    },
+    dropdownCount1: {
+        width: 40,
     },
 
     imageSelector: {
@@ -105,31 +121,31 @@ const styles = StyleSheet.create({
         marginLeft: 10
     },
 
-    carImages:{
+    carImages: {
         width: 120,
         height: 120,
         borderRadius: 10,
         marginRight: 10
     },
     labelErro: {
-    color: '#f83a53',
-    fontSize: 12,
-    marginTop: -10,
-    paddingBottom: 20
-  },
-  textFieldMarca:{
-    height: 40,
-    padding: 10,
-    backgroundColor: darkTheme.textField,
-    borderColor: darkTheme.grayMedium,
-    borderStyle: 'solid',
-    borderWidth: 1,
-    borderRadius: 4,
-    marginTop: -35,
-    color: darkTheme.grayLight,
-    fontSize: 16,   
-    fontFamily: fonts.text
-  },
+        color: '#f83a53',
+        fontSize: 12,
+        marginTop: -10,
+        paddingBottom: 20
+    },
+    textFieldMarca: {
+        height: 40,
+        padding: 10,
+        backgroundColor: darkTheme.textField,
+        borderColor: darkTheme.grayMedium,
+        borderStyle: 'solid',
+        borderWidth: 1,
+        borderRadius: 4,
+        marginTop: -35,
+        color: darkTheme.grayLight,
+        fontSize: 16,
+        fontFamily: fonts.text
+    },
 });
 
 export default styles;
