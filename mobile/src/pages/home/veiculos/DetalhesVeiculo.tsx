@@ -150,7 +150,12 @@ function VisualizarVeiculo({ navigation }: any) {
   }
 
   var retorno = carros.modelo.split(" ");
-const modelo =  retorno[0] + " " + retorno[1]
+  var modelo = ""
+  if (retorno.length > 2) {
+    modelo = retorno[0] + " " + retorno[1]
+  } else {
+    modelo = retorno[0]
+  }
 
 
   return (
