@@ -52,7 +52,7 @@ function AppStack() {
     return (
       <Navigator initialRouteName="Home" screenOptions={{ headerShown: false, cardStyle: { backgroundColor: darkTheme.background }, }} >
         <Screen name="Home" component={Home} />
-        <Screen name="CadastroVeiculo" component={CadastroVeiculo} />
+        <Screen name="CadastroVeiculo" component={CadastroVeiculo} initialParams={{ id: 0 }} />
         <Screen name="Notificacao" component={Notificacao} />
         <Screen name="AlterarSenha" component={AlterarSenha} />
         <Screen name="VeiculosCadastrados" component={VeiculosCadastrados} />

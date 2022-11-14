@@ -218,6 +218,7 @@ function MyDrawer() {
       <Drawer.Screen
         name="Cadastrar veículo"
         component={CadastroVeiculo}
+        initialParams={{ id: 0 }}
         options={{
           drawerIcon: ({ focused, size }) => (
             <Feather

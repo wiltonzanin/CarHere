@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, ScrollView, Image, TouchableOpacity } from "react-native";
-import { DrawerActions, useRoute } from "@react-navigation/native";
+import { DrawerActions, StackActions, useRoute } from "@react-navigation/native";
 import styles from "./DetalhesVeiculoStyle";
 import { RectButton } from "react-native-gesture-handler";
 import { Feather } from "@expo/vector-icons";
@@ -64,7 +64,6 @@ function VisualizarVeiculo({ navigation }: any) {
   const [servicos, setServicos] = useState<servico[]>([]);
   const [quilometragem, setQuilometragem] = useState<Quilometragem>();
 
-
   useEffect(() => {
     CarroService.findCarById(params.id)
       .then((response: any) => {
@@ -111,13 +110,15 @@ function VisualizarVeiculo({ navigation }: any) {
         }
     });
   }, [navigation]);
-  console.log("=======================")
-  console.log(quilometragem?.quilometragem)
-  console.log(carros)
-  console.log("+++++++++++++++++++++++")
 
   function handleNavigateToVisualizarServicos(id: number) {
-    navigation.navigate("VisualizarServicos", { id });
+    //navigation.navigate("VisualizarServicos", { id });
+    navigation.dispatch(
+      StackActions.push('VisualizarServicos', {
+        id: id,
+      })
+    );
+    //navigation.dispatch(DrawerActions.jumpTo("VisualizarServicos", { id }))
   }
 
   function handleNavigateToServicos() {
@@ -137,6 +138,10 @@ function VisualizarVeiculo({ navigation }: any) {
     setModalDecisionVisible(!modalDecisionVisible);
   }
 
+  function handleEditCar(id: number, id_carro: number) {
+    navigation.navigate("CadastroVeiculo", { id, id_carro });
+  }
+
   function handleDeleteVehicle() {
     setModalDecisionVisible(!modalDecisionVisible);
     navigation.navigate("VeiculosCadastrados");
@@ -150,8 +155,7 @@ function VisualizarVeiculo({ navigation }: any) {
   }
 
   var retorno = carros.modelo.split(" ");
-const modelo =  retorno[0] + " " + retorno[1]
-
+  const modelo = retorno[0] + " " + retorno[1]
 
   return (
     <ScrollView>
@@ -164,7 +168,7 @@ const modelo =  retorno[0] + " " + retorno[1]
         <View style={styles.header}>
           <BackButton />
           <Text style={styles.text}>{modelo}</Text>
-          <RectButton onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
+          <RectButton onPress={() => handleEditCar(params.id, carros.id)}>
             <Feather name="edit" size={25} color="#F0EFF4" />
           </RectButton>
         </View>

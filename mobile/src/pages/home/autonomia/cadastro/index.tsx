@@ -251,7 +251,6 @@ function Autonomia({ navigation }: any) {
                     :
                     <Button title="Salvar" onPress={handleCreateAutonomia} />
                 }
-
             </View>
         </ScrollView >
     );

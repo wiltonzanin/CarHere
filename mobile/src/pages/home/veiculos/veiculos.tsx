@@ -37,7 +37,11 @@ function Veiculos({ navigation }: any) {
   }
 
   function handleNavigateToCadastroVeiculo() {
-    navigation.navigate("CadastroVeiculo");
+    navigation.reset({
+      index: 0,
+      routes: [{ name: 'CadastroVeiculo' }],
+    });
+    //navigation.navigate("CadastroVeiculo");
   }
 
   React.useEffect(() => {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { StackActions, useFocusEffect, useNavigation } from "@react-navigation/native";
+import { StackActions, useFocusEffect, useNavigation, useRoute } from "@react-navigation/native";
 import { Text, View, ScrollView, TouchableOpacity, Image, BackHandler } from "react-native";
 import * as ImagePicker from 'expo-image-picker';
 import styles from "./styles";
@@ -27,6 +27,18 @@ interface IApi {
   codigo: string;
 }
 
+interface EditCarRouteParams {
+  id: number;
+};
+
+interface ICarro {
+  marca: string;
+  modelo: string;
+  combustivel: number;
+  motorizacao: string;
+  ano: string;
+}
+
 function StatusNet() {
   var teste
   NetInfo.addEventListener(state => {
@@ -36,37 +48,35 @@ function StatusNet() {
 }
 
 function CadastroVeiculo({ navigation }: any) {
+
+  const route = useRoute();
+  const params = route.params as EditCarRouteParams;
+
   const [modalVisible, setModalVisible] = useState(false);
   const [modalWarning, setModalWarning] = useState(false);
   const [carregando, setCarregando] = useState(false);
   const [disableButton, setDisableButton] = useState(false);
 
-  const [motorizacao, setMotorizacao] = useState("");
+  const [marcas, setMarcas] = useState("");
+  const [modelo, setModelo] = useState("");
   const [combustivel, setCombustivel] = useState("");
+  const [motorizacao, setMotorizacao] = useState("");
+  const [ano, setAno] = useState("");
   const [images, setImages] = useState<string[]>([]);
   const [imageUri, setImageUri] = useState<string[]>([]);
   const [modalMensage, setModalMensage] = useState("");
-  const [marcas, setMarcas] = useState("");
-  const [modelo, setModelo] = useState("");
-  const [ano, setAno] = useState("");
 
-  const [anoapi, setAnoapi] = useState<IApi[]>([]);
   const [marcasapi, setMarcasapi] = useState<IApi[]>([]);
   const [modelosapi, setModelosapi] = useState<IApi[]>([]);
- // const [codigomarca, setcodigomarca] = useState("");
-  //const [codigomodelo, setcodigomodelo] = useState("");
-  const [urlapi, seturlapi] = useState("");
 
-  //const [urlapiano, seturlapiano] = useState("");
-  //const [urlapifip, seturlapifip] = useState("");
-  //const [fipmodelo, setfipmodelo] = useState("");
+  const [urlapi, seturlapi] = useState("");
 
   const [CurrentYear, setCurrentYear] = useState(0);
   const [date, setDate] = useState(new Date());
   const [validacao, setValidacao] = useState(0);
 
   if (StatusNet() === false) {
-    setModalMensage("Necessario estar conectado a internet para continuar!");
+    setModalMensage("É necessário estar conectado a internet para continuar!");
     setModalVisible(true);
   }
 
@@ -93,11 +103,22 @@ function CadastroVeiculo({ navigation }: any) {
       setModalMensage("Ano do carro inconsistente")
     } else {
       if (!marcas === false && !modelo === false && !combustivel === false && !ano === false && !motorizacao === false) {
-        handleCreateVeiculo()
+        params.id == 0 ? handleCreateVeiculo() : handleEditCar();
       } else {
         setModalMensage("Preencha os campos obrigatórios!");
         setModalWarning(true);
       }
+    }
+  }
+
+  function handleEditCar() {
+    try {
+      CarroService.editCar(modelo, marcas, Number(ano), combustivel, motorizacao, params.id);
+      setModalMensage("Veículo atualizado com sucesso!");
+      setModalVisible(true);
+    } catch (error) {
+      setModalMensage("Ops, tivemos um problema!");
+      setModalWarning(true);
     }
   }
 
@@ -107,9 +128,6 @@ function CadastroVeiculo({ navigation }: any) {
         .then((response) => {
           setMarcasapi(response.data)
         })
-      //   .catch((err) => {
-      //   console.error("ops! ocorreu um erro : " + err);
-      //  });
     }
 
   }, []);
@@ -123,45 +141,27 @@ function CadastroVeiculo({ navigation }: any) {
     }
   }, [marcas]);
 
-  /*useEffect(() => {
-    if (modelo !== "" && valNet !== '') {
-      api.get(urlapiano)
-        .then((response) => {
-          setAnoapi(response.data)
+  useEffect(() => {
+    if (params.id !== 0) {
+      setCarregando(true);
+      CarroService.findCarById(params.id)
+        .then((response: any) => {
+          response as ICarro;
+          setMarcas(response.marca);
+          setModelo(response.modelo);
+          setCombustivel(response.combustivel);
+          setMotorizacao(response.motorizacao);
+          //setAno(response.ano);
+          setCarregando(false);
+        }).catch(() => {
         })
-      setvalmodelo('')
     }
-  }, [modelo]);*/
-
-  /* useEffect(() => {
-     if(ano !== ""){
-       api.get(urlapifip)
-       .then((response) => {
-         setfipmodelo(response.data)
-       })
-     }
-   }, [ano]);*/
-  /* <DropDownPicker
-    placeholder=""
-    dropDownStyle={styles.dropdownList}
-     labelStyle={styles.dropdownText}
-     arrowColor={darkTheme.grayLight}
-     items={anoapi.map(anoapi => ({
-       label: anoapi.nome.substr(0, 4),
-       value: anoapi.codigo.substr(0, 4),
-     }))}
-     style={styles.dropdown}
-     onChangeItem={(item) => {
-   setAno(item.value)
-    /  seturlapifip("marcas/" + codigomarca + "/modelos/" + codigomodelo + "/anos/" + item.value)
-     }}
-   >*/
+  }, [params.id]);
 
   var limiteAno = (date.getFullYear() + 3)
   const ano_value = [];
   for (var i = limiteAno; i >= 1960; i--) {
     ano_value.push({ label: "" + i, value: "" + i });
-    //console.log(ano_value);
   }
 
   function handleDeletePhotos() {
@@ -218,13 +218,13 @@ function CadastroVeiculo({ navigation }: any) {
     // .catch(error => { console.error(error) })
   }
 
-  async function handleCreateVeiculo() {
+  function handleCreateVeiculo() {
     try {
       CarroService.addCarro(modelo, marcas, Number(ano), combustivel, motorizacao, imageUri);
       setModalMensage("Veículo cadastrado com sucesso!");
       setModalVisible(true);
     } catch (error) {
-      setModalMensage("Ops, tivemos um problema!"); //Não chega no catch
+      setModalMensage("Ops, tivemos um problema!");
       setModalWarning(true);
     }
   }
@@ -257,7 +257,7 @@ function CadastroVeiculo({ navigation }: any) {
       />
       <View style={styles.container}>
         <View style={styles.header}>
-          <BackScreen backToHome={true}/>
+          <BackScreen backToHome={true} />
           <Text style={styles.title}>Cadastre seu veículo</Text>
           <View />
         </View>
@@ -322,7 +322,6 @@ function CadastroVeiculo({ navigation }: any) {
                   label: modelosapi.nome,
                   value: modelosapi.codigo,
                 }))}
-
                 style={styles.dropdown}
                 onChangeItem={(item) => {
                   setModelo(item.label)
@@ -340,10 +339,11 @@ function CadastroVeiculo({ navigation }: any) {
           }
           <Text style={styles.text}>Combustível</Text>
           <DropDownPicker
-            placeholder="Selecione um item"
+            placeholder=""
             dropDownStyle={styles.dropdownList}
             labelStyle={styles.dropdownText}
             arrowColor={darkTheme.grayLight}
+            defaultValue={combustivel}
             items={[
               { label: "Gasolina", value: "Gasolina" },
               { label: "Alcool", value: "Alcool" },
@@ -382,8 +382,10 @@ function CadastroVeiculo({ navigation }: any) {
             </View>
             <View style={styles.inputGroupSecondColumn}>
               <Text style={styles.text1}>Ano</Text>
+              {console.log(ano)}
               <DropDownPicker
                 placeholder=""
+                defaultValue={ano}
                 dropDownStyle={styles.dropdownList}
                 labelStyle={styles.dropdownText}
                 arrowColor={darkTheme.grayLight}
@@ -435,7 +437,12 @@ function CadastroVeiculo({ navigation }: any) {
             )}
           </ScrollView>
         </View>
-        <Button title="Concluir" onPress={Validacao} />
+        {params.id !== 0
+          ?
+          <Button title="Atualizar" onPress={Validacao} />
+          :
+          <Button title="Concluir" onPress={Validacao} />
+        }
       </View>
     </ScrollView>
   );

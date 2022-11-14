@@ -39,7 +39,6 @@ export default class AutonomiaService {
         }))
     }
 
-
     static async findAll() {
         const db = await dbConnection();
         return new Promise((resolve, reject) => db.transaction(tx => {

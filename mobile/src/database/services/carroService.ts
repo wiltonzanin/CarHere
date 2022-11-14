@@ -27,6 +27,22 @@ export default class CarroService {
         }))
     }
 
+    static async editCar(modelo: string, marca: string, ano: number, combustivel: string, motorizacao: string, id_carro: number) {
+        const db = await dbConnection();
+        return new Promise((resolve, reject) => db.transaction(tx => {
+            tx.executeSql(`update ${table} 
+            set modelo = ?, marca = ?, ano = ?, combustivel = ?, motorizacao = ?
+            where id_carro = ?`,
+                [modelo, marca, ano, combustivel, motorizacao, id_carro], (_, { insertId, rows }) => {
+                    resolve(insertId);
+                }), (sqlError: any) => {
+                    console.log(sqlError);
+                }
+        }, (txError) => {
+            console.log(txError);
+        }))
+    }
+
     static async findAll() {
         const db = await dbConnection();
         return new Promise((resolve, reject) => db.transaction(tx => {
