@@ -8,7 +8,7 @@ FirebaseInit();
 
 const storage = getStorage();
 
-async function UID() {
+async function UID(){
     return new Promise(resolve => {
         setTimeout(() => {
             resolve(getAuth().currentUser?.uid);

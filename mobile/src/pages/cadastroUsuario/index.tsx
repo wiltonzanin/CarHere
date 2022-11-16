@@ -104,7 +104,8 @@ function CadastroUsuario({ navigation }: any) {
             const user = userCredential.user;
             sendEmailVerification(userCredential.user)
             .then(() => {
-              alert("email enviado")
+              setModalMensage("Email de verificação enviado, verificar o lixo eletronico ou a caixa de Span");
+              setModalVisible(true);
                 // Email verification sent!
                 // ...
             });

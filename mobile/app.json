@@ -22,7 +22,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./src/assets/images/Logo-CarHere.png",
         "backgroundColor": "#252525"
       },
       "package": "com.mococa.carhere",

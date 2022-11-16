@@ -3,6 +3,7 @@ import { View, Text, ScrollView } from "react-native";
 import { DrawerActions, useNavigation } from "@react-navigation/native";
 import styles from "./styles";
 import { ButtonMenu, ButtonPadrao } from "../../../../components/buttons";
+import { UploadDB } from '../../../../database/dbConnection';
 
 function Configuracoes({ navigation }: any) {
   const { navigate } = useNavigation();
@@ -40,9 +41,10 @@ function Configuracoes({ navigation }: any) {
           <View />
         </View>
         <View>
+          {/*
           <Text style={styles.sectionTitle}>Preferências</Text>
           <View style={styles.buttonsGroup}>
-            {/* <View style={styles.buttonsGroupContent}>
+             <View style={styles.buttonsGroupContent}>
               <ButtonPadrao
                 title="Unidades de medida"
                 onPress={handleNavigateToUnidadeMedida}
@@ -57,17 +59,26 @@ function Configuracoes({ navigation }: any) {
                 title="Aparência"
                 onPress={handleNavigateToAparencia}
               />
-            </View> */}
+            </View> 
             <ButtonPadrao
               title="Notificações"
               onPress={handleNavigateToNotificacao}
             />
           </View>
+          */}
+
           <Text style={styles.sectionTitle}>Conta</Text>
           <View style={styles.buttonsGroup}>
             <ButtonPadrao
               title="Opções de usuário"
               onPress={handleNavigateToOpcoesUsuario}
+            />
+          </View>
+          <Text style={styles.sectionTitle}>Banco de dados</Text>
+          <View style={styles.buttonsGroup}>
+            <ButtonPadrao
+              title="Salvar o Banco de dados na nuvem"
+              onPress={UploadDB}
             />
           </View>
           <Text style={styles.sectionTitle}>Termos do aplicativo</Text>

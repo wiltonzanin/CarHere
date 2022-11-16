@@ -35,12 +35,10 @@ function Termos() {
                   tratamento de seus dados pessoais para finalidade específica,
                   em conformidade com a Lei nº 13.709 – Lei Geral de Proteção de
                   Dados Pessoais (LGPD). Informamos que coletamos seus dados
-                  pessoais (Nome completo, senha, CPF, Email, Número de celular,
-                  Endereço, CEP, Data de nascimento e Gênero) para controle de
-                  vendas por clientes dentro da ferramenta, oferecer serviços
+                  pessoais (Nome completo, senha, Email) para oferecer serviços
                   personalizados (incluindo conteúdos e anúncios), para que
-                  potenciais compradores e nós possamos entrar em contato com
-                  você, . Os seus dados pessoais serão armazenados e preservados
+                  nós possamos entrar em contato com você.
+                  Os seus dados pessoais serão armazenados e preservados
                   por um período indeterminado; os dados dos clientes são
                   registrados no sistema e podem ser anonimizados a qualquer
                   momento, desde que o cliente solicite. Ao criar uma conta no
@@ -58,56 +56,18 @@ function Termos() {
                   e revogação do consentimento, nos termos da Lei. As
                   solicitações e questionamentos acerca do tratamento e
                   eliminação de seus dados deverão ser realizadas através do
-                  email suporte_meupossante@gmail.com.{"\n"}
+                  email CarHere.Suporte@gmail.com.{"\n"}
                 </Text>
-                <Text style={styles.title}>
-                  Compartilhamento entre redes sociais.{"\n"}
-                </Text>
-                <Text style={styles.text}>
-                  {" "}
-                  {"\t"} {"\t"}Você pode compartilhar os dados entre sua Conta
-                  do Meu Possante e sua conta de rede social, como o Facebook.
-                  Essa opção permite o compartilhamento de informações pessoais
-                  e outros conteúdos das suas redes sociais com os serviços. Da
-                  mesma forma, você pode compartilhar suas informações pessoais
-                  e outros conteúdos do Meu Possante, incluindo informações de
-                  local e trajeto, na sua conta de rede social. Ao integrar a
-                  Conta do Meu Possante às redes sociais, incluindo fazer login
-                  no Meu Possante com a conta específica de sua rede social,
-                  você concorda em compartilhar os dados (incluindo informações
-                  pessoais) entre o Meu Possante e essas redes sociais para os
-                  fins previstos nesta Política de Privacidade. O uso pela rede
-                  social das informações do Meu Possante é regido e controlado
-                  pela política de privacidade dessa rede, não por esta Política
-                  de Privacidade ou pelo Meu Possante. Ao se conectar à conta da
-                  rede social por meio dos serviços pela primeira vez ou ao
-                  criar uma interação entre ambos, a rede social em questão
-                  solicitará sua permissão para compartilhar com o Meu Possante
-                  as informações pessoais armazenadas nela. Coletamos os dados
-                  da sua conta da rede social somente de acordo com as
-                  permissões concedidas por você, como nome, endereço de e-mail,
-                  lista de amigos, foto do perfil e outras informações
-                  disponíveis na rede social aplicável. Você entende e concorda
-                  que os serviços podem acessar, disponibilizar e armazenar
-                  essas informações para que estejam disponíveis na sua Conta do
-                  Meu Possante até a exclusão dela. Algumas informações
-                  definidas como particulares nas contas de redes sociais de
-                  terceiros podem ser disponibilizadas aos usuários do Waze por
-                  meio dos Serviços quando você permitir o compartilhamento
-                  delas com o Meu Possante, por exemplo, por meio do seu perfil
-                  no Carpool.
-                  {"\n"}
-                </Text>
-
+                
                 <Text style={styles.title}>
                   Segurança das informações{"\n"}
                 </Text>
                 <Text style={styles.text}>
                   {" "}
-                  {"\t"} {"\t"}O Meu Possante trata a segurança das informações
+                  {"\t"} {"\t"}O CarHere trata a segurança das informações
                   como prioridade máxima. Nossos Serviços integram recursos de
                   segurança avançados que protegem seus dados de forma contínua.
-                  O Meu Possante implementa sistemas, aplicativos e
+                  O CarHere implementa sistemas, aplicativos e
                   procedimentos para preservar suas informações pessoais e
                   minimizar o risco de roubo, dano, perda ou acesso e uso não
                   autorizado delas. Por exemplo, analisamos nossas práticas de
@@ -115,7 +75,7 @@ function Termos() {
                   medidas de segurança física, para impedir o acesso não
                   autorizado aos nossos sistemas. Além disso, restringimos o
                   acesso às informações pessoais aos funcionários, contratados e
-                  agentes do Meu Possante que precisam processá-las. Todas as
+                  agentes do  CarHere que precisam processá-las. Todas as
                   pessoas com esse acesso estão sujeitas a rigorosas obrigações
                   contratuais de confidencialidade, podendo ser processadas ou
                   dispensadas se deixarem de cumpri-las. Os insights que
@@ -123,7 +83,7 @@ function Termos() {
                   detectar e bloquear automaticamente ameaças de segurança para
                   que elas não cheguem até você. No entanto, mesmo com essas
                   medidas, não é possível fornecer garantia absoluta. Portanto,
-                  embora o Meu Possante envide todos os esforços razoáveis para
+                  embora o CarHere envide todos os esforços razoáveis para
                   proteger suas informações pessoais, não podemos garantir e
                   você não pode esperar que nossos bancos de dados estejam
                   imunes a irregularidades, falhas, interceptações ou acessos
@@ -142,21 +102,21 @@ function Termos() {
                 </Text>
                 <Text style={styles.text}>
                   {" "}
-                  {"\t"} {"\t"}O Meu Possante oferece a opção de vincular nossos
+                  {"\t"} {"\t"}O CarHere oferece a opção de vincular nossos
                   Serviços aos serviços de terceiros que podem ser úteis para
-                  você, como o Spotify. O Meu Possante solicitará a confirmação
+                  você. O CarHere solicitará a confirmação
                   para conectar as contas quando ele detecta que uma integração
                   está disponível. Isso pode acontecer quando um serviço de
-                  terceiros tenta se conectar ao Meu Possante, quando ele
+                  terceiros tenta se conectar ao CarHere, quando ele
                   detecta um serviço instalado no dispositivo que pode ser
                   integrado ou quando você solicita uma integração específica.
-                  Se você aprovar a conexão, o Meu Possante solicitará sua
+                  Se você aprovar a conexão, o CarHere solicitará sua
                   permissão para compartilhar dados com o serviço de terceiros.
                   Somente conecte as contas se confiar no serviço de terceiros
                   que receberá os dados definidos no momento da conexão das
                   contas, porque não somos responsáveis pelo uso de dados feito
                   por serviços de terceiros. Você pode desconectar ambos os
-                  serviços a qualquer momento, e o Meu Possante deixará de
+                  serviços a qualquer momento, e o CarHere deixará de
                   compartilhar dados com o terceiro a partir da desconexão.
                 </Text>
               </View>
@@ -174,7 +134,7 @@ function Termos() {
                 </Text>
                 <Text style={styles.text}>
                   {"\t"} {"\t"}
-                  Na Meu Possante LTDA, privacidade e segurança são prioridades
+                  Na CarHere LTDA, privacidade e segurança são prioridades
                   e nos comprometemos com a transparência do tratamento de dados
                   pessoais dos nossos usuários/clientes. Por isso, essa presente
                   Política de Privacidade estabelece como é feita a coleta, uso
@@ -184,11 +144,10 @@ function Termos() {
                   nas formas descritas nesta Política, sob as normas de Proteção
                   de Dados (LGPD, Lei Federal 13.709/2018), das disposições
                   consumeristas da Lei Federal 8078/1990 e as demais normas do
-                  ordenamento jurídico brasileiro aplicáveis. Dessa forma, a Meu
-                  Possante LTDA, doravante denominada simplesmente como “Meu
-                  Possante”, inscrita no CNPJ/MF sob o nº (nº do CNPJ), no papel
-                  de Controladora de Dados, obriga-se ao disposto na presente
-                  Política de Privacidade.
+                  ordenamento jurídico brasileiro aplicáveis. Dessa forma, a 
+                  CarHere LTDA, doravante denominada simplesmente como “CarHere”, 
+                  no papel de Controladora de Dados, obriga-se ao disposto na 
+                  presente Política de Privacidade.
                 </Text>
                 <Text style={styles.title}>
                   1. Quais dados coletamos sobre você e para qual finalidade?
@@ -207,46 +166,25 @@ function Termos() {
                   usuário e para validar as informações pessoais do usuário para
                   a segurança de quem anuncia e realiza negociações dentro do
                   aplicativo. A senha será utilizada para validar e proteger o
-                  acesso do usuário ao aplicativo. O CPF é requerido pois o
-                  mesmo é utilizado para validar a veracidade das informações
-                  pessoais do usuário para a segurança de quem anuncia e realiza
-                  negociações dentro do aplicativo. O email será utilizado para
+                  acesso do usuário ao aplicativo. O email será utilizado para
                   validar e proteger o acesso do usuário ao aplicativo e também
                   para entrar em contato com o usuário e em caso de alteração de
-                  senha. O número de celular será exibido nos anúncios criados
-                  pelo usuário para que as pessoas interessadas em comprar o
-                  produto possam contatar o vendedor. Endereço pode ser usado
-                  para validar as informações pessoais do usuário para a
-                  segurança de quem anuncia e realiza negociações dentro do
-                  aplicativo. O CEP pode ser usado para validar as informações
-                  pessoais do usuário para a segurança de quem anuncia e realiza
-                  negociações dentro do aplicativo. A data de nascimento pode
-                  ser usada para validar as informações pessoais do usuário para
-                  a segurança de quem anuncia e realiza negociações dentro do
-                  aplicativo. O gênero pode ser usado para validar as
-                  informações pessoais do usuário para a segurança de quem
-                  anuncia e realiza negociações dentro do aplicativo.
+                  senha.
                 </Text>
 
                 <Text style={styles.title}>
                   1.2. Dados pessoais coletados automaticamente
                 </Text>
                 <Text style={styles.text}>
-                  Informações da conta: Quando você cria a conta no Meu Possante
+                  Informações da conta: Quando você cria a conta no CarHere
                   nós coletamos algumas informações como nome, endereço de
-                  email, CPF, número de telefone, cidade, fotos e movimentos
-                  transacionais dentro da nossa plataforma. Serviços de
-                  autenticação: Se você optar por fazer o login no aplicativo
-                  por meio de um serviço de autenticação de terceiro, como por
-                  exemplo, o Facebook Connect, o Meu Possante pode armazenar
-                  dados adicionais do seu perfil e outras informações
-                  autorizadas pelo fornecedor desse serviço. Atendimento ao
+                  email e fotos dentro da nossa plataforma. Atendimento ao
                   cliente: caso seja necessário você entrar em contato conosco,
-                  o Meu Possante pode coletar as informações pessoais
+                  o CarHere pode coletar as informações pessoais
                   necessárias para que seja feito o atendimento, assim como
-                  informações sobre suas comunicações com o Meu Possante.
+                  informações sobre suas comunicações com o CarHere.
                   Informações coletadas automaticamente: Ao acessar os sites e
-                  serviços de terceiros, o Meu Possante pode receber e registrar
+                  serviços de terceiros, o CarHere pode receber e registrar
                   informações de seu navegador ou dispositivo em nossos
                   servidores , como por exemplo Identificador de Publicidade do
                   Android, do IOS ou de outros sistemas operacionais análogos,
@@ -259,7 +197,7 @@ function Termos() {
                   publicidade no dispositivo, atributos do dispositivo móvel e
                   aplicativos instalados no aparelho; II - Dados dos sensores do
                   aparelho; III - Dados anonimizados da localização do aparelho
-                  por meio do GPS ou rede de celular. O Meu Possante pode
+                  por meio do GPS ou rede de celular. O CarHere pode
                   permitir que terceiros, como prestadores de serviço de
                   publicidade e estatística, coletem quaisquer informações
                   especificadas neste item, utilizando esse tipo de tecnologia
@@ -286,27 +224,26 @@ function Termos() {
                   Nesse sentido, a coleta dos seus dados pessoais ocorre da
                   seguinte forma: Por meio de um cadastro na tela inicial do
                   aplicativo, será requisitado a forma com a qual você deseja
-                  fornecer seus dados.Poderá ser feito com o login do facebook
-                  ou google, com a permissão dos dados o Meu Possante coletará
-                  seus dados por meio desses aplicativos de terceiros. Ou você
-                  poderá fazer o seu cadastro de forma manual na Tela de
-                  Cadastro que o Meu Possante disponibilizará quando aberto pela
-                  primeira o aplicativo, ou quando desejar criar uma nova conta.
+                  fornecer seus dados. Com a permissão dos dados o CarHere 
+                  coletará seus dados por meio desses aplicativos de terceiros. 
+                  Ou você poderá fazer o seu cadastro de forma manual na Tela de
+                  Cadastro que o CarHere disponibilizará quando aberto pela
+                  primeira vez o aplicativo, ou quando desejar criar uma nova conta.
                 </Text>
 
                 <Text style={styles.title}>2.1. Consentimento</Text>
                 <Text style={styles.text}>
                   É a partir do seu consentimento que tratamos os seus dados
                   pessoais. O consentimento é a manifestação livre, informada e
-                  inequívoca pela qual você autoriza a Meu Possante a tratar
+                  inequívoca pela qual você autoriza a CarHere a tratar
                   seus dados. Assim, em consonância com a Lei Geral de Proteção
                   de Dados, seus dados só serão coletados, tratados e
                   armazenados mediante prévio e expresso consentimento. O seu
                   consentimento será obtido de forma específica para cada
                   finalidade acima descrita, evidenciando o compromisso de
-                  transparência e boa-fé da Meu Possante para com seus
+                  transparência e boa-fé da CarHere para com seus
                   usuários/clientes, seguindo as regulações legislativas
-                  pertinentes. Ao utilizar os serviços da Meu Possante e
+                  pertinentes. Ao utilizar os serviços da CarHere e
                   fornecer seus dados pessoais, você está ciente e consentindo
                   com as disposições desta Política de Privacidade, além de
                   conhecer seus direitos e como exercê-los. A qualquer tempo e
@@ -320,7 +257,7 @@ function Termos() {
 
                 <Text style={styles.title}>3. Quais são os seus direitos?</Text>
                 <Text style={styles.text}>
-                  A Meu Possante assegura a seus usuários/clientes seus direitos
+                  A CarHere assegura a seus usuários/clientes seus direitos
                   de titular previstos no artigo 18 da Lei Geral de Proteção de
                   Dados. Dessa forma, você pode, de maneira gratuita e a
                   qualquer tempo: Confirmar a existência de tratamento de dados,
@@ -345,8 +282,8 @@ function Termos() {
                 </Text>
                 <Text style={styles.text}>
                   Para exercer seus direitos de titular, você deve entrar em
-                  contato com a Meu Possante através dos seguintes meios
-                  disponíveis: suporte_meupossante@gmail.com De forma a garantir
+                  contato com a CarHere através dos seguintes meios
+                  disponíveis: CarHere.Suporte@gmail.com De forma a garantir
                   a sua correta identificação como titular dos dados pessoais
                   objeto da solicitação, é possível que solicitemos documentos
                   ou demais comprovações que possam comprovar sua identidade.
@@ -357,13 +294,13 @@ function Termos() {
                   5. Como e por quanto tempo seus dados serão armazenados?
                 </Text>
                 <Text style={styles.text}>
-                  Seus dados pessoais coletados pela Meu Possante serão
+                  Seus dados pessoais coletados pela CarHere serão
                   utilizados e armazenados durante o tempo necessário para a
                   prestação do serviço ou para que as finalidades elencadas na
                   presente Política de Privacidade sejam atingidas, considerando
                   os direitos dos titulares dos dados e dos controladores. De
                   modo geral, seus dados serão mantidos enquanto a relação
-                  contratual entre você e a Meu Possante perdurar. Findado o
+                  contratual entre você e a CarHere perdurar. Findado o
                   período de armazenamento dos dados pessoais, estes serão
                   excluídos de nossas bases de dados ou anonimizados,
                   ressalvadas as hipóteses legalmente previstas no artigo 16 lei
@@ -379,7 +316,7 @@ function Termos() {
                   legais, judiciais e administrativas e/ou para o exercício do
                   direito de defesa em processos judiciais e administrativos
                   serão mantidas, a despeito da exclusão dos demais dados. O
-                  armazenamento de dados coletados pela Meu Possante reflete o
+                  armazenamento de dados coletados pela CarHere reflete o
                   nosso compromisso com a segurança e privacidade dos seus
                   dados. Empregamos medidas e soluções técnicas de proteção
                   aptas a garantir a confidencialidade, integridade e
@@ -403,7 +340,7 @@ function Termos() {
                   têm acesso a seus dados pessoais O acesso a seus dados
                   pessoais é feito somente após o compromisso de
                   confidencialidade Seus dados pessoais são armazenados em
-                  ambiente seguro e idôneo. A Meu Possante se compromete a
+                  ambiente seguro e idôneo. A CarHere se compromete a
                   adotar as melhores posturas para evitar incidentes de
                   segurança. Contudo, é necessário destacar que nenhuma página
                   virtual é inteiramente segura e livre de riscos. É possível
@@ -422,23 +359,20 @@ function Termos() {
                   7. Com quem seus dados podem ser compartilhados?
                 </Text>
                 <Text style={styles.text}>
-                  Tendo em vista a preservação de sua privacidade, o Meu
-                  possante não compartilhará seus dados pessoais com nenhum
+                  Tendo em vista a preservação de sua privacidade, o CarHere  
+                  não compartilhará seus dados pessoais com nenhum
                   terceiro não autorizado. Estes recebem seus dados apenas na
                   medida do necessário para a prestação dos serviços contratados
                   e nossos contratos são orientados pelas normas de proteção de
                   dados do ordenamento jurídico brasileiro. Todavia, nossos
                   parceiros têm suas próprias Políticas de Privacidade, que
-                  podem divergir desta. Recomendamos a leitura desses
-                  documentos, que você pode acessar aqui: Política de
-                  Privacidade do nosso parceiro: (link para a política de
-                  privacidade do parceiro comercial). Além disso, também existem
+                  podem divergir desta. Além disso, também existem
                   outras hipóteses em que seus dados poderão ser compartilhados,
                   que são: I – Determinação legal, requerimento, requisição ou
                   ordem judicial, com autoridades judiciais, administrativas ou
                   governamentais competentes. II – Caso de movimentações
                   societárias, como fusão, aquisição e incorporação, de forma
-                  automática III – Proteção dos direitos do Meu Possante em
+                  automática III – Proteção dos direitos do CarHere em
                   qualquer tipo de conflito, inclusive os de teor judicial.
                 </Text>
 
@@ -451,7 +385,7 @@ function Termos() {
                   estrangeiros. Nessas condições, de toda forma, seus dados
                   pessoais estarão sujeitos à Lei Geral de Proteção de Dados e
                   às demais legislações brasileiras de proteção de dados Nesse
-                  sentido, a Meu Possante se compromete a sempre adotar
+                  sentido, a CarHere se compromete a sempre adotar
                   eficientes padrões de segurança cibernética e de proteção de
                   dados, nos melhores esforços de garantir e cumprir as
                   exigências legislativas. Ao concordar com essa Política de
@@ -478,7 +412,7 @@ function Termos() {
 
                 <Text style={styles.title}>9. Responsabilidade</Text>
                 <Text style={styles.text}>
-                  O Meu Possante prevê a responsabilidade dos agentes que atuam
+                  O CarHere prevê a responsabilidade dos agentes que atuam
                   nos processos de tratamento de dados, em conformidade com os
                   artigos 42 ao 45 da Lei Geral de Proteção de Dados. Nos
                   comprometemos em manter esta Política de Privacidade
@@ -488,7 +422,7 @@ function Termos() {
                   proteger todo o processo de tratamento de dados. Caso a
                   Autoridade Nacional de Proteção de Dados exija a adoção de
                   providências em relação ao tratamento de dados realizado pelo
-                  Meu Possante, comprometemo-nos a segui-las.
+                  CarHere, comprometemo-nos a segui-las.
                 </Text>
 
                 <Text style={styles.title}>
@@ -498,7 +432,7 @@ function Termos() {
                   Conforme mencionado no Tópico 6, embora adotemos elevados
                   padrões de segurança a fim de evitar incidentes, não há
                   nenhuma página virtual inteiramente livre de riscos. Nesse
-                  sentido, o Meu Possante não se responsabiliza por: I –
+                  sentido, o CarHere não se responsabiliza por: I –
                   Quaisquer consequências decorrentes da negligência,
                   imprudência ou imperícia dos usuários em relação a seus dados
                   individuais. Garantimos e nos responsabilizamos apenas pela
@@ -507,14 +441,14 @@ function Termos() {
                   Destacamos que a responsabilidade em relação à
                   confidencialidade dos dados de acesso é do usuário. II – Ações
                   maliciosas de terceiros, como ataques de hackers, exceto se
-                  comprovada conduta culposa ou deliberada do Meu Possante.
+                  comprovada conduta culposa ou deliberada do CarHere.
                   Destacamos que em caso de incidentes de segurança que possam
                   gerar risco ou dano relevante para você ou qualquer um de
                   nossos usuários/clientes, comunicaremos aos afetados e à
                   Autoridade Nacional de Proteção de Dados sobre o ocorrido e
                   cumpriremos as providências necessárias. III – Inveracidade
                   das informações inseridas pelo usuário/cliente nos registros
-                  necessários para a utilização dos serviços do Meu Possante;
+                  necessários para a utilização dos serviços do CarHere;
                   quaisquer consequências decorrentes de informações falsas ou
                   inseridas de má-fé são de inteiramente responsabilidade do
                   usuário/cliente.
@@ -524,13 +458,13 @@ function Termos() {
                   10. Encarregado de Proteção de Dados
                 </Text>
                 <Text style={styles.text}>
-                  O Meu Possante disponibiliza os seguintes meios para que você
+                  O CarHere disponibiliza os seguintes meios para que você
                   possa entrar em contato conosco para exercer seus direitos de
-                  titular: (telefone). Caso tenha dúvidas sobre esta Política de
+                  titular: (CarHere.Suporte@gmail.com). Caso tenha dúvidas sobre esta Política de
                   Privacidade ou sobre os dados pessoais que tratamos, você pode
                   entrar em contato com o nosso Encarregado de Proteção de Dados
-                  Pessoais, através dos seguintes canais: [Wilton Clever Zanin
-                  (000.000.000-00)]. [email]
+                  Pessoais, através dos seguintes canais: [Lucas Rogerio Morgenstern
+                  (047.043.309-40)]. [lucas.morgenstern@hotmail.com]
                 </Text>
               </View>
             </List.Accordion>

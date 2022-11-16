@@ -21,7 +21,6 @@ import Principal from "./ajudaEfeedback/principal";
 import Servicos from "./servicos";
 import { ButtonMenu } from '../../components/buttons';
 import { ButtonAdicionar } from '../../components/buttons';
-import Subscription from '../home/subscription'
 import { RectButton } from "react-native-gesture-handler";
 import { darkTheme } from '../../Styles/colors'
 
@@ -74,24 +73,25 @@ function Home({ navigation }: any) {
     navigation.navigate("VisualizarVeiculo", { id });
   }
 
-  React.useEffect(() => {
-    navigation.addListener('focus', () => {
-      ServicoService.SevicesNoRealized()
-        .then((response: any) => {
-          setServico(response._array);
-        });
-    });
-  }, [navigation]);
+    React.useEffect(() => {
+      navigation.addListener('focus', () => {
+        ServicoService.SevicesNoRealized()
+          .then((response: any) => {
+            setServico(response._array);
+          });
+      });
+    }, [navigation]);
 
-  React.useEffect(() => {
-    navigation.addListener('focus', () => {
-      CarroService.findCarAsc()
-        .then((response: any) => {
-          setCarros(response)
-          setCarregando(false)
-        })
-    });
-  }, [navigation]);
+    React.useEffect(() => {
+      navigation.addListener('focus', () => {
+        CarroService.findCarAsc()
+          .then((response: any) => {
+            setCarros(response)
+            setCarregando(false)
+          })
+      });
+    }, [navigation]);
+  
 
   useFocusEffect(() => {
     const backAction = () => {
@@ -163,7 +163,7 @@ function Home({ navigation }: any) {
                   <View style={styles.buttonServico} >
                     <View style={{ flex: 1, justifyContent: 'center' }}>
                       <Feather name="alert-circle" size={25} color="#eca400" style={{ alignSelf: 'center' }} />
-                      <Text style={styles.noInfoText}>Você ainda não possui um serviço cadastrado!</Text>
+                      <Text style={styles.noInfoText}>Você ainda não possui um serviço não realizado cadastrado!</Text>
                     </View>
                   </View>
                   :

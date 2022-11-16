@@ -23,7 +23,7 @@ export const AuthProvider: React.FC = ({ children }) => {
             //Alterar para multiGet
             const storageUser = await AsyncStorage.getItem('@MeuPossante:user');
             const storageToken = await AsyncStorage.getItem('@MeuPossante:token');
-
+            
             if (storageUser && storageToken) {
                 //Exemplo de implementação de Token
                 setUser(JSON.parse(storageUser));
@@ -37,8 +37,6 @@ export const AuthProvider: React.FC = ({ children }) => {
     async function signIn() {
         const response = await auth.signIn();
         setUser(response.user);
-        
-
         //Exemplo de implementação de Token
         api.defaults.headers['Authorization'] = `Bearer ${response.token}`;
 
