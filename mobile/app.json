@@ -4,7 +4,7 @@
     "slug": "CarHere",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./src/assets/images/Logo-CarHere.png",
+    "icon": "./src/assets/images/CarHere-logo-1024.png",
     "backgroundColor": "#252525",
     "splash": {
       "image": "./src/assets/images/Logo-CarHere.png",
@@ -22,7 +22,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./src/assets/images/Logo-CarHere.png",
+        "foregroundImage": "./src/assets/images/CarHere-logo-1024.png",
         "backgroundColor": "#252525"
       },
       "package": "com.mococa.carhere",

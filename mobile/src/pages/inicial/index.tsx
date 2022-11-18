@@ -80,6 +80,10 @@ function Inicial({ navigation }: any) {
                         }
                     }
                 }
+                else {
+                    setModalMensage("E-mail não verificado, realizar a confirmação de e-mail");
+                    setModalWarning(true);
+                }
             })
             .catch((error) => {
                 const errorCode = error.code;

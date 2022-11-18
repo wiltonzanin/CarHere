@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, ScrollView, Image, TouchableOpacity } from "react-native";
+import { View, Text, ScrollView, Image, TouchableOpacity, SafeAreaView } from "react-native";
 import * as ImagePicker from 'expo-image-picker';
 
 import styles from "./styles";
@@ -28,6 +28,7 @@ function OpcoesUsuario({ navigation }: any) {
   const [carregando, setCarregando] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const [ImgURL, setImgURL] = useState("");
+  const [Name, setName] = useState("");
 
   const storage = getStorage();
   const storageRef = ref(storage, "/user/" + user?.uid + "/photo.jpg");
@@ -35,6 +36,10 @@ function OpcoesUsuario({ navigation }: any) {
   React.useEffect(() => {
     setImgURL((getAuth().currentUser?.photoURL)!)
   }, [ImgURL]);
+
+  React.useEffect(() => {
+    setName((getAuth().currentUser?.displayName)!)
+  }, [Name]);
 
   async function handleSelecionarFoto() {
     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -96,7 +101,7 @@ function OpcoesUsuario({ navigation }: any) {
 
   function handleNavigateToAlterarSenhaPage() {
     if (user?.uid != null) {
-      sendPasswordResetEmail(auth, user?.uid, undefined)
+      sendPasswordResetEmail(auth, (user?.email)!, undefined)
         .then(() => {
           setModalMensage("E-mail enviado, por favor verificar a caixa de lixo eletronico");
           setModalVisible(true);
@@ -112,7 +117,13 @@ function OpcoesUsuario({ navigation }: any) {
     setModalVisible(false);
   }
 
-
+  function EditName(NewName: string) {
+    updateProfile((user)!, {
+      displayName: NewName
+    }).then(() => {
+      setName(NewName);
+    })
+  }
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
@@ -145,7 +156,7 @@ function OpcoesUsuario({ navigation }: any) {
             </TouchableOpacity>
           </View>
           <Text style={styles.text}>
-            {user?.displayName || "-----" + " "} <Feather name="edit" color={darkTheme.grayLight} size={18} />{" "}
+            {Name || "-----" + " "} <Feather name="edit" color={darkTheme.grayLight} size={18} />{" "}
           </Text>
           <View style={styles.top}>
             <View style={styles.meio}>
