@@ -123,12 +123,12 @@ function CadastroVeiculo({ navigation }: any) {
   }
 
   useEffect(() => {
-    if (StatusNet()) {
+    //if (StatusNet()===true) {
       api.get("marcas")
         .then((response) => {
           setMarcasapi(response.data)
         })
-    }
+    //}
 
   }, []);
 
