@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { View, Text, ScrollView, Image, TouchableOpacity, SafeAreaView } from "react-native";
+import { View, Text, ScrollView, Image, TouchableOpacity, SafeAreaView, Modal } from "react-native";
 import * as ImagePicker from 'expo-image-picker';
 
 import styles from "./styles";
 import { darkTheme } from '../../../../Styles/colors'
-import { ButtonPadrao } from "../../../../components/buttons";
+import { Button, ButtonAdicionar, ButtonPadrao } from "../../../../components/buttons";
 import { Feather } from "@expo/vector-icons";
 import BackScreen from "../../../../components/backScreen";
 import { useAuth } from '../../../../contexts/auth';
@@ -14,6 +14,7 @@ import LoadingScreen from "../../../../components/loadingScreen";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { FirebaseInit } from '../../../../database/Firebase';
 import { getAuth, sendPasswordResetEmail, updateProfile } from "firebase/auth";
+import TextField from "../../../../components/textField";
 
 FirebaseInit();
 
@@ -29,6 +30,9 @@ function OpcoesUsuario({ navigation }: any) {
   const [modalVisible, setModalVisible] = useState(false);
   const [ImgURL, setImgURL] = useState("");
   const [Name, setName] = useState("");
+  const [nomeField, setNomeField] = useState("");
+  const [msgErro, setMsgErro] = useState("");
+  const [visibleModal, setVisibleModal] = useState(false);
 
   const storage = getStorage();
   const storageRef = ref(storage, "/user/" + user?.uid + "/photo.jpg");
@@ -118,11 +122,17 @@ function OpcoesUsuario({ navigation }: any) {
   }
 
   function EditName(NewName: string) {
-    updateProfile((user)!, {
-      displayName: NewName
-    }).then(() => {
-      setName(NewName);
-    })
+    if (NewName == "") {
+      setMsgErro("Preencha o campo nome!");
+    } else {
+      updateProfile((user)!, {
+        displayName: NewName
+      }).then(() => {
+        console.log(Name)
+        setName(NewName);
+      })
+      setVisibleModal(false);
+    }
   }
 
   return (
@@ -136,6 +146,18 @@ function OpcoesUsuario({ navigation }: any) {
         modalVisible={modalWarning}
         funcaoOnRequestClose={closeModal}
         mensage={modalMensage} />
+      <Modal visible={visibleModal} animationType="fade" transparent={true} onRequestClose={() => setVisibleModal(false)}>
+        <SafeAreaView style={styles.invibleAreaContainer}>
+          <TouchableOpacity style={styles.invibleArea} onPress={() => setVisibleModal(false)} />
+          <View style={styles.contentModal}>
+            <View style={styles.form}>
+              <Text style={styles.labelForm}>Nome *</Text>
+              <TextField labelName="" onChangeText={setNomeField} maxLength={50} mensagemErro={msgErro} />
+              <Button title={"Atualizar"} onPress={() => EditName(nomeField)} />
+            </View>
+          </View>
+        </SafeAreaView>
+      </Modal>
       <View style={styles.container}>
         <View style={styles.header}>
           <BackScreen />
@@ -156,7 +178,7 @@ function OpcoesUsuario({ navigation }: any) {
             </TouchableOpacity>
           </View>
           <Text style={styles.text}>
-            {Name || "-----" + " "} <Feather name="edit" color={darkTheme.grayLight} size={18} />{" "}
+            {Name || "-----" + " "} <Feather name="edit" color={darkTheme.grayLight} size={18} onPress={() => setVisibleModal(true)} />{" "}
           </Text>
           <View style={styles.top}>
             <View style={styles.meio}>

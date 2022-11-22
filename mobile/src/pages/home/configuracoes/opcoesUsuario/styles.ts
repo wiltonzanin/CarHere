@@ -22,6 +22,45 @@ const styles = StyleSheet.create({
     fontFamily: fonts.title
   },
 
+  invibleAreaContainer: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.6)'
+  },
+
+  invibleArea: {
+    flex: 1,
+    zIndex: 9
+  },
+
+  contentModal: {
+    marginVertical: 20,
+    marginLeft: 10,
+    marginRight: 10,
+  },
+
+  form: {
+    zIndex: 99,
+    backgroundColor: darkTheme.background,
+    borderRadius: 5,
+    marginTop: 8,
+    padding: 15,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+
+  labelForm: {
+    color: darkTheme.grayLight,
+    fontSize: 18,
+    marginBottom: 10,
+    fontFamily: fonts.text
+  },
+
   content: {
     flex: 1,
     color: darkTheme.grayLight,
