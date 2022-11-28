@@ -14,6 +14,7 @@ import fonts from '../../../Styles/fonts'
 import ServicoService from "../../../database/services/ServicoService";
 import { FeedbackModal } from "../../../components/feedbackModal";
 import CarroService from "../../../database/services/carroService";
+import BackScreen from "../../../components/backScreen";
 
 interface servico {
   id_servicos: number;
@@ -104,7 +105,7 @@ function Servicos({ navigation }: any) {
       <View style={styles.container}>
         <View style={styles.header}>
           <View style={styles.headerGroup}>
-            <ButtonMenu />
+            <BackScreen backToHome={true} />
             <Text style={styles.headerText}>Serviços</Text>
             <Feather name="search" size={25} color={darkTheme.grayLight} onPress={() => { setSearch(!search) }} />
           </View>

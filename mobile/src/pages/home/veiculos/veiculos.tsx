@@ -12,6 +12,7 @@ import LoadingScreen from "../../../components/loadingScreen";
 import { ButtonAdicionar } from '../../../components/buttons';
 import { ButtonMenu } from '../../../components/buttons';
 import CarroService from "../../../database/services/carroService";
+import BackScreen from "../../../components/backScreen";
 
 interface Carros {
   id_carro: number;
@@ -91,7 +92,7 @@ function Veiculos({ navigation }: any) {
       <View style={styles.container}>
         <View style={styles.header}>
           <View style={styles.headerGroup}>
-            <ButtonMenu />
+            <BackScreen backToHome={true} />
             <Text style={styles.headerText}>Veículos</Text>
             <Feather name="search" size={25} color={darkTheme.grayLight} onPress={() => { setSearch(!search) }} />
           </View>
